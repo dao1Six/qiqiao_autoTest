@@ -26,7 +26,7 @@ class JinXiaoCun(unittest.TestCase):
 
 
     def test_add_record(self):
-        '''应用管理员录入商品信息测试'''
+        '''应用管理员录入商品信息开发'''
 
 
         time.sleep(9)
