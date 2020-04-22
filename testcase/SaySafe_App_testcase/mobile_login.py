@@ -17,7 +17,7 @@ class Mobilehome(unittest.TestCase):
 
 
     def test_aa(self):
-        time.sleep(101)
+        time.sleep(1011)
 
     def tearDown(self):
         self.driver.quit()
