@@ -23,7 +23,7 @@ def phonedriver():
     mobile_emulation = {"deviceName":"iPhone 6"}
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
-    driver = webdriver.Chrome(chrome_options = chrome_options)
+    driver = webdriver.Chrome(chrome_options = chrome_options,executable_path=chromedriverPath)
     return driver
 
 
