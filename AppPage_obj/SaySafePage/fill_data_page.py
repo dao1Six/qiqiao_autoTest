@@ -265,3 +265,35 @@ class AppFillSafe(SeleniumPage):
             result = self.waiteElemsByXpath(value_loc).text
             lis.append(result)
         return lis
+
+    def input_addr(self,addrname):
+        self.click_btn_in_title("添加")
+        addrname = str(addrname)
+        addr_lis= addrname.split("/")
+
+        province=addr_lis[0]
+        city=addr_lis[1]
+        self.clickElemByXpath_Presence("//div[@title='所在城市']/div/div/span/span")
+        province_lis=self.findElemsByXpath(AppBaseLoc.province_li_loc)
+        index_num=0
+        for i in range(0,len(province_lis)):
+            if province==province_lis[i].text:
+                index_num=i+1
+                break
+            else:
+                continue
+        self.clickElemByXpath_Presence(AppBaseLoc.province_base_loc.format(inde=index_num))
+        time.sleep(1)
+        city_lis=self.findElemsByXpath(AppBaseLoc.city_li_loc)
+        index_num1=0
+        for i in range(0,len(city_lis)):
+            if city==city_lis[i].text:
+                index_num1=i+1
+                break
+            else:
+                continue
+        self.clickElemByXpath_Presence(AppBaseLoc.city_base_loc.format(inde=index_num1))
+
+    def input_picture(self):
+        self.click_btn_in_title("添加")
+        self.clickElemByXpath_Presence("//div[@title='图片']/div/div/div[1]/div")

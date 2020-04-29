@@ -1,6 +1,5 @@
 import time
 import unittest
-
 from public.driver import pcdriver
 from qiqiao_PublicPage.login_page import LoginPage
 from qiqiao_PublicPage.portal_page import PortalPage

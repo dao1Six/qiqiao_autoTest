@@ -5,7 +5,6 @@ import time
 from selenium import webdriver
 
 chromedriverPath = os.path.abspath(os.path.join(os.getcwd(), "../.."))+'\\file_data\\chromedriver.exe'
-
 # 启动浏览器驱动
 def pcdriver():
     chrome_options = webdriver.ChromeOptions()

@@ -19,7 +19,9 @@ class JinXiaoCun(unittest.TestCase):
         portalpage = PortalPage (self.driver)
         portalpage.click_header_menu ("应用")
         applicationListPage = ApplicationListPage(self.driver)
-        applicationListPage.click_application('默认分组', "全员报平安2.2")
+        time.sleep(2)
+        applicationListPage.click_application("全员报平安2.2")
+
 
     def tearDown(self):
         self.driver.quit()
@@ -30,5 +32,9 @@ class JinXiaoCun(unittest.TestCase):
 
 
         time.sleep(9)
+
+
+if __name__=="__main__":
+    unittest.main()
 
 

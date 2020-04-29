@@ -95,6 +95,8 @@ class SeleniumPage (object):
         elems[num].clear ()
         elems[num].send_keys (key)
 
+
+
     @retry (stop_max_attempt_number=5, wait_fixed=2000)
     def addAttributeElemsByXpath_Presence(self, locator, attributename,value, timeout=2):
         """给元素添加属性值，添加人（王栋一）"""
