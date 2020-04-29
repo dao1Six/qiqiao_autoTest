@@ -94,3 +94,39 @@ class SeleniumPage (object):
         self.driver.execute_script ("arguments[0].scrollIntoView();", elems[num])
         elems[num].clear ()
         elems[num].send_keys (key)
+
+    @retry (stop_max_attempt_number=5, wait_fixed=2000)
+    def addAttributeElemsByXpath_Presence(self, locator, attributename,value, timeout=2):
+        """给元素添加属性值，添加人（王栋一）"""
+        element = WebDriverWait (self.driver, timeout).until (EC.visibility_of_element_located((By.XPATH, locator)))
+        try:
+            self.driver.execute_script("arguments[0].%s=arguments[1]" %attributename,element,value)
+
+        except TimeoutException:
+            print("等待元素超时！！")
+            raise
+
+    @retry (stop_max_attempt_number=5, wait_fixed=2000)
+    def refreshCurrentPage(self):
+        """刷新当前页面，添加人（王栋一）"""
+        time.sleep(1)
+        self.driver.refresh()
+
+    @retry(stop_max_attempt_number=5, wait_fixed=2000)
+    def waiteElemsByXpath(self, locator,  timeout=2):
+        """通过xpath等待元素出现，添加人（王栋一）"""
+        element = WebDriverWait (self.driver, timeout).until (EC.visibility_of_element_located((By.XPATH, locator)))
+        return element
+
+    @retry(stop_max_attempt_number=5, wait_fixed=2000)
+    def findElemsByXpath(self, locator):
+        '''通过xpath查看找多个元素，添加人（王栋一）'''
+        elements = self.driver.find_elements("xpath", locator)
+        return elements
+
+    @retry(stop_max_attempt_number=5, wait_fixed=2000)
+    def js(self,js,element):
+        '''执行就是脚本，添加人（王栋一）'''
+        self.driver.execute_script(js,element)
+
+
