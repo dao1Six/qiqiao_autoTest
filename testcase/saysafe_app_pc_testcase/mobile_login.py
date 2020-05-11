@@ -4,7 +4,7 @@ import time
 import unittest
 
 from public.driver import phonedriver
-from qiqiao_PublicPage.mobile_qiqiao_PublicPage.mobile_login_page import MobileLoginPage
+from qiqiao_page.mobile_page.mobile_login_page import MobileLoginPage
 
 
 class Mobilehome(unittest.TestCase):

@@ -1,5 +1,5 @@
 
-from AppPage_obj.SaySafePage.fill_data_loc import AppBaseLoc
+from app_page.saysafe_app_page.pc.fill_data_loc import AppBaseLoc
 import time
 from public.selenium_page import SeleniumPage
 

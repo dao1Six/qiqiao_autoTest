@@ -58,7 +58,8 @@ class SeleniumPage (object):
         """点击单个存在dom的元素CSS"""
         # elem = WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((By.CSS_SELECTOR, locator)))
         # self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
-        elem = self.scrollIntoView (locator)
+        elem = WebDriverWait (self.driver, timeout).until (EC.presence_of_element_located ((By.CSS_SELECTOR, locator)))
+        self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
         elem.click ()
 
     @retry (stop_max_attempt_number=5, wait_fixed=2000)

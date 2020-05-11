@@ -1,5 +1,6 @@
 # coding=utf-8
 #登录页面
+import time
 
 from public.selenium_page import SeleniumPage
 
@@ -23,4 +24,5 @@ class MobileLoginPage(SeleniumPage):
         self.sendkeysElemByXpath_Presence(self.mobilezhanghao,username)
         self.sendkeysElemByXpath_Presence(self.mobilemima,password)
         self.clickElemByXpath_Presence(self.mobileanniu)
+        time.sleep(2)
 
