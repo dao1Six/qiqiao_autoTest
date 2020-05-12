@@ -1,5 +1,5 @@
 # coding=utf-8
-#我要报平安页面
+#我要报平安列表页面
 from public.selenium_page import SeleniumPage
 
 
