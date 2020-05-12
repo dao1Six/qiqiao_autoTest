@@ -21,7 +21,7 @@ class Driver():
 
     # phone皮肤启动浏览器驱动
     def phonedriver(self):
-        mobile_emulation = {"deviceName":"iPhone 6"}
+        mobile_emulation = {"deviceName":"iPhone X"}
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
         driver = webdriver.Chrome(chrome_options = chrome_options,executable_path=self.chromedriverPath)
