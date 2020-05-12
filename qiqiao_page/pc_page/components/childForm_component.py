@@ -1,7 +1,7 @@
 #子表
 import time
 
-from page_obj.selenium_page import SeleniumPage
+from public.selenium_page import SeleniumPage
 
 
 class ChildForm_component(SeleniumPage):

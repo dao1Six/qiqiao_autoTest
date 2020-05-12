@@ -1,5 +1,5 @@
 #图片组件
-from page_obj.selenium_page import SeleniumPage
+from public.selenium_page import SeleniumPage
 
 
 class PicUpload(SeleniumPage):
