@@ -45,8 +45,11 @@ class SaySafeAppTest(unittest.TestCase):
         # 校验所属部门字段值是否正确
         self.assertEqual(formPage.GetDeptVale("所属部门"), "产品规划组")
         #校验"体温情况（腋窝测量）"字段 首项是否被选中
-        self.assertTrue(formPage.RadioIsSelect("体温情况（腋窝测量）"),0)
-
+        self.assertTrue(formPage.RadioIsSelect("体温情况（腋窝测量）",0))
+        # 校验"是否以下症状"字段 默认选中选项是否正确
+        self.assertTrue(formPage.CheckboxIsSelect("是否以下症状",[4]))
+        # 校验"是否有所接触"字段 默认选中选项是否正确
+        self.assertTrue(formPage.CheckboxIsSelect("是否有所接触",[5]))
         time.sleep(5)
 
 

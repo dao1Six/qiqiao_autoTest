@@ -10,6 +10,6 @@ class Selection(SeleniumPage):
     radio_loc = "div[title='%s'] input[type='radio']"
 
     def RadioIsSelect(self,fieldName,index):
-        elem = self.find_elemByCSS(self.radio_loc.replace('%s',fieldName))[index]
+        elem = self.find_elemsByCSS(self.radio_loc.replace('%s',fieldName))[index]
         return elem.is_selected()
 

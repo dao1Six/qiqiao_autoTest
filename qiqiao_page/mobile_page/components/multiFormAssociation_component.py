@@ -10,7 +10,7 @@ class MultiFormAssociation(SeleniumPage):
 
     def CheckboxIsSelect(self,fieldName,IndexList):
         for index in IndexList:
-            elem = self.find_elemByCSS(self.checkbox_loc.replace('%s',fieldName))[index]
+            elem = self.find_elemsByCSS(self.checkbox_loc.replace('%s',fieldName))[index]
             while elem.is_selected() == False:
                 return False
         return True
