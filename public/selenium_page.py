@@ -24,6 +24,11 @@ class SeleniumPage (object):
         self.driver.get (url)
 
 
+    #长按元素
+    def click_and_hold( self ):
+        pass
+
+
 
     def scrollIntoView(self, locator, timeout=2, *args):
         """将元素拖动到可见区域"""
