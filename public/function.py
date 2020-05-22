@@ -12,8 +12,8 @@ def send_mail(filePath):
     sender_pass = 'Wjl123456'
 
     # 接受人信息
-    receivers = ['wujianlun@do1.com.cn','diaohuiyun@do1.com.cn','luolinyue@do1.com.cn','wangdongyi@do1.com.cn','wanghao2@do1.com.cn']
-    # receiver = ','.join(receivers)
+    # receivers = ['wujianlun@do1.com.cn','diaohuiyun@do1.com.cn','luolinyue@do1.com.cn','wangdongyi@do1.com.cn','wanghao2@do1.com.cn']
+    receivers = ['wujianlun@do1.com.cn']
 
     # 设置总的邮件体对象，对象类型为mixed
     msg_root = MIMEMultipart('mixed')
