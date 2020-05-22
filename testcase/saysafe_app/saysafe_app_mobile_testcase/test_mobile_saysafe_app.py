@@ -8,7 +8,7 @@ from ddt import ddt, data, unpack
 from selenium.webdriver.chrome import webdriver
 from selenium.webdriver.chrome.options import Options
 
-from app_page.saysafe_app_page.phone.i_declare_peace_page import IDeclarePeacePage
+from app_page.saysafe_app_page.phone.i_declare_peace_page_loc import IDeclarePeacePage
 from public.driver import Driver
 from qiqiao_page.mobile_page.business_modelId_page import BusinessModelldPage
 from qiqiao_page.mobile_page.form_page import FormPage
@@ -19,19 +19,17 @@ from util.parseExcel import ParseExcel
 @ddt
 class SaySafeAppTest(unittest.TestCase):
 
-    ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
-    excelPath = ProjectRootPath+"\\testcase\\testcase_data\\测试数据.xlsx"
-    sheetName = "SaySafeAppTest"
-    excel = ParseExcel(excelPath, sheetName)
-
-
-
-
-    @data(*excel.getSheetValue())
-    @unpack
-    def test_001( self,a,b,c,d,e ):
-        "加法运算"
-        self.assertEquals(a,1)
+    # ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
+    # excelPath = ProjectRootPath+"\\testcase\\testcase_data\\测试数据.xlsx"
+    # sheetName = "SaySafeAppTest"
+    # excel = ParseExcel(excelPath, sheetName)
+    #
+    #
+    # @data(*excel.getSheetValue())
+    # @unpack
+    # def test_001( self,a,b,c,d,e ):
+    #     "加法运算"
+    #     self.assertEquals(a,1)
 
     def setUp(self):
         self.driver = Driver().phonedriver()
@@ -67,7 +65,7 @@ class SaySafeAppTest(unittest.TestCase):
         # 校验"是否有所接触"字段 默认选中选项是否正确
         self.assertTrue(formPage.CheckboxIsSelect("是否有所接触",[5]))
     #
-    #
+
     def test_ListButtonAuthority( self ):
         '''检查我报平安列表按钮权限'''
         businessModelldPage = BusinessModelldPage(self.driver)
@@ -75,6 +73,22 @@ class SaySafeAppTest(unittest.TestCase):
         businessModelldPage.ClickAndHoleRecore(0)
         #校验列表按钮操作权限
         self.assertListEqual(["编辑","删除","取消"],businessModelldPage.GetRecoreButton())
+
+
+    def test_ListTextValue( self ):
+        '''校验我报平安页面标题语'''
+        businessModelldPage = BusinessModelldPage(self.driver)
+        time.sleep(1)
+        # 校验我报平安页面标题语
+        self.assertGreater(len(businessModelldPage.GetTextValue()),30)
+
+
+    def test_ListTextValue( self ):
+        '''校验我报平安页面导航是否显示齐全'''
+        businessModelldPage = BusinessModelldPage(self.driver)
+        time.sleep(1)
+        # 校验我报平安页面导航是否显示齐全
+        self.assertEquals(businessModelldPage.GetNavigationsName(),["全员报平安","报表中心"])
 
 
 
