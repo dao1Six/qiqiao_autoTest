@@ -174,3 +174,23 @@ class SeleniumPage (object):
         self.driver.execute_script(js,element)
 
 
+    def clear(self, css):
+        """
+        清除输入框的内容.
+        用法:
+        driver.clear("css=>#el")
+        """
+        el = self.waiteElemsByXpath(css)
+        el.clear()
+
+
+    def getText(self, css):
+        """
+        获得元素文本信息
+        用法:
+        driver.get_text("css=>#el")
+        """
+        el = self.waiteElemsByXpath(css)
+        return el.text
+
+
