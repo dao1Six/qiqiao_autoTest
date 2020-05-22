@@ -6,7 +6,10 @@ from selenium import webdriver
 
 class Driver():
 
-    chromedriverPath = os.path.abspath(os.path.join(os.getcwd(), "../.."))+'\\file_data\\chromedriver.exe'
+
+    ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0]+"qiqiao_autoTest"
+
+    chromedriverPath = ProjectRootPath+'\\file_data\\chromedriver.exe'
     # 启动浏览器驱动
     def pcdriver(self):
         chrome_options = webdriver.ChromeOptions()

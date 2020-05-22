@@ -1,35 +1,52 @@
-# coding=utf-8
+import os
 import smtplib
+from email.header import Header
+from email.mime.application import MIMEApplication
 from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
 
 
-def send_mail(title):
-    """
+def send_mail(filePath):
+    sender_mail = 'wujianlun@do1.com.cn'
+    sender_pass = 'Wjl123456'
 
-    :param title:
-    """
+    # 接受人信息
+    # receivers = ['wujianlun@do1.com.cn','diaohuiyun@do1.com.cn','luolinyue@do1.com.cn','wangdongyi@do1.com.cn','wanghao2@do1.com.cn']
+    receivers = ['wujianlun@do1.com.cn']
+
+    # 设置总的邮件体对象，对象类型为mixed
+    msg_root = MIMEMultipart('mixed')
+    # 邮件添加的头尾信息等
+    msg_root['From'] = sender_mail
+    msg_root['To'] = Header(",".join(receivers))
+    # 邮件的主题，显示在接收邮件的预览页面
+    subject = '七巧测试报告'
+    msg_root['subject'] = subject
+
+    # 构造超文本  正文
+
+    content = MIMEText(str(open(filePath, 'rb').read(),'utf-8'),_subtype='html',_charset='utf-8')
+    msg_root.attach(content)
+    #html附件
+    html = MIMEApplication(open(filePath, 'rb').read())
+    html['Content-Type'] = 'application/octet-stream'
+    html['Content-Disposition'] = 'attachment; filename= "report.html"'
+    msg_root.attach(html)
+
     try:
-        msg = MIMEText(title+'')  # 邮件内容
-        msg['Subject'] = ''  # 邮件主题
-        msg['From'] ='service@weioa365.com'  # 发送者账号
-        # msg['To'] = maillist  # 接收者账号列表
-
-        server = smtplib.SMTP('smtp.exmail.qq.com')
-        server.login("service@weioa365.com", "weioa365teemlink")
-
-        to1 = '' #接收人
-        server.sendmail(msg['from'], to1, msg.as_string())
-        # 参数分别是发送者，接收者，第三个是把上面的发送邮件的内容变成字符串
-        server.close ()
+        sftp_obj = smtplib.SMTP('smtp.exmail.qq.com')
+        sftp_obj.login(sender_mail, sender_pass)
+        sftp_obj.sendmail(sender_mail, receivers, msg_root.as_string())
+        sftp_obj.quit()
         print('测试报告邮件发送成功！')
 
-    except Exception as msg:
-        print('测试报告邮件发送失败！异常：%s' % msg)
+    except Exception as e:
+        print('测试报告邮件发送失败！异常')
+        print(e)
 
-
-
-# if __name__ == '__main__':
-#     driver = webdriver.Chrome()
-#     driver.get("https://www.baidu.com")
-#     insert_img(driver, 'baidu.jpg')
-#     driver.quit()
+if __name__ == '__main__':
+    ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
+    # 报告目录
+    reportpath = ProjectRootPath + "\\report\\result.html"
+    send_mail(reportpath)

@@ -1,22 +1,22 @@
 #表单页面
-from qiqiao_page.mobile_page.components.cascade_component import Cascade
-from qiqiao_page.mobile_page.components.datetime_component import DateTime
-from qiqiao_page.mobile_page.components.dept_component import Dept
-from qiqiao_page.mobile_page.components.pic_Upload_component import PicUpload
+from qiqiao_page.mobile_page.form_components.cascade_component import Cascade
+from qiqiao_page.mobile_page.form_components.datetime_component import DateTime
+from qiqiao_page.mobile_page.form_components.dept_component import Dept
+from qiqiao_page.mobile_page.form_components.pic_Upload_component import PicUpload
 from public.selenium_page import SeleniumPage
-from qiqiao_page.mobile_page.components.number_component import Number
-from qiqiao_page.mobile_page.components.text_component import Text
-from qiqiao_page.mobile_page.components.textarea_components import Textarea
-from qiqiao_page.mobile_page.components.date_component import Date
-from qiqiao_page.mobile_page.components.time_component import Time
-from qiqiao_page.mobile_page.components.file_Upload_component import FileUpload
-from qiqiao_page.mobile_page.components.selection_component import Selection
-from qiqiao_page.mobile_page.components.user_component import User
-from qiqiao_page.mobile_page.components.address_component import Address
-from qiqiao_page.mobile_page.components.childForm_component import ChildForm_component
-from qiqiao_page.mobile_page.components.childFormAssociation_component import ChildFormAssociation_component
-from qiqiao_page.mobile_page.components.foreignSelection_component import ForeignSelection_component
-from qiqiao_page.mobile_page.components.multiFormAssociation_component import MultiFormAssociation
+from qiqiao_page.mobile_page.form_components.number_component import Number
+from qiqiao_page.mobile_page.form_components.text_component import Text
+from qiqiao_page.mobile_page.form_components.textarea_components import Textarea
+from qiqiao_page.mobile_page.form_components.date_component import Date
+from qiqiao_page.mobile_page.form_components.time_component import Time
+from qiqiao_page.mobile_page.form_components.file_Upload_component import FileUpload
+from qiqiao_page.mobile_page.form_components.selection_component import Selection
+from qiqiao_page.mobile_page.form_components.user_component import User
+from qiqiao_page.mobile_page.form_components.address_component import Address
+from qiqiao_page.mobile_page.form_components.childForm_component import ChildForm_component
+from qiqiao_page.mobile_page.form_components.childFormAssociation_component import ChildFormAssociation_component
+from qiqiao_page.mobile_page.form_components.foreignSelection_component import ForeignSelection_component
+from qiqiao_page.mobile_page.form_components.multiFormAssociation_component import MultiFormAssociation
 
 
 class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Selection,User,Address,Cascade,ChildForm_component,ChildFormAssociation_component,ForeignSelection_component,MultiFormAssociation,Dept):

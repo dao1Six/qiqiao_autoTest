@@ -4,6 +4,7 @@ import traceback
 from logging import exception
 
 from retrying import retry
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException
 from selenium.webdriver.common.by import By
@@ -25,8 +26,8 @@ class SeleniumPage (object):
 
 
     #长按元素
-    def click_and_hold( self ):
-        pass
+    def click_and_hold( self,elem):
+        ActionChains(self.driver).click_and_hold(elem).perform()
 
 
 
