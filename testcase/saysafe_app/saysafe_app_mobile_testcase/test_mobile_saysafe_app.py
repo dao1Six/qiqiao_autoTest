@@ -90,6 +90,12 @@ class SaySafeAppTest(unittest.TestCase):
         # 校验我报平安页面导航是否显示齐全
         self.assertEquals(businessModelldPage.GetNavigationsName(),["全员报平安","报表中心"])
 
+    def test_001( self ):
+        '''检查点击导航跳转是否正常'''
+        businessModelldPage = BusinessModelldPage(self.driver)
+        time.sleep(1)
+        businessModelldPage.ClickNavigation("全员报平安")
+        self.assertEquals(businessModelldPage.GetListAllTab(),["","","","",""])
 
 
 
@@ -97,5 +103,6 @@ class SaySafeAppTest(unittest.TestCase):
 
 
 
-    # def tearDown(self):
-    #     self.driver.quit()
+
+    def tearDown(self):
+        self.driver.quit()

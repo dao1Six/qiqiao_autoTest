@@ -11,6 +11,9 @@ class ListComponent(SeleniumPage):
     # 列表底部按钮
     CardListBottomButton_loc = "div.cube-action-sheet-panel div:last-child"
 
+    CardList_tabItem = "div.dyCardList div.dyCardList_tabItem"
+
+
     # 长按列表某条记录
     def ClickAndHoleRecore( self, index ,*args):
         elem = self.find_elemsByCSS(self.CardList_loc)[index]
@@ -24,3 +27,12 @@ class ListComponent(SeleniumPage):
             buttonList.append(cardListButton.get_attribute("title"))
         buttonList.append(self.find_elemByCSS(self.CardListBottomButton_loc).get_attribute("title"))
         return buttonList
+
+    #获取列表选项卡所有选项
+    def GetListAllTab( self ):
+        tabItems = []
+        tabItemsElem = self.find_elemsByCSS(self.CardList_tabItem)
+        for tabItemElem in tabItemsElem:
+            tabItems.append(tabItemElem.text)
+        return tabItems
+
