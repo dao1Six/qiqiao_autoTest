@@ -3,4 +3,14 @@ from public.selenium_page import SeleniumPage
 
 
 class ReportComponent(SeleniumPage):
-    pass
+
+    chart_title = "div.dyReport div.chart_title>span.title"
+
+
+    #获取所有的报表组件名称
+    def GetAllChartTitle( self ):
+        chart_titles = []
+        chartElems = self.find_elemsByCSS(self.chart_title)
+        for chartElem in chartElems:
+            chart_titles.append(chartElem.text)
+        return chart_titles

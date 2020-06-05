@@ -56,7 +56,7 @@ class ParseExcel(object):
             dataList.append(rowValue)
         return dataList
 
-    #获取一个sheet的所有数据
+
     def getSheetValue( self ):
         #获取sheetd的总行数
         rows = self.getRowsClosNum()[0]

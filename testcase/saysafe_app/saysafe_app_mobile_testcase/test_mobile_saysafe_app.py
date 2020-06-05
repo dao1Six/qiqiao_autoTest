@@ -20,9 +20,9 @@ from util.parseExcel import ParseExcel
 class SaySafeAppTest(unittest.TestCase):
 
     # ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
-    # excelPath = ProjectRootPath+"\\testcase\\testcase_data\\测试数据.xlsx"
-    # sheetName = "SaySafeAppTest"
-    # excel = ParseExcel(excelPath, sheetName)
+    #     # excelPath = ProjectRootPath+"\\testcase\\testcase_data\\测试数据.xlsx"
+    #     # sheetName = "SaySafeAppTest"
+    #     # excel = ParseExcel(excelPath, sheetName)
     #
     #
     # @data(*excel.getSheetValue())
@@ -90,12 +90,41 @@ class SaySafeAppTest(unittest.TestCase):
         # 校验我报平安页面导航是否显示齐全
         self.assertEquals(businessModelldPage.GetNavigationsName(),["全员报平安","报表中心"])
 
-    def test_001( self ):
-        '''检查点击导航跳转是否正常'''
+    def test_GetListAllTab( self ):
+        '''检查点击导航跳转是否正常并且检查列表获取选项卡值是否正确'''
         businessModelldPage = BusinessModelldPage(self.driver)
         time.sleep(1)
         businessModelldPage.ClickNavigation("全员报平安")
-        self.assertEquals(businessModelldPage.GetListAllTab(),["","","","",""])
+        self.assertEquals(businessModelldPage.GetListAllTab(),["全部 (2)","高烧（39.1-41℃） (0)","中度发热（38.1-39℃） (0)","低烧（37.1-38℃） (0)","正常（36.1-37℃） (2)"])
+
+
+    def test_GetAllChartTitle( self ):
+        '''检查报表组件是否加载正常'''
+        businessModelldPage = BusinessModelldPage(self.driver)
+        time.sleep(1)
+        businessModelldPage.ClickNavigation("报表中心")
+        time.sleep(1)
+        #滚动加载数据
+        businessModelldPage.dynamicScroll()
+        time.sleep(1)
+        self.assertEquals(businessModelldPage.GetAllChartTitle(),['报平安汇总表', '异常情况统计表', '体温情况报表','就医情况明细表'])
+
+    def test_GetAllBottomMenus( self ):
+        '''检查底部菜单内容是否加载正常'''
+        businessModelldPage = BusinessModelldPage(self.driver)
+        time.sleep(1)
+        self.assertEquals(businessModelldPage.GetBottomMenus(), ['我报平安', '就医记录', '疫情动态'])
+        businessModelldPage.ClickBottomMenu('就医记录')
+        # 校验我报平安页面导航是否显示齐全
+        time.sleep(1)
+        self.driver.refresh()
+        self.assertEquals(businessModelldPage.GetNavigationsName(),["就医记录总表"])
+
+
+
+
+
+
 
 
 

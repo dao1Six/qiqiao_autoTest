@@ -10,6 +10,7 @@ from selenium.common.exceptions import TimeoutException, ElementClickIntercepted
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 
 
 class SeleniumPage (object):
@@ -24,6 +25,26 @@ class SeleniumPage (object):
         """打开登录页面"""
         self.driver.get (url)
 
+    def dynamicScroll( self ):
+        '''动态滚动'''
+        for n in range(1,5):
+            self.driver.execute_script('document.querySelector(".myScroll_main").scrollTop = 10000')  # 从上往下滑
+
+    def wait_elem_visible(self, locator, timeout=5):
+        # 一直等待某元素可见，默认超时3秒只做等待动作不返回值
+        try:
+            WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_element_located((By.CSS_SELECTOR, locator)))
+        except TimeoutException as ex:
+            print('wait_elem_visible 异常：%s 获取 %s 超时' % (ex, locator))
+
+    def wait_elem_disappearByCSS(self, locator, timeout=3):
+        # 一直等待某个元素消失，默认超时3秒只做等待动作不返回值
+        try:
+            WebDriverWait(self.driver, timeout).until_not(
+                EC.visibility_of_element_located((By.CSS_SELECTOR, locator)))
+        except TimeoutException as ex:
+            print('wait_elem_visible 异常：%s 获取 %s 超时' % (ex, locator))
 
     #长按元素
     def click_and_hold( self,elem):
@@ -60,11 +81,12 @@ class SeleniumPage (object):
         elem.click ()
 
     @retry (stop_max_attempt_number=5, wait_fixed=2000)
-    def clickElemByCSS_Presence(self, locator, timeout=2):
+    def clickElemByCSS_Presence(self, locator,index = 0):
         """点击单个存在dom的元素CSS"""
         # elem = WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((By.CSS_SELECTOR, locator)))
         # self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
-        elem = WebDriverWait (self.driver, timeout).until (EC.presence_of_element_located ((By.CSS_SELECTOR, locator)))
+        # elem = WebDriverWait (self.driver, timeout).until (EC.presence_of_element_located ((By.CSS_SELECTOR, locator)))
+        elem = self.find_elenmInElemsByCSS(locator,index)
         self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
         elem.click ()
 
@@ -127,6 +149,14 @@ class SeleniumPage (object):
         try:
             return WebDriverWait(self.driver, timeout).until(
                 EC.presence_of_all_elements_located((By.CSS_SELECTOR, locator)))
+        except:
+            return None
+
+    def find_elenmInElemsByCSS(self, locator, index=0,timeout=5):
+        '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
+        try:
+            return WebDriverWait(self.driver, timeout).until(
+                EC.presence_of_all_elements_located((By.CSS_SELECTOR, locator)))[index]
         except:
             return None
 
