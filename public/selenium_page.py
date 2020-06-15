@@ -71,58 +71,40 @@ class SeleniumPage (object):
 
 
 
-
-
     @retry (stop_max_attempt_number=5, wait_fixed=2000)
-    def clickElemByXpath_Presence(self, locator, timeout=2):
+    def clickElemByXpath_Presence(self, locator, index=0):
         """点击单个存在dom的元素Xpath"""
-        elem = WebDriverWait (self.driver, timeout).until (EC.presence_of_element_located ((By.XPATH, locator)))
+        elem = self.find_elenmInElemsByXpath(locator,index)
         self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
         elem.click ()
 
     @retry (stop_max_attempt_number=5, wait_fixed=2000)
     def clickElemByCSS_Presence(self, locator,index = 0):
         """点击单个存在dom的元素CSS"""
-        # elem = WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((By.CSS_SELECTOR, locator)))
-        # self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
-        # elem = WebDriverWait (self.driver, timeout).until (EC.presence_of_element_located ((By.CSS_SELECTOR, locator)))
         elem = self.find_elenmInElemsByCSS(locator,index)
         self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
         elem.click ()
 
-    @retry (stop_max_attempt_number=5, wait_fixed=2000)
-    def clickElemsByCSS_Presence(self, locator, num=0, timeout=2):
-        """点击存在dom里的元素组里的某个元素CSS"""
-        elems = WebDriverWait (self.driver, timeout).until (
-            EC.presence_of_all_elements_located ((By.CSS_SELECTOR, locator)))
-        self.driver.execute_script ("arguments[0].scrollIntoView();", elems[num])
-        elems[num].click ()
+
 
     ####元素写值方法
 
     @retry (stop_max_attempt_number=5, wait_fixed=2000)
-    def sendkeysElemByXpath_Presence(self, locator, key, timeout=2):
+    def sendkeysElemByXpath_Presence(self, locator, key, index=0):
         """给一个存在dom的元素写入值Xpath"""
-        elem = WebDriverWait (self.driver, timeout).until (EC.presence_of_element_located ((By.XPATH, locator)))
+        elem = self.find_elenmInElemsByXpath(locator,index)
         self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
+        elem.clear()
         elem.send_keys (key)
 
     @retry (stop_max_attempt_number=5, wait_fixed=2000)
-    def sendkeysElemByCSS_Presence(self, locator, key, timeout=2):
+    def sendkeysElemByCSS_Presence(self, locator, key, index=0):
         """给存在dom里的元素组里的某个元素写入值CSS"""
-        elem = WebDriverWait (self.driver, timeout).until (EC.presence_of_element_located ((By.CSS_SELECTOR, locator)))
+        elem = self.find_elenmInElemsByCSS(locator, index)
         self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
-        elem.clear ()
+        # elem.clear ()
         elem.send_keys (key)
 
-    @retry (stop_max_attempt_number=5, wait_fixed=2000)
-    def sendkeysElemsByCSS_Presence(self, locator, key, num=0, timeout=2):
-        """给存在dom里的元素组里的某个元素写入值CSS"""
-        elems = WebDriverWait (self.driver, timeout).until (
-            EC.presence_of_all_elements_located ((By.CSS_SELECTOR, locator)))
-        self.driver.execute_script ("arguments[0].scrollIntoView();", elems[num])
-        elems[num].clear ()
-        elems[num].send_keys (key)
 
     #################
     # 查找元素方法
@@ -160,6 +142,14 @@ class SeleniumPage (object):
         except:
             return None
 
+    def find_elenmInElemsByXpath(self, locator, index=0,timeout=5):
+        '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
+        try:
+            return WebDriverWait(self.driver, timeout).until(
+                EC.presence_of_all_elements_located((By.XPATH, locator)))[index]
+        except:
+            return None
+
     def find_elemsByXPATH(self, locator, timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
@@ -170,6 +160,9 @@ class SeleniumPage (object):
 
 
 
+
+
+##栋一
     @retry (stop_max_attempt_number=5, wait_fixed=2000)
     def addAttributeElemsByXpath_Presence(self, locator, attributename,value, timeout=2):
         """给元素添加属性值，添加人（王栋一）"""
