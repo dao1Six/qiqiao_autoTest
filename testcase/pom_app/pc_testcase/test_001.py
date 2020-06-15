@@ -26,11 +26,11 @@ class PomAppTest_001(unittest.TestCase):
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
-        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
+        loginpage.user_login('http://runtime.qwqa.do1.work', "wanghao@uat", "qiqiao123")
         portalPage = PortalPage(self.driver)
-        self.assertEquals(portalPage.get_loginUser_name(),'吴健伦')
+        self.assertEquals(portalPage.get_loginUser_name(),'王浩')
         #打开“发起流程列表”
-        self.driver.get("https://qy.do1.com.cn/qiqiao/runtime/?corp_id=ww6b6c5c4fa6f34b16#/process/processList")
+        self.driver.get("http://runtime.qwqa.do1.work/?corp_id=wwd5af6a678822e11b#/process/processList")
 
 
     def test_01( self ):
@@ -44,6 +44,10 @@ class PomAppTest_001(unittest.TestCase):
 
         formPage.sendkeysToMonomialDept("所属一级部门","企微")
         formPage.sendkeysToMonomialDept("所属二级部门", "企微")
+
+        formPage.click_ChildForm_AddButton("关联订单")
+
+        formPage.se
 
         time.sleep(20)
 

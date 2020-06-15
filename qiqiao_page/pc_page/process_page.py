@@ -5,7 +5,7 @@ from public.selenium_page import SeleniumPage
 class ProcessPage(SeleniumPage):
     '''工作台页面'''
 
-    process_icon_loc = "//p[@title='%title']/preceding-sibling::div[@class='iconBg lightRed']"
+    process_icon_loc = "//p[@title='%title']/preceding-sibling::div[1]"
 
     #发起流程列表
 
