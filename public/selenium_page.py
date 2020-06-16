@@ -140,6 +140,7 @@ class SeleniumPage (object):
             return WebDriverWait(self.driver, timeout).until(
                 EC.presence_of_all_elements_located((By.CSS_SELECTOR, locator)))[index]
         except:
+            print(locator + "页面无此元素")
             return None
 
     def find_elenmInElemsByXpath(self, locator, index=0,timeout=5):
@@ -148,6 +149,7 @@ class SeleniumPage (object):
             return WebDriverWait(self.driver, timeout).until(
                 EC.presence_of_all_elements_located((By.XPATH, locator)))[index]
         except:
+            print(locator+"页面无此元素")
             return None
 
     def find_elemsByXPATH(self, locator, timeout=5):

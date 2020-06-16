@@ -40,14 +40,15 @@ class PomAppTest_001(unittest.TestCase):
 
         formPage = FormPage(self.driver)
         formPage.sendkeysToText("项目名称","中科信息立项申请")
-        formPage.sendkeysToTextarea("项目简介","中科信息立项申请哈哈哈哈哈哈哈")
-
-        formPage.sendkeysToMonomialDept("所属一级部门","企微")
-        formPage.sendkeysToMonomialDept("所属二级部门", "企微")
+        # formPage.sendkeysToTextarea("项目简介","中科信息立项申请哈哈哈哈哈哈哈")
+        #
+        # formPage.sendkeysToMonomialDept("所属一级部门","企微")
+        # formPage.sendkeysToMonomialDept("所属二级部门", "企微")
 
         formPage.click_ChildForm_AddButton("关联订单")
+        formPage.sendkeysToForeignSelection("关联订单","电信")
+        # formPage.sendkeysToMonomialSelect("战略意义","标杆作用")
 
-        formPage.se
 
         time.sleep(20)
 

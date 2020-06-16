@@ -16,6 +16,10 @@ class Text(SeleniumPage):
         self.sendkeysElemByCSS_Presence(self.Text_input_loc.replace('%s',fieldName), key)
 
 
-    #获取单行文本字段提示信息
+
+
+    def getTextValue( self ):
+        '''获取单行文本字段提示信息'''
+        pass
 
 

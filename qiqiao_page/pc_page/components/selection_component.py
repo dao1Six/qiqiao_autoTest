@@ -6,11 +6,11 @@ from public.selenium_page import SeleniumPage
 
 class Selection(SeleniumPage):
 
-    Selection_selectionBox_loc = "[data-mark=%title] input"  #下拉选择组件下拉框
+    Selection_selectionBox_loc = "//div[@title='%title']//input"  #下拉选择组件下拉框
 
     Selection_multiSelectOption_loc = "li[data-mark=%option]" #下拉多选选项
 
-    Selection_monomialSelectOption_loc = "//span[text()='%s']"  #下拉单选选项
+    Selection_monomialSelectOption_loc = "//div[@class='el-select-dropdown el-popper %title']//li[@data-mark='%value']"  #下拉单选选项
 
     Selection_Option_loc = "//div[@title='%s']//span[text()='%option']"  #单选多选选项
 
@@ -26,14 +26,16 @@ class Selection(SeleniumPage):
             self.clickElemByCSS_Presence(self.Selection_multiSelectOption_loc.replace('%option',i))
 
     #
-    def sendkeysToMonomialSelect(self,fieldName,option,*args):
+    def sendkeysToMonomialSelect(self,fieldName,value,*args):
         '''下拉单选组件输入值
         fieldName：字段标题
         option：下拉选项
         '''
         loc = self.Selection_selectionBox_loc.replace('%title',fieldName)
-        self.clickElemByCSS_Presence (loc)
-        self.clickElemByXpath_Presence(self.Selection_monomialSelectOption_loc.replace('%s',option))
+        #点击输入框
+        self.clickElemByXpath_Presence (loc)
+        #点击选项
+        self.clickElemByXpath_Presence(self.Selection_monomialSelectOption_loc.replace('%title',fieldName).replace('%value',value),index=2)
 
     #
     def sendkeysToRadioSelect(self,fieldName,option,*args):
