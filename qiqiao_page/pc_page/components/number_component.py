@@ -6,6 +6,9 @@ class Number(SeleniumPage):
 
     Number_input_loc = "div[title='%s'] input[type='number']"  # 数字组件字段输入框
 
+
+    Number_div_loc = "//div[@data-mark='%s']//div[@class='component_detail']/div"  #只读状态数字组件显示值
+
     #
     def sendkeysToNumber(self,fieldName,key,*args):
         '''给数字组件输入值
@@ -13,5 +16,11 @@ class Number(SeleniumPage):
         key：数值  数字类型
         '''
         a = self.Number_input_loc.replace('%s',fieldName)
-        self.sendkeysElemByCSS_Visibility(a, key)
+        self.sendkeysElemByCSS_Presence(a, key)
+
+
+    def getNumberValue_readOnly( self,fieldName ):
+        '''获取只读状态的数字组件值'''
+        elem = self.find_elenmInElemsByXpath(self.Number_div_loc.replace('%s',fieldName))
+        return elem.text
 

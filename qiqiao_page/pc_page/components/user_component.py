@@ -14,6 +14,8 @@ class User(SeleniumPage):
 
     User_searchOption_loc = "//li/span[contains(text(),'%s')]"  #人员选择组织架构搜索项
 
+    UserValue_loc = "//div[@data-mark='%s']//div[contains(@class,'component_detail')]//span"  #人员选择组件值元素
+
 
 
     #
@@ -27,6 +29,10 @@ class User(SeleniumPage):
         self.sendkeysElemByXpath_Presence(self.User_search_loc,userName)
         self.clickElemByXpath_Presence(self.User_searchOption_loc.replace('%s',userName))
         self.clickElemByXpath_Presence(self.User_querenButton_loc)
+
+    def getMonomialUserValue_readOnly( self,fieldName):
+        '''获取只读状态下的人员单选字段的值'''
+        return self.find_elenmInElemsByXpath(self.UserValue_loc.replace('%s',fieldName)).text
 
 
 

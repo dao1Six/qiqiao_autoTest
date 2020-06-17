@@ -19,6 +19,8 @@ class ChildForm_component(SeleniumPage):
 
     ChildForm_userSelect_loc = "[data-mark=%title] .row_%title_%row [data-mark=%user] [data-mark='选择人员按钮']"  #子表人员选择
 
+    ChildForm_button_loc = "//button[contains(@class,'el-button')]/span[text()='%s']"
+
 
 
     def scroll_To_ChildForm_Div(self):
@@ -30,6 +32,10 @@ class ChildForm_component(SeleniumPage):
         fieldName：字段标题
         '''
         self.clickElemByCSS_Presence (self.ChildForm_AddButton_loc.replace ('%title', fieldName))
+
+    def click_ChildForm_Button( self,buttonName ):
+        '''点击子表按钮'''
+        self.clickElemByXpath_Presence(self.ChildForm_button_loc.replace('%s',buttonName))
 
 
 

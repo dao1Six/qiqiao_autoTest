@@ -18,8 +18,8 @@ class Text(SeleniumPage):
 
 
 
-    def getTextValue( self ):
-        '''获取单行文本字段提示信息'''
+    def getTextValue_writable( self ):
+        '''获取可写状态的单行文本字段值'''
         pass
 
 

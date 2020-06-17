@@ -65,6 +65,14 @@ class SeleniumPage (object):
             self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
             return elem
 
+
+    def getElemAttrValue(self,element,name):
+        '''根据属性名获取元素属性值'''
+        if element is not None:
+            return element.get_attribute(name)
+        else:
+            print('page-->get_attr,NoneType没有属性')
+
     ####点击元素方法
 
 
@@ -75,8 +83,13 @@ class SeleniumPage (object):
     def clickElemByXpath_Presence(self, locator, index=0):
         """点击单个存在dom的元素Xpath"""
         elem = self.find_elenmInElemsByXpath(locator,index)
-        self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
-        elem.click ()
+
+        if(elem is not None and elem.is_displayed()):
+            elem.click()
+        else:
+            self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
+            elem.click()
+
 
     @retry (stop_max_attempt_number=5, wait_fixed=2000)
     def clickElemByCSS_Presence(self, locator,index = 0):

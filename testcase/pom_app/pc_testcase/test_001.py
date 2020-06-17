@@ -28,9 +28,11 @@ class PomAppTest_001(unittest.TestCase):
         loginpage = LoginPage(self.driver)
         loginpage.user_login('http://runtime.qwqa.do1.work', "wanghao@uat", "qiqiao123")
         portalPage = PortalPage(self.driver)
+        time.sleep(5)
         self.assertEquals(portalPage.get_loginUser_name(),'王浩')
         #打开“发起流程列表”
         self.driver.get("http://runtime.qwqa.do1.work/?corp_id=wwd5af6a678822e11b#/process/processList")
+        time.sleep(5)
 
 
     def test_01( self ):
@@ -40,16 +42,39 @@ class PomAppTest_001(unittest.TestCase):
 
         formPage = FormPage(self.driver)
         formPage.sendkeysToText("项目名称","中科信息立项申请")
-        # formPage.sendkeysToTextarea("项目简介","中科信息立项申请哈哈哈哈哈哈哈")
+        formPage.sendkeysToTextarea("项目简介","中科信息立项申请哈哈哈哈哈哈哈")
         #
         # formPage.sendkeysToMonomialDept("所属一级部门","企微")
         # formPage.sendkeysToMonomialDept("所属二级部门", "企微")
+        self.assertEquals(formPage.getMonomialUserValue_readOnly("项目经理"),"王浩")
 
+        #点击管理订单添加按钮字段
         formPage.click_ChildForm_AddButton("关联订单")
         formPage.sendkeysToForeignSelection("关联订单","电信")
-        # formPage.sendkeysToMonomialSelect("战略意义","标杆作用")
+        time.sleep(1)
+        formPage.sendkeysToMonomialSelect("战略意义","标杆作用")
+        formPage.sendkeysToNumber("预估成本（人天）",10)
+        #点击子表保存按钮
+        formPage.click_ChildForm_Button('保存')
 
+        print(formPage.getNumberValue_readOnly("项目总金额"))
+        print(formPage.getNumberValue_readOnly("项目预估总成本（人天）"))
+        print(formPage.getDateValue_writable("项目启动时间"))
+        print(formPage.getSelectionBoxValue_writable("项目类型"))
+        time.sleep(1)
+        formPage.sendkeysToMonomialSelect('项目等级','普通（普）')
+        formPage.sendkeysToDate("预计验收时间","2020-06-22")
+        formPage.sendkeysToText("客户名称", "李嘉诚")
+        formPage.sendkeysToText("甲方对接人", "李嘉诚")
+        formPage.sendkeysToText("联系方式", "13025805485")
+        formPage.sendkeysToTextarea("备注信息", "中科信息立项申请哈哈哈哈哈哈哈")
 
+        # 点击项目里程碑添加按钮字段
+        formPage.click_ChildForm_AddButton("项目里程碑")
+        formPage.sendkeysToText("阶段名称", "测试")
+        formPage.sendkeysToText("计划完成时间", "测试")
+        # 点击子表保存按钮
+        formPage.click_ChildForm_Button('2020-06-22')
         time.sleep(20)
 
 
