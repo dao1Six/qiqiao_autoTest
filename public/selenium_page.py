@@ -107,6 +107,12 @@ class SeleniumPage (object):
         self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
         elem.click ()
 
+    @retry (stop_max_attempt_number=5, wait_fixed=2000)
+    def clickElem(self, elem):
+        """给一个存在dom的元素写入值Xpath"""
+        self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
+        elem.click()
+
 
 
     ####元素写值方法
@@ -115,6 +121,13 @@ class SeleniumPage (object):
     def sendkeysElemByXpath_Presence(self, locator, key, index=0):
         """给一个存在dom的元素写入值Xpath"""
         elem = self.find_elenmInElemsByXpath(locator,index)
+        self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
+        elem.clear()
+        elem.send_keys (key)
+
+    @retry (stop_max_attempt_number=5, wait_fixed=2000)
+    def sendkeysElem(self, elem, key):
+        """给一个存在dom的元素写入值Xpath"""
         self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
         elem.clear()
         elem.send_keys (key)

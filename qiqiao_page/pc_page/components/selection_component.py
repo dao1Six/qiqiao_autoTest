@@ -40,12 +40,12 @@ class Selection(SeleniumPage):
         if(len(elems)>1):
             elem = elems[len(elems)-1]
         #点击输入框
-            elem.click()
+            self.clickElem(elem)
             #点击选项
             self.clickElemByXpath_Presence(self.Selection_monomialSelectOption_loc.replace('%title',fieldName).replace('%value',value),index=2)
         elif(len(elems)==1):
             elem = elems[0]
-            elem.click()
+            self.clickElem(elem)
             #点击选项
             self.clickElemByXpath_Presence(self.Selection_monomialSelectOption_loc.replace('%title',fieldName).replace('%value',value),index=0)
 

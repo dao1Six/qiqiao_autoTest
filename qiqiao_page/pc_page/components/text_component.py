@@ -13,7 +13,14 @@ class Text(SeleniumPage):
         fieldName：字段标题
         key：文本值
         '''
-        self.sendkeysElemByXpath_Presence(self.Text_input_loc.replace('%s',fieldName), key)
+        loc = self.Text_input_loc.replace('%s',fieldName)
+        elems = self.find_elemsByXPATH(loc)
+        if(len(elems)>1):
+            elem = elems[len(elems)-1]
+            self.sendkeysElem(elem,key)
+        elif(len(elems)==1):
+            elem = elems[0]
+            self.sendkeysElem(elem, key)
 
 
 
