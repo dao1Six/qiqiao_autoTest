@@ -1,6 +1,7 @@
 # coding=utf-8
 import time
 import traceback
+from functools import singledispatch
 from logging import exception
 
 from retrying import retry
@@ -75,20 +76,23 @@ class SeleniumPage (object):
 
     ####点击元素方法
 
-
-
-
-
-    @retry (stop_max_attempt_number=5, wait_fixed=2000)
+    @singledispatch
     def clickElemByXpath_Presence(self, locator, index=0):
+        print(f' 传输参数类型为：{type(locator)}，不是有效类型')
+
+
+    @clickElemByXpath_Presence.register(str)
+    @retry (stop_max_attempt_number=5, wait_fixed=2000)
+    def _(self, locator, index=0):
         """点击单个存在dom的元素Xpath"""
         elem = self.find_elenmInElemsByXpath(locator,index)
-
         if(elem is not None and elem.is_displayed()):
             elem.click()
         else:
             self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
             elem.click()
+
+
 
 
     @retry (stop_max_attempt_number=5, wait_fixed=2000)

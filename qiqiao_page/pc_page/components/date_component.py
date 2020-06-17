@@ -6,7 +6,7 @@ class Date(SeleniumPage):
 
     Date_input_loc =  "//div[@data-mark='%s']//input[@class='el-input__inner']"  # 日期组件输入框
 
-    Date_label_loc = "div[title='%s']>label>span[title='%title']"  # 日期组件字段标题
+    Date_label_loc = "div[data-mark='%s']>label>span[title='%title']"  # 日期组件字段标题
 
 
 

@@ -47,7 +47,7 @@ class Selection(SeleniumPage):
             elem = elems[0]
             elem.click()
             #点击选项
-            self.clickElemByXpath_Presence(self.Selection_monomialSelectOption_loc.replace('%title',fieldName).replace('%value',value),index=2)
+            self.clickElemByXpath_Presence(self.Selection_monomialSelectOption_loc.replace('%title',fieldName).replace('%value',value),index=0)
 
     def getSelectionBoxValue_writable( self,fieldName):
         '''获取可写状态下的下拉框组件值'''

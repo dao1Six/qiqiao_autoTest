@@ -37,7 +37,7 @@ class PomAppTest_001(unittest.TestCase):
 
     def test_01( self ):
         '''道一云生产运营应用，立项申请流程(事业二部)流程'''
-        processPage = ProcessPage(self.driver);
+        processPage = ProcessPage(self.driver)
         processPage.click_process_icon("立项申请流程(事业二部)")
 
         formPage = FormPage(self.driver)
@@ -72,9 +72,9 @@ class PomAppTest_001(unittest.TestCase):
         # 点击项目里程碑添加按钮字段
         formPage.click_ChildForm_AddButton("项目里程碑")
         formPage.sendkeysToText("阶段名称", "测试")
-        formPage.sendkeysToText("计划完成时间", "测试")
+        formPage.sendkeysToText("计划完成时间", "2020-06-22")
         # 点击子表保存按钮
-        formPage.click_ChildForm_Button('2020-06-22')
+        formPage.click_ChildForm_Button('保存')
         time.sleep(20)
 
 
