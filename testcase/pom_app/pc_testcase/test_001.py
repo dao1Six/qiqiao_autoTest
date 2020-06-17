@@ -75,6 +75,7 @@ class PomAppTest_001(unittest.TestCase):
         formPage.sendkeysToText("计划完成时间", "2020-06-22")
         # 点击子表保存按钮
         formPage.click_ChildForm_Button('保存')
+        formPage.clickFormButton("提交")
         time.sleep(20)
 
 
