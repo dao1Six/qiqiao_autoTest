@@ -16,4 +16,9 @@ class ForeignSelection_component(SeleniumPage):
         loc = self.ForeignSelectionBox_loc.replace('%title',fieldName)
         #点击外键的输入框
         self.clickElemByXpath_Presence(loc)
-        self.clickElemByXpath_Presence(self.ForeignSelectOption_loc.replace('%s',value),index=2)
+        #点击选项
+        elems = self.find_elemsByXPATH(self.ForeignSelectOption_loc.replace('%s',value))
+        if(len(elems)>1):
+            self.clickElem(elems[0])
+        else:
+            self.clickElem(elems[0])
