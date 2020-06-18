@@ -6,7 +6,7 @@ from public.selenium_page import SeleniumPage
 
 class User(SeleniumPage):
 
-    User_querenButton_loc = "//div[@class='v-modal']//following-sibling::div/div[@aria-label='人员列表']//div[@class='dialog-footer ovf-hd']/button[2]/span" #人员选择确认按钮
+    User_querenButton_loc = "//div[@class='el-dialog %s']//button[@data-mark='确定按钮']" #人员选择确认按钮
 
     User_selectBox_loc = "//div[@title='%s']//span[text()='+选择人员']"  #人员选择字段添加按钮
 
@@ -28,7 +28,7 @@ class User(SeleniumPage):
         self.clickElemByXpath_Presence(self.User_selectBox_loc.replace('%s',fieldName))
         self.sendkeysElemByXpath_Presence(self.User_search_loc,userName)
         self.clickElemByXpath_Presence(self.User_searchOption_loc.replace('%s',userName))
-        self.clickElemByXpath_Presence(self.User_querenButton_loc)
+        self.clickElemByXpath_Presence(self.User_querenButton_loc.replace('%s',fieldName))
 
     def getMonomialUserValue_readOnly( self,fieldName):
         '''获取只读状态下的人员单选字段的值'''
@@ -43,11 +43,15 @@ class User(SeleniumPage):
         '''
         #点击选择框
         self.clickElemByXpath_Presence(self.User_selectBox_loc.replace('%s',fieldName))
+        self.selectUser(userNameList)
+
+    def selectUser( self,userNameList,fieldName):
         for name in userNameList:
             self.clickElemByXpath_Presence(self.User_search_loc)
             self.sendkeysElemByXpath_Presence(self.User_search_loc,name)
-            self.clickElemByXpath_Presence(self.User_searchOption_loc.replace('%s',name))
-        self.clickElemByXpath_Presence(self.User_querenButton_loc)
+            self.clickElemByXpath_Presence(self.User_searchOption_loc.replace('%s',name),index=1)
+        self.clickElemByXpath_Presence(self.User_querenButton_loc.replace('%s',fieldName))
+
 
 
 

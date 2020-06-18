@@ -8,9 +8,12 @@ class PortalPage(SeleniumPage):
     '''工作台页面'''
 
     #Action
-    PortalPage_headerMenu_loc = "//a[@class='header_menu_title' and text()='%menu']"  #工作台顶部菜单栏菜单
+    PortalPage_headerMenu_loc = "//a[contains(@class,'header_menu_title')and contains(@data-mark,'%menu')]"  #工作台顶部菜单栏菜单
 
     userName_loc = "span.userName"
+
+    def get_loginUser_name( self ):
+        return self.find_elenmInElemsByCSS(self.userName_loc).text
 
 
     def click_header_menu(self,menu,*args):
@@ -19,8 +22,7 @@ class PortalPage(SeleniumPage):
         '''
         self.clickElemByXpath_Presence(self.PortalPage_headerMenu_loc.replace('%menu',menu))
 
-    def get_loginUser_name( self ):
-        return self.find_elenmInElemsByCSS(self.userName_loc).text
+
 
 
 

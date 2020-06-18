@@ -2,7 +2,7 @@
 import time
 from public.selenium_page import SeleniumPage
 
-class List(SeleniumPage):
+class ListComponent(SeleniumPage):
 
     app_home_loc="//a[text()='应用']"
     app_name_loc="//p[@title='{appname}']/../.."
@@ -33,6 +33,8 @@ class List(SeleniumPage):
     input_textarea_loc = "//form[@class='el-form el-form--label-right']//label[@for='{feildname}']/following-sibling::div//textarea"
     input_datetime_loc = "//form[@class='el-form el-form--label-right']//label[@for='{feildname}']/following-sibling::div/div/div[1]/input"
     input_datetime_loc2 = "//form[@class='el-form el-form--label-right']//label[@for='{feildname}']/following-sibling::div/div/div[2]/div/input"
+
+    ListHeader_Button_loc = "//div[@class='listView_headerButtonWrapper']//div[@data-mark='%s']"  #列表头部按钮
 
 
 
@@ -397,21 +399,9 @@ class List(SeleniumPage):
             self.clickSerachBtn()
 
 
-    def clickHeaderBtn(self,btnname):
-        '''点击页面头部按钮'''
-        btn_list=self.findElemsByXpath(self.btn_base_loc)
-        for i in range(0,len(btn_list)):
-            btn_name=self.getText(self.btn_name_loc.format(indexnum=i+1))
-            if btn_name==btnname:
-                try:
-                    self.clickElemByXpath_Presence(self.btn_name_loc.format(indexnum=i+1))
-                    break
-                except Exception:
-                    time.sleep(1)
-                    self.clickElemByXpath_Presence(self.btn_name_loc.format(indexnum=i+1))
-                    break
-            else:
-                continue
+    def click_ListHeader_Button(self,btnname):
+        '''点击列表头部按钮'''
+        self.clickElemByXpath_Presence(self.ListHeader_Button_loc.replace('%s',btnname))
 
     def clickSerachBtn(self):
         '''点击筛选数据的搜索按钮'''
@@ -514,30 +504,3 @@ class List(SeleniumPage):
 
 
 
-
-
-
-        # for i in range(1,len(element_lis)+1):
-        #     #fc_loc = "//thead[@class='has-gutter']/tr/th[{num}]/div/span".format(num=i + 3)
-        #     fc_loc="//thead[@class='has-gutter']/tr/th[not(contains(@class,'is-hidden'))][{num}]/div/span".format(num=i)
-        #     text_value = self.waiteElemsByXpath(fc_loc).text
-        #     loc2 = "//div[@id='scroll']"
-        #     element = self.waiteElemsByXpath(loc2)
-        #
-        #     if text_value==field_name:
-        #         index_num=i
-        #         break
-        #     else:
-        #         self.js("arguments[0].scrollBy(80,0)", element)
-        #         continue
-        # lis=[]
-        # total_data = self.waiteElemsByXpath("//span[@class='el-pagination__total']").text
-        # total_data=str(total_data)
-        # total_value=total_data.split(" ")
-        # value = total_value[1]
-        # tr_base_loc="//tr[@class='el-table__row row_click_disabled']/td[not(contains(@class,'is-hidden'))][{index_num}]/div/a/span"
-        # for j in range(1,int(value)+1):
-        #     value_loc = tr_base_loc.format(index_num=j)
-        #     result = self.waiteElemsByXpath(value_loc).text
-        #     lis.append(result)
-        # return lis

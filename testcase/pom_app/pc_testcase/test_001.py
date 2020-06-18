@@ -4,6 +4,7 @@ import time
 import unittest
 
 from public.driver import Driver
+from qiqiao_page.pc_page.business_page import BusinessPage
 from qiqiao_page.pc_page.form_page import FormPage
 from qiqiao_page.pc_page.login_page import LoginPage
 from qiqiao_page.pc_page.portal_page import PortalPage
@@ -27,16 +28,18 @@ class PomAppTest_001(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('http://runtime.qwqa.do1.work', "wanghao@uat", "qiqiao123")
-        portalPage = PortalPage(self.driver)
         time.sleep(5)
-        self.assertEquals(portalPage.get_loginUser_name(),'王浩')
-        #打开“发起流程列表”
-        self.driver.get("http://runtime.qwqa.do1.work/?corp_id=wwd5af6a678822e11b#/process/processList")
-        time.sleep(5)
+
+
 
 
     def test_01( self ):
         '''道一云生产运营应用，立项申请流程(事业二部)流程'''
+        portalPage = PortalPage(self.driver)
+        self.assertEquals(portalPage.get_loginUser_name(),'王浩')
+        #打开“发起流程列表”
+        portalPage.click_header_menu('流程')
+        time.sleep(5)
         processPage = ProcessPage(self.driver)
         processPage.click_process_icon("立项申请流程(事业二部)")
 
@@ -76,7 +79,33 @@ class PomAppTest_001(unittest.TestCase):
         # 点击子表保存按钮
         formPage.click_ChildForm_Button('保存')
         formPage.clickFormButton("提交")
-        time.sleep(20)
+        formPage.selectProcessManager(["王浩"])
+        time.sleep(5)
+        processPage.click_process_menu("我的待办")
+        processPage.click_process_record(1)
+        formPage.clickFormButton("提交")
+
+
+
+    def test_02( self ):
+        self.driver.get("http://runtime.qwqa.do1.work/?corp_id=wwd5af6a678822e11b#/application/business?applicationId=b289921621e245e2a114c481ddfc4304&mainColor=orange&businessModelId=e532fc5dc28d414ba10b4311bb2c31da")
+        businessPage = BusinessPage(self.driver)
+        businessPage.click_ListHeader_Button("添加工时")
+        formPage = FormPage(self.driver)
+        formPage.click_ChildForm_AddButton('工时明细')
+        formPage.sendkeysToRadioSelect("工时类型","产品研发工作")
+        time.sleep(1)
+        formPage.sendkeysToForeignSelection("产品名称","测试20")
+        formPage.sendkeysToMonomialSelect("工作内容","产品测试")
+        formPage.click_ChildForm_Button("保存")
+        time.sleep(5)
+
+
+
+
+
+
+
 
 
 

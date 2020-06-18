@@ -85,17 +85,17 @@ class SeleniumPage (object):
         if(type(locator)==str):
             elem = self.find_elenmInElemsByXpath(locator,index)
             if(elem is not None and elem.is_displayed()):
-                elem.click()
+                self.clickElem(elem)
             else:
                 self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
-                elem.click()
+                self.clickElem(elem)
         elif(type(locator)==selenium.webdriver.remote.webelement.WebElement):
             elem = locator
             if(elem is not None and elem.is_displayed()):
-                elem.click()
+                self.clickElem(elem)
             else:
                 self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
-                elem.click()
+                self.clickElem(elem)
 
 
 
