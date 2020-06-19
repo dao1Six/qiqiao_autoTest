@@ -95,10 +95,15 @@ class PomAppTest_001(unittest.TestCase):
         formPage.click_ChildForm_AddButton('工时明细')
         formPage.sendkeysToRadioSelect("工时类型","产品研发工作")
         time.sleep(1)
-        formPage.sendkeysToForeignSelection("产品名称","测试20")
+        # formPage.sendkeysToForeignSelection("产品名称","测试20")
         formPage.sendkeysToMonomialSelect("工作内容","产品测试")
         formPage.click_ChildForm_Button("保存")
         time.sleep(5)
+
+
+    def test_03( self ):
+        businessPage = BusinessPage(self.driver)
+        businessPage.type()
 
 
 

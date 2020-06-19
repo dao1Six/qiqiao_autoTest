@@ -23,6 +23,7 @@ class SeleniumPage (object):
     def __init__(self, driver):
         self.driver = driver
 
+
     def open(self, url):
         """打开登录页面"""
         self.driver.get (url)
@@ -82,19 +83,19 @@ class SeleniumPage (object):
     @retry (stop_max_attempt_number=5, wait_fixed=2000)
     def clickElemByXpath_Presence(self, locator, index=0):
         """点击单个存在dom的元素Xpath"""
+        #传元素地址
         if(type(locator)==str):
             elem = self.find_elenmInElemsByXpath(locator,index)
             if(elem is not None and elem.is_displayed()):
                 self.clickElem(elem)
             else:
-                self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
                 self.clickElem(elem)
+        #传元素
         elif(type(locator)==selenium.webdriver.remote.webelement.WebElement):
             elem = locator
             if(elem is not None and elem.is_displayed()):
                 self.clickElem(elem)
             else:
-                self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
                 self.clickElem(elem)
 
 
