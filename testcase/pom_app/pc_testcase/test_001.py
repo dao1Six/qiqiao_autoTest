@@ -23,15 +23,20 @@ class PomAppTest_001(unittest.TestCase):
     # tokenList = excel.getColValues(2)
     # userDict = dict(zip(accountList, tokenList))
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(self):
         self.driver = Driver().pcdriver()
+
+
+    def setUp(self):
+
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('http://runtime.qwqa.do1.work', "wanghao@uat", "qiqiao123")
         time.sleep(5)
 
     def tearDown(self) -> None:
-        self.driver.quit()
+        self.driver.close()
 
 
 
@@ -104,8 +109,8 @@ class PomAppTest_001(unittest.TestCase):
         time.sleep(5)
 
 
-    def test_03( self ):
-        businessPage = BusinessPage(self.driver)
+    # def test_03( self ):
+    #     businessPage = BusinessPage(self.driver)
 
 
 
