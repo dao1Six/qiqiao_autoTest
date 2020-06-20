@@ -30,6 +30,9 @@ class PomAppTest_001(unittest.TestCase):
         loginpage.user_login('http://runtime.qwqa.do1.work', "wanghao@uat", "qiqiao123")
         time.sleep(5)
 
+    def tearDown(self) -> None:
+        self.driver.quit()
+
 
 
 

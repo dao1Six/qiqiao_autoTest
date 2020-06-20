@@ -7,6 +7,7 @@ import os
 # # 获取路径
 from BeautifulReport import BeautifulReport
 from public import function, HTMLTestRunner_jpg
+from public.HTMLTestRunner_cn import HTMLTestRunner
 
 from report.reportRunner import Report
 
@@ -22,11 +23,13 @@ if __name__ == '__main__':
     # 用例目录
     case_path = ProjectRootPath + "\\testcase"
 
-    discover = unittest.defaultTestLoader.discover("../testcase", pattern='test_*.py')
+    discover = unittest.defaultTestLoader.discover("../testcase", pattern='test_001.py')
 
 
     fp = open(reportpath + "\\result.html", "wb")
-    runner = HTMLTestRunner_jpg.HTMLTestRunner(title="七巧测试报告",description="测试用例参考",stream=fp,verbosity=2,retry=1)
+    # runner = HTMLTestRunner_jpg.HTMLTestRunner(title="七巧测试报告",description="测试用例参考",stream=fp,verbosity=2,retry=1)
+    runner = HTMLTestRunner(title="带截图的测试报告", description="小试牛刀", stream=fp, verbosity=0,
+                   retry=2, save_last_try=True)
     # 执行测试用例
     runner.run(discover)
     fp.close()
@@ -41,6 +44,7 @@ if __name__ == '__main__':
 
     filename = reportpath+"\\result.html"
     function.send_mail(filename)
+
 
 
 
