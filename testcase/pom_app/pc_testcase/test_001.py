@@ -44,38 +44,38 @@ class PomAppTest_001(unittest.TestCase):
         processPage.click_process_icon("立项申请流程(事业二部)")
 
         formPage = FormPage(self.driver)
-        formPage.sendkeysToText("项目名称","中科信息立项申请")
+        formPage.Text_Sendkeys("项目名称","中科信息立项申请")
         formPage.sendkeysToTextarea("项目简介","中科信息立项申请哈哈哈哈哈哈哈")
         #
-        # formPage.sendkeysToMonomialDept("所属一级部门","企微")
-        # formPage.sendkeysToMonomialDept("所属二级部门", "企微")
+        # formPage.Dept_MonomialDept_Sendkeys("所属一级部门","企微")
+        # formPage.Dept_MonomialDept_Sendkeys("所属二级部门", "企微")
         self.assertEquals(formPage.getMonomialUserValue_readOnly("项目经理"),"王浩")
 
         #点击管理订单添加按钮字段
-        formPage.click_ChildForm_AddButton("关联订单")
-        formPage.sendkeysToForeignSelection("关联订单","电信")
+        formPage.ChildForm_AddButton_Click("关联订单")
+        formPage.ForeignSelection_Sendkeys("关联订单","电信")
         time.sleep(1)
-        formPage.sendkeysToMonomialSelect("战略意义","标杆作用")
+        formPage.Selection_MonomialSelect_Sendkeys("战略意义","标杆作用")
         formPage.sendkeysToNumber("预估成本（人天）",10)
         #点击子表保存按钮
         formPage.click_ChildForm_Button('保存')
 
         print(formPage.getNumberValue_readOnly("项目总金额"))
         print(formPage.getNumberValue_readOnly("项目预估总成本（人天）"))
-        print(formPage.getDateValue_writable("项目启动时间"))
-        print(formPage.getSelectionBoxValue_writable("项目类型"))
+        print(formPage.Date_GetValue_writable("项目启动时间"))
+        print(formPage.Selection_GetSelectionBoxValue_writable("项目类型"))
         time.sleep(1)
-        formPage.sendkeysToMonomialSelect('项目等级','普通（普）')
-        formPage.sendkeysToDate("预计验收时间","2020-06-22")
-        formPage.sendkeysToText("客户名称", "李嘉诚")
-        formPage.sendkeysToText("甲方对接人", "李嘉诚")
-        formPage.sendkeysToText("联系方式", "13025805485")
+        formPage.Selection_MonomialSelect_Sendkeys('项目等级','普通（普）')
+        formPage.Date_Sendkeys("预计验收时间","2020-06-22")
+        formPage.Text_Sendkeys("客户名称", "李嘉诚")
+        formPage.Text_Sendkeys("甲方对接人", "李嘉诚")
+        formPage.Text_Sendkeys("联系方式", "13025805485")
         formPage.sendkeysToTextarea("备注信息", "中科信息立项申请哈哈哈哈哈哈哈")
 
         # 点击项目里程碑添加按钮字段
-        formPage.click_ChildForm_AddButton("项目里程碑")
-        formPage.sendkeysToText("阶段名称", "测试")
-        formPage.sendkeysToText("计划完成时间", "2020-06-22")
+        formPage.ChildForm_AddButton_Click("项目里程碑")
+        formPage.Text_Sendkeys("阶段名称", "测试")
+        formPage.Text_Sendkeys("计划完成时间", "2020-06-22")
         # 点击子表保存按钮
         formPage.click_ChildForm_Button('保存')
         formPage.clickFormButton("提交")
@@ -92,18 +92,18 @@ class PomAppTest_001(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.click_ListHeader_Button("添加工时")
         formPage = FormPage(self.driver)
-        formPage.click_ChildForm_AddButton('工时明细')
-        formPage.sendkeysToRadioSelect("工时类型","产品研发工作")
+        formPage.ChildForm_AddButton_Click('工时明细')
+        formPage.Selection_RadioSelect_Sendkeys("工时类型","产品研发工作")
         time.sleep(1)
-        # formPage.sendkeysToForeignSelection("产品名称","测试20")
-        formPage.sendkeysToMonomialSelect("工作内容","产品测试")
+        # formPage.ForeignSelection_Sendkeys("产品名称","测试20")
+        formPage.Selection_MonomialSelect_Sendkeys("工作内容","产品测试")
         formPage.click_ChildForm_Button("保存")
         time.sleep(5)
 
 
     def test_03( self ):
         businessPage = BusinessPage(self.driver)
-        businessPage.type()
+
 
 
 

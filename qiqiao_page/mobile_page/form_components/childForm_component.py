@@ -25,7 +25,7 @@ class ChildForm_component(SeleniumPage):
         self.scrollIntoView(self.ChildForm_div_loc)
 
 
-    def click_ChildForm_AddButton(self,fieldName,*args):
+    def ChildForm_AddButton_Click(self,fieldName,*args):
         '''点击添加按钮
         fieldName：字段标题
         '''
@@ -33,7 +33,7 @@ class ChildForm_component(SeleniumPage):
 
 
 
-    def delete_ChildForm_Record(self):
+    def ChildForm_Record_Delete(self):
         '''删除子表记录'''
         pass
 
@@ -63,9 +63,9 @@ class ChildForm_component(SeleniumPage):
         key：文本值
         '''
         reallyRow = str (row - 1)
-        self.clickElemsByCSS_Presence (self.ChildForm_Input_loc.replace ('%title', childformTitle).replace ('%row', reallyRow).replace ('%text',SelectTitle))
+        self.clickElemByCSS_Presence (self.ChildForm_Input_loc.replace ('%title', childformTitle).replace ('%row', reallyRow).replace ('%text',SelectTitle))
         for i in list:
-            self.clickElemsByCSS_Presence(self.ChildForm_SelectOption_loc.replace('%option',i),num=1)
+            self.clickElemByCSS_Presence(self.ChildForm_SelectOption_loc.replace('%option',i),index=1)
 
 
     def sendkeys_To_ChildFormDate(self,childformTitle,DateTitle,row,key):
@@ -86,12 +86,12 @@ class ChildForm_component(SeleniumPage):
         key：文本值
         '''
         reallyRow = str(row-1)
-        self.sendkeysElemsByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',DateTimeTitle),dateKey, num=0)
+        self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',DateTimeTitle),dateKey, index=0)
         self.clickElemByCSS_Presence (self.ChildForm_label_loc.replace ('%title', childformTitle))
-        self.sendkeysElemsByCSS_Presence (
+        self.sendkeysElemByCSS_Presence (
             self.ChildForm_Input_loc.replace ('%title', childformTitle).replace ('%row', reallyRow).replace ('%text',
                                                                                                              DateTimeTitle),
-            dateKey, num=1)
+            dateKey, index=1)
         self.clickElemByCSS_Presence (self.ChildForm_label_loc.replace ('%title', childformTitle))
 
 
@@ -118,7 +118,7 @@ class ChildForm_component(SeleniumPage):
         picPath：图片路径
         '''
         reallyRow = str(row-1)
-        self.sendkeysElemsByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',PicUploadTitle),picPath)
+        self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',PicUploadTitle),picPath)
 
 
     #
@@ -130,7 +130,7 @@ class ChildForm_component(SeleniumPage):
         '''
         reallyRow = str(row-1)
         #点击人员选择
-        self.clickElemsByCSS_Presence(self.ChildForm_userSelect_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%user',UserTitle))
+        self.clickElemByCSS_Presence(self.ChildForm_userSelect_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%user',UserTitle))
 
         for name in userNameList:
             self.clickElemByXpath_Presence (self.User_search_loc)

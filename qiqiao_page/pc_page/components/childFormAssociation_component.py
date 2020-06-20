@@ -5,22 +5,22 @@ from public.selenium_page import SeleniumPage
 class ChildFormAssociation_component(SeleniumPage):
 
 
-    def click_ChildFormAssociation_AddButton(self,*args):
+    def ChildFormAssociation_AddButton_Click(self,*args):
         '''点击添加按钮'''
         pass
 
 
 
-    def tick_ChildFormManagementDialog_Record(self,*args):
+    def ChildFormAssociation_ManagementDialog_Record_Click(self,*args):
         '''勾选批量管理页面关联表记录'''
         pass
 
 
-    def click_ChildFormManagementDialog_ConfirmButton(self,*args):
+    def ChildFormAssociation_ManagementDialog_ConfirmButton_Click(self,*args):
         '''点击批量管理页面确认按钮'''
         pass
 
 
-    def click_ChildFormManagementDialog_CancelButton(self,*args):
+    def ChildFormAssociation_ManagementDialog_CancelButton_Click(self,*args):
         '''点击批量管理页面取消按钮'''
         pass

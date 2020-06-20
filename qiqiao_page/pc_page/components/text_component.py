@@ -8,7 +8,7 @@ class Text(SeleniumPage):
     Text_input_loc = "//div[@data-mark='%s']//input"  #单行文本组件字段输入框
 
     #
-    def sendkeysToText(self,fieldName,key,*args):
+    def Text_Sendkeys(self,fieldName,key,*args):
         '''给单行文本组件输入值
         fieldName：字段标题
         key：文本值
@@ -25,7 +25,7 @@ class Text(SeleniumPage):
 
 
 
-    def getTextValue_writable( self ):
+    def Text_GetValue_writable( self ):
         '''获取可写状态的单行文本字段值'''
         pass
 

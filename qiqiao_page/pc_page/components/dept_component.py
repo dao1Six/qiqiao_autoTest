@@ -21,7 +21,7 @@ class Dept(SeleniumPage):
 
 
     # 给部门单选组件输入值
-    def sendkeysToMonomialDept(self,fieldName,DeptName,*args):
+    def Dept_MonomialDept_Sendkeys(self,fieldName,DeptName,*args):
         ''' 给部门单选组件输入值
         fieldName：字段标题
         DeptName：部门名称
@@ -39,7 +39,7 @@ class Dept(SeleniumPage):
 
 
     # 给部门多选组件输入值
-    def sendkeysToMultiDept(self,fieldName,DeptNameList,*args):
+    def Dept_MultiDept_Sendkeys(self,fieldName,DeptNameList,*args):
         ''' 给部门多选组件输入值
         fieldName：字段标题
         DeptNameList：部门名称集合  list类型

@@ -9,7 +9,7 @@ class FileUpload(SeleniumPage):
 
 
 
-    def sendkeysToFileUpload(self,fieldName,key,*args):
+    def FileUpload_Sendkeys(self,fieldName,key,*args):
         '''给文件组件输入值
         fieldName：字段标题
         key：文件路径

@@ -5,7 +5,7 @@ from public.selenium_page import SeleniumPage
 class ForeignSelection_component(SeleniumPage):
 
 
-    def sendkeysToForeignSelection(self,fieldName,list,*args):
+    def ForeignSelection_Sendkeys(self,fieldName,list,*args):
         '''外键选择组件输入值
         fieldName：字段标题
         list：下拉选项 list类型

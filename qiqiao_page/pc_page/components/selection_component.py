@@ -19,7 +19,7 @@ class Selection(SeleniumPage):
 
 
     #
-    def sendkeysToMultiSelect(self,fieldName,list,*args):
+    def Selection_MultiSelect_Sendkeys(self,fieldName,list,*args):
         '''下拉多选组件输入值
         fieldName：字段标题
         list：下拉选项 list类型
@@ -30,7 +30,7 @@ class Selection(SeleniumPage):
             self.clickElemByCSS_Presence(self.Selection_multiSelectOption_loc.replace('%option',i))
 
     #
-    def sendkeysToMonomialSelect(self,fieldName,value,*args):
+    def Selection_MonomialSelect_Sendkeys(self,fieldName,value,*args):
         '''下拉单选组件输入值
         fieldName：字段标题
         option：下拉选项
@@ -49,13 +49,13 @@ class Selection(SeleniumPage):
             #点击选项
             self.clickElemByXpath_Presence(self.Selection_monomialSelectOption_loc.replace('%title',fieldName).replace('%value',value),index=0)
 
-    def getSelectionBoxValue_writable( self,fieldName):
+    def Selection_GetSelectionBoxValue_writable( self,fieldName):
         '''获取可写状态下的下拉框组件值'''
         elem = self.find_elenmInElemsByXpath(self.SelectionBox_Value_loc.replace('%s', fieldName))
         return self.getElemAttrValue(elem, "value")
 
     #
-    def sendkeysToRadioSelect(self,fieldName,option,*args):
+    def Selection_RadioSelect_Sendkeys(self,fieldName,option,*args):
         '''给单项选择组件输入值
         fieldName：字段标题
         option：单项选项
@@ -64,7 +64,7 @@ class Selection(SeleniumPage):
 
 
     #
-    def sendkeysToCheckboxSelect(self,fieldName,list,*args):
+    def Selection_CheckboxSelect_Sendkeys(self,fieldName,list,*args):
         '''给多项选择组件输入值
         fieldName：字段标题
         list：多项选项 list类型

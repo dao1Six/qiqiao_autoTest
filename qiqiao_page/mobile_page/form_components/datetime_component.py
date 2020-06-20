@@ -8,7 +8,7 @@ class DateTime(SeleniumPage):
     DateTime_label_loc = "div[title='%s']>label>span[title='%title']"   # 日期时间组件字段标题
 
     #给日期时间组件输入值
-    def sendkeysToDateTime(self,fieldName,datekey,timekey,*args):
+    def DateTime_Sendkeys(self,fieldName,datekey,timekey,*args):
         '''给日期时间组件输入值
         fieldName：字段标题
         datakey：日期值 格式：2018-11-22

@@ -9,7 +9,7 @@ class Address(SeleniumPage):
     Address_detilInput_loc = "//div[@title='%s']//input[@placeholder='详细地址']"  #地址组件字段地址详情输入框
 
     #给地址组件输入值
-    def sendkeysToAddress(self,fieldName,addkeys,detilkey,*args):
+    def Address_Sendkeys(self,fieldName,addkeys,detilkey,*args):
         '''给地址组件字段输入值
         fieldName：字段标题
         addkeys：省市区地址  list类型

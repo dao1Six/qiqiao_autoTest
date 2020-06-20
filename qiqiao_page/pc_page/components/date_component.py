@@ -12,7 +12,7 @@ class Date(SeleniumPage):
 
 
     #给日期组件输入值
-    def sendkeysToDate(self,fieldName,key,*args):
+    def Date_Sendkeys(self,fieldName,key,*args):
         '''给日期组件输入值
         fieldName：字段标题
         key：日期值 格式：2018-11-22
@@ -22,6 +22,6 @@ class Date(SeleniumPage):
 
 
     #获取可写状态的日期组件的值
-    def getDateValue_writable( self,fieldName ):
+    def Date_GetValue_writable( self,fieldName ):
         elem = self.find_elenmInElemsByXpath(self.Date_input_loc.replace('%s',fieldName))
         return self.getElemAttrValue(elem,"value")
