@@ -14,7 +14,7 @@ class Dept(SeleniumPage):
 
     #获取部门值
     def GetDeptVale( self,fieldName):
-        elem = self.find_elemByCSS(self.departmentListName_loc.replace('%s',fieldName))
+        elem = self.find_elenmInElemsByCSS(self.departmentListName_loc.replace('%s',fieldName))
         value = elem.text
         return value
 

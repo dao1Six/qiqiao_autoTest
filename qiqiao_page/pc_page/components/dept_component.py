@@ -49,7 +49,7 @@ class Dept(SeleniumPage):
         for name in DeptNameList:
             self.clickElemByXpath_Presence (self.Dept_search_loc)
             self.sendkeysElemByXpath_Presence(self.Dept_search_loc,name)
-            e = self.find_elemByXPATH(self.Dept_searchOption_loc.replace('%s',name))
+            e = self.find_elenmInElemsByXpath(self.Dept_searchOption_loc.replace('%s',name))
             e.click()
         # 点击确认按钮
         self.clickElemByXpath_Presence(self.Dept_querenButton_loc.replace('%s', fieldName))

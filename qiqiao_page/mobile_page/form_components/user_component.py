@@ -12,7 +12,7 @@ class User(SeleniumPage):
 
     #获取表单人员组件的值
     def GetUserValue( self,fieldName):
-        elem = self.find_elemByCSS(self.peopleListName_loc.replace('%s',fieldName))
+        elem = self.find_elenmInElemsByCSS(self.peopleListName_loc.replace('%s',fieldName))
         value = elem.text
         return value
 

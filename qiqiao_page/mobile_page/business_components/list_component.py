@@ -25,7 +25,7 @@ class ListComponent(SeleniumPage):
         cardListButtons = self.find_elemsByCSS(self.CardListButton_loc)
         for cardListButton in cardListButtons:
             buttonList.append(cardListButton.get_attribute("title"))
-        buttonList.append(self.find_elemByCSS(self.CardListBottomButton_loc).get_attribute("title"))
+        buttonList.append(self.find_elenmInElemsByCSS(self.CardListBottomButton_loc).get_attribute("title"))
         return buttonList
 
     #获取列表选项卡所有选项
