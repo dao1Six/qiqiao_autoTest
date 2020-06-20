@@ -10,7 +10,7 @@ class Number(SeleniumPage):
     Number_div_loc = "//div[@data-mark='%s']//div[@class='component_detail']/div"  #只读状态数字组件显示值
 
     #
-    def sendkeysToNumber(self,fieldName,key,*args):
+    def Number_Sendkeys(self,fieldName,key,*args):
         '''给数字组件输入值
         fieldName：字段标题
         key：数值  数字类型

@@ -13,7 +13,7 @@ class Text(SeleniumPage):
         fieldName：字段标题
         key：文本值
         '''
-        self.sendkeysElemByCSS_Visibility(self.Text_input_loc.replace('%s',fieldName), key)
+        self.sendkeysElemByCSS_Presence(self.Text_input_loc.replace('%s',fieldName), key)
 
 
     #获取单行文本字段提示信息

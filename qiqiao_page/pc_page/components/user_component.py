@@ -19,7 +19,7 @@ class User(SeleniumPage):
 
 
     #
-    def sendkeysToMonomialUser(self,fieldName,userName):
+    def User_MonomialUser_Sendkeys(self,fieldName,userName):
         '''给人员单选组件输入值
         fieldName：字段标题
         userName：人员名称
@@ -30,13 +30,13 @@ class User(SeleniumPage):
         self.clickElemByXpath_Presence(self.User_searchOption_loc.replace('%s',userName))
         self.clickElemByXpath_Presence(self.User_querenButton_loc.replace('%s',fieldName))
 
-    def getMonomialUserValue_readOnly( self,fieldName):
+    def User_GetMonomialUserValue_readOnly( self,fieldName):
         '''获取只读状态下的人员单选字段的值'''
         return self.find_elenmInElemsByXpath(self.UserValue_loc.replace('%s',fieldName)).text
 
 
 
-    def sendkeysToMultiUser(self,fieldName,userNameList,*args):
+    def User_MultiUser_Sendkeys(self,fieldName,userNameList,*args):
         ''' 给人员多选组件输入值
         fieldName：字段标题
         userNameList：人员名称集合  list类型

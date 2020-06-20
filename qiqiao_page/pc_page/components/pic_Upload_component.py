@@ -9,7 +9,7 @@ class PicUpload(SeleniumPage):
     PicUpload_success_loc = "div[title='%s'] img"  #图片上传成功标识
 
     #给图片组件输入值
-    def sendkeysToPicUpload(self,fieldName,picPath,*args):
+    def PicUpload_Sendkeys(self,fieldName,picPath,*args):
         '''给文件组件输入值
         fieldName：字段标题
         picPath：图片路径

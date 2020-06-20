@@ -45,18 +45,18 @@ class PomAppTest_001(unittest.TestCase):
 
         formPage = FormPage(self.driver)
         formPage.Text_Sendkeys("项目名称","中科信息立项申请")
-        formPage.sendkeysToTextarea("项目简介","中科信息立项申请哈哈哈哈哈哈哈")
+        formPage.Textarea_Sendkeys("项目简介","中科信息立项申请哈哈哈哈哈哈哈")
         #
         # formPage.Dept_MonomialDept_Sendkeys("所属一级部门","企微")
         # formPage.Dept_MonomialDept_Sendkeys("所属二级部门", "企微")
-        self.assertEquals(formPage.getMonomialUserValue_readOnly("项目经理"),"王浩")
+        self.assertEquals(formPage.User_GetMonomialUserValue_readOnly("项目经理"),"王浩")
 
         #点击管理订单添加按钮字段
         formPage.ChildForm_AddButton_Click("关联订单")
         formPage.ForeignSelection_Sendkeys("关联订单","电信")
         time.sleep(1)
         formPage.Selection_MonomialSelect_Sendkeys("战略意义","标杆作用")
-        formPage.sendkeysToNumber("预估成本（人天）",10)
+        formPage.Number_Sendkeys("预估成本（人天）",10)
         #点击子表保存按钮
         formPage.click_ChildForm_Button('保存')
 
@@ -70,7 +70,7 @@ class PomAppTest_001(unittest.TestCase):
         formPage.Text_Sendkeys("客户名称", "李嘉诚")
         formPage.Text_Sendkeys("甲方对接人", "李嘉诚")
         formPage.Text_Sendkeys("联系方式", "13025805485")
-        formPage.sendkeysToTextarea("备注信息", "中科信息立项申请哈哈哈哈哈哈哈")
+        formPage.Textarea_Sendkeys("备注信息", "中科信息立项申请哈哈哈哈哈哈哈")
 
         # 点击项目里程碑添加按钮字段
         formPage.ChildForm_AddButton_Click("项目里程碑")
