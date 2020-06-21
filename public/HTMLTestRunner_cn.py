@@ -884,11 +884,11 @@ class _TestResult(TestResult):
         output = self.complete_output()
         self.result.append((0, test, output, ''))
         if self.verbosity > 1:
-            sys.stderr.write('P  ')
+            sys.stderr.write('S  ')
             sys.stderr.write(str(test))
             sys.stderr.write('\n')
         else:
-            sys.stderr.write('P')
+            sys.stderr.write('S')
 
     def addFailure(self, test, err):
         self.failure_count += 1
@@ -911,6 +911,9 @@ class _TestResult(TestResult):
             sys.stderr.write('\n')
         else:
             sys.stderr.write('F')
+            #six加的
+            sys.stderr.write(str(test))
+            sys.stderr.write('\n')
 
     def addError(self, test, err):
         self.error_count += 1
@@ -933,6 +936,9 @@ class _TestResult(TestResult):
             sys.stderr.write('\n')
         else:
             sys.stderr.write('E')
+            # six加的
+            sys.stderr.write(str(test))
+            sys.stderr.write('\n')
 
     def addSkip(self, test, reason):
         self.skip_count += 1
@@ -948,7 +954,7 @@ class _TestResult(TestResult):
             sys.stderr.write('K')
 
 class HTMLTestRunner(Template_mixin):
-    def __init__(self, stream=sys.stdout, verbosity=1, title=None, description=None,is_thread=False, retry=0,save_last_try=True):
+    def __init__(self, stream=sys.stdout, verbosity=2, title=None, description=None,is_thread=False, retry=0,save_last_try=True):
         self.stream = stream
         self.retry = retry
         self.is_thread=is_thread

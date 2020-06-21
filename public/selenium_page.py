@@ -78,7 +78,7 @@ class SeleniumPage (object):
 
     ####点击元素方法
 
-    @retry (stop_max_attempt_number=5, wait_fixed=2000)
+    @retry (stop_max_attempt_number=0, wait_fixed=2000)
     def clickElem(self, elem):
         """给一个存在dom的元素写入值Xpath"""
         try:
