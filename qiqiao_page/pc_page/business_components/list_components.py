@@ -424,6 +424,7 @@ class ListComponent(SeleniumPage):
 
 
 
+
     def ListComponent_QueryItem_Sendkeys(self,itemName,keys,*args,type="text"):
         '''列表组件的查询项输入值'''
         #文本类型
