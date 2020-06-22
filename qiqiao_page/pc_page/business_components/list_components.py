@@ -38,6 +38,8 @@ class ListComponent(SeleniumPage):
     ListHeader_Button_loc = "//div[@class='listView_headerButtonWrapper']//div[@data-mark='%s']"  #列表头部按钮
     search_btn_loc = "//button[@data-mark='筛选条件搜索按钮']"   #列表组件的搜索按钮
     reset_btn_loc = "//button[@data-mark='筛选条件重置按钮']"  #列表组件的重置按钮
+    expand_btn_loc = "//div[@class='view_search_panel']//span[@class='expand']" #列表组件的展开收起按钮
+    QueryItem_loc = "//div[@class='view_search_panel']//div[@data-mark='%s']//input"  #列表查询项文本框
 
 
 
@@ -416,6 +418,22 @@ class ListComponent(SeleniumPage):
         '''点击筛选数据的重置按钮'''
         self.clickElemByXpath_Presence(self.reset_btn_loc)
 
+    def ListComponent_Click_ExpandBtn(self):
+        '''点击展开收起按钮'''
+        self.clickElemByXpath_Presence(self.expand_btn_loc)
+
+
+
+    def ListComponent_QueryItem_Sendkeys(self,itemName,keys,*args,type="text"):
+        '''列表组件的查询项输入值'''
+        #文本类型
+        if(type=="text"):
+            self.sendkeysElemByXpath_Presence(self.QueryItem_loc.replace('%s',itemName),keys)
+
+        #日期类型
+        if (type == "date"):
+            self.sendkeysElemByXpath_Presence(self.QueryItem_loc.replace('%s',itemName),keys,index=0)
+            self.sendkeysElemByXpath_Presence(self.QueryItem_loc.replace('%s', itemName), args[0], index=1)
 
     def inputValueToSingleText(self,feild_name,value):
         '''向单行文本字段输入值'''
