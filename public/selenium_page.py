@@ -8,7 +8,7 @@ import selenium
 from retrying import retry
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException
+from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException, WebDriverException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support import expected_conditions as EC
@@ -22,6 +22,8 @@ class SeleniumPage (object):
 
     def __init__(self, driver):
         self.driver = driver
+
+
 
 
     def open(self, url):
@@ -78,14 +80,12 @@ class SeleniumPage (object):
 
     ####点击元素方法
 
-    @retry (stop_max_attempt_number=0, wait_fixed=2000)
+    @retry (stop_max_attempt_number=5, wait_fixed=2000,wrap_exception=True)
     def clickElem(self, elem):
         """给一个存在dom的元素写入值Xpath"""
-        try:
-            self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
-            elem.click()
-        except Exception as e:
-            print(e)
+        self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
+        elem.click()
+
 
     def clickElemByXpath_Presence(self, locator, index=0):
         """点击单个存在dom的元素Xpath"""
@@ -94,15 +94,17 @@ class SeleniumPage (object):
             elem = self.find_elenmInElemsByXpath(locator,index)
             if(elem is not None and elem.is_displayed()):
                 self.clickElem(elem)
-            else:
-                self.clickElem(elem)
+            elif(elem is  None):
+                print("None没有点击事件")
+                raise WebDriverException
         #传元素
         elif(type(locator)==selenium.webdriver.remote.webelement.WebElement):
             elem = locator
             if(elem is not None and elem.is_displayed()):
                 self.clickElem(elem)
-            else:
-                self.clickElem(elem)
+            elif (elem is None):
+                print("None没有点击事件")
+                raise WebDriverException
 
     def clickElemByCSS_Presence(self, locator,index = 0):
         """点击单个存在dom的元素CSS"""
@@ -114,15 +116,14 @@ class SeleniumPage (object):
 
 
     ####元素写值方法
-    @retry (stop_max_attempt_number=5, wait_fixed=2000)
+    @retry (stop_max_attempt_number=5, wait_fixed=2000,wrap_exception=True)
     def sendkeysElem(self, elem, key):
         """给一个存在dom的元素写入值Xpath"""
-        try:
-            self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
-            elem.clear()
-            elem.send_keys (key)
-        except Exception as e:
-            print(e)
+
+        self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
+        elem.clear()
+        elem.send_keys (key)
+
 
     def sendkeysElemByXpath_Presence(self, locator, key, index=0):
         """给一个存在dom的元素写入值Xpath"""

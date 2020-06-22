@@ -35,6 +35,7 @@ class Selection(SeleniumPage):
         fieldName：字段标题
         option：下拉选项
         '''
+        #下拉文本框
         loc = self.Selection_selectionBox_loc.replace('%title',fieldName)
         elems = self.find_elemsByXPATH(loc)
         if(len(elems)>1):
@@ -42,7 +43,7 @@ class Selection(SeleniumPage):
         #点击输入框
             self.clickElem(elem)
             #点击选项
-            self.clickElemByXpath_Presence(self.Selection_monomialSelectOption_loc.replace('%title',fieldName).replace('%value',value),index=2)
+            self.clickElemByXpath_Presence(self.Selection_monomialSelectOption_loc.replace('%title',fieldName).replace('%value',value),index=1)
         elif(len(elems)==1):
             elem = elems[0]
             self.clickElem(elem)

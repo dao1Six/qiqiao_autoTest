@@ -13,6 +13,7 @@ class ForeignSelection_component(SeleniumPage):
         fieldName：字段标题
 
         '''
+
         loc = self.ForeignSelectionBox_loc.replace('%title',fieldName)
         #点击外键的输入框
         self.clickElemByXpath_Presence(loc)

@@ -26,15 +26,19 @@ class ListComponent(SeleniumPage):
     btn_base_loc = "//div[@class='view_toolbar_panel']/div"
     btn_name_loc = "//div[@class='view_toolbar_panel']/div[{indexnum}]/button/span"
 
-    search_btn_loc = "//button[@class='el-button search_btn el-button--primary']"
-    reset_btn_loc = "//button[@class='el-button reset_btn el-button--default']"
+
+
 
     input_base_loc = "//form[@class='el-form el-form--label-right']//label[@for='{feildname}']/following-sibling::div//input"
     input_textarea_loc = "//form[@class='el-form el-form--label-right']//label[@for='{feildname}']/following-sibling::div//textarea"
     input_datetime_loc = "//form[@class='el-form el-form--label-right']//label[@for='{feildname}']/following-sibling::div/div/div[1]/input"
     input_datetime_loc2 = "//form[@class='el-form el-form--label-right']//label[@for='{feildname}']/following-sibling::div/div/div[2]/div/input"
 
+    #six
     ListHeader_Button_loc = "//div[@class='listView_headerButtonWrapper']//div[@data-mark='%s']"  #列表头部按钮
+    search_btn_loc = "//button[@data-mark='筛选条件搜索按钮']"   #列表组件的搜索按钮
+    reset_btn_loc = "//button[@data-mark='筛选条件重置按钮']"  #列表组件的重置按钮
+
 
 
 
@@ -90,7 +94,7 @@ class ListComponent(SeleniumPage):
 
         loc=self.search_data_loc.format(feildname=feild_name)
         self.sendkeysElemByXpath_Presence(loc,value)
-        self.clickSerachBtn()
+        self.ListComponent_Click_SerachBtn()
 
 
 
@@ -98,7 +102,7 @@ class ListComponent(SeleniumPage):
         '''通过多行文本组件筛选页面数据'''
         loc=self.search_data_loc.format(feildname=feild_name)
         self.sendkeysElemByXpath_Presence(loc,value)
-        self.clickSerachBtn()
+        self.ListComponent_Click_SerachBtn()
 
 
     def filterDataByDigital(self,feild_name,value):
@@ -106,7 +110,7 @@ class ListComponent(SeleniumPage):
 
         loc=self.search_digital_loc.format(feildname=feild_name)
         self.sendkeysElemByXpath_Presence(loc,value)
-        self.clickSerachBtn()
+        self.ListComponent_Click_SerachBtn()
 
 
     def filterDataBySelectionBox(self,feild_name,value):
@@ -130,7 +134,7 @@ class ListComponent(SeleniumPage):
             if li_list[i].text == value:
                 self.clickElemByXpath_Presence(self.li_selector_loc.format(indexnum=i+1))
                 self.clickElemByXpath_Presence("xpath=>//label[@for='{feildname}']/span".format(feildname=feild_name))
-                self.clickSerachBtn()
+                self.ListComponent_Click_SerachBtn()
                 break
             else:
                 print("输入值：{0} 不是选项值，请输入正确的选项值！！！".format(value))
@@ -143,13 +147,13 @@ class ListComponent(SeleniumPage):
         try:
             self.sendkeysElemByXpath_Presence(loc,name)
             self.clickElemByXpath_Presence("//div[@title='{name}' and @class='text_ellipsis']".format(name=name))
-            self.clickSerachBtn()
+            self.ListComponent_Click_SerachBtn()
         except Exception:
             self.refreshCurrentPage()
             time.sleep(1)
             self.sendkeysElemByXpath_Presence(loc,name)
             self.clickElemByXpath_Presence("//div[@title='{name}' and @class='text_ellipsis']".format(name=name))
-            self.clickSerachBtn()
+            self.ListComponent_Click_SerachBtn()
 
 
     def filterDataByDepartment(self,feild_name,departmentname):
@@ -158,12 +162,12 @@ class ListComponent(SeleniumPage):
         try:
             self.sendkeysElemByXpath_Presence(loc,departmentname)
             self.clickElemByXpath_Presence("//div[@title='{name}']".format(name=departmentname))
-            self.clickSerachBtn()
+            self.ListComponent_Click_SerachBtn()
         except Exception:
             self.refreshCurrentPage()
             self.sendkeysElemByXpath_Presence(loc,departmentname)
             self.clickElemByXpath_Presence("//div[@title='{name}']".format(name=departmentname))
-            self.clickSerachBtn()
+            self.ListComponent_Click_SerachBtn()
 
     def filterDataByAddress(self, feild_name, address):
         '''通过地址选择筛选页面数据'''
@@ -186,11 +190,11 @@ class ListComponent(SeleniumPage):
                         break
                 try:
                     self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=address))
-                    self.clickSerachBtn()
+                    self.ListComponent_Click_SerachBtn()
                 except Exception:
                     time.sleep(1)
                     self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=address))
-                    self.clickSerachBtn()
+                    self.ListComponent_Click_SerachBtn()
             except Exception:
                 print("地址输入格式不正确或者地址不存在，请使用如下输入格式：河南省/郑州市/金水区")
         else:
@@ -214,13 +218,13 @@ class ListComponent(SeleniumPage):
                         self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[0]))
                         self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[1]))
                         self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[2]))
-                        self.clickSerachBtn()
+                        self.ListComponent_Click_SerachBtn()
                     except Exception:
                         time.sleep(1)
                         self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[0]))
                         self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[1]))
                         self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[2]))
-                        self.clickSerachBtn()
+                        self.ListComponent_Click_SerachBtn()
                 elif len(sp)==2:
                     starttime=time.time()
                     waitspacing=0.1
@@ -238,12 +242,12 @@ class ListComponent(SeleniumPage):
                     try:
                         self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[0]))
                         self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[1]))
-                        self.clickSerachBtn()
+                        self.ListComponent_Click_SerachBtn()
                     except Exception:
                         time.sleep(1)
                         self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[0]))
                         self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[1]))
-                        self.clickSerachBtn()
+                        self.ListComponent_Click_SerachBtn()
 
             except Exception:
                 print("输入的地址不存在，请检查！！！")
@@ -254,7 +258,7 @@ class ListComponent(SeleniumPage):
 
         loc=self.search_data_loc.format(feildname=feild_name)
         self.sendkeysElemByXpath_Presence(loc,value)
-        self.clickSerachBtn()
+        self.ListComponent_Click_SerachBtn()
 
     def filterDataByScore(self,feild_name,value):
         '''通过评分组件筛选页面数据'''
@@ -266,7 +270,7 @@ class ListComponent(SeleniumPage):
             self.clickElemByXpath_Presence(loc)
         self.clickElemByXpath_Presence("//div[@title='{score}']".format(score=value))
         self.clickElemByXpath_Presence("//label[@for='{name}']".format(name=feild_name))
-        self.clickSerachBtn()
+        self.ListComponent_Click_SerachBtn()
 
 
     def filterDataByCreater(self,value):
@@ -287,7 +291,7 @@ class ListComponent(SeleniumPage):
                 break
         try:
             self.clickElemByXpath_Presence("//div[@title='{name}']".format(name=value))
-            self.clickSerachBtn()
+            self.ListComponent_Click_SerachBtn()
         except Exception:
 
             print("请检查输入的人员姓名，‘{value}’可能不存在".format(value=value))
@@ -304,7 +308,7 @@ class ListComponent(SeleniumPage):
                 self.sendkeysElemByXpath_Presence(self.search_enddate_loc.format(feild="createDate"),enddate)
                 self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild="createDate"))
                 self.clickElemByXpath_Presence("//label[@for='createDate']")
-                self.clickSerachBtn()
+                self.ListComponent_Click_SerachBtn()
             except Exception:
                 time.sleep(1)
                 self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild="createDate"))
@@ -312,7 +316,7 @@ class ListComponent(SeleniumPage):
                 self.sendkeysElemByXpath_Presence(self.search_enddate_loc.format(feild="createDate"),enddate)
                 self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild="createDate"))
                 self.clickElemByXpath_Presence("//label[@for='createDate']")
-                self.clickSerachBtn()
+                self.ListComponent_Click_SerachBtn()
 
     def filterDataByModifyDate(self,startdate,enddate):
         '''通过修改时间筛选页面数据'''
@@ -325,7 +329,7 @@ class ListComponent(SeleniumPage):
                 self.sendkeysElemByXpath_Presence(self.search_enddate_loc.format(feild="last_modify_date"),enddate)
                 self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild="last_modify_date"))
                 self.clickElemByXpath_Presence("//label[@for='last_modify_date']")
-                self.clickSerachBtn()
+                self.ListComponent_Click_SerachBtn()
             except Exception:
                 time.sleep(1)
                 self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild="last_modify_date"))
@@ -333,7 +337,7 @@ class ListComponent(SeleniumPage):
                 self.sendkeysElemByXpath_Presence(self.search_enddate_loc.format(feild="last_modify_date"),enddate)
                 self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild="last_modify_date"))
                 self.clickElemByXpath_Presence("//label[@for='last_modify_date']")
-                self.clickSerachBtn()
+                self.ListComponent_Click_SerachBtn()
 
 
     def filterDataByDate(self,feild_name,startdate,enddate):
@@ -348,7 +352,7 @@ class ListComponent(SeleniumPage):
                 self.sendkeysElemByXpath_Presence(self.search_enddate_loc.format(feild=feild_name),enddate)
                 self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild=feild_name))
                 self.clickElemByXpath_Presence("//label[@for='{0}']".format(feild_name))
-                self.clickSerachBtn()
+                self.ListComponent_Click_SerachBtn()
             except Exception:
                 time.sleep(1)
                 self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild=feild_name))
@@ -356,7 +360,7 @@ class ListComponent(SeleniumPage):
                 self.sendkeysElemByXpath_Presence(self.search_enddate_loc.format(feild=feild_name),enddate)
                 self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild=feild_name))
                 self.clickElemByXpath_Presence("//label[@for='{0}']".format(feild_name))
-                self.clickSerachBtn()
+                self.ListComponent_Click_SerachBtn()
 
 
     def filterDataByTime(self,feild_name,starttime,endtime):
@@ -368,7 +372,7 @@ class ListComponent(SeleniumPage):
             self.sendkeysElemByXpath_Presence(self.search_enddate_loc.format(feild=feild_name),endtime)
             self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild=feild_name))
             self.clickElemByXpath_Presence("//label[@for='{0}']".format(feild_name))
-            self.clickSerachBtn()
+            self.ListComponent_Click_SerachBtn()
         except Exception:
             time.sleep(1)
             self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild=feild_name))
@@ -376,7 +380,7 @@ class ListComponent(SeleniumPage):
             self.sendkeysElemByXpath_Presence(self.search_enddate_loc.format(feild=feild_name),endtime)
             self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild=feild_name))
             self.clickElemByXpath_Presence("//label[@for='{0}']".format(feild_name))
-            self.clickSerachBtn()
+            self.ListComponent_Click_SerachBtn()
 
 
     def filterDataByDateAndTime(self,feild_name,starttime,endtime):
@@ -388,7 +392,7 @@ class ListComponent(SeleniumPage):
             self.sendkeysElemByXpath_Presence(self.search_enddate_loc.format(feild=feild_name),endtime)
             self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild=feild_name))
             self.clickElemByXpath_Presence("//label[@for='{0}']".format(feild_name))
-            self.clickSerachBtn()
+            self.ListComponent_Click_SerachBtn()
         except Exception:
             time.sleep(1)
             self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild=feild_name))
@@ -396,19 +400,19 @@ class ListComponent(SeleniumPage):
             self.sendkeysElemByXpath_Presence(self.search_enddate_loc.format(feild=feild_name),endtime)
             self.clickElemByXpath_Presence(self.search_startdate_loc.format(feild=feild_name))
             self.clickElemByXpath_Presence("//label[@for='{0}']".format(feild_name))
-            self.clickSerachBtn()
+            self.ListComponent_Click_SerachBtn()
 
 
-    def click_ListHeader_Button(self,btnname):
+    def ListComponent_Click_ListHeader_Button(self,btnname):
         '''点击列表头部按钮'''
         self.clickElemByXpath_Presence(self.ListHeader_Button_loc.replace('%s',btnname))
 
-    def clickSerachBtn(self):
+    def ListComponent_Click_SerachBtn(self):
         '''点击筛选数据的搜索按钮'''
         self.clickElemByXpath_Presence(self.search_btn_loc)
 
 
-    def clickResetBtn(self):
+    def ListComponent_Click_ResetBtn(self):
         '''点击筛选数据的重置按钮'''
         self.clickElemByXpath_Presence(self.reset_btn_loc)
 
