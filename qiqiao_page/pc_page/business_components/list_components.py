@@ -17,7 +17,7 @@ class ListComponent(SeleniumPage):
     li_selector_loc = "//div[@id='app']/following-sibling::div/div/div/ul/li[{indexnum}]"
 
     search_address_loc = "//label[@for='{feildname}']/following-sibling::div/div/span"
-    address_base_loc = "//span[text()='{addressname}']"
+    
 
     search_creator_loc = "//label[@for='author_name']/following-sibling::div/div/div/div/input"
     search_startdate_loc = "//label[@for='{feild}']/following-sibling::div/div/div/input[1]"
@@ -40,7 +40,8 @@ class ListComponent(SeleniumPage):
     reset_btn_loc = "//button[@data-mark='筛选条件重置按钮']"  #列表组件的重置按钮
     expand_btn_loc = "//div[@class='view_search_panel']//span[@class='expand']" #列表组件的展开收起按钮
     QueryItem_loc = "//div[@class='view_search_panel']//div[@data-mark='%s']//input"  #列表查询项文本框
-
+    address_option_loc = "//span[text()='{addressname}']"  #地址选择器选项
+    li_selectOption_loc ="//div[@class='el-scrollbar']//div[@title='%s']"  #下拉框选项
 
 
 
@@ -191,11 +192,11 @@ class ListComponent(SeleniumPage):
                     elif time.time() > starttime + timeout:
                         break
                 try:
-                    self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=address))
+                    self.clickElemByXpath_Presence(self.address_option_loc.format(addressname=address))
                     self.ListComponent_Click_SerachBtn()
                 except Exception:
                     time.sleep(1)
-                    self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=address))
+                    self.clickElemByXpath_Presence(self.address_option_loc.format(addressname=address))
                     self.ListComponent_Click_SerachBtn()
             except Exception:
                 print("地址输入格式不正确或者地址不存在，请使用如下输入格式：河南省/郑州市/金水区")
@@ -217,15 +218,15 @@ class ListComponent(SeleniumPage):
                         elif time.time()>starttime+timeout:
                             break
                     try:
-                        self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[0]))
-                        self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[1]))
-                        self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[2]))
+                        self.clickElemByXpath_Presence(self.address_option_loc.format(addressname=sp[0]))
+                        self.clickElemByXpath_Presence(self.address_option_loc.format(addressname=sp[1]))
+                        self.clickElemByXpath_Presence(self.address_option_loc.format(addressname=sp[2]))
                         self.ListComponent_Click_SerachBtn()
                     except Exception:
                         time.sleep(1)
-                        self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[0]))
-                        self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[1]))
-                        self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[2]))
+                        self.clickElemByXpath_Presence(self.address_option_loc.format(addressname=sp[0]))
+                        self.clickElemByXpath_Presence(self.address_option_loc.format(addressname=sp[1]))
+                        self.clickElemByXpath_Presence(self.address_option_loc.format(addressname=sp[2]))
                         self.ListComponent_Click_SerachBtn()
                 elif len(sp)==2:
                     starttime=time.time()
@@ -242,13 +243,13 @@ class ListComponent(SeleniumPage):
                         elif time.time()>starttime+timeout:
                             break
                     try:
-                        self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[0]))
-                        self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[1]))
+                        self.clickElemByXpath_Presence(self.address_option_loc.format(addressname=sp[0]))
+                        self.clickElemByXpath_Presence(self.address_option_loc.format(addressname=sp[1]))
                         self.ListComponent_Click_SerachBtn()
                     except Exception:
                         time.sleep(1)
-                        self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[0]))
-                        self.clickElemByXpath_Presence(self.address_base_loc.format(addressname=sp[1]))
+                        self.clickElemByXpath_Presence(self.address_option_loc.format(addressname=sp[0]))
+                        self.clickElemByXpath_Presence(self.address_option_loc.format(addressname=sp[1]))
                         self.ListComponent_Click_SerachBtn()
 
             except Exception:
@@ -432,9 +433,39 @@ class ListComponent(SeleniumPage):
             self.sendkeysElemByXpath_Presence(self.QueryItem_loc.replace('%s',itemName),keys)
 
         #日期类型
-        if (type == "date"):
+        elif (type=="date"):
             self.sendkeysElemByXpath_Presence(self.QueryItem_loc.replace('%s',itemName),keys,index=0)
             self.sendkeysElemByXpath_Presence(self.QueryItem_loc.replace('%s', itemName), args[0], index=1)
+
+        #地址选择器类型
+        elif(type=="address"):
+            #点击地址输入框
+            self.clickElemByXpath_Presence("//span[@data-mark='地址选择下拉框']")
+            address = str(keys)
+            if "/" not in address:
+                    raise Exception("地址输入格式不正确或者地址不存在，请使用如下输入格式：河南省/郑州市/金水区")
+            else:
+                #将地址划分
+                sp = address.split("/")
+                for i in sp:
+                    #点击选项
+                    self.clickElemByXpath_Presence(self.address_option_loc.format(addressname=i))
+         #下拉框类型
+        elif(type=="option"):
+            #点击文本框
+            self.clickElemByXpath_Presence(self.QueryItem_loc.replace('%s',itemName))
+            #点击选项
+            self.clickElemByXpath_Presence(self.li_selectOption_loc.replace('%s',keys))
+
+        #人员部门类型
+        elif(type == "user"):
+            # 向文本框输入值
+            self.sendkeysElemByXpath_Presence(self.QueryItem_loc.replace('%s', itemName),keys)
+            # 点击选项
+            self.clickElemByXpath_Presence(self.li_selectOption_loc.replace('%s', keys))
+        else:
+            print("类型值为："+type)
+            raise Exception("查询项无此类型，请检查type参数的值")
 
     def inputValueToSingleText(self,feild_name,value):
         '''向单行文本字段输入值'''

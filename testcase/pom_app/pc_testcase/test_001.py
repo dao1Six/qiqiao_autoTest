@@ -138,9 +138,10 @@ class PomAppTest_001(unittest.TestCase):
         self.driver.get("http://runtime.qwqa.do1.work/?corp_id=wwd5af6a678822e11b#/application/business?applicationId=ce61fe66d15f4b4b9efbe7267413f307&mainColor=red&businessModelId=c037f4a94417421cb2caa2f228dc1e54")
         businessPage = BusinessPage(self.driver)
         businessPage.ListComponent_Click_ExpandBtn()
-        businessPage.ListComponent_QueryItem_Sendkeys("时间", "00:00","23:59" ,type="date ")
+        # businessPage.ListComponent_QueryItem_Sendkeys("创建人", "吴健伦",type="user")
+        businessPage.ListComponent_QueryItem_Sendkeys("日期", "2020-05-15", "2020-05-25",type="date")
         # businessPage.ListComponent_QueryItem_Sendkeys("整数",5,type="text ")
-        time.sleep(1)
+        time.sleep(10)
 
 
 
