@@ -12,7 +12,7 @@ class User(SeleniumPage):
 
     User_search_loc = "//input[@placeholder='搜索用户']"  #人员选择组织架构搜索框
 
-    User_searchOption_loc = "//li/span[contains(text(),'%s')]"  #人员选择组织架构搜索项
+    User_searchOption_loc = "//span[contains(text(),'%s')]/parent::li"  #人员选择组织架构搜索项
 
     UserValue_loc = "//div[@data-mark='%s']//div[contains(@class,'component_detail')]//span"  #人员选择组件值元素
 
@@ -25,10 +25,10 @@ class User(SeleniumPage):
         userName：人员名称
         '''
         #点击选择框
-        self.clickElemByXpath_Presence(self.User_selectBox_loc.replace('%s',fieldName))
-        self.sendkeysElemByXpath_Presence(self.User_search_loc,userName)
-        self.clickElemByXpath_Presence(self.User_searchOption_loc.replace('%s',userName))
-        self.clickElemByXpath_Presence(self.User_querenButton_loc.replace('%s',fieldName))
+        self.clickElemByXpath_visibility(self.User_selectBox_loc.replace('%s',fieldName))
+        self.sendkeysElemByXpath_visibility(self.User_search_loc,userName)
+        self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',userName))
+        self.clickElemByXpath_visibility(self.User_querenButton_loc.replace('%s',fieldName))
 
     def User_GetMonomialUserValue_readOnly( self,fieldName):
         '''获取只读状态下的人员单选字段的值'''
@@ -42,15 +42,15 @@ class User(SeleniumPage):
         userNameList：人员名称集合  list类型
         '''
         #点击选择框
-        self.clickElemByXpath_Presence(self.User_selectBox_loc.replace('%s',fieldName))
+        self.clickElemByXpath_visibility(self.User_selectBox_loc.replace('%s',fieldName))
         self.selectUser(userNameList)
 
     def selectUser( self,userNameList,fieldName):
         for name in userNameList:
-            self.clickElemByXpath_Presence(self.User_search_loc)
-            self.sendkeysElemByXpath_Presence(self.User_search_loc,name)
-            self.clickElemByXpath_Presence(self.User_searchOption_loc.replace('%s',name),index=1)
-        self.clickElemByXpath_Presence(self.User_querenButton_loc.replace('%s',fieldName))
+            self.clickElemByXpath_visibility(self.User_search_loc)
+            self.sendkeysElemByXpath_visibility(self.User_search_loc,name)
+            self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',name),index=1)
+        self.clickElemByXpath_visibility(self.User_querenButton_loc.replace('%s',fieldName))
 
 
 

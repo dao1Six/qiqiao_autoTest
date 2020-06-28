@@ -35,7 +35,7 @@ class ChildForm_component(SeleniumPage):
 
     def click_ChildForm_Button( self,buttonName ):
         '''点击子表按钮'''
-        self.clickElemByXpath_Presence(self.ChildForm_button_loc.replace('%s',buttonName))
+        self.clickElemByXpath_visibility(self.ChildForm_button_loc.replace('%s',buttonName))
 
 
 
@@ -139,10 +139,10 @@ class ChildForm_component(SeleniumPage):
         self.clickElemByCSS_Presence(self.ChildForm_userSelect_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%user',UserTitle))
 
         for name in userNameList:
-            self.clickElemByXpath_Presence (self.User_search_loc)
-            self.sendkeysElemByXpath_Presence (self.User_search_loc, name)
-            self.clickElemByXpath_Presence (self.User_searchOption_loc.replace ('%s', name))
-        self.clickElemByXpath_Presence (self.User_querenButton_loc)
+            self.clickElemByXpath_visibility (self.User_search_loc)
+            self.sendkeysElemByXpath_visibility (self.User_search_loc, name)
+            self.clickElemByXpath_visibility (self.User_searchOption_loc.replace ('%s', name))
+        self.clickElemByXpath_visibility (self.User_querenButton_loc)
 
 
     # 给子表的部门选择组件字段添加数据
@@ -150,5 +150,10 @@ class ChildForm_component(SeleniumPage):
     # 给子表的地址选择组件字段添加数据
 
     # 给子表的级联选择组件字段添加数据
+
+
+
+    # 给子表的单项选择组件输入值
+
 
 

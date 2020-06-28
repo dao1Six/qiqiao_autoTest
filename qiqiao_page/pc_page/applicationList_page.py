@@ -25,6 +25,6 @@ class ApplicationListPage(SeleniumPage):
     #         self.ApplicationListPage_application_loc.replace ('%groupName', groupName).replace ('%applicationName', title))
     def click_application(self,app_name):
         loc = self.openself.format(appname=app_name)
-        self.clickElemByXpath_Presence(loc)
+        self.clickElemByXpath_visibility(loc)
 
 

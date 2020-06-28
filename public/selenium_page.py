@@ -85,31 +85,34 @@ class SeleniumPage (object):
 
     ####点击元素方法
 
-    @retry (stop_max_attempt_number=5, wait_fixed=2000,wrap_exception=True)
+    def retry_if_clickOtherelement( exception ):
+        exceptionInfo = str(exception)
+        if ("Other element would receive the click" in exceptionInfo):
+            print(exceptionInfo)
+            return isinstance(exception, WebDriverException)
+
+    @retry (retry_on_exception=retry_if_clickOtherelement,stop_max_attempt_number=5, wait_fixed=2000,wrap_exception=True)
     def clickElem(self, elem):
         """给一个存在dom的元素写入值Xpath"""
+        # try:
         self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
         elem.click()
+        # except WebDriverException:
+        #     # self.driver.execute_script("arguments[0].click();",elem)
+        #     self.move_to_element(elem)
+        #     elem.send_keys(Keys.ENTER)
 
-
-    def clickElemByXpath_Presence(self, locator, index=0):
+    def clickElemByXpath_visibility(self, locator, index=0):
         """点击单个存在dom的元素Xpath"""
         #传元素地址
         if(type(locator)==str):
-            elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index)
-            if(elem is not None and elem.is_displayed()):
-                self.clickElem(elem)
-            elif(elem is  None):
-                print("None没有点击事件")
-                raise WebDriverException
+            elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator)
+            self.clickElem(elem)
         #传元素
         elif(type(locator)==selenium.webdriver.remote.webelement.WebElement):
             elem = locator
-            if(elem is not None and elem.is_displayed()):
-                self.clickElem(elem)
-            elif (elem is None):
-                print("None没有点击事件")
-                raise WebDriverException
+            self.clickElem(elem)
+
 
     def clickElemByCSS_Presence(self, locator,index = 0):
         """点击单个存在dom的元素CSS"""
@@ -122,15 +125,15 @@ class SeleniumPage (object):
 
     ####元素写值方法
     @retry (stop_max_attempt_number=5, wait_fixed=2000,wrap_exception=True)
-    def sendkeysElem(self, elem, key):
+    def sendkeysElem(self, elem, key,isclear =False):
         """给一个存在dom的元素写入值Xpath"""
-
         self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
-        elem.clear()
+        if(isclear==True):
+            elem.clear()
         elem.send_keys (key)
 
 
-    def sendkeysElemByXpath_Presence(self, locator, key, index=0):
+    def sendkeysElemByXpath_visibility(self, locator, key, index=0):
         """给一个存在dom的元素写入值Xpath"""
         elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index)
         self.sendkeysElem(elem, key)

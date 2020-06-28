@@ -19,4 +19,4 @@ class BottomMenuComponent(SeleniumPage):
 
     #点击某个菜单
     def ClickBottomMenu( self,title ):
-        self.clickElemByXpath_Presence(self.dyBottomNavigation_item.replace('%s',title))
+        self.clickElemByXpath_visibility(self.dyBottomNavigation_item.replace('%s',title))

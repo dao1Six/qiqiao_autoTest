@@ -20,9 +20,9 @@ class MobileLoginPage(SeleniumPage):
         password：密码
         """
         self.open(login_url)
-        self.clickElemByXpath_Presence(self.mobiledenglu)
-        self.sendkeysElemByXpath_Presence(self.mobilezhanghao,username)
-        self.sendkeysElemByXpath_Presence(self.mobilemima,password)
-        self.clickElemByXpath_Presence(self.mobileanniu)
+        self.clickElemByXpath_visibility(self.mobiledenglu)
+        self.sendkeysElemByXpath_visibility(self.mobilezhanghao,username)
+        self.sendkeysElemByXpath_visibility(self.mobilemima,password)
+        self.clickElemByXpath_visibility(self.mobileanniu)
         time.sleep(2)
 

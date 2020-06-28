@@ -15,13 +15,13 @@ class ProcessPage(SeleniumPage):
 
     #切换左侧菜单
     def click_process_menu( self,menu ):
-        self.clickElemByXpath_Presence(self.process_menu.replace('%s',menu))
+        self.clickElemByXpath_visibility(self.process_menu.replace('%s',menu))
 
 
     # 发起流程页面
     def click_process_icon( self,title ):
         '''点击流程图标，发起流程'''
-        self.clickElemByXpath_Presence(self.process_icon_loc.replace('%title',title))
+        self.clickElemByXpath_visibility(self.process_icon_loc.replace('%title',title))
 
 
 
@@ -32,6 +32,6 @@ class ProcessPage(SeleniumPage):
 
     def click_process_record( self,index ):
         '''打开流程记录'''
-        self.clickElemByXpath_Presence(self.record,index=index-1)
+        self.clickElemByXpath_visibility(self.record,index=index-1)
 
 

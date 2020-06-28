@@ -27,15 +27,15 @@ class Dept(SeleniumPage):
         DeptName：部门名称
         '''
         #点击选择框
-        self.clickElemByXpath_Presence(self.Dept_selectBox_loc.replace('%s',fieldName))
+        self.clickElemByXpath_visibility(self.Dept_selectBox_loc.replace('%s',fieldName))
         #等待组织架构加载
         self.wait_elem_visible(self.El_tree_loc)
         #搜索框输入部门名称
         self.sendkeysElemByCSS_Presence(self.Dept_search_loc,DeptName)
         #点击查询结果
-        self.clickElemByXpath_Presence(self.Dept_searchOption_loc.replace('%s',DeptName))
+        self.clickElemByXpath_visibility(self.Dept_searchOption_loc.replace('%s',DeptName))
         #点击确认按钮
-        self.clickElemByXpath_Presence(self.Dept_querenButton_loc.replace('%s',fieldName))
+        self.clickElemByXpath_visibility(self.Dept_querenButton_loc.replace('%s',fieldName))
 
 
     # 给部门多选组件输入值
@@ -45,12 +45,12 @@ class Dept(SeleniumPage):
         DeptNameList：部门名称集合  list类型
         '''
         #点击选择框
-        self.clickElemByXpath_Presence(self.Dept_selectBox_loc.replace('%s',fieldName))
+        self.clickElemByXpath_visibility(self.Dept_selectBox_loc.replace('%s',fieldName))
         for name in DeptNameList:
-            self.clickElemByXpath_Presence (self.Dept_search_loc)
-            self.sendkeysElemByXpath_Presence(self.Dept_search_loc,name)
+            self.clickElemByXpath_visibility (self.Dept_search_loc)
+            self.sendkeysElemByXpath_visibility(self.Dept_search_loc,name)
             e = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Dept_searchOption_loc.replace('%s',name))
             e.click()
         # 点击确认按钮
-        self.clickElemByXpath_Presence(self.Dept_querenButton_loc.replace('%s', fieldName))
+        self.clickElemByXpath_visibility(self.Dept_querenButton_loc.replace('%s', fieldName))
 

@@ -19,5 +19,5 @@ class NavigationComponent(SeleniumPage):
 
     #点击页面导航图标
     def ClickNavigation( self,item_title):
-        self.clickElemByXpath_Presence(self.dyListNavigation_item.replace('%s', item_title))
+        self.clickElemByXpath_visibility(self.dyListNavigation_item.replace('%s', item_title))
 

@@ -17,7 +17,8 @@ class Date(SeleniumPage):
         fieldName：字段标题
         key：日期值 格式：2018-11-22
         '''
-        self.sendkeysElemByXpath_Presence(self.Date_input_loc.replace('%s',fieldName),key)
+        self.sendkeysElemByXpath_visibility(self.Date_input_loc.replace('%s',fieldName),key)
+        #点击标题名脱离光标
         self.clickElemByCSS_Presence(self.Date_label_loc.replace('%s',fieldName).replace('%title',fieldName))
 
 

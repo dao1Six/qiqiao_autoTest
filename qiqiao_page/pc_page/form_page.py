@@ -26,7 +26,7 @@ class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Sele
 
     FormPage_submit_button_loc = "//button[@type='button']/span[contains(text(),'提交')]"  #表单提交按钮
 
-    FormPage_button_loc = "//button[contains(@class,'el-button')]/span[contains(text(),'%s')]"
+    FormPage_button_loc = "//span[contains(text(),'%s')]/parent::button[contains(@class,'el-button')]"
 
     select_struct_box = "//div[@aria-label='办理']//div[contains(@class,'select_struct_box')]"
 
@@ -36,11 +36,11 @@ class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Sele
 
     #提交表单
     def click_submit_button(self,*args):
-        self.clickElemByXpath_Presence(self.FormPage_submit_button_loc)
+        self.clickElemByXpath_visibility(self.FormPage_submit_button_loc)
 
     def clickFormButton( self,buttonName ):
         '''点击表单按钮'''
-        self.clickElemByXpath_Presence(self.FormPage_button_loc.replace('%s',buttonName))
+        self.clickElemByXpath_visibility(self.FormPage_button_loc.replace('%s',buttonName))
 
 
 
@@ -49,14 +49,14 @@ class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Sele
     def selectProcessManager( self,userNameList ):
         '''选择流程办理人'''
         # 点击办理人输入框
-        self.clickElemByXpath_Presence(self.select_struct_box)
+        self.clickElemByXpath_visibility(self.select_struct_box)
         for name in userNameList:
-            self.clickElemByXpath_Presence(self.User_search_loc)
-            self.sendkeysElemByXpath_Presence(self.User_search_loc,name)
-            self.clickElemByXpath_Presence(self.User_searchOption_loc.replace('%s',name),index=1)
+            self.clickElemByXpath_visibility(self.User_search_loc)
+            self.sendkeysElemByXpath_visibility(self.User_search_loc,name)
+            self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',name),index=1)
         #点击组织选择器确认按钮
-        self.clickElemByXpath_Presence(self.processUser_querenButton_loc)
+        self.clickElemByXpath_visibility(self.processUser_querenButton_loc)
         time.sleep(1)
         # 点击流程办理框确认按钮
-        self.clickElemByXpath_Presence(self.process_querenButton_loc)
+        self.clickElemByXpath_visibility(self.process_querenButton_loc)
 
