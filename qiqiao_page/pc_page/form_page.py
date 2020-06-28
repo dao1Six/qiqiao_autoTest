@@ -1,6 +1,8 @@
 #表单页面
 import time
 
+from selenium.webdriver.common.keys import Keys
+
 from qiqiao_page.pc_page.components.cascade_component import Cascade
 from qiqiao_page.pc_page.components.datetime_component import DateTime
 from qiqiao_page.pc_page.components.dept_component import Dept
@@ -53,7 +55,12 @@ class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Sele
         for name in userNameList:
             self.clickElemByXpath_visibility(self.User_search_loc)
             self.sendkeysElemByXpath_visibility(self.User_search_loc,name)
-            self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',name),index=1)
+            # self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',name),index=1)
+            searchOptionElem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.User_searchOption_loc.replace('%s',name))
+            self.move_to_element(searchOptionElem)
+            searchOptionElem.send_keys(Keys.ENTER)
+
+
         #点击组织选择器确认按钮
         self.clickElemByXpath_visibility(self.processUser_querenButton_loc)
         time.sleep(1)

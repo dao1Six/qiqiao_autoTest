@@ -1,4 +1,5 @@
 # coding=utf-8
+import datetime
 import time
 import traceback
 from functools import singledispatch
@@ -88,6 +89,7 @@ class SeleniumPage (object):
     def retry_if_clickOtherelement( exception ):
         exceptionInfo = str(exception)
         if ("Other element would receive the click" in exceptionInfo):
+            print(datetime.datetime.now())
             print(exceptionInfo)
             return isinstance(exception, WebDriverException)
 
