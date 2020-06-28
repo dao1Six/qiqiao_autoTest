@@ -124,7 +124,7 @@ class PomAppTest_001(unittest.TestCase):
         formPage.ChildForm_AddButton_Click('工时明细')
         formPage.Selection_RadioSelect_Sendkeys("工时类型","产品研发工作")
         time.sleep(10)
-        formPage.ForeignSelection_Sendkeys("产品名称","测试20")
+        # formPage.ForeignSelection_Sendkeys("产品名称","测试20")
         formPage.Selection_MonomialSelect_Sendkeys("工作内容","产品测试")
         formPage.click_ChildForm_Button("保存")
         time.sleep(5)
@@ -137,9 +137,11 @@ class PomAppTest_001(unittest.TestCase):
     def test_03( self ):
         self.driver.get("http://runtime.qwqa.do1.work/?corp_id=wwd5af6a678822e11b#/application/business?applicationId=ce61fe66d15f4b4b9efbe7267413f307&mainColor=red&businessModelId=c037f4a94417421cb2caa2f228dc1e54")
         businessPage = BusinessPage(self.driver)
-        businessPage.ListComponent_Click_ExpandBtn()
+        businessPage.ListComponent_MoveTo_ListRow_MoreButton(1)
+        businessPage.ListComponent_Click_ListRow_Button("打印",1)
+        # businessPage.ListComponent_Click_ExpandBtn()
         # businessPage.ListComponent_QueryItem_Sendkeys("创建人", "吴健伦",type="user")
-        businessPage.ListComponent_QueryItem_Sendkeys("日期", "2020-05-15", "2020-05-25",type="date")
+        # businessPage.ListComponent_QueryItem_Sendkeys("时间", "11:37","13:37",type="date")
         # businessPage.ListComponent_QueryItem_Sendkeys("整数",5,type="text ")
         time.sleep(10)
 

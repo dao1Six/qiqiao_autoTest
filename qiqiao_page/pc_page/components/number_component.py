@@ -21,6 +21,6 @@ class Number(SeleniumPage):
 
     def getNumberValue_readOnly( self,fieldName ):
         '''获取只读状态的数字组件值'''
-        elem = self.find_elenmInElemsByXpath(self.Number_div_loc.replace('%s',fieldName))
+        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Number_div_loc.replace('%s',fieldName))
         return elem.text
 

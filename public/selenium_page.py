@@ -56,6 +56,11 @@ class SeleniumPage (object):
         ActionChains(self.driver).click_and_hold(elem).perform()
 
 
+    #鼠标悬浮
+    def move_to_element( self,elem):
+        ActionChains(self.driver).move_to_element(elem).perform()
+
+
 
     def scrollIntoView(self, locator, timeout=2, *args):
         """将元素拖动到可见区域"""
@@ -91,7 +96,7 @@ class SeleniumPage (object):
         """点击单个存在dom的元素Xpath"""
         #传元素地址
         if(type(locator)==str):
-            elem = self.find_elenmInElemsByXpath(locator,index)
+            elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index)
             if(elem is not None and elem.is_displayed()):
                 self.clickElem(elem)
             elif(elem is  None):
@@ -127,7 +132,7 @@ class SeleniumPage (object):
 
     def sendkeysElemByXpath_Presence(self, locator, key, index=0):
         """给一个存在dom的元素写入值Xpath"""
-        elem = self.find_elenmInElemsByXpath(locator,index)
+        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index)
         self.sendkeysElem(elem, key)
 
 
@@ -170,11 +175,26 @@ class SeleniumPage (object):
             print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
             return None
 
-    def find_elenmInElemsByXpath(self, locator, index=0,timeout=5):
+    def find_elenmInElemsByXpath_visibility_of_any_elements_located(self, locator, index=0,timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(
                 EC.visibility_of_any_elements_located((By.XPATH, locator)))[index]
+        except IndexError as e:
+            print(e)
+            print(locator + "页面无此元素"+"index值为"+str(index))
+            return None
+        except TimeoutException as t:
+            print(t)
+            print("根据"+locator+"信息在"+str(timeout)+"秒内没有查询到元素")
+            return None
+
+
+    def find_elenmInElemsByXpath_presence_of_all_elements_located(self, locator, index=0,timeout=5):
+        '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
+        try:
+            return WebDriverWait(self.driver, timeout).until(
+                EC.presence_of_all_elements_located((By.XPATH, locator)))[index]
         except IndexError as e:
             print(e)
             print(locator + "页面无此元素"+"index值为"+str(index))

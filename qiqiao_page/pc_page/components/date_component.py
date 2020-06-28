@@ -23,5 +23,5 @@ class Date(SeleniumPage):
 
     #获取可写状态的日期组件的值
     def Date_GetValue_writable( self,fieldName ):
-        elem = self.find_elenmInElemsByXpath(self.Date_input_loc.replace('%s',fieldName))
+        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Date_input_loc.replace('%s',fieldName))
         return self.getElemAttrValue(elem,"value")

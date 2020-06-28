@@ -32,7 +32,7 @@ class User(SeleniumPage):
 
     def User_GetMonomialUserValue_readOnly( self,fieldName):
         '''获取只读状态下的人员单选字段的值'''
-        return self.find_elenmInElemsByXpath(self.UserValue_loc.replace('%s',fieldName)).text
+        return self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.UserValue_loc.replace('%s',fieldName)).text
 
 
 
