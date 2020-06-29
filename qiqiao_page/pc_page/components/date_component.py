@@ -8,7 +8,7 @@ class Date(SeleniumPage):
 
     Date_label_loc = "div[data-mark='%s']>label>span[title='%title']"  # 日期组件字段标题
 
-
+    ChildFormPopup_loc = "//div[@data-mark='子表弹层_%s']"
 
 
     #给日期组件输入值
@@ -20,6 +20,15 @@ class Date(SeleniumPage):
         self.sendkeysElemByXpath_visibility(self.Date_input_loc.replace('%s',fieldName),key)
         #点击标题名脱离光标
         self.clickElemByCSS_Presence(self.Date_label_loc.replace('%s',fieldName).replace('%title',fieldName))
+
+    def Date_InChildForm_Sendkeys( self,childFormName,fieldName,key,*args ):
+
+        '''子表弹框输入文本值'''
+        loc = self.ChildFormPopup_loc.replace('%s',childFormName)+self.Date_input_loc.replace('%s',fieldName)
+        self.sendkeysElemByXpath_visibility(loc,key)
+        # 点击标题名脱离光标
+        self.clickElemByCSS_Presence(self.Date_label_loc.replace('%s', fieldName).replace('%title', fieldName))
+
 
 
     #获取可写状态的日期组件的值

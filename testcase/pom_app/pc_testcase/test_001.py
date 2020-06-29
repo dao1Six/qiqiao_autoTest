@@ -97,8 +97,8 @@ class PomAppTest_001(unittest.TestCase):
 
         # 点击项目里程碑添加按钮字段
         formPage.ChildForm_AddButton_Click("项目里程碑")
-        formPage.Text_Sendkeys("阶段名称", "测试")
-        formPage.Text_Sendkeys("计划完成时间", "2020-06-22")
+        formPage.Text_InChildForm_Sendkeys("项目里程碑","阶段名称", "测试")
+        formPage.Date_InChildForm_Sendkeys("项目里程碑","计划完成时间", "2020-06-22")
         time.sleep(2)
         # 点击子表保存按钮
         formPage.click_ChildForm_Button('保存')
@@ -107,7 +107,7 @@ class PomAppTest_001(unittest.TestCase):
         time.sleep(5)
         processPage.click_process_menu("我的待办")
         processPage.click_process_record(1)
-        formPage.clickFormButton("提交")
+        formPage.clickFormButton("审核通过")
 
 
     def test_02( self ):

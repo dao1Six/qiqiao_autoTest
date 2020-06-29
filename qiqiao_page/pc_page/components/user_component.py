@@ -12,7 +12,8 @@ class User(SeleniumPage):
 
     User_search_loc = "//input[@placeholder='搜索用户']"  #人员选择组织架构搜索框
 
-    User_searchOption_loc = "//span[contains(text(),'%s')]/parent::li"  #人员选择组织架构搜索项
+    User_searchOption_loc = "//span[contains(text(),'%s')]/parent::li[contains(@class,'el-select-dropdown__item')]"  #人员选择组织架构搜索项
+
 
     UserValue_loc = "//div[@data-mark='%s']//div[contains(@class,'component_detail')]//span"  #人员选择组件值元素
 

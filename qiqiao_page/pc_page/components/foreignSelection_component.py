@@ -31,3 +31,4 @@ class ForeignSelection_component(SeleniumPage):
         #点击选项
         self.clickElemByXpath_visibility(self.ForeignSelectOption_loc.replace('%s',value))
 
+
