@@ -36,6 +36,8 @@ class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Sele
 
     processUser_querenButton_loc = "//div[@aria-label='选择办理人']//button[@data-mark='确定按钮']"
 
+    Form_Alert_loc = "//div[@role='alert']//p[contains(@class,'el-message__content')]"  #表单消息弹框
+
     #提交表单
     def click_submit_button(self,*args):
         self.clickElemByXpath_visibility(self.FormPage_submit_button_loc)
@@ -62,5 +64,16 @@ class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Sele
         self.clickElemByXpath_visibility(self.processUser_querenButton_loc)
         time.sleep(1)
         # 点击流程办理框确认按钮
+        self.Form_ProcessHandle_Pop_QuerenButton_Click()
+
+
+    def Form_ProcessHandle_Pop_QuerenButton_Click( self ):
+        '''点击流程办理弹框确认按钮'''
         self.clickElemByXpath_visibility(self.process_querenButton_loc)
 
+    def Form_GetAlertMessage( self ):
+        '''获取表单消息提示'''
+        #等待弹框出现
+        self.wait_elem_visible(self.Form_Alert_loc,timeout=10)
+        #返回弹框文本值
+        return self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.Form_Alert_loc).text()

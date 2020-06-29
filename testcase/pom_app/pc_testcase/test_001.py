@@ -110,6 +110,22 @@ class PomAppTest_001(unittest.TestCase):
         formPage.clickFormButton("审核通过")
 
 
+    def test_001( self ):
+        '''处理待办'''
+        portalPage = PortalPage(self.driver)
+        self.assertEquals(portalPage.get_loginUser_name(),'王浩')
+        #打开“发起流程列表”
+        portalPage.click_header_menu('流程')
+        processPage = ProcessPage(self.driver)
+        processPage.click_process_menu("我的待办")
+        processPage.click_process_record(2)
+        formPage = FormPage(self.driver)
+        formPage.clickFormButton("审核通过")
+        #点击流程办理弹框确认按钮
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
+        self.assertIn("成功",formPage.Form_GetAlertMessage())
+
+
     def test_02( self ):
         '''添加工时'''
         self.driver.get("http://runtime.qwqa.do1.work/?corp_id=wwd5af6a678822e11b#/application/business?applicationId=b289921621e245e2a114c481ddfc4304&mainColor=orange&businessModelId=e532fc5dc28d414ba10b4311bb2c31da")
@@ -118,11 +134,19 @@ class PomAppTest_001(unittest.TestCase):
         formPage = FormPage(self.driver)
         formPage.ChildForm_AddButton_Click('工时明细')
         formPage.Selection_RadioSelect_InChildForm_Sendkeys("工时明细","工时类型","产品研发工作")
-        time.sleep(10)
+        time.sleep(2)
+        formPage.Date_InChildForm_Sendkeys("工时明细","工时日期", "2020-06-29",isclear=True)
         formPage.ForeignSelection_InChildForm_Sendkeys("工时明细","产品名称","测试20")
-        formPage.Selection_MonomialSelect_Sendkeys("工作内容","产品测试")
+        formPage.Selection_MonomialSelect_InChildForm_Sendkeys("工时明细","工作内容","产品测试")
         formPage.click_ChildForm_Button("保存")
-        time.sleep(5)
+        time.sleep(2)
+        formPage.ChildForm_AddButton_Click('工时明细')
+        formPage.Selection_RadioSelect_InChildForm_Sendkeys("工时明细", "工时类型", "产品研发工作")
+        time.sleep(2)
+        formPage.Date_InChildForm_Sendkeys("工时明细", "工时日期", "2020-06-30", isclear=True)
+        formPage.ForeignSelection_InChildForm_Sendkeys("工时明细", "产品名称", "测试20")
+        formPage.Selection_MonomialSelect_InChildForm_Sendkeys("工时明细", "工作内容", "产品测试")
+        formPage.click_ChildForm_Button("保存")
 
 
 

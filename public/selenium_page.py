@@ -40,7 +40,7 @@ class SeleniumPage (object):
         # 一直等待某元素可见，默认超时3秒只做等待动作不返回值
         try:
             WebDriverWait(self.driver, timeout).until(
-                EC.visibility_of_element_located((By.CSS_SELECTOR, locator)))
+                EC.visibility_of_any_elements_located((By.CSS_SELECTOR, locator)))
         except TimeoutException as ex:
             print('wait_elem_visible 异常：%s 获取 %s 超时' % (ex, locator))
 
@@ -108,7 +108,7 @@ class SeleniumPage (object):
         """点击单个存在dom的元素Xpath"""
         #传元素地址
         if(type(locator)==str):
-            elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator)
+            elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index=index)
             self.clickElem(elem)
         #传元素
         elif(type(locator)==selenium.webdriver.remote.webelement.WebElement):
@@ -135,10 +135,10 @@ class SeleniumPage (object):
         elem.send_keys (key)
 
 
-    def sendkeysElemByXpath_visibility(self, locator, key, index=0):
+    def sendkeysElemByXpath_visibility(self, locator, key, index=0,isclear=False):
         """给一个存在dom的元素写入值Xpath"""
         elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index)
-        self.sendkeysElem(elem, key)
+        self.sendkeysElem(elem, key,isclear=isclear)
 
 
     def sendkeysElemByCSS_Presence(self, locator, key, index=0):
