@@ -42,7 +42,7 @@ class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Sele
     def click_submit_button(self,*args):
         self.clickElemByXpath_visibility(self.FormPage_submit_button_loc)
 
-    def clickFormButton( self,buttonName ):
+    def Form_Button_Click( self,buttonName ):
         '''点击表单按钮'''
         self.clickElemByXpath_visibility(self.FormPage_button_loc.replace('%s',buttonName))
 

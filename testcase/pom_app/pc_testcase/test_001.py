@@ -31,7 +31,8 @@ class PomAppTest_001(unittest.TestCase):
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
-        loginpage.user_login('http://runtime.qwqa.do1.work', "wanghao@uat", "qiqiao123")
+        # loginpage.user_login('http://runtime.qwqa.do1.work', "wanghao@uat", "qiqiao123")
+        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@hui", "do1qiqiao")
         time.sleep(5)
 
 
@@ -102,28 +103,31 @@ class PomAppTest_001(unittest.TestCase):
         time.sleep(2)
         # 点击子表保存按钮
         formPage.click_ChildForm_Button('保存')
-        formPage.clickFormButton("提交")
+        formPage.Form_Button_Click("提交")
         formPage.selectProcessManager(["王浩"])
         time.sleep(5)
         processPage.click_process_menu("我的待办")
         processPage.click_process_record(1)
-        formPage.clickFormButton("审核通过")
+        formPage.Form_Button_Click("审核通过")
 
 
     def test_001( self ):
         '''处理待办'''
         portalPage = PortalPage(self.driver)
-        self.assertEquals(portalPage.get_loginUser_name(),'王浩')
+        # self.assertEquals(portalPage.get_loginUser_name(),'王浩')
         #打开“发起流程列表”
         portalPage.click_header_menu('流程')
         processPage = ProcessPage(self.driver)
         processPage.click_process_menu("我的待办")
-        processPage.click_process_record(10)
+        processPage.click_process_record(1)
         formPage = FormPage(self.driver)
-        formPage.clickFormButton("维修完成")
-        #点击流程办理弹框确认按钮
+        formPage.MultiForm_BatchManagementButton_Click("领用明细")
+        formPage.MultiForm_BathManagePage_Record_Tick("领用明细",[1,2])
+        formPage.MultiForm_BathManagePage_ConfirmButton_Tick("领用明细")
+        formPage.MultiForm_GetTdValue("领用明细",1,5)
+        formPage.Form_Button_Click("办理")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
-        self.assertIn("成功",formPage.Form_GetAlertMessage())
+        time.sleep(10)
 
 
     def test_02( self ):
@@ -163,6 +167,23 @@ class PomAppTest_001(unittest.TestCase):
         # businessPage.ListComponent_QueryItem_Sendkeys("时间", "11:37","13:37",type="date")
         # businessPage.ListComponent_QueryItem_Sendkeys("整数",5,type="text ")
         time.sleep(10)
+
+    def test_04( self ):
+        '''资产管理应用领用流程'''
+        portalPage = PortalPage(self.driver)
+        # self.assertEquals(portalPage.get_loginUser_name(),'王浩')
+        #打开“发起流程列表”
+        portalPage.click_header_menu('流程')
+        time.sleep(5)
+        processPage = ProcessPage(self.driver)
+        processPage.click_process_icon("领用")
+        formPage = FormPage(self.driver)
+        formPage.Selection_CheckboxSelect_Sendkeys("设备类别",["平板","手机"])
+        formPage.Textarea_Sendkeys("备注","很大很大空间等哈看进度哈大噶还记得噶还记得噶实践活动")
+        formPage.Form_Button_Click("提交")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
+        time.sleep(10)
+
 
 
 

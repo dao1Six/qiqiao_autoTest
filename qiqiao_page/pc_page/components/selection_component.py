@@ -12,7 +12,7 @@ class Selection(SeleniumPage):
 
     Selection_monomialSelectOption_loc = "//li[@data-mark='%value']"  #下拉单选选项
 
-    Selection_Option_loc = "//div[@title='%s']//span[text()='%option']"  #单选多选选项
+    Selection_Option_loc = "//div[@data-mark='%s']//span[text()='%option']"  #单选多选选项
 
     Selection_Option_check_loc = "//div[@title='%s']//span[text()='%option']/preceding-sibling::span[@class='el-radio__input is-checked']" #单选多选选项被选中后出来的元素
 
@@ -88,7 +88,7 @@ class Selection(SeleniumPage):
     def Selection_CheckboxSelect_Sendkeys(self,fieldName,list,*args):
         '''给多项选择组件输入值
         fieldName：字段标题
-        list：多项选项 list类型
+        list：多项选项 list里存放选项文本值
         '''
         for i in list:
             self.clickElemByXpath_visibility(self.Selection_Option_loc.replace('%s',fieldName).replace('%option',i))

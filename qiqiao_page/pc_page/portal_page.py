@@ -13,6 +13,7 @@ class PortalPage(SeleniumPage):
     userName_loc = "span.userName"
 
     def get_loginUser_name( self ):
+        '''获取当前登录用户名'''
         return self.find_elenmInElemsByCSS(self.userName_loc).text
 
 
@@ -21,6 +22,10 @@ class PortalPage(SeleniumPage):
         menu：菜单名
         '''
         self.clickElemByXpath_visibility(self.PortalPage_headerMenu_loc.replace('%menu',menu))
+
+    def qiqiao_logout( self ):
+        '''退出登录'''
+
 
 
 

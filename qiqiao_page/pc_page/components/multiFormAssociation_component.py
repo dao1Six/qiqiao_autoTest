@@ -25,6 +25,20 @@ class MultiFormAssociation(SeleniumPage):
 
     MultiFormManagementDialog__dialogfooter_loc = "div.dialog-footer"
 
+    MultiForm_Td_loc = "//div[@data-mark='%s']//tr[@class='el-table__row'][%row]//td[%col]"
+
+
+    def MultiForm_BatchManagementButton_Click(self,fileName,*args):
+        '''点击批量管理按钮'''
+        self.clickElemByCSS_Presence(self.MultiFormAssociation_HandleManagerButton_loc.replace('%title',fileName))
+
+
+    def MultiForm_AddButton_Click(self,fileName,*args):
+        '''点击添加按钮'''
+        self.clickElemByCSS_Presence (self.MultiFormAssociation_AddButton_loc.replace ('%title', fileName))
+
+
+
     def click_MultiFormManagementDialog_paginationPrev(self,fileName,*args):
         '''批量管理页面翻页上一页按钮'''
         self.clickElemByCSS_Presence(self.MultiFormManagementDialog_paginationPrev_loc.replace('%title',fileName))
@@ -37,24 +51,25 @@ class MultiFormAssociation(SeleniumPage):
         '''批量管理页面点击具体页数'''
         self.clickElemByCSS_Presence(self.MultiFormManagementDialog_paginationNumber_loc.replace('%title',fileName).replace('%n',PageNumber))
 
-    def click_MultiFormAssociation_HandleManagerButton(self,fileName,*args):
-        '''点击批量管理按钮'''
-        self.clickElemByCSS_Presence(self.MultiFormAssociation_HandleManagerButton_loc.replace('%title',fileName))
 
 
-    def click_MultiFormAssociation_AddButton(self,fileName,*args):
-        '''点击添加按钮'''
-        self.clickElemByCSS_Presence (self.MultiFormAssociation_AddButton_loc.replace ('%title', fileName))
 
-
-    def tick_MultiFormManagementDialog_Record(self,fileName,rowIndexList,*args):
+    def MultiForm_BathManagePage_Record_Tick(self,fileName,rowIndexList,*args):
         '''勾选批量管理页面关联表记录'''
         for rowIndex in rowIndexList:
-            str_rowIndex = str(rowIndex)
+            str_rowIndex = str(rowIndex-1)
             self.clickElemByCSS_Presence (self.MultiFormManagementDialog_selected_loc.replace ('%title', fileName).replace('%rowIndex',str_rowIndex),index=1)
 
+    def MultiForm_GetTdValue( self,fileName,row,col,*args):
+        '''获取多表关联组件中间表单元格值'''
+        text = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))).text
+        if(text==""):
+            text = self.getElemAttrValue(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))+"//input"),"value")
+        return text
 
-    def click_MultiFormManagementDialog_ConfirmButton(self,fileName,*args):
+
+
+    def MultiForm_BathManagePage_ConfirmButton_Tick(self,fileName,*args):
         '''点击批量管理页面确认按钮'''
         self.clickElemByCSS_Presence (self.MultiFormManagementDialog_ConfirmButton_loc.replace ('%title', fileName))
 
