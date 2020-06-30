@@ -36,7 +36,7 @@ class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Sele
 
     processUser_querenButton_loc = "//div[@aria-label='选择办理人']//button[@data-mark='确定按钮']"
 
-    Form_Alert_loc = "//div[@role='alert']//p[contains(@class,'el-message__content')]"  #表单消息弹框
+    Form_Alert_loc = "//div[@role='alert']//p"  #表单消息弹框
 
     #提交表单
     def click_submit_button(self,*args):
@@ -74,6 +74,6 @@ class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Sele
     def Form_GetAlertMessage( self ):
         '''获取表单消息提示'''
         #等待弹框出现
-        self.wait_elem_visible(self.Form_Alert_loc,timeout=10)
+        # self.wait_elem_visible(self.Form_Alert_loc,timeout=10)
         #返回弹框文本值
-        return self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.Form_Alert_loc).text()
+        return self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.Form_Alert_loc,timeout=10).text

@@ -118,9 +118,9 @@ class PomAppTest_001(unittest.TestCase):
         portalPage.click_header_menu('流程')
         processPage = ProcessPage(self.driver)
         processPage.click_process_menu("我的待办")
-        processPage.click_process_record(2)
+        processPage.click_process_record(10)
         formPage = FormPage(self.driver)
-        formPage.clickFormButton("审核通过")
+        formPage.clickFormButton("维修完成")
         #点击流程办理弹框确认按钮
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn("成功",formPage.Form_GetAlertMessage())
