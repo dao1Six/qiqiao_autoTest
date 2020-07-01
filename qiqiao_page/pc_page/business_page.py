@@ -2,9 +2,10 @@
 from functools import singledispatch
 
 from qiqiao_page.pc_page.business_components.list_components import ListComponent
+from qiqiao_page.pc_page.public_page import PublicPage
 
 
-class BusinessPage(ListComponent):
+class BusinessPage(PublicPage,ListComponent):
     '''PC业务建模页面'''
 
     left_bar_menu_loc = "//span[@data-mark='left_bar_%s']" #左侧菜单元素

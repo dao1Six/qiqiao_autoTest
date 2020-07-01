@@ -49,6 +49,14 @@ class ListComponent(SeleniumPage):
 
     TooltipButton_loc = "//div[@role='tooltip']//button//span[text()='确定']"
 
+    pagination_total_loc = "//span[@class='el-pagination__total']"
+
+    def ListComponent_GetRecordTotal(self):
+        '''获取列表总条数'''
+        text = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.pagination_total_loc).text
+        num = int(text[1:-1])
+        return num
+
     def ListComponent_SelectAllRecord( self ):
         '''全选数据'''
         self.clickElemByXpath_visibility(self.ListRow_SelectAllInput_loc)

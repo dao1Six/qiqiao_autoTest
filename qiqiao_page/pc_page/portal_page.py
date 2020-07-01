@@ -2,9 +2,10 @@
 # 工作台页面
 
 from public.selenium_page import SeleniumPage
+from qiqiao_page.pc_page.public_page import PublicPage
 
 
-class PortalPage(SeleniumPage):
+class PortalPage(PublicPage,SeleniumPage):
     '''工作台页面'''
 
     #Action

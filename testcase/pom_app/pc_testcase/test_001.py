@@ -33,7 +33,15 @@ class PomAppTest_001(unittest.TestCase):
         loginpage = LoginPage(self.driver)
         # loginpage.user_login('http://runtime.qwqa.do1.work', "wanghao@uat", "qiqiao123")
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@hui", "do1qiqiao")
+        # loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
         time.sleep(5)
+
+
+    def test_99(self):
+        self.driver.get("https://qy.do1.com.cn/qiqiao/runtime/?corp_id=ww2e7af6e25022519d#/application/business?applicationId=b66530002a6a4390a5571729be55a51f&mainColor=cambridgeBlue&businessModelId=a33d848564b84b24bceba49ef8fc8ffc")
+        time.sleep(2)
+        b = BusinessPage(self.driver)
+        b.ListComponent_GetRecordTotal()
 
 
     def screenshot_error(func):

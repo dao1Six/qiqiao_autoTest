@@ -1,9 +1,10 @@
 # coding=utf-8
 from public.selenium_page import SeleniumPage
+from qiqiao_page.pc_page.public_page import PublicPage
 
 
-class ProcessPage(SeleniumPage):
-    '''工作台页面'''
+class ProcessPage(PublicPage,SeleniumPage):
+    '''流程列表页面'''
 
     process_icon_loc = "//p[@title='%title']/preceding-sibling::div[1]"
 

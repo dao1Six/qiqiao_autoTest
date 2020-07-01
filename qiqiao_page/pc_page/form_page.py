@@ -21,9 +21,10 @@ from qiqiao_page.pc_page.components.childForm_component import ChildForm_compone
 from qiqiao_page.pc_page.components.childFormAssociation_component import ChildFormAssociation_component
 from qiqiao_page.pc_page.components.foreignSelection_component import ForeignSelection_component
 from qiqiao_page.pc_page.components.multiFormAssociation_component import MultiFormAssociation
+from qiqiao_page.pc_page.public_page import PublicPage
 
 
-class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Selection,User,Address,Cascade,ChildForm_component,ChildFormAssociation_component,ForeignSelection_component,MultiFormAssociation,Dept):
+class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Selection,User,Address,Cascade,ChildForm_component,ChildFormAssociation_component,ForeignSelection_component,MultiFormAssociation,Dept):
     '''PC表单页面'''
 
     FormPage_submit_button_loc = "//button[@type='button']/span[contains(text(),'提交')]"  #表单提交按钮
@@ -36,7 +37,7 @@ class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Sele
 
     processUser_querenButton_loc = "//div[@aria-label='选择办理人']//button[@data-mark='确定按钮']"
 
-    Form_Alert_loc = "//div[@role='alert']//p"  #表单消息弹框
+
 
     #提交表单
     def click_submit_button(self,*args):
@@ -71,9 +72,3 @@ class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Sele
         '''点击流程办理弹框确认按钮'''
         self.clickElemByXpath_visibility(self.process_querenButton_loc)
 
-    def Form_GetAlertMessage( self ):
-        '''获取表单消息提示'''
-        #等待弹框出现
-        # self.wait_elem_visible(self.Form_Alert_loc,timeout=10)
-        #返回弹框文本值
-        return self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Form_Alert_loc,timeout=10).text
