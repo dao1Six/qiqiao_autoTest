@@ -31,7 +31,7 @@ class ChildForm_component(SeleniumPage):
         '''点击添加按钮
         fieldName：字段标题
         '''
-        self.clickElemByCSS_Presence (self.ChildForm_AddButton_loc.replace ('%title', fieldName))
+        self.clickElemByCSS_visibility (self.ChildForm_AddButton_loc.replace ('%title', fieldName))
 
     def click_ChildForm_Button( self,buttonName ):
         '''点击子表按钮'''
@@ -69,9 +69,9 @@ class ChildForm_component(SeleniumPage):
         key：文本值
         '''
         reallyRow = str (row - 1)
-        self.clickElemByCSS_Presence (self.ChildForm_Input_loc.replace ('%title', childformTitle).replace ('%row', reallyRow).replace ('%text',SelectTitle))
+        self.clickElemByCSS_visibility (self.ChildForm_Input_loc.replace ('%title', childformTitle).replace ('%row', reallyRow).replace ('%text',SelectTitle))
         for i in list:
-            self.clickElemByCSS_Presence(self.ChildForm_SelectOption_loc.replace('%option',i),index=1)
+            self.clickElemByCSS_visibility(self.ChildForm_SelectOption_loc.replace('%option',i),index=1)
 
 
     def sendkeys_To_ChildFormDate(self,childformTitle,DateTitle,row,key):
@@ -82,7 +82,7 @@ class ChildForm_component(SeleniumPage):
         '''
         reallyRow = str(row-1)
         self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',DateTitle),key)
-        self.clickElemByCSS_Presence(self.ChildForm_label_loc.replace('%title',childformTitle))
+        self.clickElemByCSS_visibility(self.ChildForm_label_loc.replace('%title',childformTitle))
 
 
     def sendkeys_To_ChildFormDateTime(self, childformTitle,DateTimeTitle, row, dateKey,timeKey):
@@ -93,12 +93,12 @@ class ChildForm_component(SeleniumPage):
         '''
         reallyRow = str(row-1)
         self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',DateTimeTitle),dateKey, index=0)
-        self.clickElemByCSS_Presence (self.ChildForm_label_loc.replace ('%title', childformTitle))
+        self.clickElemByCSS_visibility (self.ChildForm_label_loc.replace ('%title', childformTitle))
         self.sendkeysElemByCSS_Presence (
             self.ChildForm_Input_loc.replace ('%title', childformTitle).replace ('%row', reallyRow).replace ('%text',
                                                                                                              DateTimeTitle),
             dateKey, index=1)
-        self.clickElemByCSS_Presence (self.ChildForm_label_loc.replace ('%title', childformTitle))
+        self.clickElemByCSS_visibility (self.ChildForm_label_loc.replace ('%title', childformTitle))
 
 
 
@@ -111,7 +111,7 @@ class ChildForm_component(SeleniumPage):
         '''
         reallyRow = str(row-1)
         self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',TimeTitle),key)
-        self.clickElemByCSS_Presence (self.ChildForm_label_loc.replace ('%title', childformTitle))
+        self.clickElemByCSS_visibility (self.ChildForm_label_loc.replace ('%title', childformTitle))
 
     # 给子表的富文本组件字段添加数据
 
@@ -136,7 +136,7 @@ class ChildForm_component(SeleniumPage):
         '''
         reallyRow = str(row-1)
         #点击人员选择
-        self.clickElemByCSS_Presence(self.ChildForm_userSelect_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%user',UserTitle))
+        self.clickElemByCSS_visibility(self.ChildForm_userSelect_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%user',UserTitle))
 
         for name in userNameList:
             self.clickElemByXpath_visibility (self.User_search_loc)

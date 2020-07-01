@@ -90,22 +90,24 @@ class SeleniumPage (object):
         exceptionInfo = str(exception)
         if ("Other element would receive the click" in exceptionInfo):
             print(datetime.datetime.now())
-            print(exceptionInfo)
+            print("操作的元素被其他元素挡住导致点击失败"+exceptionInfo)
+            return isinstance(exception, WebDriverException)
+        elif("stale element reference: element is not attached to the page document" in exceptionInfo):
+            print(datetime.datetime.now())
+            print("页面刷新导致元素点击失败"+exceptionInfo)
             return isinstance(exception, WebDriverException)
 
-    @retry (retry_on_exception=retry_if_clickOtherelement,stop_max_attempt_number=5, wait_fixed=2000,wrap_exception=True)
+
     def clickElem(self, elem):
         """给一个存在dom的元素写入值Xpath"""
         # try:
         self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
         elem.click()
-        # except WebDriverException:
-        #     # self.driver.execute_script("arguments[0].click();",elem)
-        #     self.move_to_element(elem)
-        #     elem.send_keys(Keys.ENTER)
 
+    @retry(retry_on_exception=retry_if_clickOtherelement, stop_max_attempt_number=5, wait_fixed=3000,
+           wrap_exception=True)
     def clickElemByXpath_visibility(self, locator, index=0):
-        """点击单个存在dom的元素Xpath"""
+        """点击单个可见元素Xpath"""
         #传元素地址
         if(type(locator)==str):
             elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index=index)
@@ -115,11 +117,18 @@ class SeleniumPage (object):
             elem = locator
             self.clickElem(elem)
 
-
-    def clickElemByCSS_Presence(self, locator,index = 0):
-        """点击单个存在dom的元素CSS"""
-        elem = self.find_elenmInElemsByCSS(locator,index)
-        self.clickElem(elem)
+    @retry(retry_on_exception=retry_if_clickOtherelement, stop_max_attempt_number=5, wait_fixed=3000,
+           wrap_exception=True)
+    def clickElemByCSS_visibility(self, locator,index = 0):
+        """点击单个可见元素CSS"""
+        #传元素地址
+        if(type(locator)==str):
+            elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(locator,index=index)
+            self.clickElem(elem)
+        #传元素
+        elif(type(locator)==selenium.webdriver.remote.webelement.WebElement):
+            elem = locator
+            self.clickElem(elem)
 
 
 
@@ -143,7 +152,7 @@ class SeleniumPage (object):
 
     def sendkeysElemByCSS_Presence(self, locator, key, index=0):
         """给存在dom里的元素组里的某个元素写入值CSS"""
-        elem = self.find_elenmInElemsByCSS(locator, index)
+        elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(locator, index)
         self.sendkeysElem(elem,key)
 
 
@@ -166,11 +175,11 @@ class SeleniumPage (object):
         except:
             return None
 
-    def find_elenmInElemsByCSS(self, locator, index=0,timeout=5):
+    def find_elenmInElemsByCSS_visibility_of_any_elements_located(self, locator, index=0,timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(
-                EC.presence_of_all_elements_located((By.CSS_SELECTOR, locator)))[index]
+                EC.visibility_of_any_elements_located((By.CSS_SELECTOR, locator)))[index]
         except IndexError as e:
             print(e)
             print(locator + "页面无此元素" + "index值为" + str(index))

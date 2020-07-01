@@ -60,9 +60,9 @@ class PomAppTest_001(unittest.TestCase):
         '''道一云生产运营应用，立项申请流程(事业二部)流程'''
 
         portalPage = PortalPage(self.driver)
-        self.assertEquals(portalPage.get_loginUser_name(),'王浩')
+        self.assertEquals(portalPage.PortalPage_GetLoginUserName(),'王浩')
         #打开“发起流程列表”
-        portalPage.click_header_menu('流程')
+        portalPage.PortalPage_Click_HeaderMenu('流程')
         time.sleep(5)
         processPage = ProcessPage(self.driver)
         processPage.click_process_icon("立项申请流程(事业二部)")
@@ -114,9 +114,9 @@ class PomAppTest_001(unittest.TestCase):
     def test_001( self ):
         '''处理待办'''
         portalPage = PortalPage(self.driver)
-        # self.assertEquals(portalPage.get_loginUser_name(),'王浩')
+        # self.assertEquals(portalPage.PortalPage_GetLoginUserName(),'王浩')
         #打开“发起流程列表”
-        portalPage.click_header_menu('流程')
+        portalPage.PortalPage_Click_HeaderMenu('流程')
         processPage = ProcessPage(self.driver)
         processPage.click_process_menu("我的待办")
         processPage.click_process_record(1)
@@ -168,21 +168,7 @@ class PomAppTest_001(unittest.TestCase):
         # businessPage.ListComponent_QueryItem_Sendkeys("整数",5,type="text ")
         time.sleep(10)
 
-    def test_04( self ):
-        '''资产管理应用领用流程'''
-        portalPage = PortalPage(self.driver)
-        # self.assertEquals(portalPage.get_loginUser_name(),'王浩')
-        #打开“发起流程列表”
-        portalPage.click_header_menu('流程')
-        time.sleep(5)
-        processPage = ProcessPage(self.driver)
-        processPage.click_process_icon("领用")
-        formPage = FormPage(self.driver)
-        formPage.Selection_CheckboxSelect_Sendkeys("设备类别",["平板","手机"])
-        formPage.Textarea_Sendkeys("备注","很大很大空间等哈看进度哈大噶还记得噶还记得噶实践活动")
-        formPage.Form_Button_Click("提交")
-        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
-        time.sleep(10)
+
 
 
 

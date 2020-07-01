@@ -12,19 +12,26 @@ class PortalPage(SeleniumPage):
 
     userName_loc = "span.userName"
 
-    def get_loginUser_name( self ):
+    logout_loc = "//li[@role='menuitem' and contains(text(),'退出')]"
+
+    def PortalPage_GetLoginUserName( self ):
         '''获取当前登录用户名'''
-        return self.find_elenmInElemsByCSS(self.userName_loc).text
+        return self.find_elenmInElemsByCSS_visibility_of_any_elements_located(self.userName_loc).text
 
 
-    def click_header_menu(self,menu,*args):
+    def PortalPage_Click_HeaderMenu(self,menu,*args):
         '''点击工作台头部菜单
         menu：菜单名
         '''
         self.clickElemByXpath_visibility(self.PortalPage_headerMenu_loc.replace('%menu',menu))
 
-    def qiqiao_logout( self ):
+    def PortalPage_qiqiao_logout( self ):
         '''退出登录'''
+        #鼠标悬停在头像位置
+        elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(self.userName_loc)
+        self.move_to_element(elem)
+        #等待退出选项可见点击退出
+        self.clickElemByXpath_visibility(self.logout_loc)
 
 
 

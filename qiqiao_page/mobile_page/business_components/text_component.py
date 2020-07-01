@@ -9,4 +9,4 @@ class TextComponent(SeleniumPage):
 
     #获取文本值
     def GetTextValue( self ):
-        return self.find_elenmInElemsByCSS(self.Text_loc).text
+        return self.find_elenmInElemsByCSS_visibility_of_any_elements_located(self.Text_loc).text

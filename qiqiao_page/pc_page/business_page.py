@@ -7,5 +7,17 @@ from qiqiao_page.pc_page.business_components.list_components import ListComponen
 class BusinessPage(ListComponent):
     '''PC业务建模页面'''
 
+    left_bar_menu_loc = "//span[@data-mark='left_bar_%s']" #左侧菜单元素
+    breadcrumb_item_loc = "//span[@class='el-breadcrumb__inner is-link' and text()='全部应用']"
+    def BusinessPage_LeftMenu_Click( self,menu):
+        '''点击左侧菜单'''
+        self.clickElemByXpath_visibility(self.left_bar_menu_loc.replace('%s',menu))
+
+
+    def BusinessPage_HeardItem_AllApp_Click( self ):
+        '''点击全部应用选项'''
+        self.clickElemByXpath_visibility(self.breadcrumb_item_loc)
+
+
 
 

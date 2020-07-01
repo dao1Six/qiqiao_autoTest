@@ -19,7 +19,7 @@ class Date(SeleniumPage):
         '''
         self.sendkeysElemByXpath_visibility(self.Date_input_loc.replace('%s',fieldName),key,isclear=isclear)
         #点击标题名脱离光标
-        self.clickElemByCSS_Presence(self.Date_label_loc.replace('%s',fieldName).replace('%title',fieldName))
+        self.clickElemByCSS_visibility(self.Date_label_loc.replace('%s',fieldName).replace('%title',fieldName))
 
     def Date_InChildForm_Sendkeys( self,childFormName,fieldName,key,isclear=False,*args ):
 
@@ -27,7 +27,7 @@ class Date(SeleniumPage):
         loc = self.ChildFormPopup_loc.replace('%s',childFormName)+self.Date_input_loc.replace('%s',fieldName)
         self.sendkeysElemByXpath_visibility(loc,key,isclear=isclear)
         # 点击标题名脱离光标
-        self.clickElemByCSS_Presence(self.Date_label_loc.replace('%s', fieldName).replace('%title', fieldName))
+        self.clickElemByCSS_visibility(self.Date_label_loc.replace('%s', fieldName).replace('%title', fieldName))
 
 
 

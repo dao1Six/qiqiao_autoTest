@@ -31,7 +31,7 @@ class Selection(SeleniumPage):
         loc = self.Selection_selectionBox_loc.replace('%title',fieldName)
         self.clickElemByXpath_visibility(loc)
         for i in list:
-            self.clickElemByCSS_Presence(self.Selection_multiSelectOption_loc.replace('%option',i))
+            self.clickElemByCSS_visibility(self.Selection_multiSelectOption_loc.replace('%option',i))
 
     #
     def Selection_MonomialSelect_Sendkeys(self,fieldName,value,*args):

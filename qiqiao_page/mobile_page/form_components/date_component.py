@@ -11,7 +11,7 @@ class Date(SeleniumPage):
 
     #获取日期字段的值
     def GetDateVale(self,fieldName):
-        elem = self.find_elenmInElemsByCSS(self.dateTxr_loc.replace('%s',fieldName))
+        elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(self.dateTxr_loc.replace('%s',fieldName))
         value = elem.text
         return value
 

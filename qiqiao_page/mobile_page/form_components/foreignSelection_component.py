@@ -11,6 +11,6 @@ class ForeignSelection_component(SeleniumPage):
         list：下拉选项 list类型
         '''
         loc = self.ForeignSelectionBox_loc.replace('%title',fieldName)
-        self.clickElemByCSS_Presence(loc)
+        self.clickElemByCSS_visibility(loc)
         for i in list:
-            self.clickElemByCSS_Presence(self.ForeignSelectOption_loc.replace('%option',i))
+            self.clickElemByCSS_visibility(self.ForeignSelectOption_loc.replace('%option',i))

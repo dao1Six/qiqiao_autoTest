@@ -48,7 +48,7 @@ class SaySafeAppTest(unittest.TestCase):
         iDeclarePeacePage = IDeclarePeacePage(self.driver)
 
         #点击我要报平安页面的添加按钮
-        iDeclarePeacePage.clickElemByCSS_Presence(iDeclarePeacePage.addButtonLoc)
+        iDeclarePeacePage.clickElemByCSS_visibility(iDeclarePeacePage.addButtonLoc)
 
         formPage = FormPage(self.driver)
         # 校验提交日期字段值是否正确

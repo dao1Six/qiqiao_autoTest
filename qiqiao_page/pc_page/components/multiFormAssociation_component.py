@@ -30,26 +30,26 @@ class MultiFormAssociation(SeleniumPage):
 
     def MultiForm_BatchManagementButton_Click(self,fileName,*args):
         '''点击批量管理按钮'''
-        self.clickElemByCSS_Presence(self.MultiFormAssociation_HandleManagerButton_loc.replace('%title',fileName))
+        self.clickElemByCSS_visibility(self.MultiFormAssociation_HandleManagerButton_loc.replace('%title',fileName))
 
 
     def MultiForm_AddButton_Click(self,fileName,*args):
         '''点击添加按钮'''
-        self.clickElemByCSS_Presence (self.MultiFormAssociation_AddButton_loc.replace ('%title', fileName))
+        self.clickElemByCSS_visibility (self.MultiFormAssociation_AddButton_loc.replace ('%title', fileName))
 
 
 
     def click_MultiFormManagementDialog_paginationPrev(self,fileName,*args):
         '''批量管理页面翻页上一页按钮'''
-        self.clickElemByCSS_Presence(self.MultiFormManagementDialog_paginationPrev_loc.replace('%title',fileName))
+        self.clickElemByCSS_visibility(self.MultiFormManagementDialog_paginationPrev_loc.replace('%title',fileName))
 
     def click_MultiFormManagementDialog_paginationNext(self,fileName,*args):
         '''批量管理页面翻页下一页按钮'''
-        self.clickElemByCSS_Presence(self.MultiFormManagementDialog_paginationNext_loc.replace('%title',fileName))
+        self.clickElemByCSS_visibility(self.MultiFormManagementDialog_paginationNext_loc.replace('%title',fileName))
 
     def click_MultiFormManagementDialog_paginationNumber(self,fileName,PageNumber,*args):
         '''批量管理页面点击具体页数'''
-        self.clickElemByCSS_Presence(self.MultiFormManagementDialog_paginationNumber_loc.replace('%title',fileName).replace('%n',PageNumber))
+        self.clickElemByCSS_visibility(self.MultiFormManagementDialog_paginationNumber_loc.replace('%title',fileName).replace('%n',PageNumber))
 
 
 
@@ -58,7 +58,7 @@ class MultiFormAssociation(SeleniumPage):
         '''勾选批量管理页面关联表记录'''
         for rowIndex in rowIndexList:
             str_rowIndex = str(rowIndex-1)
-            self.clickElemByCSS_Presence (self.MultiFormManagementDialog_selected_loc.replace ('%title', fileName).replace('%rowIndex',str_rowIndex),index=1)
+            self.clickElemByCSS_visibility (self.MultiFormManagementDialog_selected_loc.replace ('%title', fileName).replace('%rowIndex',str_rowIndex))
 
     def MultiForm_GetTdValue( self,fileName,row,col,*args):
         '''获取多表关联组件中间表单元格值'''
@@ -71,12 +71,12 @@ class MultiFormAssociation(SeleniumPage):
 
     def MultiForm_BathManagePage_ConfirmButton_Tick(self,fileName,*args):
         '''点击批量管理页面确认按钮'''
-        self.clickElemByCSS_Presence (self.MultiFormManagementDialog_ConfirmButton_loc.replace ('%title', fileName))
+        self.clickElemByCSS_visibility (self.MultiFormManagementDialog_ConfirmButton_loc.replace ('%title', fileName))
 
 
     def click_MultiFormManagementDialog_CancelButton(self,fileName,*args):
         '''点击批量管理页面取消按钮'''
-        self.clickElemByCSS_Presence (self.MultiFormManagementDialog_CancelButton_loc.replace ('%title', fileName))
+        self.clickElemByCSS_visibility (self.MultiFormManagementDialog_CancelButton_loc.replace ('%title', fileName))
 
     def delete_MultiForm_Record(self):
         '''删除多表记录'''
@@ -109,9 +109,9 @@ class MultiFormAssociation(SeleniumPage):
         key：文本值
         '''
         reallyRow = str (row - 1)
-        self.clickElemByCSS_Presence (self.MultiFormManagementDialog__Input_loc.replace ('%title', multiformTitle).replace ('%rowIndex', reallyRow).replace ('%filename',SelectTitle))
+        self.clickElemByCSS_visibility (self.MultiFormManagementDialog__Input_loc.replace ('%title', multiformTitle).replace ('%rowIndex', reallyRow).replace ('%filename',SelectTitle))
         for i in list:
-            self.clickElemByCSS_Presence(self.MultiForm_SelectOption_loc.replace('%option',i),index=1)
+            self.clickElemByCSS_visibility(self.MultiForm_SelectOption_loc.replace('%option',i),index=1)
 
     #
     def sendkeys_To_MultiFormDate(self,MultiFormTitle,DateTitle,row,key):
@@ -122,7 +122,7 @@ class MultiFormAssociation(SeleniumPage):
         '''
         reallyRow = str(row-1)
         self.sendkeysElemByCSS_Presence(self.MultiFormManagementDialog__Input_loc.replace('%title',MultiFormTitle).replace('%rowIndex',reallyRow).replace('%filename',DateTitle),key)
-        self.clickElemByCSS_Presence(self.MultiFormManagementDialog__dialogfooter_loc,index=2)
+        self.clickElemByCSS_visibility(self.MultiFormManagementDialog__dialogfooter_loc,index=2)
 
     #
     def sendkeys_To_MultiFormDateTime(self, MultiFormTitle,DateTimeTitle, row, dateKey,timeKey):
@@ -134,10 +134,10 @@ class MultiFormAssociation(SeleniumPage):
         reallyRow = str(row-1)
         #日期输入框
         self.sendkeysElemByCSS_Presence(self.MultiFormManagementDialog__Input_loc.replace('%title',MultiFormTitle).replace('%rowIndex',reallyRow).replace('%filename',DateTimeTitle),dateKey, index=0)
-        self.clickElemByCSS_Presence (self.MultiFormManagementDialog__dialogfooter_loc, index=2)
+        self.clickElemByCSS_visibility (self.MultiFormManagementDialog__dialogfooter_loc, index=2)
         #时间输入框
         self.sendkeysElemByCSS_Presence(self.MultiFormManagementDialog__Input_loc.replace('%title',MultiFormTitle).replace('%rowIndex',reallyRow).replace('%filename',DateTimeTitle),dateKey, index=1)
-        self.clickElemByCSS_Presence (self.MultiFormManagementDialog__dialogfooter_loc, index=2)
+        self.clickElemByCSS_visibility (self.MultiFormManagementDialog__dialogfooter_loc, index=2)
 
     #
     def sendkeys_To_MultiFormTime(self,MultiFormTitle,TimeTitle,row,key):
@@ -149,7 +149,7 @@ class MultiFormAssociation(SeleniumPage):
         reallyRow = str(row-1)
         self.sendkeysElemByCSS_Presence(self.MultiFormManagementDialog__Input_loc.replace('%title',MultiFormTitle).replace('%rowIndex',reallyRow).replace('%filename',TimeTitle),key)
         #点击底部
-        self.clickElemByCSS_Presence (self.MultiFormManagementDialog__dialogfooter_loc, index=2)
+        self.clickElemByCSS_visibility (self.MultiFormManagementDialog__dialogfooter_loc, index=2)
 
     # 给多表批量管理页面的中间表的富文本组件字段添加数据
 

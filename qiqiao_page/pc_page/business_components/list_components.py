@@ -45,6 +45,20 @@ class ListComponent(SeleniumPage):
 
     ListRow_MoreButton_loc = "//div[contains(@class,'el-table__body-wrapper')]//tr[%row]//span[contains(text(),'更多')]/parent::div[1]"#列表行更多按钮
 
+    ListRow_SelectAllInput_loc = "//div[contains(@class,'el-table__fixed-header-wrapper')]//th[1]//span[@class='el-checkbox__inner']" #列表首行全选元素
+
+    TooltipButton_loc = "//div[@role='tooltip']//button//span[text()='确定']"
+
+    def ListComponent_SelectAllRecord( self ):
+        '''全选数据'''
+        self.clickElemByXpath_visibility(self.ListRow_SelectAllInput_loc)
+
+    def ListComponent_TooltipButton_Click( self,ButtonNmae ):
+        '''点击列表按钮提示框按钮'''
+        self.clickElemByXpath_visibility(self.TooltipButton_loc.replace('%s',ButtonNmae))
+
+
+
     def ListComponent_Click_ListHeader_Button( self, btnname ):
         '''点击列表头部按钮'''
         self.clickElemByXpath_visibility(self.ListHeader_Button_loc.replace('%s', btnname))
@@ -72,7 +86,8 @@ class ListComponent(SeleniumPage):
 
     def ListComponent_GetTable_Td_Value( self ,row,col):
         '''获取列表单元格值'''
-        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.listTable_td_loc.replace('%row',row).replace('%col',col))
+        elem = self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.listTable_td_loc.replace('%row',str(row)).replace('%col',str(col)))
+        return elem.text
 
     def ListComponent_QueryItem_Sendkeys( self, itemName, keys, *args, type="text" ):
         '''列表组件的查询项输入值'''

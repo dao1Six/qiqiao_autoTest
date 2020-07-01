@@ -76,4 +76,4 @@ class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Sele
         #等待弹框出现
         # self.wait_elem_visible(self.Form_Alert_loc,timeout=10)
         #返回弹框文本值
-        return self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.Form_Alert_loc,timeout=10).text
+        return self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Form_Alert_loc,timeout=10).text
