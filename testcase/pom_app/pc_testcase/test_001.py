@@ -81,8 +81,8 @@ class PomAppTest_001(unittest.TestCase):
         #点击子表保存按钮
         formPage.click_ChildForm_Button('保存')
 
-        print(formPage.getNumberValue_readOnly("项目总金额"))
-        print(formPage.getNumberValue_readOnly("项目预估总成本（人天）"))
+        print(formPage.Number_GetValue_readOnly("项目总金额"))
+        print(formPage.Number_GetValue_readOnly("项目预估总成本（人天）"))
         print(formPage.Date_GetValue_writable("项目启动时间"))
         print(formPage.Selection_GetSelectionBoxValue_writable("项目类型"))
         time.sleep(1)

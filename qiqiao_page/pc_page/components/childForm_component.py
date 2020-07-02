@@ -21,11 +21,13 @@ class ChildForm_component(SeleniumPage):
 
     ChildForm_button_loc = "//button[contains(@class,'el-button')]/span[text()='%s']"
 
-
+    ChildForm_CloseIcon_loc = "//div[contains(@data-mark,'子表弹层')]//i[@class='el-icon-close close']"
 
     def scroll_To_ChildForm_Div(self):
         self.scrollIntoView(self.ChildForm_div_loc)
 
+    def ChildForm_Close(self):
+        self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildForm_CloseIcon_loc)
 
     def ChildForm_AddButton_Click(self,fieldName,*args):
         '''点击添加按钮

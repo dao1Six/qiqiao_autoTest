@@ -19,7 +19,7 @@ class Number(SeleniumPage):
         self.sendkeysElemByCSS_Presence(a, key)
 
 
-    def getNumberValue_readOnly( self,fieldName ):
+    def Number_GetValue_readOnly( self,fieldName ):
         '''获取只读状态的数字组件值'''
         elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Number_div_loc.replace('%s',fieldName))
         return elem.text

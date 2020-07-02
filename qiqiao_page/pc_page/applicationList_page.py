@@ -1,5 +1,6 @@
 # coding=utf-8
 #应用列表页面
+import time
 
 from public.selenium_page import SeleniumPage
 
@@ -23,6 +24,7 @@ class ApplicationListPage(SeleniumPage):
         '''
         self.clickElemByXpath_visibility (
             self.ApplicationListPage_application_loc.replace ('%groupName', groupName).replace ('%applicationName', title))
+        time.sleep(2)
 
 
 
