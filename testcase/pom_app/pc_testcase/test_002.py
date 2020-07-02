@@ -86,7 +86,7 @@ class PomAppTest_002(unittest.TestCase):
             else:
                 formPage.click_ChildForm_Button("保存")
             time.sleep(2)
-        self.assertEqual(str(days * 8),formPage.Number_GetValue_readOnly("本次工时合计"),msg="工时合计不正确")
+        self.assertEqual(str((days+1) * 8),formPage.Number_GetValue_readOnly("本次工时合计"),msg="工时合计不正确")
         formPage.Form_Button_Click("提交")
         self.assertIn("成功",formPage.Public_GetAlertMessage(),msg="工时填报提交失败")
 
