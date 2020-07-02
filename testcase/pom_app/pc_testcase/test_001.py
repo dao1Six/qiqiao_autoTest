@@ -17,13 +17,8 @@ from util.parseExcel import ParseExcel
 class PomAppTest_001(unittest.TestCase):
 
 
-    # ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
-    # excelPath = ProjectRootPath+"\\testcase\\testcase_data\\user_token.xlsx"
-    # sheetName = "user_token"
-    # excel = ParseExcel(excelPath, sheetName)
-    # accountList = excel.getColValues(1)
-    # tokenList = excel.getColValues(2)
-    # userDict = dict(zip(accountList, tokenList))
+
+
 
 
 
@@ -31,17 +26,11 @@ class PomAppTest_001(unittest.TestCase):
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
-        # loginpage.user_login('http://runtime.qwqa.do1.work', "wanghao@uat", "qiqiao123")
-        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@hui", "do1qiqiao")
-        # loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
+        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
         time.sleep(5)
 
 
-    def test_99(self):
-        self.driver.get("https://qy.do1.com.cn/qiqiao/runtime/?corp_id=ww2e7af6e25022519d#/application/business?applicationId=b66530002a6a4390a5571729be55a51f&mainColor=cambridgeBlue&businessModelId=a33d848564b84b24bceba49ef8fc8ffc")
-        time.sleep(2)
-        b = BusinessPage(self.driver)
-        b.ListComponent_GetRecordTotal()
+
 
 
     def screenshot_error(func):
@@ -136,30 +125,6 @@ class PomAppTest_001(unittest.TestCase):
         formPage.Form_Button_Click("办理")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         time.sleep(10)
-
-
-    def test_02( self ):
-        '''添加工时'''
-        self.driver.get("http://runtime.qwqa.do1.work/?corp_id=wwd5af6a678822e11b#/application/business?applicationId=b289921621e245e2a114c481ddfc4304&mainColor=orange&businessModelId=e532fc5dc28d414ba10b4311bb2c31da")
-        businessPage = BusinessPage(self.driver)
-        businessPage.ListComponent_Click_ListHeader_Button("添加工时")
-        formPage = FormPage(self.driver)
-        formPage.ChildForm_AddButton_Click('工时明细')
-        formPage.Selection_RadioSelect_InChildForm_Sendkeys("工时明细","工时类型","产品研发工作")
-        time.sleep(2)
-        formPage.Date_InChildForm_Sendkeys("工时明细","工时日期", "2020-06-29",isclear=True)
-        formPage.ForeignSelection_InChildForm_Sendkeys("工时明细","产品名称","测试20")
-        formPage.Selection_MonomialSelect_InChildForm_Sendkeys("工时明细","工作内容","产品测试")
-        formPage.click_ChildForm_Button("保存")
-        time.sleep(2)
-        formPage.ChildForm_AddButton_Click('工时明细')
-        formPage.Selection_RadioSelect_InChildForm_Sendkeys("工时明细", "工时类型", "产品研发工作")
-        time.sleep(2)
-        formPage.Date_InChildForm_Sendkeys("工时明细", "工时日期", "2020-06-30", isclear=True)
-        formPage.ForeignSelection_InChildForm_Sendkeys("工时明细", "产品名称", "测试20")
-        formPage.Selection_MonomialSelect_InChildForm_Sendkeys("工时明细", "工作内容", "产品测试")
-        formPage.click_ChildForm_Button("保存")
-
 
 
 

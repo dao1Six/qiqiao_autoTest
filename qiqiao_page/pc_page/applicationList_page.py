@@ -7,7 +7,7 @@ from public.selenium_page import SeleniumPage
 class ApplicationListPage(SeleniumPage):
     '''应用列表页面'''
 
-    ApplicationListPage_application_loc = "//div[@data-mark='%groupName']//div[@data-mark='%applicationName']"  #应用管理页面应用卡片
+    ApplicationListPage_application_loc = "//div[@data-mark='%groupName']//div[@data-mark='%applicationName']/i"  #应用管理页面应用卡片
 
     ApplicationListPage_searchInput_loc = "[data-mark=应用名称搜索框]"
 

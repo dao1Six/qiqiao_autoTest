@@ -1,20 +1,27 @@
-import time
-from qiqiao_page.pc_page.login_page import login_page
-from qiqiao_page.pc_page.portal_page import PortalPage
-from qiqiao_page.pc_page.applicationList_page import ApplicationListPage
-from app_page_loc.saysafe_app_page.pc.fill_data_page import AppFillSafe
-from selenium import webdriver
+# coding=utf-8
+import datetime
+from time import strptime
 
-driver = webdriver.Chrome(executable_path="D:\Projects\qiqiao_autoTest\\file_data\chromedriver.exe")
-driver.maximize_window()
-loginpage = login_page(driver)
-loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@do1", "do1qiqiao")
-portalpage = PortalPage(driver)
-portalpage.PortalPage_Click_HeaderMenu("应用")
-applicationListPage = ApplicationListPage(driver)
-time.sleep(2)
-applicationListPage.ApplicationListPage_ClickApplicationIcon("全员报平安2.2")
-runtime = AppFillSafe(driver)
-runtime.click_title("报平安")
-#
-# runtime.input_picture()
+
+class A():
+    def ee( self ):
+        ''''''
+
+        print( datetime.datetime.today().weekday())
+        print(datetime.date.today())
+        print(datetime(*strptime('2011-03-08 0:27:41', '%Y-%m-%d %H:%M:%S')[0:6]).weekday() )
+
+    def get_current_week(self):
+        monday, sunday = datetime.date.today(), datetime.date.today()
+        one_day = datetime.timedelta(days=1)
+        while monday.weekday() != 0:
+            monday -= one_day
+        while sunday.weekday() != 6:
+            sunday += one_day
+
+        return monday, sunday
+
+
+
+if __name__ == '__main__':
+    A().ee()
