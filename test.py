@@ -16,7 +16,7 @@ tomorrow = now + timedelta(days=1)
 
 # 本周第一天和最后一天
 this_week_start = now - timedelta(days=now.weekday())
-print(this_week_start)
+print(now.weekday())
 
 this_week_end = now + timedelta(days=6 - now.weekday())
 list = []
