@@ -21,7 +21,7 @@ class Dept(SeleniumPage):
 
 
     # 给部门单选组件输入值
-    def Dept_MonomialDept_Sendkeys(self,fieldName,DeptName,*args):
+    def Dept_MonomialDept_Sendkeys(self,fieldName,DeptName,index=0,*args):
         ''' 给部门单选组件输入值
         fieldName：字段标题
         DeptName：部门名称
@@ -33,7 +33,7 @@ class Dept(SeleniumPage):
         #搜索框输入部门名称
         self.sendkeysElemByCSS_Presence(self.Dept_search_loc,DeptName)
         #点击查询结果
-        self.clickElemByXpath_visibility(self.Dept_searchOption_loc.replace('%s',DeptName))
+        self.clickElemByXpath_visibility(self.Dept_searchOption_loc.replace('%s',DeptName),index=index)
         #点击确认按钮
         self.clickElemByXpath_visibility(self.Dept_querenButton_loc.replace('%s',fieldName))
 

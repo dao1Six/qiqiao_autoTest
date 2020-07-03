@@ -8,7 +8,7 @@ class User(SeleniumPage):
 
     User_querenButton_loc = "//div[@class='el-dialog %s']//button[@data-mark='确定按钮']" #人员选择确认按钮
 
-    User_selectBox_loc = "//div[@title='%s']//span[text()='+选择人员']"  #人员选择字段添加按钮
+    User_selectBox_loc = "//div[@data-mark='%s']//span[text()='+选择人员']"  #人员选择字段添加按钮
 
     User_search_loc = "//input[@placeholder='搜索用户']"  #人员选择组织架构搜索框
 
@@ -16,6 +16,8 @@ class User(SeleniumPage):
 
 
     UserValue_loc = "//div[@data-mark='%s']//div[contains(@class,'component_detail')]//span"  #人员选择组件值元素
+
+    ChildFormPopup_loc = "//div[@data-mark='子表弹层_%s']"
 
 
 
@@ -30,6 +32,22 @@ class User(SeleniumPage):
         self.sendkeysElemByXpath_visibility(self.User_search_loc,userName)
         self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',userName))
         self.clickElemByXpath_visibility(self.User_querenButton_loc.replace('%s',fieldName))
+
+    def User_MonomialUser_InChildForm_Sendkeys(self,childFormName,fieldName,userName):
+        '''在子表里给人员单选组件输入值
+        fieldName：字段标题
+        userName：人员名称
+        '''
+        #点击选择框
+        self.clickElemByXpath_visibility(self.ChildFormPopup_loc.replace('%s',childFormName)+self.User_selectBox_loc.replace('%s',fieldName))
+        #输入搜索值
+        self.sendkeysElemByXpath_visibility(self.User_search_loc,userName)
+        #点击搜索项
+        self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',userName))
+        #点击确定按钮
+        self.clickElemByXpath_visibility(self.User_querenButton_loc.replace('%s',fieldName))
+
+
 
     def User_GetMonomialUserValue_readOnly( self,fieldName):
         '''获取只读状态下的人员单选字段的值'''

@@ -31,8 +31,10 @@ class Text(SeleniumPage):
 
 
 
-    def Text_GetValue_writable( self ):
+    def Text_GetValue_writable( self,fieldName ):
         '''获取可写状态的单行文本字段值'''
-        pass
+
+        return self.getElemAttrValue(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Text_input_loc.replace('%s',fieldName)),'value')
+
 
 

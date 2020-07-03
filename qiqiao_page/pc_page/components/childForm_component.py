@@ -23,6 +23,8 @@ class ChildForm_component(SeleniumPage):
 
     ChildForm_CloseIcon_loc = "//div[contains(@data-mark,'子表弹层')]//i[@class='el-icon-close close']"
 
+    ChildForm_Td_loc = "//div[@data-mark='%s']//tr[contains(@class,'el-table__row')][%row]//td[%col]"
+
     def scroll_To_ChildForm_Div(self):
         self.scrollIntoView(self.ChildForm_div_loc)
 
@@ -58,7 +60,12 @@ class ChildForm_component(SeleniumPage):
         self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',TextTitle),key)
 
 
-    # 给子表的数字组件字段添加数据
+    def ChildForm_GetTdValue( self,fileName,row,col,*args):
+        '''获取子表组件表单元格值'''
+        text = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))).text
+        if(text==""):
+            text = self.getElemAttrValue(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))+"//input"),"value")
+        return text
 
     # 给子表的多行文本组件字段添加数据
 

@@ -4,7 +4,7 @@ from public.selenium_page import SeleniumPage
 
 class ForeignSelection_component(SeleniumPage):
 
-    ForeignSelectionBox_loc = "//div[@title='%title']//input"
+    ForeignSelectionBox_loc = "//div[@data-mark='%title']//input"
 
     ForeignSelectOption_loc = "//li[@data-mark='option_%s']"
 

@@ -24,3 +24,20 @@ class DateTimeUtil(object):
             list.append(day)
         return list
 
+    def Tomorrow( self ):
+        '''返回明天日期'''
+        now = datetime.datetime.now().date()
+        tomorrow = now + timedelta(days=1)
+        return str(tomorrow)
+
+    def Today( self ):
+        '''返回今天日期'''
+        now = datetime.datetime.now().date()
+        return str(now)
+
+    def Yesterday( self ):
+        '''返回昨天日期'''
+        now = datetime.datetime.now().date()
+        yesterday = now - timedelta(days=1)
+        return str(yesterday)
+
