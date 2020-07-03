@@ -216,6 +216,7 @@ class PomAppTest_001(unittest.TestCase):
 
     def test_03( self ):
         '''道一云生产运营应用，事业一部结算流程'''
+        processPage = ProcessPage(self.driver)
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -230,15 +231,18 @@ class PomAppTest_001(unittest.TestCase):
         #点击资源借调结算管理添加按钮字段
         formPage.ChildForm_AddButton_Click("资源借调结算管理")
         formPage.ForeignSelection_InChildForm_Sendkeys("资源借调结算管理","借调编号",jiediaoren1)
+        time.sleep(3)
         formPage.Date_InChildForm_Sendkeys("资源借调结算管理", "工作量开始时间", DateTimeUtil().Today())
         formPage.Date_InChildForm_Sendkeys("资源借调结算管理", "工作量开始时间", DateTimeUtil().Tomorrow())
         formPage.Number_InChildForm_Sendkeys("资源借调结算管理", "工作量天数", 2)
+        time.sleep(2)
         formPage.click_ChildForm_Button("保存并继续添加")
-        formPage.ChildForm_AddButton_Click("资源借调结算管理")
         formPage.ForeignSelection_InChildForm_Sendkeys("资源借调结算管理","借调编号",jiediaoren2)
+        time.sleep(3)
         formPage.Date_InChildForm_Sendkeys("资源借调结算管理", "工作量开始时间", DateTimeUtil().Today())
         formPage.Date_InChildForm_Sendkeys("资源借调结算管理", "工作量开始时间", DateTimeUtil().Tomorrow())
         formPage.Number_InChildForm_Sendkeys("资源借调结算管理", "工作量天数", 2)
+        time.sleep(2)
         formPage.click_ChildForm_Button("保存")
         time.sleep(2)
         self.assertEqual(formPage.ChildForm_GetTdValue("资源借调结算管理", 1, 9), "600", msg="结算费用汇总计算错误")
@@ -248,6 +252,16 @@ class PomAppTest_001(unittest.TestCase):
         formPage.Number_InChildForm_Sendkeys("其他类型结算管理", "结算金额", 600)
         formPage.click_ChildForm_Button("保存")
         time.sleep(2)
+        formPage.Form_Button_Click("发起结算")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
+        self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第1个人工任务办理失败")
+        # 处理第二个人工任务
+        portalPage.PortalPage_Click_HeaderMenu('流程')
+        processPage.click_process_menu("我的待办")
+        processPage.click_process_record(1)
+        formPage.Form_Button_Click("审批通过")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
+        self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第2个人工任务办理失败")
 
 
 
