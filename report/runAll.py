@@ -23,12 +23,12 @@ if __name__ == '__main__':
     # 用例目录
     case_path = ProjectRootPath + "\\testcase"
 
-    discover = unittest.defaultTestLoader.discover("../testcase", pattern='test_001.py')
+    discover = unittest.defaultTestLoader.discover("../testcase", pattern='test_00*')
 
 
     fp = open(reportpath + "\\result.html", "wb")
     # runner = HTMLTestRunner_jpg.HTMLTestRunner(title="七巧测试报告",description="测试用例参考",stream=fp,verbosity=2,retry=0)
-    runner = HTMLTestRunner(title="带截图的测试报告", description="小试牛刀", stream=fp, verbosity=2,
+    runner = HTMLTestRunner(title="七巧测试报告", description="1.4.4版本", stream=fp, verbosity=2,
                    retry=0, save_last_try=True)
     # 执行测试用例
     runner.run(discover)
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     # result.report(filename='result', description='测试deafult报告', report_dir=reportpath, theme='theme_default')
 
     filename = reportpath+"\\result.html"
-    # function.send_mail(filename)
+    function.send_mail(filename)
 
 
 

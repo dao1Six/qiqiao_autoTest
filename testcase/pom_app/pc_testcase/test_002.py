@@ -66,9 +66,13 @@ class PomAppTest_002(unittest.TestCase):
         businessPage.ListComponent_Click_ListHeader_Button("添加工时")
         formPage = FormPage(self.driver)
         formPage.ChildForm_AddButton_Click('工时明细')
-        days = len(DateTimeUtil().Get_CurrentWeek_Days_UntilNow())
         daysList = DateTimeUtil().Get_CurrentWeek_Days_UntilNow()
-        for i in range(days):
+        workingDays = 0
+        if (len(daysList)>5):
+            workingDays = 5
+        else:
+            workingDays = len(daysList)
+        for i in range(workingDays):
             #添加明细数据
             if (i < 1):
                 formPage.Selection_RadioSelect_InChildForm_Sendkeys("工时明细", "工时类型", "产品研发工作")
@@ -81,12 +85,12 @@ class PomAppTest_002(unittest.TestCase):
                                                    isclear=True)
                 formPage.ForeignSelection_InChildForm_Sendkeys("工时明细", "项目名称", "广东")
                 formPage.Selection_MonomialSelect_InChildForm_Sendkeys("工时明细", "工作内容", "测试")
-            if(i<days):
+            if(i<workingDays-1):
                 formPage.click_ChildForm_Button("保存并继续添加")
             else:
                 formPage.click_ChildForm_Button("保存")
             time.sleep(2)
-        self.assertEqual(str((days+1) * 8),formPage.Number_GetValue_readOnly("本次工时合计"),msg="工时合计不正确")
+        self.assertEqual(str((workingDays) * 8),formPage.Number_GetValue_readOnly("本次工时合计"),msg="工时合计不正确")
         formPage.Form_Button_Click("提交")
         self.assertIn("成功",formPage.Public_GetAlertMessage(),msg="工时填报提交失败")
 
