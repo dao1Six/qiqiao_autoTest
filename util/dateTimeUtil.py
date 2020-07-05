@@ -19,7 +19,7 @@ class DateTimeUtil(object):
         '''获取本周至今所有的日期'''
         now = datetime.datetime.now().date()
         list = []
-        for i in range(now.weekday()):
+        for i in range(now.weekday()+1):
             day = str(now - timedelta(days=now.weekday() - i))
             list.append(day)
         return list

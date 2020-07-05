@@ -23,13 +23,13 @@ if __name__ == '__main__':
     # 用例目录
     case_path = ProjectRootPath + "\\testcase"
 
-    discover = unittest.defaultTestLoader.discover("../testcase", pattern='test_00*')
+    discover = unittest.defaultTestLoader.discover("../testcase", pattern='test_00*.py')
 
 
     fp = open(reportpath + "\\result.html", "wb")
     # runner = HTMLTestRunner_jpg.HTMLTestRunner(title="七巧测试报告",description="测试用例参考",stream=fp,verbosity=2,retry=0)
     runner = HTMLTestRunner(title="七巧测试报告", description="1.4.4版本", stream=fp, verbosity=2,
-                   retry=0, save_last_try=True)
+                   retry=1, save_last_try=True)
     # 执行测试用例
     runner.run(discover)
     fp.close()
