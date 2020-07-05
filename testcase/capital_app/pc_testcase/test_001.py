@@ -248,6 +248,7 @@ class CapitalAppTest_001(unittest.TestCase):
         formPage.MultiForm_BatchManagementButton_Click("归还明细")
         formPage.MultiForm_BathManagePage_Record_Tick("归还明细", [1, 2])
         formPage.MultiForm_BathManagePage_ConfirmButton_Tick("归还明细")
+        time.sleep(3)
         self.assertEqual("笔记本",formPage.MultiForm_GetTdValue("归还明细", 1, 2),msg="归还明细设备类别显示不正确")
         formPage.Form_Button_Click("提交")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
