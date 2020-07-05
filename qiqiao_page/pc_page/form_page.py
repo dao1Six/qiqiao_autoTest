@@ -29,7 +29,7 @@ class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,File
 
     FormPage_submit_button_loc = "//button[@type='button']/span[contains(text(),'提交')]"  #表单提交按钮
 
-    FormPage_button_loc = "//span[contains(text(),'%s')]/parent::button[contains(@class,'el-button')]"
+    FormPage_button_loc = "//div[@class='header']//span[contains(text(),'%s')]/parent::button[contains(@class,'el-button--small')]"
 
     select_struct_box = "//div[@aria-label='办理']//div[contains(@class,'select_struct_box')]"
 

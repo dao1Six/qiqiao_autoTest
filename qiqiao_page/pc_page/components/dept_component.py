@@ -29,7 +29,7 @@ class Dept(SeleniumPage):
         #点击选择框
         self.clickElemByXpath_visibility(self.Dept_selectBox_loc.replace('%s',fieldName))
         #等待组织架构加载
-        self.wait_elem_visible(self.El_tree_loc)
+        self.wait_elem_visible_CSS(self.El_tree_loc)
         #搜索框输入部门名称
         self.sendkeysElemByCSS_Presence(self.Dept_search_loc,DeptName)
         #点击查询结果

@@ -42,8 +42,10 @@ class Selection(SeleniumPage):
         #下拉文本框
         loc = self.Selection_selectionBox_loc.replace('%title',fieldName)
         self.clickElemByXpath_visibility(loc)
+        self.wait_elem_visible_XPATH(self.Selection_monomialSelectOption_loc.replace('%value',value))
         # 点击选项
         self.clickElemByXpath_visibility(self.Selection_monomialSelectOption_loc.replace('%value',value))
+
 
 
     def Selection_MonomialSelect_InChildForm_Sendkeys(self,childFormName,fieldName,value,*args):

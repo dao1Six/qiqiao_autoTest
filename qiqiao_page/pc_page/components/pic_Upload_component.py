@@ -17,7 +17,7 @@ class PicUpload(SeleniumPage):
         locator = self.PicUpload_input_loc.replace('%s',fieldName)
         self.sendkeysElemByCSS_Presence(locator,picPath)
         #等待上传成功
-        self.wait_elem_visible(self.PicUpload_success_loc.replace('%s',fieldName))
+        self.wait_elem_visible_CSS(self.PicUpload_success_loc.replace('%s',fieldName))
 
 
 

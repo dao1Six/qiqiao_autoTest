@@ -19,7 +19,60 @@ from util.parseExcel import ParseExcel
 class PomAppTest_001(unittest.TestCase):
     '''生产运营应用流程操作'''
 
-
+    @classmethod
+    def setUpClass(self) -> None:
+        '''清理数据'''
+        self.driver = Driver().pcdriver()
+        self.driver.maximize_window()
+        loginpage = LoginPage(self.driver)
+        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
+        time.sleep(10)
+        # 打开生产运营管理应用
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '生产运管系统')
+        businessPage = BusinessPage(self.driver)
+        # 清除订单管理相关数据
+        # 判断列表是否存在数据
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        # 清除内部订单管理相关数据
+        # 判断列表是否存在数据
+        businessPage.BusinessPage_LeftMenu_Click('内部订单管理')
+        businessPage.BusinessPage_LeftMenu_Click('内部订单管理2')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        # 清除资源借调信息相关数据
+        businessPage.BusinessPage_LeftMenu_Click('资源借调信息')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        # 清除借调结算管理相关数据
+        businessPage.BusinessPage_LeftMenu_Click('借调结算管理')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        # 清除其他结算管理相关数据
+        businessPage.BusinessPage_LeftMenu_Click('其他结算管理')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        time.sleep(2)
+        portalPage.PortalPage_qiqiao_logout()
+        self.driver.quit()
 
 
 
@@ -140,7 +193,9 @@ class PomAppTest_001(unittest.TestCase):
         formPage = FormPage(self.driver)
         orderName ="长江水坝管理系统内部订单"
         formPage.Text_Sendkeys("订单名称",orderName)
+        time.sleep(2)
         formPage.Selection_MonomialSelect_Sendkeys("订单来源","外部订单")
+        time.sleep(3)
         formPage.ForeignSelection_Sendkeys("对应订单名称","长江水坝管理系统")
         time.sleep(2)
         self.assertNotEqual(formPage.Text_GetValue_writable("对应订单编号"),"",msg="对应订单编号没有连带写入")
@@ -211,7 +266,7 @@ class PomAppTest_001(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('内部订单管理')
         businessPage.BusinessPage_LeftMenu_Click('内部订单管理2')
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 5), "进行中", msg="订单状态信息错误")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 5), "未结算", msg="订单状态信息错误")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 6), "未结算", msg="订单状态信息错误")
 
 
     def test_03( self ):
@@ -233,14 +288,14 @@ class PomAppTest_001(unittest.TestCase):
         formPage.ForeignSelection_InChildForm_Sendkeys("资源借调结算管理","借调编号",jiediaoren1)
         time.sleep(3)
         formPage.Date_InChildForm_Sendkeys("资源借调结算管理", "工作量开始时间", DateTimeUtil().Today())
-        formPage.Date_InChildForm_Sendkeys("资源借调结算管理", "工作量开始时间", DateTimeUtil().Tomorrow())
+        formPage.Date_InChildForm_Sendkeys("资源借调结算管理", "工作量结束时间", DateTimeUtil().Tomorrow())
         formPage.Number_InChildForm_Sendkeys("资源借调结算管理", "工作量天数", 2)
         time.sleep(2)
         formPage.click_ChildForm_Button("保存并继续添加")
         formPage.ForeignSelection_InChildForm_Sendkeys("资源借调结算管理","借调编号",jiediaoren2)
         time.sleep(3)
         formPage.Date_InChildForm_Sendkeys("资源借调结算管理", "工作量开始时间", DateTimeUtil().Today())
-        formPage.Date_InChildForm_Sendkeys("资源借调结算管理", "工作量开始时间", DateTimeUtil().Tomorrow())
+        formPage.Date_InChildForm_Sendkeys("资源借调结算管理", "工作量结束时间", DateTimeUtil().Tomorrow())
         formPage.Number_InChildForm_Sendkeys("资源借调结算管理", "工作量天数", 2)
         time.sleep(2)
         formPage.click_ChildForm_Button("保存")
@@ -256,73 +311,119 @@ class PomAppTest_001(unittest.TestCase):
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第1个人工任务办理失败")
         # 处理第二个人工任务
+        businessPage.BusinessPage_HeardItem_AllApp_Click()
         portalPage.PortalPage_Click_HeaderMenu('流程')
         processPage.click_process_menu("我的待办")
         processPage.click_process_record(1)
-        formPage.Form_Button_Click("审批通过")
+        formPage.Form_Button_Click("办理")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第2个人工任务办理失败")
-
-
-
-
-
-
-
-
-    def test_04( self ):
-        '''道一云生产运营应用，立项申请流程(事业二部)流程'''
-
-        portalPage = PortalPage(self.driver)
-        self.assertEquals(portalPage.PortalPage_GetLoginUserName(),'王浩')
-        #打开“发起流程列表”
+        # 处理第三个人工任务
         portalPage.PortalPage_Click_HeaderMenu('流程')
-        time.sleep(5)
-        processPage = ProcessPage(self.driver)
-        processPage.click_process_icon("立项申请流程(事业二部)")
-
-        formPage = FormPage(self.driver)
-        formPage.Text_Sendkeys("项目名称","中科信息立项申请")
-        formPage.Textarea_Sendkeys("项目简介","中科信息立项申请哈哈哈哈哈哈哈")
-        #
-        formPage.Dept_MonomialDept_Sendkeys("所属一级部门","企微")
-        formPage.Dept_MonomialDept_Sendkeys("所属二级部门", "企微")
-        self.assertEquals(formPage.User_GetMonomialUserValue_readOnly("项目经理"),"王浩")
-
-        #点击管理订单添加按钮字段
-        formPage.ChildForm_AddButton_Click("关联订单")
-        formPage.ForeignSelection_InChildForm_Sendkeys("关联订单","关联订单","电信")
-        time.sleep(2)
-        formPage.Selection_MonomialSelect_InChildForm_Sendkeys("关联订单","战略意义","标杆作用")
-        formPage.Number_Sendkeys("预估成本（人天）",10)
-        #点击子表保存按钮
-        formPage.click_ChildForm_Button('保存')
-
-        print(formPage.Number_GetValue_readOnly("项目总金额"))
-        print(formPage.Number_GetValue_readOnly("项目预估总成本（人天）"))
-        print(formPage.Date_GetValue_writable("项目启动时间"))
-        print(formPage.Selection_GetSelectionBoxValue_writable("项目类型"))
-        time.sleep(1)
-        formPage.Selection_MonomialSelect_Sendkeys('项目等级','普通（普）')
-        formPage.Date_Sendkeys("预计验收时间","2020-06-22")
-        formPage.Text_Sendkeys("客户名称", "李嘉诚")
-        formPage.Text_Sendkeys("甲方对接人", "李嘉诚")
-        formPage.Text_Sendkeys("联系方式", "13025805485")
-        formPage.Textarea_Sendkeys("备注信息", "中科信息立项申请哈哈哈哈哈哈哈")
-
-        # 点击项目里程碑添加按钮字段
-        formPage.ChildForm_AddButton_Click("项目里程碑")
-        formPage.Text_InChildForm_Sendkeys("项目里程碑","阶段名称", "测试")
-        formPage.Date_InChildForm_Sendkeys("项目里程碑","计划完成时间", "2020-06-22")
-        time.sleep(2)
-        # 点击子表保存按钮
-        formPage.click_ChildForm_Button('保存')
-        formPage.Form_Button_Click("提交")
-        formPage.selectProcessManager(["王浩"])
-        time.sleep(5)
         processPage.click_process_menu("我的待办")
         processPage.click_process_record(1)
-        formPage.Form_Button_Click("审核通过")
+        formPage.Form_Button_Click("办理")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
+        self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第3个人工任务办理失败")
+        # 处理第4个人工任务
+        portalPage.PortalPage_Click_HeaderMenu('流程')
+        processPage.click_process_menu("我的待办")
+        processPage.click_process_record(1)
+        formPage.Form_Button_Click("办理")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
+        self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第4个人工任务办理失败")
+        # 处理第5个人工任务
+        portalPage.PortalPage_Click_HeaderMenu('流程')
+        processPage.click_process_menu("我的待办")
+        processPage.click_process_record(1)
+        formPage.Form_Button_Click("办理")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
+        self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第5个人工任务办理失败")
+        #校验流程处理完后的数据
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '生产运管系统')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('内部订单管理')
+        businessPage.BusinessPage_LeftMenu_Click('内部订单管理2')
+        businessPage.ListComponent_Click_ListRow_Button("详情",1)
+        self.assertEqual(formPage.ChildForm_GetTdValue("其他类型结算管理",1,5),DateTimeUtil().Today(),msg="结算支出部门总经理审核任务办理按钮，其他结算时间触发事件失败")
+        self.assertEqual(formPage.ChildForm_GetTdValue("资源借调结算管理", 1,12), DateTimeUtil().Today(),
+                         msg="结算支出部门总经理审核任务办理按钮，资源结算时间触发事件失败")
+        self.assertEqual(formPage.ChildForm_GetTdValue("资源借调结算管理", 2,12), DateTimeUtil().Today(),
+                         msg="结算支出部门总经理审核任务办理按钮，资源结算时间触发事件失败")
+        self.assertEqual(formPage.ChildForm_GetTdValue("其他类型结算管理", 1, 4), "已结算",
+                         msg="结算支出部门总经理审核任务办理按钮，更新结算明细状态触发事件失败")
+
+        self.assertEqual(formPage.ChildForm_GetTdValue("资源借调结算管理", 1,11), "已结算",
+                         msg="结算支出部门总经理审核任务办理按钮，更新借调结算触发事件失败")
+        self.assertEqual(formPage.ChildForm_GetTdValue("资源借调结算管理", 2,11), "已结算",
+                         msg="结算支出部门总经理审核任务办理按钮，更新借调结算触发事件失败")
+
+
+
+
+
+
+
+
+
+
+
+
+    # def test_04( self ):
+    #     '''道一云生产运营应用，立项申请流程(事业二部)流程'''
+    #
+    #     portalPage = PortalPage(self.driver)
+    #     self.assertEquals(portalPage.PortalPage_GetLoginUserName(),'王浩')
+    #     #打开“发起流程列表”
+    #     portalPage.PortalPage_Click_HeaderMenu('流程')
+    #     time.sleep(5)
+    #     processPage = ProcessPage(self.driver)
+    #     processPage.click_process_icon("立项申请流程(事业二部)")
+    #
+    #     formPage = FormPage(self.driver)
+    #     formPage.Text_Sendkeys("项目名称","中科信息立项申请")
+    #     formPage.Textarea_Sendkeys("项目简介","中科信息立项申请哈哈哈哈哈哈哈")
+    #     #
+    #     formPage.Dept_MonomialDept_Sendkeys("所属一级部门","企微")
+    #     formPage.Dept_MonomialDept_Sendkeys("所属二级部门", "企微")
+    #     self.assertEquals(formPage.User_GetMonomialUserValue_readOnly("项目经理"),"王浩")
+    #
+    #     #点击管理订单添加按钮字段
+    #     formPage.ChildForm_AddButton_Click("关联订单")
+    #     formPage.ForeignSelection_InChildForm_Sendkeys("关联订单","关联订单","电信")
+    #     time.sleep(2)
+    #     formPage.Selection_MonomialSelect_InChildForm_Sendkeys("关联订单","战略意义","标杆作用")
+    #     formPage.Number_Sendkeys("预估成本（人天）",10)
+    #     #点击子表保存按钮
+    #     formPage.click_ChildForm_Button('保存')
+    #
+    #     print(formPage.Number_GetValue_readOnly("项目总金额"))
+    #     print(formPage.Number_GetValue_readOnly("项目预估总成本（人天）"))
+    #     print(formPage.Date_GetValue_writable("项目启动时间"))
+    #     print(formPage.Selection_GetSelectionBoxValue_writable("项目类型"))
+    #     time.sleep(1)
+    #     formPage.Selection_MonomialSelect_Sendkeys('项目等级','普通（普）')
+    #     formPage.Date_Sendkeys("预计验收时间","2020-06-22")
+    #     formPage.Text_Sendkeys("客户名称", "李嘉诚")
+    #     formPage.Text_Sendkeys("甲方对接人", "李嘉诚")
+    #     formPage.Text_Sendkeys("联系方式", "13025805485")
+    #     formPage.Textarea_Sendkeys("备注信息", "中科信息立项申请哈哈哈哈哈哈哈")
+    #
+    #     # 点击项目里程碑添加按钮字段
+    #     formPage.ChildForm_AddButton_Click("项目里程碑")
+    #     formPage.Text_InChildForm_Sendkeys("项目里程碑","阶段名称", "测试")
+    #     formPage.Date_InChildForm_Sendkeys("项目里程碑","计划完成时间", "2020-06-22")
+    #     time.sleep(2)
+    #     # 点击子表保存按钮
+    #     formPage.click_ChildForm_Button('保存')
+    #     formPage.Form_Button_Click("提交")
+    #     formPage.selectProcessManager(["王浩"])
+    #     time.sleep(5)
+    #     processPage.click_process_menu("我的待办")
+    #     processPage.click_process_record(1)
+    #     formPage.Form_Button_Click("审核通过")
 
 
 

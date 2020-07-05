@@ -36,11 +36,19 @@ class SeleniumPage (object):
         for n in range(1,5):
             self.driver.execute_script('document.querySelector(".myScroll_main").scrollTop = 10000')  # 从上往下滑
 
-    def wait_elem_visible(self, locator, timeout=5):
+    def wait_elem_visible_CSS(self, locator, timeout=5):
         # 一直等待某元素可见，默认超时3秒只做等待动作不返回值
         try:
             WebDriverWait(self.driver, timeout).until(
                 EC.visibility_of_any_elements_located((By.CSS_SELECTOR, locator)))
+        except TimeoutException as ex:
+            print('wait_elem_visible 异常：%s 获取 %s 超时' % (ex, locator))
+
+    def wait_elem_visible_XPATH(self, locator, timeout=5):
+        # 一直等待某元素可见，默认超时3秒只做等待动作不返回值
+        try:
+            WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_any_elements_located((By.XPATH, locator)))
         except TimeoutException as ex:
             print('wait_elem_visible 异常：%s 获取 %s 超时' % (ex, locator))
 
@@ -100,9 +108,23 @@ class SeleniumPage (object):
 
     def clickElem(self, elem):
         """给一个存在dom的元素写入值Xpath"""
-        # try:
         self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
         elem.click()
+
+
+
+    @retry(retry_on_exception=retry_if_clickOtherelement, stop_max_attempt_number=5, wait_fixed=3000,
+           wrap_exception=True)
+    def clickElemByXpath_clickable(self, locator, index=0):
+        """点击单个可见元素Xpath"""
+        #传元素地址
+        if(type(locator)==str):
+            elem = self.find_elenmInElemsByXpath_element_to_be_clickable(locator,index=index)
+            self.clickElem(elem)
+        #传元素
+        elif(type(locator)==selenium.webdriver.remote.webelement.WebElement):
+            elem = locator
+            self.clickElem(elem)
 
     @retry(retry_on_exception=retry_if_clickOtherelement, stop_max_attempt_number=5, wait_fixed=3000,
            wrap_exception=True)
@@ -194,6 +216,20 @@ class SeleniumPage (object):
         try:
             return WebDriverWait(self.driver, timeout).until(
                 EC.visibility_of_any_elements_located((By.XPATH, locator)))[index]
+        except IndexError as e:
+            print(e)
+            print(locator + "页面无此元素"+"index值为"+str(index))
+            return None
+        except TimeoutException as t:
+            print(t)
+            print("根据"+locator+"信息在"+str(timeout)+"秒内没有查询到元素")
+            return None
+
+    def find_elenmInElemsByXpath_element_to_be_clickable(self, locator, index=0,timeout=10):
+        '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
+        try:
+            return WebDriverWait(self.driver, timeout).until(
+                EC.element_to_be_clickable((By.XPATH, locator)))[index]
         except IndexError as e:
             print(e)
             print(locator + "页面无此元素"+"index值为"+str(index))
