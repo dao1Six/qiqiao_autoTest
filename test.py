@@ -14,4 +14,5 @@ yesterday = now - timedelta(days=1)
 # 明天
 tomorrow = now + timedelta(days=2)
 
-print(str(tomorrow))
+print(str(type("dasdasd")))
+print(str(type([1,2])))

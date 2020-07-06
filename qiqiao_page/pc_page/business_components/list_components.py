@@ -50,6 +50,7 @@ class ListComponent(SeleniumPage):
     TooltipButton_loc = "//div[@role='tooltip']//button//span[text()='确定']"
 
     pagination_total_loc = "//span[@class='el-pagination__total']"
+    tabsOption_loc = "//div[@class='el-tabs__header is-top']//span[text()='%s']"
 
     def ListComponent_GetRecordTotal(self):
         '''获取列表总条数'''
@@ -65,6 +66,10 @@ class ListComponent(SeleniumPage):
         '''点击列表按钮提示框按钮'''
         self.clickElemByXpath_visibility(self.TooltipButton_loc.replace('%s',ButtonNmae))
 
+
+    def ListComponent_TabsOption_Click( self,option ):
+        '''点击选项卡'''
+        self.clickElemByXpath_visibility(self.tabsOption_loc.replace('%s',option))
 
 
     def ListComponent_Click_ListHeader_Button( self, btnname ):
@@ -97,31 +102,35 @@ class ListComponent(SeleniumPage):
         elem = self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.listTable_td_loc.replace('%row',str(row)).replace('%col',str(col)))
         return elem.text
 
-    def ListComponent_QueryItem_Sendkeys( self, itemName, keys, *args, type="text" ):
+    def ListComponent_QueryItem_Sendkeys( self, itemName, keys, *args, QueryItemType="text",index=0):
         '''列表组件的查询项输入值'''
         try:
             # 文本类型
-            if (type == "text"):
+            if (QueryItemType == "text"):
                 self.sendkeysElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), keys)
 
             # 日期类型
-            elif (type == "date"):
+            elif (QueryItemType == "date"):
+                #开始
                 self.clickElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), index=0)
                 self.sendkeysElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), keys, index=0)
+                #结束
                 self.clickElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), index=1)
                 self.sendkeysElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), args[0], index=1)
             #时间
-            elif (type == "time"):
+            elif (QueryItemType == "time"):
+                # 开始
                 self.clickElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), index=0)
                 self.sendkeysElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), keys, index=0)
+                # 结束
                 self.clickElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), index=1)
                 self.sendkeysElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), args[0], index=1)
             #日期时间
-            elif (type == "datetime"):
+            elif (QueryItemType == "datetime"):
                 self.sendkeysElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), keys)
 
             # 地址选择器类型
-            elif (type == "address"):
+            elif (QueryItemType == "address"):
                 # 点击地址输入框
                 self.clickElemByXpath_visibility("//span[@data-mark='地址选择下拉框']")
                 address = str(keys)
@@ -134,14 +143,20 @@ class ListComponent(SeleniumPage):
                         # 点击选项
                         self.clickElemByXpath_visibility(self.address_option_loc.format(addressname=i))
             # 下拉框类型
-            elif (type == "option"):
+            elif (QueryItemType == "option"):
                 # 点击文本框
                 self.clickElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName))
                 # 点击选项
-                self.clickElemByXpath_visibility(self.li_selectOption_loc.replace('%s', keys))
+                if(type(keys)==type("sasdr")):
+                    #下拉单选
+                    self.clickElemByXpath_visibility(self.li_selectOption_loc.replace('%s', keys))
+                elif(type(keys)==type([1,2])):
+                    #下拉多选
+                    for key in keys:
+                        self.clickElemByXpath_visibility(self.li_selectOption_loc.replace('%s', key))
 
             # 人员部门类型
-            elif (type == "user"):
+            elif (QueryItemType == "user"):
                 # 向文本框输入值
                 self.sendkeysElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), keys)
                 # 点击选项

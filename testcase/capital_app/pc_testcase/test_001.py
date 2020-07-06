@@ -12,6 +12,7 @@ from qiqiao_page.pc_page.process_page import ProcessPage
 
 
 class CapitalAppTest_001(unittest.TestCase):
+    '''资产管理应用流程检查'''
 
 
     @classmethod
