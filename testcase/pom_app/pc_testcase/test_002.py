@@ -49,9 +49,9 @@ class PomAppTest_002(unittest.TestCase):
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
         time.sleep(5)
 
-    def tearDown(self):
-        '''关闭浏览器'''
-        self.driver.quit()
+    # def tearDown(self):
+    #     '''关闭浏览器'''
+    #     self.driver.quit()
 
 
     def test_01( self ):

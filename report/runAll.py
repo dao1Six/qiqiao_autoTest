@@ -5,9 +5,10 @@ import unittest
 import os
 
 # # 获取路径
-from BeautifulReport import BeautifulReport
+# from BeautifulReport import BeautifulReport
 from public import function, HTMLTestRunner_jpg
 from public.HTMLTestRunner_cn import HTMLTestRunner
+
 
 from report.reportRunner import Report
 
@@ -22,8 +23,8 @@ if __name__ == '__main__':
 
     # 用例目录
     case_path = ProjectRootPath + "\\testcase"
-
-    discover = unittest.defaultTestLoader.discover("../testcase", pattern='test_00*.py')
+    # discover = unittest.defaultTestLoader.discover("../testcase", pattern='test_00*.py')
+    discover = unittest.defaultTestLoader.discover("../testcase/pom_app", pattern='test_002.py')
 
 
     fp = open(reportpath + "\\result.html", "wb")

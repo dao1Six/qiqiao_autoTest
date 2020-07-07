@@ -20,7 +20,7 @@ class PomAppTest_001(unittest.TestCase):
     '''生产运营应用流程操作'''
 
     @classmethod
-    def setUpClass(self) -> None:
+    def setUpClass(self):
         '''清理数据'''
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
@@ -87,11 +87,8 @@ class PomAppTest_001(unittest.TestCase):
 
 
 
-
-
-
-    def tearDown(self) -> None:
-        self.driver.quit()
+    # def tearDown(self):
+    #     self.driver.quit()
 
     def test_01( self ):
         '''道一云生产运营应用，事业一部订单发起 流程'''

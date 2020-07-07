@@ -46,5 +46,5 @@ class SaySafeAppTest(unittest.TestCase):
 
 
 
-    def tearDown(self):
-        self.driver.quit()
+    # def tearDown(self):
+    #     self.driver.quit()

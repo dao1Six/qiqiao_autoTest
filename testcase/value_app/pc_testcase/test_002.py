@@ -14,8 +14,8 @@ from qiqiao_page.pc_page.portal_page import PortalPage
 class ValueAppTest_002(unittest.TestCase):
     '''道一云价值观应用，数据过滤检查'''
 
-    def tearDown(self):
-        self.driver.quit()
+    # def tearDown(self):
+    #     self.driver.quit()
 
 
 

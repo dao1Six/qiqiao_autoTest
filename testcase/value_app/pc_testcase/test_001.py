@@ -26,8 +26,8 @@ class ValueAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '道一云价值观')
 
-    def tearDown(self):
-        self.driver.quit()
+    # def tearDown(self):
+    #     self.driver.quit()
 
     @data(("第一季度",2),("第二季度",2),("第三季度",0))
     @unpack
