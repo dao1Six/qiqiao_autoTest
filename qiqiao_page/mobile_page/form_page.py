@@ -22,8 +22,15 @@ from qiqiao_page.mobile_page.form_components.multiFormAssociation_component impo
 class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Selection,User,Address,Cascade,ChildForm_component,ChildFormAssociation_component,ForeignSelection_component,MultiFormAssociation,Dept):
     '''移动端表单页面'''
 
-    FormPage_submit_button_loc = "//button[@type='button']/span[contains(text(),'提交')]"  #表单提交按钮
+    FormPage_button_loc = "//button[@title='%s']"  #表单按钮
 
-    #提交表单
-    def click_submit_button(self,*args):
-        self.clickElemByXpath_visibility(self.FormPage_submit_button_loc)
+    process_querenButton_loc = "//div[@class='workFlowHandle']//button[contains(text(),'提交')]"
+
+    def Form_Button_Click( self,buttonName ):
+        '''点击表单按钮'''
+        self.clickElemByXpath_visibility(self.FormPage_button_loc.replace('%s',buttonName))
+
+
+    def Form_ProcessHandle_Pop_QuerenButton_Click( self ):
+        '''点击流程办理弹框提交按钮'''
+        self.clickElemByXpath_visibility(self.process_querenButton_loc)

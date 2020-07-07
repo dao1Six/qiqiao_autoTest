@@ -117,6 +117,7 @@ class CapitalAppTest_001(unittest.TestCase):
         formPage = FormPage(self.driver)
 
         formPage.Selection_CheckboxSelect_Sendkeys("设备类别",["平板","手机"])
+
         formPage.Textarea_Sendkeys("备注","很大很大空间等哈看进度哈大噶还记得噶还记得噶实践活动")
         formPage.Form_Button_Click("提交")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()   #点击流程办理弹框确认按钮
