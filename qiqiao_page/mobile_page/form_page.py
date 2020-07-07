@@ -20,7 +20,7 @@ from qiqiao_page.mobile_page.form_components.multiFormAssociation_component impo
 
 
 class FormPage(Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Selection,User,Address,Cascade,ChildForm_component,ChildFormAssociation_component,ForeignSelection_component,MultiFormAssociation,Dept):
-    '''PC表单页面'''
+    '''移动端表单页面'''
 
     FormPage_submit_button_loc = "//button[@type='button']/span[contains(text(),'提交')]"  #表单提交按钮
 

@@ -23,8 +23,8 @@ if __name__ == '__main__':
 
     # 用例目录
     case_path = ProjectRootPath + "\\testcase"
-    # discover = unittest.defaultTestLoader.discover("../testcase", pattern='test_00*.py')
-    discover = unittest.defaultTestLoader.discover("../testcase/pom_app", pattern='test_002.py')
+    discover = unittest.defaultTestLoader.discover("../testcase", pattern='test_00*.py')
+    # discover = unittest.defaultTestLoader.discover("../testcase/pom_app", pattern='test_002.py')
 
 
     fp = open(reportpath + "\\result.html", "wb")

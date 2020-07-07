@@ -3,16 +3,19 @@ import time
 import unittest
 
 from public.driver import Driver
+from qiqiao_page.mobile_page.form_page import FormPage
+from qiqiao_page.mobile_page.mobile_home_page import HomePage
+from qiqiao_page.mobile_page.mobile_to_do_page import TodoPage
 from qiqiao_page.pc_page.applicationList_page import ApplicationListPage
 from qiqiao_page.pc_page.business_page import BusinessPage
-from qiqiao_page.pc_page.form_page import FormPage
+
 from qiqiao_page.pc_page.login_page import LoginPage
 from qiqiao_page.pc_page.portal_page import PortalPage
 from qiqiao_page.pc_page.process_page import ProcessPage
 
 
 class CapitalAppTest_001(unittest.TestCase):
-    '''PC端资产管理应用流程检查'''
+    '''移动端资产管理应用流程检查'''
 
 
     @classmethod
@@ -93,29 +96,26 @@ class CapitalAppTest_001(unittest.TestCase):
 
     def setUp(self):
         '''登录'''
-        self.driver = Driver().pcdriver()
+        self.driver = Driver().phonedriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
         time.sleep(5)
 
-    # def tearDown(self):
-    #     '''关闭浏览器'''
-    #     self.driver.quit()
-
-
 
 
 
     def test_01( self ):
-        '''资产管理应用领用流程'''
-        portalPage = PortalPage(self.driver)
-        #打开“发起流程列表”
-        portalPage.PortalPage_Click_HeaderMenu('流程')
-        time.sleep(5)
-        processPage = ProcessPage(self.driver)
-        processPage.click_process_icon("领用")
+        '''移动端资产管理应用领用流程'''
+        homePage = HomePage(self.driver)
+        homePage.HomePage_BottomNav_Click("待办")
+        #发起流程
+        todoPage = TodoPage(self.driver)
+        todoPage.TodoPage_Faqiliucheng('资产管理','领用')
+
+
         formPage = FormPage(self.driver)
+
         formPage.Selection_CheckboxSelect_Sendkeys("设备类别",["平板","手机"])
         formPage.Textarea_Sendkeys("备注","很大很大空间等哈看进度哈大噶还记得噶还记得噶实践活动")
         formPage.Form_Button_Click("提交")

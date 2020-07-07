@@ -101,9 +101,17 @@ class ListComponent(SeleniumPage):
         '''获取列表单元格值'''
         elem = self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.listTable_td_loc.replace('%row',str(row)).replace('%col',str(col)))
         return elem.text
+    
+    def ListComponent_TableTd_Click( self ,row,col):
+        '''点击表单元格值'''
+        self.clickElemByXpath_visibility(self.listTable_td_loc.replace('%row',str(row)).replace('%col',str(col)))
 
-    def ListComponent_QueryItem_Sendkeys( self, itemName, keys, *args, QueryItemType="text",index=0):
-        '''列表组件的查询项输入值'''
+
+
+    def ListComponent_QueryItem_Sendkeys( self, itemName, keys, *args,QueryItemType="text"):
+        '''列表组件的查询项输入值
+        :type QueryItemType: object
+        '''
         try:
             # 文本类型
             if (QueryItemType == "text"):

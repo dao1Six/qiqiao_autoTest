@@ -6,10 +6,13 @@ from public.selenium_page import SeleniumPage
 
 class Selection(SeleniumPage):
 
-    #选项
-    radio_loc = "div[title='%s'] input[type='radio']"
+    Selection_Option_loc = "//div[@title='%s']//span[text()='%option']"  # 单选多选选项
 
-    def RadioIsSelect(self,fieldName,index):
-        elem = self.find_elemsByCSS(self.radio_loc.replace('%s',fieldName))[index]
-        return elem.is_selected()
+    def Selection_CheckboxSelect_Sendkeys(self,fieldName,list,*args):
+        '''给多项选择组件输入值
+        fieldName：字段标题
+        list：多项选项 list里存放选项文本值
+        '''
+        for i in list:
+            self.clickElemByXpath_visibility(self.Selection_Option_loc.replace('%s',fieldName).replace('%option',i))
 
