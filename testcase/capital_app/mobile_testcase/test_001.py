@@ -185,8 +185,11 @@ class CapitalAppTest_001(unittest.TestCase):
         self.driver.quit()
         #进行第4个人工任务处理
         self.mbLogin("wujianlun@auto","do1qiqiao")
+        homePage = MbHomePage(self.driver)
         homePage.HomePage_BottomNav_Click("待办")
+        todoPage = MbTodoPage(self.driver)
         todoPage.MbTodoPage_ProcessRecord_Click(1)
+        formPage = MbFormPage(self.driver)
         formPage.Form_Button_Click("维修完成")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第4个人工任务办理失败")
