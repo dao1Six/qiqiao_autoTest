@@ -5,8 +5,8 @@ import unittest
 from public.driver import Driver
 from qiqiao_page.mobile_page.mb_form_page import FormPage
 from qiqiao_page.mobile_page.mobile_home_page import HomePage
-from qiqiao_page.mobile_page.mobile_login_page import LoginPage
-from qiqiao_page.mobile_page.mobile_to_do_page import TodoPage
+from qiqiao_page.mobile_page.mobile_login_page import MbLoginPage
+from qiqiao_page.mobile_page.mobile_to_do_page import MbTodoPage
 from qiqiao_page.pc_page.applicationList_page import ApplicationListPage
 from qiqiao_page.pc_page.business_page import BusinessPage
 from qiqiao_page.pc_page.portal_page import PortalPage
@@ -108,7 +108,7 @@ class CapitalAppTest_001(unittest.TestCase):
         homePage = HomePage(self.driver)
         homePage.HomePage_BottomNav_Click("待办")
         #发起流程
-        todoPage = TodoPage(self.driver)
+        todoPage = MbTodoPage(self.driver)
         todoPage.TodoPage_Faqiliucheng('资产管理','领用')
         formPage = FormPage(self.driver)
         formPage.Selection_CheckboxSelect_Sendkeys("设备类别",["平板","手机"])

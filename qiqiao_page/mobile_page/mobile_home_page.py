@@ -3,7 +3,7 @@ from public.selenium_page import SeleniumPage
 from qiqiao_page.mobile_page.mb_public_page import PublicPage
 
 
-class HomePage(PublicPage,SeleniumPage):
+class MbHomePage(PublicPage,SeleniumPage):
     '''移动端首页'''
 
     bottom_nav = "//span[contains(@class,'menu_label') and text()='%s']"

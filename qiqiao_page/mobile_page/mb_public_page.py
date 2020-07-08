@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class PublicPage(SeleniumPage):
+class MbPublicPage(SeleniumPage):
     '''公共区域'''
 
     Alert_loc = "//div[contains(@class,'cube-popup cube-popup_mask cube-toast')]//div[@class='cube-toast-tip']"  # 表单消息弹框

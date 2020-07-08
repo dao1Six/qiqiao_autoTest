@@ -4,7 +4,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class LoginPage(SeleniumPage):
+class MbLoginPage(SeleniumPage):
     """登录界面"""
 
     denglu = "//a[text()='账号密码登录']"
