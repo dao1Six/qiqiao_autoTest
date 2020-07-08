@@ -15,7 +15,7 @@ class Driver():
         chrome_options = webdriver.ChromeOptions()
         prefs = {"profile.default_content_setting_values.notifications" : 2}
         chrome_options.add_experimental_option("prefs",prefs)   #禁用谷歌浏览器的通知框
-
+        chrome_options.add_argument("–incognito")
         driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=self.chromedriverPath)
         return driver
 
@@ -26,6 +26,7 @@ class Driver():
 
         chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
         chrome_options.add_argument("–incognito")
+
         chrome_options.add_argument('--disable-infobars')  # 禁用浏览器正在被自动化程序控制的提示
         driver = webdriver.Chrome(chrome_options = chrome_options,executable_path=self.chromedriverPath)
         return driver
