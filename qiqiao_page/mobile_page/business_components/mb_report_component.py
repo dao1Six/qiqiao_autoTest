@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class ReportComponent(SeleniumPage):
+class MbReportComponent(SeleniumPage):
 
     chart_title = "div.dyReport div.chart_title>span.title"
 

@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class TextComponent(SeleniumPage):
+class MbTextComponent(SeleniumPage):
 
 
     Text_loc = "div.dyText span"

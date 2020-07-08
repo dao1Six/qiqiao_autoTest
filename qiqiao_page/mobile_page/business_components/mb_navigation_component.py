@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 #导航组件
-class NavigationComponent(SeleniumPage):
+class MbNavigationComponent(SeleniumPage):
 
 
     dyListNavigation_item_title = "div.dyListNavigation_container ul li span.item_title"

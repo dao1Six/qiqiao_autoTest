@@ -3,8 +3,8 @@ import time
 import unittest
 
 from public.driver import Driver
-from qiqiao_page.mobile_page.mb_form_page import FormPage
-from qiqiao_page.mobile_page.mobile_home_page import HomePage
+from qiqiao_page.mobile_page.mb_form_page import MbFormPage
+from qiqiao_page.mobile_page.mobile_home_page import MbHomePage
 from qiqiao_page.mobile_page.mobile_login_page import MbLoginPage
 from qiqiao_page.mobile_page.mobile_to_do_page import MbTodoPage
 from qiqiao_page.pc_page.applicationList_page import ApplicationListPage
@@ -96,7 +96,7 @@ class CapitalAppTest_001(unittest.TestCase):
         '''登录'''
         self.driver = Driver().phonedriver()
         self.driver.maximize_window()
-        loginpage = LoginPage(self.driver)
+        loginpage = MbLoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/mruntime', "wujianlun@auto", "do1qiqiao")
         time.sleep(5)
 
@@ -105,12 +105,12 @@ class CapitalAppTest_001(unittest.TestCase):
 
     def test_01( self ):
         '''移动端资产管理应用领用流程'''
-        homePage = HomePage(self.driver)
+        homePage = MbHomePage(self.driver)
         homePage.HomePage_BottomNav_Click("待办")
         #发起流程
         todoPage = MbTodoPage(self.driver)
-        todoPage.TodoPage_Faqiliucheng('资产管理','领用')
-        formPage = FormPage(self.driver)
+        todoPage.MbTodoPage_Faqiliucheng('资产管理','领用')
+        formPage = MbFormPage(self.driver)
         formPage.Selection_CheckboxSelect_Sendkeys("设备类别",["平板","手机"])
         formPage.Textarea_Sendkeys("备注","很大很大空间等哈看进度哈大噶还记得噶还记得噶实践活动")
         formPage.Form_Button_Click("提交")
@@ -119,7 +119,7 @@ class CapitalAppTest_001(unittest.TestCase):
         time.sleep(5)
         self.driver.back()
         #进行第二个人工任务处理
-        todoPage.TodoPage_ProcessRecord_Click(1)
+        todoPage.MbTodoPage_ProcessRecord_Click(1)
         formPage.MultiForm_AddButton_Click("领用明细")
         formPage.MultiForm_BathManagePage_Record_Tick("领用明细", [1, 2])
         formPage.MultiForm_BathManagePage_Button_Cick("领用明细","确定选择")
@@ -135,15 +135,16 @@ class CapitalAppTest_001(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
-        # time.sleep(5)
-        # portalPage.PortalPage_Click_HeaderMenu("应用")
-        # applicationListPage = ApplicationListPage(self.driver)
-        # applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
-        # businessPage = BusinessPage(self.driver)
-        # self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,7),"已借出",msg="系统任务执行失败")
-        # self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "已借出",msg="系统任务执行失败")
-        # time.sleep(10)
-        # print("检查完成，资产管理领用流程测试通过")
+        time.sleep(5)
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
+        businessPage = BusinessPage(self.driver)
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,7),"已借出",msg="系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "已借出",msg="系统任务执行失败")
+        time.sleep(10)
+        print("检查完成，资产管理领用流程测试通过")
 
     # def test_02( self ):
     #     '''资产管理应用维修流程'''

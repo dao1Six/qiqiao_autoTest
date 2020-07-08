@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class Time(SeleniumPage):
+class MbTime(SeleniumPage):
 
     Time_input_loc = "div[title='%s'] input[type='text']"  #时间组件字段输入框
 

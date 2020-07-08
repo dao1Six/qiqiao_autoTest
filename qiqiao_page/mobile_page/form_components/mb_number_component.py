@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class Number(SeleniumPage):
+class MbNumber(SeleniumPage):
 
     Number_input_loc = "div[title='%s'] input[type='number']"  # 数字组件字段输入框
 

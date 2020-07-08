@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class Cascade(SeleniumPage):
+class MbCascade(SeleniumPage):
 
     Cascade_selectionBox_loc = "//div[@title='%s']//span[@class='el-cascader__label']"  # 级联组件字段选择下拉框
 

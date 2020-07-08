@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class Text(SeleniumPage):
+class MbText(SeleniumPage):
 
 
     Text_input_loc = "div[title='%s'] input[type='text']"  #单行文本组件字段输入框

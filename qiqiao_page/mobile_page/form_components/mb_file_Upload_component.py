@@ -1,6 +1,5 @@
-# coding=utf-8
 from public.selenium_page import SeleniumPage
 
 
-class MbTreeListComponent(SeleniumPage):
+class MbFileUpload(SeleniumPage):
     pass

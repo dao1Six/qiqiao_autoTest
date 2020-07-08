@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class DateTime(SeleniumPage):
+class MbDateTime(SeleniumPage):
 
     DateTime_input_loc = "div[title='%s'] input[type='text']"  # 日期时间组件输入框
     DateTime_label_loc = "div[title='%s']>label>span[title='%title']"   # 日期时间组件字段标题

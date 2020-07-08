@@ -2,5 +2,5 @@
 from public.selenium_page import SeleniumPage
 
 
-class PicComponent(SeleniumPage):
+class MbPicComponent(SeleniumPage):
     pass

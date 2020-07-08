@@ -2,5 +2,5 @@
 from public.selenium_page import SeleniumPage
 
 
-class StatisticsComponent(SeleniumPage):
+class MbStatisticsComponent(SeleniumPage):
     pass

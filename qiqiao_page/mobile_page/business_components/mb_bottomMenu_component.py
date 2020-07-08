@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class BottomMenuComponent(SeleniumPage):
+class MbBottomMenuComponent(SeleniumPage):
 
     dyBottomNavigation = "div.dyBottomNavigation div.dyBottomNavigation_nav div"
 

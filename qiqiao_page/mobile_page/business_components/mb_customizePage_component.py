@@ -2,5 +2,5 @@
 from public.selenium_page import SeleniumPage
 
 
-class CustomizePageComponent(SeleniumPage):
+class MbCustomizePageComponent(SeleniumPage):
     pass

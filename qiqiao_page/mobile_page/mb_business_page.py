@@ -15,7 +15,7 @@ from qiqiao_page.mobile_page.business_components.mb_text_component import TextCo
 from qiqiao_page.mobile_page.business_components.mb_treeList_component import TreeListComponent
 
 
-class BusinessModelldPage(BottomMenuComponent,CustomizePageComponent,FormComponent,ListComponent,NavigationComponent,PicComponent,RankingListComponent,ReportComponent,SplitLineComponent,StatisticsComponent,SummaryListComponent,TextComponent,TreeListComponent):
+class MbBusinessPage(BottomMenuComponent,CustomizePageComponent,FormComponent,ListComponent,NavigationComponent,PicComponent,RankingListComponent,ReportComponent,SplitLineComponent,StatisticsComponent,SummaryListComponent,TextComponent,TreeListComponent):
 
 
     pass

@@ -4,7 +4,7 @@ import time
 from public.selenium_page import SeleniumPage
 
 
-class User(SeleniumPage):
+class MbUser(SeleniumPage):
 
 
     peopleListName_loc = "div[title='%s'] span.peopleList_name"

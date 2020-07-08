@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class PicUpload(SeleniumPage):
+class MbPicUpload(SeleniumPage):
 
 
     PicUpload_input_loc = "div[title='%s'] input[type='file']"  # 图片上传字段输入框

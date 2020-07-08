@@ -3,7 +3,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class WangEditor(SeleniumPage):
+class MbWangEditor(SeleniumPage):
 
 
     WangEditor_input_loc = "//div[@title='%s']//div[@class='wangEditor-txt']"  #富文本输入框

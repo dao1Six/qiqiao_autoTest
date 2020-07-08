@@ -1,9 +1,9 @@
 # coding=utf-8
 from public.selenium_page import SeleniumPage
-from qiqiao_page.mobile_page.mb_public_page import PublicPage
+from qiqiao_page.mobile_page.mb_public_page import MbPublicPage
 
 
-class MbTodoPage(PublicPage,SeleniumPage):
+class MbTodoPage(MbPublicPage,SeleniumPage):
     '''移动端待办列表页面'''
 
     bottom_nav_loc = "//span[contains(@class,'menu_label') and text()='%s']" #底部导航

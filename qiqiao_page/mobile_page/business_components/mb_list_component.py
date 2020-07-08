@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class ListComponent(SeleniumPage):
+class MbListComponent(SeleniumPage):
     # 列表记录元素
     CardList_loc = "div.dyCardList div.dyCardList_text_wrapper"
 

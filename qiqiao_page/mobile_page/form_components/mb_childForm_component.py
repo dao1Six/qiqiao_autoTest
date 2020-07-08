@@ -4,7 +4,7 @@ import time
 from public.selenium_page import SeleniumPage
 
 
-class ChildForm_component(SeleniumPage):
+class MbChildForm_component(SeleniumPage):
 
     ChildForm_AddButton_loc ='[data-mark=%title] [data-mark=button_添加]'  #子表添加按钮
 

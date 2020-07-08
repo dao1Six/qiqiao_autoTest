@@ -4,7 +4,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class Selection(SeleniumPage):
+class MbSelection(SeleniumPage):
 
     Selection_Option_loc = "//div[@title='%s']//span[text()='%option']/parent::label[1]"  # 单选多选选项
 

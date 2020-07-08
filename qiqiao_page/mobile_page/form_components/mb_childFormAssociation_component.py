@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class ChildFormAssociation_component(SeleniumPage):
+class MbChildFormAssociation_component(SeleniumPage):
 
 
     def ChildFormAssociation_AddButton_Click(self,*args):

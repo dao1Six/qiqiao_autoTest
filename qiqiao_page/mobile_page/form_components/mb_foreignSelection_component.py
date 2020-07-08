@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class ForeignSelection_component(SeleniumPage):
+class MbForeignSelection_component(SeleniumPage):
 
 
     def ForeignSelection_Sendkeys(self,fieldName,list,*args):

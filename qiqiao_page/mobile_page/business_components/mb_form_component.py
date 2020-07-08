@@ -2,5 +2,5 @@
 from public.selenium_page import SeleniumPage
 
 
-class FormComponent(SeleniumPage):
+class MbFormComponent(SeleniumPage):
     pass

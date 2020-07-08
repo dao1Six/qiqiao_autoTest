@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class Address(SeleniumPage):
+class MbAddress(SeleniumPage):
 
     Address_selectionBox_loc = "//div[@title='%s']//span[@class='el-cascader__label']"  #地址组件字段选择下拉框
     Address_selecOption_loc = "//div[@class='el-cascader-menus el-popper']//span[contains(text(),'%s')]"  #地址组件字段选项

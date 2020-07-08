@@ -2,5 +2,5 @@
 from public.selenium_page import SeleniumPage
 
 
-class SplitLineComponent(SeleniumPage):
+class MbSplitLineComponent(SeleniumPage):
     pass

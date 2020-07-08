@@ -3,7 +3,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class Textarea(SeleniumPage):
+class MbTextarea(SeleniumPage):
 
     Textarea_input_loc = "//div[@title='%s']//textarea"  #多行文本组件字段输入框
 

@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class Date(SeleniumPage):
+class MbDate(SeleniumPage):
 
 
     dateTxr_loc = "div[title='%s'] div.tx_r"

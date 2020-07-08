@@ -2,5 +2,5 @@
 from public.selenium_page import SeleniumPage
 
 
-class RankingListComponent(SeleniumPage):
+class MbRankingListComponent(SeleniumPage):
     pass

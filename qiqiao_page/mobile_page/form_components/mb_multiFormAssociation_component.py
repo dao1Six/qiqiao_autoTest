@@ -2,7 +2,7 @@
 from public.selenium_page import SeleniumPage
 
 
-class MultiFormAssociation(SeleniumPage):
+class MbMultiFormAssociation(SeleniumPage):
 
 
     MultiFormAssociation_AddButton_loc = "//div[@title='%title']//div[@class='dyFormMultiFormAssociation_add']"  #添加按钮元素
