@@ -221,9 +221,12 @@ class SeleniumPage (object):
             print(locator + "页面无此元素"+"index值为"+str(index))
             return None
         except TimeoutException as t:
-            print(t)
-            print("根据"+locator+"信息在"+str(timeout)+"秒内没有查询到元素")
-            return None
+            print("visibility_of_any_elements_located方式查询无数据转presence_of_all_elements_located方式")
+            elem = self.find_elenmInElemsByXpath_presence_of_all_elements_located(locator,index=index)
+            self.driver.execute_script("arguments[0].scrollIntoView();",elem)
+            return WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_any_elements_located((By.XPATH, locator)))[index]
+
 
     def find_elenmInElemsByXpath_element_to_be_clickable(self, locator, index=0,timeout=10):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''

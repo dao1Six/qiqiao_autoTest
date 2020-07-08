@@ -10,8 +10,8 @@ from selenium.webdriver.chrome.options import Options
 
 from app_page_loc.saysafe_app_page.phone.i_declare_peace_page_loc import IDeclarePeacePage
 from public.driver import Driver
-from qiqiao_page.mobile_page.business_modelId_page import BusinessModelldPage
-from qiqiao_page.mobile_page.form_page import FormPage
+from qiqiao_page.mobile_page.mb_business_page import BusinessModelldPage
+from qiqiao_page.mobile_page.mb_form_page import FormPage
 from qiqiao_page.mobile_page.mobile_login_page import MobileLoginPage
 from util.parseExcel import ParseExcel
 

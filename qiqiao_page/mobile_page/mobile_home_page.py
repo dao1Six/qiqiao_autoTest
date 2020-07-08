@@ -1,6 +1,6 @@
 # coding=utf-8
 from public.selenium_page import SeleniumPage
-from qiqiao_page.mobile_page.public_page import PublicPage
+from qiqiao_page.mobile_page.mb_public_page import PublicPage
 
 
 class HomePage(PublicPage,SeleniumPage):

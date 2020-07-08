@@ -1,6 +1,6 @@
 # coding=utf-8
 from public.selenium_page import SeleniumPage
-from qiqiao_page.mobile_page.public_page import PublicPage
+from qiqiao_page.mobile_page.mb_public_page import PublicPage
 
 
 class TodoPage(PublicPage,SeleniumPage):
@@ -16,6 +16,7 @@ class TodoPage(PublicPage,SeleniumPage):
 
     process_icon_loc = "//span[text()='%app']/ancestor::div[@class='commonProcess_container_top']/following-sibling::div//div[@title='%name']"
 
+    record = "//div[@class='item_inner']" #记录
 
     def TodoPage_BottomNav_Click( self ,buttonName):
         '''首页底部导航菜单点击'''
@@ -40,3 +41,8 @@ class TodoPage(PublicPage,SeleniumPage):
         '''待办页面发起流程'''
         self.TodoPage_Faqiliucheng_Click()
         self.clickElemByXpath_visibility(self.process_icon_loc.replace('%app',app).replace('%name',name))
+
+
+    def TodoPage_ProcessRecord_Click( self,index ):
+        '''打开流程记录'''
+        self.clickElemByXpath_visibility(self.record,index=index-1)

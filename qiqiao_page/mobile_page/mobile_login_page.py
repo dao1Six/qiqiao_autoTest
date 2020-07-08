@@ -1,17 +1,16 @@
 # coding=utf-8
 #登录页面
-import time
 
 from public.selenium_page import SeleniumPage
 
 
-class MobileLoginPage(SeleniumPage):
+class LoginPage(SeleniumPage):
     """登录界面"""
 
-    mobiledenglu = "//a[text()='账号密码登录']"
-    mobilezhanghao = "//input[@title='请输入账号']"
-    mobilemima = "//input[@title='请输入密码']"
-    mobileanniu = "//button[text()='登录']"
+    denglu = "//a[text()='账号密码登录']"
+    zhanghao = "//input[@title='请输入账号']"
+    mima = "//input[@title='请输入密码']"
+    anniu = "//button[text()='登录']"
 
 
     def user_login(self,login_url, username,password,*args):
@@ -20,9 +19,8 @@ class MobileLoginPage(SeleniumPage):
         password：密码
         """
         self.open(login_url)
-        self.clickElemByXpath_visibility(self.mobiledenglu)
-        self.sendkeysElemByXpath_visibility(self.mobilezhanghao,username)
-        self.sendkeysElemByXpath_visibility(self.mobilemima,password)
-        self.clickElemByXpath_visibility(self.mobileanniu)
-        time.sleep(2)
+        self.clickElemByXpath_visibility(self.denglu)
+        self.sendkeysElemByXpath_visibility(self.zhanghao,username)
+        self.sendkeysElemByXpath_visibility(self.mima,password)
+        self.clickElemByXpath_visibility(self.anniu)
 
