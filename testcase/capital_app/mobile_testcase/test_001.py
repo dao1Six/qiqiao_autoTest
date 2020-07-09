@@ -197,9 +197,11 @@ class CapitalAppTest_001(unittest.TestCase):
         self.driver.quit()
         #检查第4个人工任务提交后系统任务执行是否成功
         self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
+        businessPage = BusinessPage(self.driver)
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
         time.sleep(10)
@@ -238,6 +240,7 @@ class CapitalAppTest_001(unittest.TestCase):
         self.driver.quit()
         #检查第二个人工任务提交后系统任务执行是否成功
         self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
@@ -281,6 +284,7 @@ class CapitalAppTest_001(unittest.TestCase):
         self.driver.quit()
         #检查第二个人工任务提交后系统任务执行是否成功
         self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
@@ -300,9 +304,6 @@ class CapitalAppTest_001(unittest.TestCase):
         todoPage.MbTodoPage_Faqiliucheng('资产管理', '报废')
         formPage = MbFormPage(self.driver)
         portalPage = PortalPage(self.driver)
-
-
-
         formPage.MultiForm_AddButton_Click("报废明细")
         formPage.MultiForm_BathManagePage_Record_Tick("报废明细", [1, 2])
         formPage.MultiForm_BathManagePage_Button_Cick("报废明细","确定选择")
@@ -321,6 +322,7 @@ class CapitalAppTest_001(unittest.TestCase):
         self.driver.quit()
         #检查第二个人工任务提交后系统任务执行是否成功
         self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
