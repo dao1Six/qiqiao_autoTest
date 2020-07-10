@@ -77,7 +77,7 @@ class PomAppTest_002(unittest.TestCase):
         listPage = MbListComponent(self.driver)
         listPage.MbListComponent_AddButton_Click()
         formPage = MbFormPage(self.driver)
-        formPage.ChildForm_AddButton_Click('工时明细')
+        formPage.MbChildForm_AddButton_Click('工时明细')
         daysList = DateTimeUtil().Get_CurrentWeek_Days_UntilNow()
         workingDays = 0
         if (len(daysList)>5):
@@ -91,15 +91,15 @@ class PomAppTest_002(unittest.TestCase):
                 time.sleep(2)
                 formPage.MbDate_SendKeys("工时日期", daysList[i])
                 formPage.MbForeignSelection_Sendkeys("产品名称", "白云制药厂")
-                formPage.Selection_MonomialSelect_InChildForm_Sendkeys("工时明细", "工作内容", "产品测试")
+                formPage.MbSelection_Xiala_Senkeys("工作内容", "产品测试")
             elif(i>=1):
                 formPage.MbDate_SendKeys("工时日期", daysList[i])
                 formPage.MbForeignSelection_Sendkeys("项目名称", "广东")
-                formPage.Selection_MonomialSelect_InChildForm_Sendkeys("工时明细", "工作内容", "测试")
+                formPage.MbSelection_Xiala_Senkeys("工作内容", "测试")
             if(i<workingDays-1):
-                formPage.click_ChildForm_Button("保存并继续添加")
+                formPage.MbChildForm_Button_Click("保存并继续添加")
             else:
-                formPage.click_ChildForm_Button("保存")
+                formPage.MbChildForm_Button_Click("保存")
             time.sleep(2)
         self.assertEqual(str((workingDays) * 8),formPage.Number_GetValue_readOnly("本次工时合计"),msg="工时合计不正确")
         formPage.Form_Button_Click("提交")

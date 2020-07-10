@@ -8,7 +8,7 @@ class MbSelection(SeleniumPage):
 
     Selection_Option_loc = "//div[@title='%s']//span[text()='%option']/parent::label[1]"  # 单选多选选项
 
-    Radio_Option_loc ="//div[@title='%s']//span[@class='cube-radio-label' and text()='%title']"
+    Radio_Option_loc ="//div[@title='%s']//span[@class='cube-radio-label' and text()='%title']/preceding-sibling::input[1]"
 
     Xiala_Option_loc = "//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div//li[text()='%title']"
 
@@ -34,6 +34,7 @@ class MbSelection(SeleniumPage):
 
         # 点击选择框
         self.clickElemByXpath_visibility(self.placeholder_loc.replace('%s',fieldName))
+        #点击选项
         self.clickElemByXpath_visibility(self.Xiala_Option_loc.replace('%title',option))
 
 
