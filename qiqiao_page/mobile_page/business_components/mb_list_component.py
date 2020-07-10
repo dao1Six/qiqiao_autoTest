@@ -13,14 +13,20 @@ class MbListComponent(SeleniumPage):
 
     CardList_tabItem = "div.dyCardList div.dyCardList_tabItem"
 
+    add_btn = "//div[@class='add_btn']"
+    def MbListComponent_AddButton_Click( self ):
+        '''点击列表添加按钮'''
+        self.clickElemByXpath_visibilitys(self.add_btn)
+
+
 
     # 长按列表某条记录
-    def ClickAndHoleRecore( self, index ,*args):
+    def MbListComponent_Recore_ClickAndHole( self, index ,*args):
         elem = self.find_elemsByCSS(self.CardList_loc)[index]
         self.click_and_hold(elem)
 
     # 判断列表记录是否有某按钮操作权限
-    def GetRecoreButton( self ):
+    def MbListComponent_GetRecoreButton( self ):
         buttonList = []
         cardListButtons = self.find_elemsByCSS(self.CardListButton_loc)
         for cardListButton in cardListButtons:
@@ -29,7 +35,7 @@ class MbListComponent(SeleniumPage):
         return buttonList
 
     #获取列表选项卡所有选项
-    def GetListAllTab( self ):
+    def MbListComponent_GetListAllTab( self ):
         tabItems = []
         tabItemsElem = self.find_elemsByCSS(self.CardList_tabItem)
         for tabItemElem in tabItemsElem:
