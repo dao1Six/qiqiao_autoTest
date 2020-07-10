@@ -6,7 +6,7 @@ from public.selenium_page import SeleniumPage
 
 class MbChildForm_component(SeleniumPage):
 
-    ChildForm_AddButton_loc ='[data-mark=%title] [data-mark=button_添加]'  #子表添加按钮
+    ChildForm_AddButton_loc ="//div[@title='%s']//span[@class='dyFormSubform_addBtn']"  #子表添加按钮
 
     ChildForm_Input_loc = "[data-mark='%title'] .row_%title_%row [data-mark='%text'] input"  #子表输入框
 
@@ -29,7 +29,7 @@ class MbChildForm_component(SeleniumPage):
         '''点击添加按钮
         fieldName：字段标题
         '''
-        self.clickElemByCSS_visibility (self.ChildForm_AddButton_loc.replace ('%title', fieldName))
+        self.clickElemByXpath_visibility (self.ChildForm_AddButton_loc.replace ('%s', fieldName))
 
 
 

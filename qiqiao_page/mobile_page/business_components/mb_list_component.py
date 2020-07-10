@@ -16,7 +16,7 @@ class MbListComponent(SeleniumPage):
     add_btn = "//div[@class='add_btn']"
     def MbListComponent_AddButton_Click( self ):
         '''点击列表添加按钮'''
-        self.clickElemByXpath_visibilitys(self.add_btn)
+        self.clickElemByXpath_visibility(self.add_btn)
 
 
 

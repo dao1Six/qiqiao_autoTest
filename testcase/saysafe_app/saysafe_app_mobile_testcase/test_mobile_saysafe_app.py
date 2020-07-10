@@ -52,7 +52,7 @@ class SaySafeAppTest(unittest.TestCase):
 
         formPage = FormPage(self.driver)
         # 校验提交日期字段值是否正确
-        self.assertEqual(formPage.GetDateVale("提交日期"),datetime.datetime.now().strftime("%Y-%m-%d"))
+        self.assertEqual(formPage.MbDate_GetVale("提交日期"),datetime.datetime.now().strftime("%Y-%m-%d"))
 
         #校验员工姓名字段值是否正确
         self.assertEqual(formPage.GetUserValue("员工姓名"),"吴健伦")
