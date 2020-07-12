@@ -20,29 +20,29 @@ class PomAppTest_002(unittest.TestCase):
     '''填写工时测试'''
 
 
-    # @classmethod
-    # def setUpClass(self):
-    #     '''初始化数据'''
-    #     self.driver = Driver().pcdriver()
-    #     self.driver.maximize_window()
-    #     loginpage = LoginPage(self.driver)
-    #     loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
-    #     time.sleep(3)
-    #     portalPage = PortalPage(self.driver)
-    #     portalPage.PortalPage_Click_HeaderMenu("应用")
-    #     applicationListPage = ApplicationListPage(self.driver)
-    #     applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','生产运管系统')
-    #     businessPage = BusinessPage(self.driver)
-    #     #清除领用及相关数据
-    #     businessPage.BusinessPage_LeftMenu_Click('工时管理')
-    #     businessPage.BusinessPage_LeftMenu_Click('本周工时填报')
-    #     # 判断列表是否存在数据
-    #     if (businessPage.ListComponent_GetRecordTotal() > 0):
-    #         businessPage.ListComponent_SelectAllRecord()
-    #         businessPage.ListComponent_Click_ListHeader_Button('删除')
-    #         businessPage.ListComponent_TooltipButton_Click('确定')
-    #         assert '成功' in businessPage.Public_GetAlertMessage()
-    #     self.driver.quit()
+    @classmethod
+    def setUpClass(self):
+        '''初始化数据'''
+        self.driver = Driver().pcdriver()
+        self.driver.maximize_window()
+        loginpage = LoginPage(self.driver)
+        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
+        time.sleep(3)
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','生产运管系统')
+        businessPage = BusinessPage(self.driver)
+        #清除领用及相关数据
+        businessPage.BusinessPage_LeftMenu_Click('工时管理')
+        businessPage.BusinessPage_LeftMenu_Click('本周工时填报')
+        # 判断列表是否存在数据
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        self.driver.quit()
 
 
 

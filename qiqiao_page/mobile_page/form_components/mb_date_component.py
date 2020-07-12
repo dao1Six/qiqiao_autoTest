@@ -1,5 +1,13 @@
 #日期组件
+import time
+
+from selenium import webdriver
+from selenium.webdriver import TouchActions
+
 from public.selenium_page import SeleniumPage
+from appium.webdriver.common.touch_action import TouchAction
+
+from util.dateTimeUtil import DateTimeUtil
 
 
 class MbDate(SeleniumPage):
@@ -10,6 +18,8 @@ class MbDate(SeleniumPage):
     icon_loc = "//div[@title='%s']//span[@class='icon']"
 
     datali_loc = "//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div[%n]//li[text()='%value']"
+    datadiv_loc = "//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div[%n]"
+
 
     confirm_loc = "//span[@class='cube-picker-confirm']"
 
@@ -23,14 +33,52 @@ class MbDate(SeleniumPage):
     def MbDate_SendKeys( self ,fieldName,key):
         '''日期组件输入值'''
         #点击日期下拉图标
+        #点击下拉框
         self.clickElemByXpath_visibility(self.icon_loc.replace('%s',fieldName))
+        time.sleep(3)
+        action = webdriver.TouchActions(self.driver)
+
+
+        today = DateTimeUtil().Today()
+        todayList = today.split("-")
         keyList = key.split("-")
-        for i,key in zip(range(1,len(keyList)+1),keyList):
-            keyValue = key
-            if(len(key)==2 and list(key)[0]=="0" ):
-                keyValue = list(key)[1]
-            self.clickElemByXpath_visibility(self.datali_loc.replace('%n',str(i)).replace('%value',keyValue))
+        #选择年
+        yeardiff = int(todayList[0])-int(keyList[0])
+        cyear_elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+            self.datali_loc.replace('%n', str(1)).replace('%value', todayList[0]))
+        action.scroll_from_element(cyear_elem, 0, -18.4*yeardiff).perform()
+        self.clickElemByXpath_visibility(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n',str(1)).replace('%value',keyList[0])))
+
+        #选择月
+        cmonthValue = todayList[1]
+        if(len(todayList[1])==2 and list(todayList[1])[0]=="0"):
+            cmonthValue = list(todayList[1])[1]
+        tmonthValue = keyList[1]
+        if(len(keyList[1])==2 and list(keyList[1])[0]=="0"):
+            tmonthValue = list(keyList[1])[1]
+        monthdiff = int(cmonthValue) - int(tmonthValue)
+        cmonth_elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+            self.datali_loc.replace('%n', str(2)).replace('%value', cmonthValue))
+        action.scroll_from_element(cmonth_elem, 0, -18.4 *monthdiff).perform()
+        self.clickElemByXpath_visibility(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+            self.datali_loc.replace('%n', str(2)).replace('%value', tmonthValue)))
+
+        #选择日
+        cdayValue = todayList[2]
+        if(len(todayList[2])==2 and list(todayList[2])[0]=="0"):
+            cdayValue = list(todayList[2])[1]
+        tdayValue = keyList[2]
+        if(len(keyList[2])==2 and list(keyList[2])[0]=="0"):
+            tdayValue = list(keyList[2])[1]
+        daydiff = int(cdayValue) - int(tdayValue)
+        cday_elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+            self.datali_loc.replace('%n', str(3)).replace('%value', cdayValue))
+        action.scroll_from_element(cday_elem, 0, -44 * daydiff).perform()
+        self.clickElemByXpath_visibility(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+            self.datali_loc.replace('%n', str(3)).replace('%value', tdayValue)))
+        time.sleep(2)
         #点击确定按钮
         self.clickElemByXpath_visibility(self.confirm_loc)
+        time.sleep(2)
 
 

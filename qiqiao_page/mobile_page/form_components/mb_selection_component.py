@@ -1,5 +1,5 @@
 #选择组件
-
+import time
 
 from public.selenium_page import SeleniumPage
 
@@ -8,11 +8,13 @@ class MbSelection(SeleniumPage):
 
     Selection_Option_loc = "//div[@title='%s']//span[text()='%option']/parent::label[1]"  # 单选多选选项
 
-    Radio_Option_loc ="//div[@title='%s']//span[@class='cube-radio-label' and text()='%title']/preceding-sibling::input[1]"
+    Radio_Option_loc ="//div[@title='%s']//span[@class='cube-radio-label' and text()='%title']/parent::label[1]"
 
     Xiala_Option_loc = "//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div//li[text()='%title']"
 
     placeholder_loc = "//div[@title='%s']//span[@class='placeholder']"
+
+    Xiala_confirm_loc = "//h1[text()='%s']/parent::div[1]/preceding-sibling::span[@class='cube-picker-confirm']"
 
 
 
@@ -36,5 +38,8 @@ class MbSelection(SeleniumPage):
         self.clickElemByXpath_visibility(self.placeholder_loc.replace('%s',fieldName))
         #点击选项
         self.clickElemByXpath_visibility(self.Xiala_Option_loc.replace('%title',option))
+        #点击确定按钮
+        time.sleep(3)
+        self.clickElemByXpath_visibility(self.Xiala_confirm_loc.replace('%s',fieldName))
 
 

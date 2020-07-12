@@ -7,7 +7,7 @@ from logging import exception
 
 import selenium
 from retrying import retry
-from selenium.webdriver import ActionChains
+from selenium.webdriver import ActionChains, TouchActions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException, WebDriverException
 from selenium.webdriver.common.by import By
@@ -68,6 +68,12 @@ class SeleniumPage (object):
     #鼠标悬浮
     def move_to_element( self,elem):
         ActionChains(self.driver).move_to_element(elem).perform()
+
+    def h5_move_to_elem(self,elem,x,y):
+        Action = TouchActions(self.driver)
+        Action.scroll_from_element(elem, x,y).release(x,y)
+
+
 
 
 
@@ -221,11 +227,10 @@ class SeleniumPage (object):
             print(locator + "页面无此元素"+"index值为"+str(index))
             return None
         except TimeoutException as t:
-            print("visibility_of_any_elements_located方式查询无数据转presence_of_all_elements_located方式")
+            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
+            print("visibility_of_any_elements_located方式转presence_of_all_elements_located方式")
             elem = self.find_elenmInElemsByXpath_presence_of_all_elements_located(locator,index=index)
-            self.driver.execute_script("arguments[0].scrollIntoView();",elem)
-            return WebDriverWait(self.driver, timeout).until(
-                EC.visibility_of_any_elements_located((By.XPATH, locator)))[index]
+            return elem
 
 
     def find_elenmInElemsByXpath_element_to_be_clickable(self, locator, index=0,timeout=10):
