@@ -28,11 +28,11 @@ class MbFormPage(MbPublicPage,MbNumber,MbText,MbTextarea,MbDate,MbTime,MbDateTim
 
     process_querenButton_loc = "//div[@class='workFlowHandle']//button[contains(text(),'提交')]"
 
-    def Form_Button_Click( self,buttonName ):
+    def MbForm_Button_Click( self,buttonName ):
         '''点击表单按钮'''
         self.clickElemByXpath_visibility(self.FormPage_button_loc.replace('%s',buttonName))
 
 
-    def Form_ProcessHandle_Pop_QuerenButton_Click( self ):
+    def MbForm_ProcessHandle_Pop_QuerenButton_Click( self ):
         '''点击流程办理弹框提交按钮'''
         self.clickElemByXpath_visibility(self.process_querenButton_loc)

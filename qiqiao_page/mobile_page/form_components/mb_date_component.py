@@ -18,7 +18,8 @@ class MbDate(SeleniumPage):
     icon_loc = "//div[@title='%s']//span[@class='icon']"
 
     datali_loc = "//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div[%n]//li[text()='%value']"
-    datadiv_loc = "//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div[%n]"
+
+    Firstdatali_loc = "//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div[%n]/ul/li"
 
 
     confirm_loc = "//span[@class='cube-picker-confirm']"
@@ -44,10 +45,14 @@ class MbDate(SeleniumPage):
         keyList = key.split("-")
         #选择年
         yeardiff = int(todayList[0])-int(keyList[0])
-        cyear_elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
-            self.datali_loc.replace('%n', str(1)).replace('%value', todayList[0]))
-        action.scroll_from_element(cyear_elem, 0, -18.4*yeardiff).perform()
-        self.clickElemByXpath_visibility(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n',str(1)).replace('%value',keyList[0])))
+
+        #当目标元素可见时点击
+        while(self.isClickable(self.datali_loc.replace('%n',str(1)).replace('%value',keyList[0]))!=True):
+            cyear_elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+                self.Firstdatali_loc.replace('%n',str(1)))
+            action.flick_element(cyear_elem, 0, -14*yeardiff,5).perform()
+        if(self.isClickable(self.datali_loc.replace('%n',str(1)).replace('%value',keyList[0]))==True):
+            self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n',str(1)).replace('%value',keyList[0])).click()
 
         #选择月
         cmonthValue = todayList[1]
@@ -57,11 +62,14 @@ class MbDate(SeleniumPage):
         if(len(keyList[1])==2 and list(keyList[1])[0]=="0"):
             tmonthValue = list(keyList[1])[1]
         monthdiff = int(cmonthValue) - int(tmonthValue)
-        cmonth_elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
-            self.datali_loc.replace('%n', str(2)).replace('%value', cmonthValue))
-        action.scroll_from_element(cmonth_elem, 0, -18.4 *monthdiff).perform()
-        self.clickElemByXpath_visibility(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
-            self.datali_loc.replace('%n', str(2)).replace('%value', tmonthValue)))
+        #当目标元素可见时点击
+        while(self.isClickable(self.datali_loc.replace('%n',str(2)).replace('%value',tmonthValue))!=True):
+            cmonth_elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+                self.Firstdatali_loc.replace('%n',str(2)))
+            action.flick_element(cmonth_elem, 0, -14*monthdiff,5).perform()
+        if(self.isClickable(self.datali_loc.replace('%n',str(2)).replace('%value',tmonthValue))==True):
+            self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+                self.datali_loc.replace('%n',str(2)).replace('%value',tmonthValue)).click()
 
         #选择日
         cdayValue = todayList[2]
@@ -71,11 +79,15 @@ class MbDate(SeleniumPage):
         if(len(keyList[2])==2 and list(keyList[2])[0]=="0"):
             tdayValue = list(keyList[2])[1]
         daydiff = int(cdayValue) - int(tdayValue)
-        cday_elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
-            self.datali_loc.replace('%n', str(3)).replace('%value', cdayValue))
-        action.scroll_from_element(cday_elem, 0, -44 * daydiff).perform()
-        self.clickElemByXpath_visibility(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
-            self.datali_loc.replace('%n', str(3)).replace('%value', tdayValue)))
+        #当目标元素可见时点击
+        while(self.isClickable(self.datali_loc.replace('%n',str(3)).replace('%value',tdayValue))!=True):
+            cday_elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+                self.Firstdatali_loc.replace('%n',str(3)))
+            action.flick_element(cday_elem, 0, -14*daydiff,5).perform()
+        if(self.isClickable(self.datali_loc.replace('%n',str(3)).replace('%value',tdayValue))==True):
+            self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+                self.datali_loc.replace('%n',str(3)).replace('%value',tdayValue)).click()
+
         time.sleep(2)
         #点击确定按钮
         self.clickElemByXpath_visibility(self.confirm_loc)

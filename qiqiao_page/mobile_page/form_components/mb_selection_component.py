@@ -12,6 +12,8 @@ class MbSelection(SeleniumPage):
 
     Xiala_Option_loc = "//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div//li[text()='%title']"
 
+    Xiala_FirstOption_loc = "//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div//ul/li"
+
     placeholder_loc = "//div[@title='%s']//span[@class='placeholder']"
 
     Xiala_confirm_loc = "//h1[text()='%s']/parent::div[1]/preceding-sibling::span[@class='cube-picker-confirm']"
@@ -37,7 +39,12 @@ class MbSelection(SeleniumPage):
         # 点击选择框
         self.clickElemByXpath_visibility(self.placeholder_loc.replace('%s',fieldName))
         #点击选项
-        self.clickElemByXpath_visibility(self.Xiala_Option_loc.replace('%title',option))
+        while(self.isClickable(self.Xiala_Option_loc.replace('%title',option))!=True):
+
+            FirstOption = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Xiala_FirstOption_loc)
+            self.h5_move_to_elem(FirstOption,0,-5,5)
+        if(self.isClickable(self.Xiala_Option_loc.replace('%title',option))==True):
+            self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Xiala_Option_loc.replace('%title',option)).click()
         #点击确定按钮
         time.sleep(3)
         self.clickElemByXpath_visibility(self.Xiala_confirm_loc.replace('%s',fieldName))

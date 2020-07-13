@@ -24,8 +24,13 @@ class SeleniumPage (object):
     def __init__(self, driver):
         self.driver = driver
 
-
-
+    def isClickable( self, locator):
+        '''判断元素是否可以点击'''
+        try:
+            WebDriverWait(self.driver,10).until(EC.visibility_of_any_elements_located((By.XPATH,locator)))
+            return True
+        except:
+            return False
 
     def open(self, url):
         """打开登录页面"""
@@ -69,9 +74,13 @@ class SeleniumPage (object):
     def move_to_element( self,elem):
         ActionChains(self.driver).move_to_element(elem).perform()
 
-    def h5_move_to_elem(self,elem,x,y):
+    def h5_move_to_elem(self,elem,x,y,speed):
         Action = TouchActions(self.driver)
-        Action.scroll_from_element(elem, x,y).release(x,y)
+        Action.flick_element(elem, x,y,speed).perform()
+
+    def h5_tap_elem( self,elem):
+        Action = TouchActions(self.driver)
+        Action.tap(elem).perform()
 
 
 
