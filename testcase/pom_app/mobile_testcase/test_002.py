@@ -16,7 +16,7 @@ from qiqiao_page.pc_page.portal_page import PortalPage
 from util.dateTimeUtil import DateTimeUtil
 
 
-class PomAppTest_002(unittest.TestCase):
+class MbPomAppTest_002(unittest.TestCase):
     '''移动端生产运营应用填写工时测试'''
 
 

@@ -17,10 +17,12 @@ from util.parseExcel import ParseExcel
 
 
 class PomAppTest_001(unittest.TestCase):
-    '''生产运营应用流程操作'''
+    '''PC生产运营应用流程操作'''
 
-    @classmethod
-    def setUpClass(self):
+
+
+    def dataPrepare( self ):
+        '''数据准备'''
         '''清理数据'''
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
@@ -74,8 +76,9 @@ class PomAppTest_001(unittest.TestCase):
         portalPage.PortalPage_qiqiao_logout()
         self.driver.quit()
 
-
-
+    @classmethod
+    def setUpClass(self):
+        self.dataPrepare(self)
 
 
     def setUp(self):
@@ -194,7 +197,7 @@ class PomAppTest_001(unittest.TestCase):
         formPage.Selection_MonomialSelect_Sendkeys("订单来源","外部订单")
         time.sleep(3)
         formPage.ForeignSelection_Sendkeys("对应订单名称","长江水坝管理系统")
-        time.sleep(2)
+        time.sleep(5)
         self.assertNotEqual(formPage.Text_GetValue_writable("对应订单编号"),"",msg="对应订单编号没有连带写入")
 
         formPage.Dept_MonomialDept_Sendkeys("结算收入一级部门","创新技术中心")
@@ -209,12 +212,14 @@ class PomAppTest_001(unittest.TestCase):
         #点击资源借调信息添加按钮字段
         formPage.ChildForm_AddButton_Click("资源借调信息")
         formPage.User_MonomialUser_InChildForm_Sendkeys("资源借调信息", "借调人", "吴健伦")
+        time.sleep(3)
         formPage.Date_InChildForm_Sendkeys("资源借调信息","借调开始时间",DateTimeUtil().Today())
         formPage.Date_InChildForm_Sendkeys("资源借调信息", "借调预计结束时间", DateTimeUtil().Tomorrow())
         formPage.Number_InChildForm_Sendkeys("资源借调信息", "预计借调天数", 2)
         formPage.Number_InChildForm_Sendkeys("资源借调信息", "其他费用", 300)
         formPage.click_ChildForm_Button("保存并继续添加")
         formPage.User_MonomialUser_InChildForm_Sendkeys("资源借调信息", "借调人", "王浩")
+        time.sleep(3)
         formPage.Date_InChildForm_Sendkeys("资源借调信息", "借调开始时间", DateTimeUtil().Today())
         formPage.Date_InChildForm_Sendkeys("资源借调信息", "借调预计结束时间", DateTimeUtil().Tomorrow())
         formPage.Number_InChildForm_Sendkeys("资源借调信息", "预计借调天数", 2)
@@ -259,6 +264,7 @@ class PomAppTest_001(unittest.TestCase):
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '生产运管系统')
+        time.sleep(2)
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('内部订单管理')
         businessPage.BusinessPage_LeftMenu_Click('内部订单管理2')
@@ -275,6 +281,7 @@ class PomAppTest_001(unittest.TestCase):
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '生产运管系统')
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('内部订单管理')
+        time.sleep(2)
         businessPage.BusinessPage_LeftMenu_Click('内部订单管理2')
         businessPage.ListComponent_Click_ListRow_Button("添加发起结算",1)
         formPage = FormPage(self.driver)
@@ -362,31 +369,21 @@ class PomAppTest_001(unittest.TestCase):
 
 
 
-
-
-
-
-
-
     # def test_04( self ):
-    #     '''道一云生产运营应用，立项申请流程(事业二部)流程'''
+    #     '''道一云生产运营应用，事业一部立项申请流程'''
     #
     #     portalPage = PortalPage(self.driver)
-    #     self.assertEquals(portalPage.PortalPage_GetLoginUserName(),'王浩')
     #     #打开“发起流程列表”
     #     portalPage.PortalPage_Click_HeaderMenu('流程')
     #     time.sleep(5)
     #     processPage = ProcessPage(self.driver)
-    #     processPage.click_process_icon("立项申请流程(事业二部)")
-    #
+    #     processPage.click_process_icon("事业一部立项申请")
     #     formPage = FormPage(self.driver)
     #     formPage.Text_Sendkeys("项目名称","中科信息立项申请")
     #     formPage.Textarea_Sendkeys("项目简介","中科信息立项申请哈哈哈哈哈哈哈")
     #     #
-    #     formPage.Dept_MonomialDept_Sendkeys("所属一级部门","企微")
-    #     formPage.Dept_MonomialDept_Sendkeys("所属二级部门", "企微")
-    #     self.assertEquals(formPage.User_GetMonomialUserValue_readOnly("项目经理"),"王浩")
-    #
+    #     self.assertEquals(formPage.User_GetMonomialUserValue_readOnly("项目经理"),"吴健伦")
+    #     formPage.Selection_MonomialSelect_Sendkeys("合作部门","仅通用产品部")
     #     #点击管理订单添加按钮字段
     #     formPage.ChildForm_AddButton_Click("关联订单")
     #     formPage.ForeignSelection_InChildForm_Sendkeys("关联订单","关联订单","电信")

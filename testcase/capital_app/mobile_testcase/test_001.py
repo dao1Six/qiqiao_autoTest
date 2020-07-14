@@ -13,7 +13,7 @@ from qiqiao_page.pc_page.portal_page import PortalPage
 from qiqiao_page.pc_page.login_page import LoginPage
 
 
-class CapitalAppTest_001(unittest.TestCase):
+class MbCapitalAppTest_001(unittest.TestCase):
     '''移动端资产管理应用流程检查'''
 
 
