@@ -18,4 +18,3 @@ class MbText(SeleniumPage):
 
     #获取单行文本字段提示信息
 
-

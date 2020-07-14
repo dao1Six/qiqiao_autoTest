@@ -217,8 +217,6 @@ class CapitalAppTest_001(unittest.TestCase):
         todoPage = MbTodoPage(self.driver)
         todoPage.MbTodoPage_Faqiliucheng('资产管理', '更换')
         formPage = MbFormPage(self.driver)
-        portalPage = PortalPage(self.driver)
-
         formPage.MultiForm_AddButton_Click("归还已领设备")
         formPage.MultiForm_BathManagePage_Record_Tick("归还已领设备", [1, 2])
         formPage.MultiForm_BathManagePage_Button_Cick("归还已领设备","确定选择")
@@ -262,9 +260,6 @@ class CapitalAppTest_001(unittest.TestCase):
         todoPage = MbTodoPage(self.driver)
         todoPage.MbTodoPage_Faqiliucheng('资产管理', '归还')
         formPage = MbFormPage(self.driver)
-        portalPage = PortalPage(self.driver)
-
-
         formPage.MultiForm_AddButton_Click("归还明细")
         formPage.MultiForm_BathManagePage_Record_Tick("归还明细", [1, 2])
         formPage.MultiForm_BathManagePage_Button_Cick("归还明细","确定选择")
@@ -303,7 +298,6 @@ class CapitalAppTest_001(unittest.TestCase):
         todoPage = MbTodoPage(self.driver)
         todoPage.MbTodoPage_Faqiliucheng('资产管理', '报废')
         formPage = MbFormPage(self.driver)
-        portalPage = PortalPage(self.driver)
         formPage.MultiForm_AddButton_Click("报废明细")
         formPage.MultiForm_BathManagePage_Record_Tick("报废明细", [1, 2])
         formPage.MultiForm_BathManagePage_Button_Cick("报废明细","确定选择")

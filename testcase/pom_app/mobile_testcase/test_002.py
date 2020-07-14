@@ -69,7 +69,7 @@ class PomAppTest_002(unittest.TestCase):
 
 
     def test_01( self ):
-        '''填写本周工时'''
+        '''移动端填写本周工时'''
         homepage = MbHomePage(self.driver)
         homepage.HomePage_BottomNav_Click('应用')
         applicationListPage = MbApplicationListPage(self.driver)
@@ -101,8 +101,8 @@ class PomAppTest_002(unittest.TestCase):
             else:
                 formPage.MbChildForm_Button_Click("保存")
             time.sleep(2)
-        self.assertEqual(str((workingDays) * 8),formPage.Number_GetValue_readOnly("本次工时合计"),msg="工时合计不正确")
-        formPage.Form_Button_Click("提交")
+        self.assertEqual(str((workingDays) * 8),formPage.MbNumber_GetValue_readOnly("本次工时合计"),msg="工时合计不正确")
+        formPage.MbForm_Button_Click("提交")
         self.assertIn("成功",formPage.Public_GetAlertMessage(),msg="工时填报提交失败")
 
 

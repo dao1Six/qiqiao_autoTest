@@ -226,7 +226,7 @@ class SeleniumPage (object):
             print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
             return None
 
-    def find_elenmInElemsByXpath_visibility_of_any_elements_located(self, locator, index=0,timeout=10):
+    def find_elenmInElemsByXpath_visibility_of_any_elements_located(self, locator, index=0,timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(
