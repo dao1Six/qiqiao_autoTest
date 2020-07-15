@@ -94,7 +94,7 @@ class SaySafeAppTest(unittest.TestCase):
         '''检查点击导航跳转是否正常并且检查列表获取选项卡值是否正确'''
         businessModelldPage = BusinessModelldPage(self.driver)
         time.sleep(1)
-        businessModelldPage.ClickNavigation("全员报平安")
+        businessModelldPage.MbNavigationComponent_Click_Navigation("全员报平安")
         self.assertEquals(businessModelldPage.MbListComponent_GetListAllTab(),["全部 (2)","高烧（39.1-41℃） (0)","中度发热（38.1-39℃） (0)","低烧（37.1-38℃） (0)","正常（36.1-37℃） (2)"])
 
 
@@ -102,7 +102,7 @@ class SaySafeAppTest(unittest.TestCase):
         '''检查报表组件是否加载正常'''
         businessModelldPage = BusinessModelldPage(self.driver)
         time.sleep(1)
-        businessModelldPage.ClickNavigation("报表中心")
+        businessModelldPage.MbNavigationComponent_Click_Navigation("报表中心")
         time.sleep(1)
         #滚动加载数据
         businessModelldPage.dynamicScroll()

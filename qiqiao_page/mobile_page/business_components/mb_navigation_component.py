@@ -7,7 +7,7 @@ class MbNavigationComponent(SeleniumPage):
 
     dyListNavigation_item_title = "div.dyListNavigation_container ul li span.item_title"
 
-    dyListNavigation_item = "//div[@class='dyListNavigation_content']//div[@class='item_title_container']/span[contains(text(),'%s')]"
+    dyListNavigation_item = "//div[@class='item_title_container']/span[contains(text(),'%s')]"
 
 
     #获取页面导航名
@@ -18,6 +18,6 @@ class MbNavigationComponent(SeleniumPage):
         return NavigationsNameList
 
     #点击页面导航图标
-    def ClickNavigation( self,item_title):
+    def MbNavigationComponent_Click_Navigation( self,item_title):
         self.clickElemByXpath_visibility(self.dyListNavigation_item.replace('%s', item_title))
 
