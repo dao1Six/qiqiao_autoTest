@@ -10,28 +10,27 @@ from email.mime.multipart import MIMEMultipart
 def send_mail(filePath):
     sender_mail = 'wujianlun@do1.com.cn'
     sender_pass = 'Wjl123456'
-
-    # 接受人信息
-    # receivers = ['wujianlun@do1.com.cn','diaohuiyun@do1.com.cn','luolinyue@do1.com.cn','wangdongyi@do1.com.cn','wanghao2@do1.com.cn']
-    receivers = ['wujianlun@do1.com.cn']
-
     # 设置总的邮件体对象，对象类型为mixed
     msg_root = MIMEMultipart('mixed')
-    # 邮件添加的头尾信息等
+
+
+    # 邮件接受人信息
+    # receivers = ['wujianlun@do1.com.cn','diaohuiyun@do1.com.cn','luolinyue@do1.com.cn','wangdongyi@do1.com.cn','wanghao2@do1.com.cn']
+    receivers = ['wujianlun@do1.com.cn']
+    # 邮件发送人，接收人设置
     msg_root['From'] = sender_mail
     msg_root['To'] = Header(",".join(receivers))
     # 邮件的主题，显示在接收邮件的预览页面
     subject = '七巧测试报告'
     msg_root['subject'] = subject
 
-    # 构造超文本  正文
-
+    # 构造超文本  邮件正文
     content = MIMEText(str(open(filePath, 'rb').read(),'utf-8'),_subtype='html',_charset='utf-8')
     msg_root.attach(content)
-    #html附件
+
+    #html附件  邮件附件
     html = MIMEApplication(open(filePath, 'rb').read())
-    html['Content-Type'] = 'application/octet-stream'
-    html['Content-Disposition'] = 'attachment; filename= "report.html"'
+    html.add_header('Content-Disposition', 'attachment', filename="七巧测试报告附件.html")
     msg_root.attach(html)
 
     try:

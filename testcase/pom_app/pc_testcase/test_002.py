@@ -12,7 +12,7 @@ from util.dateTimeUtil import DateTimeUtil
 
 
 class PomAppTest_002(unittest.TestCase):
-    '''填写工时测试'''
+    '''生产运营应用PC端填写工时测试'''
 
 
     @classmethod

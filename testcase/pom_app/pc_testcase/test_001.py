@@ -72,6 +72,23 @@ class PomAppTest_001(unittest.TestCase):
             businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
+
+        # 清除项目信息管理相关数据
+        businessPage.BusinessPage_LeftMenu_Click('项目信息管理')
+        businessPage.BusinessPage_LeftMenu_Click('里程碑信息')
+        if (businessPage.ListComponent_GetRecordTotal() >= 3):
+            businessPage.ListComponent_checkbox_Click(1)
+            businessPage.ListComponent_checkbox_Click(2)
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        time.sleep(2)
+        businessPage.BusinessPage_LeftMenu_Click('项目信息管理2')
+        if (businessPage.ListComponent_GetRecordTotal() >= 3):
+            businessPage.ListComponent_checkbox_Click(2)
+            businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
         time.sleep(2)
         portalPage.PortalPage_qiqiao_logout()
         self.driver.quit()
@@ -369,57 +386,81 @@ class PomAppTest_001(unittest.TestCase):
 
 
 
-    # def test_04( self ):
-    #     '''道一云生产运营应用，事业一部立项申请流程'''
-    #
-    #     portalPage = PortalPage(self.driver)
-    #     #打开“发起流程列表”
-    #     portalPage.PortalPage_Click_HeaderMenu('流程')
-    #     time.sleep(5)
-    #     processPage = ProcessPage(self.driver)
-    #     processPage.click_process_icon("事业一部立项申请")
-    #     formPage = FormPage(self.driver)
-    #     formPage.Text_Sendkeys("项目名称","中科信息立项申请")
-    #     formPage.Textarea_Sendkeys("项目简介","中科信息立项申请哈哈哈哈哈哈哈")
-    #     #
-    #     self.assertEquals(formPage.User_GetMonomialUserValue_readOnly("项目经理"),"吴健伦")
-    #     formPage.Selection_MonomialSelect_Sendkeys("合作部门","仅通用产品部")
-    #     #点击管理订单添加按钮字段
-    #     formPage.ChildForm_AddButton_Click("关联订单")
-    #     formPage.ForeignSelection_InChildForm_Sendkeys("关联订单","关联订单","电信")
-    #     time.sleep(2)
-    #     formPage.Selection_MonomialSelect_InChildForm_Sendkeys("关联订单","战略意义","标杆作用")
-    #     formPage.Number_Sendkeys("预估成本（人天）",10)
-    #     #点击子表保存按钮
-    #     formPage.click_ChildForm_Button('保存')
-    #
-    #     print(formPage.Number_GetValue_readOnly("项目总金额"))
-    #     print(formPage.Number_GetValue_readOnly("项目预估总成本（人天）"))
-    #     print(formPage.Date_GetValue_writable("项目启动时间"))
-    #     print(formPage.Selection_GetSelectionBoxValue_writable("项目类型"))
-    #     time.sleep(1)
-    #     formPage.Selection_MonomialSelect_Sendkeys('项目等级','普通（普）')
-    #     formPage.Date_Sendkeys("预计验收时间","2020-06-22")
-    #     formPage.Text_Sendkeys("客户名称", "李嘉诚")
-    #     formPage.Text_Sendkeys("甲方对接人", "李嘉诚")
-    #     formPage.Text_Sendkeys("联系方式", "13025805485")
-    #     formPage.Textarea_Sendkeys("备注信息", "中科信息立项申请哈哈哈哈哈哈哈")
-    #
-    #     # 点击项目里程碑添加按钮字段
-    #     formPage.ChildForm_AddButton_Click("项目里程碑")
-    #     formPage.Text_InChildForm_Sendkeys("项目里程碑","阶段名称", "测试")
-    #     formPage.Date_InChildForm_Sendkeys("项目里程碑","计划完成时间", "2020-06-22")
-    #     time.sleep(2)
-    #     # 点击子表保存按钮
-    #     formPage.click_ChildForm_Button('保存')
-    #     formPage.Form_Button_Click("提交")
-    #     formPage.selectProcessManager(["王浩"])
-    #     time.sleep(5)
-    #     processPage.click_process_menu("我的待办")
-    #     processPage.click_process_record(1)
-    #     formPage.Form_Button_Click("审核通过")
+    def test_04( self ):
+        '''道一云生产运营应用，事业一部立项申请流程'''
+        portalPage = PortalPage(self.driver)
+        #打开“发起流程列表”
+        portalPage.PortalPage_Click_HeaderMenu('流程')
+        time.sleep(5)
+        processPage = ProcessPage(self.driver)
+        processPage.click_process_icon("事业一部立项申请")
+        formPage = FormPage(self.driver)
+        formPage.Text_Sendkeys("项目名称","中科信息立项申请")
+        formPage.Textarea_Sendkeys("项目简介","中科信息立项申请哈哈哈哈哈哈哈")
+        #
+        self.assertEquals(formPage.User_GetMonomialUserValue_readOnly("项目经理"),"吴健伦")
+        formPage.Selection_MonomialSelect_Sendkeys("合作部门","仅通用产品部")
+        #点击管理订单添加按钮字段
+        formPage.ChildForm_AddButton_Click("关联订单")
+        formPage.ForeignSelection_InChildForm_Sendkeys("关联订单","关联订单","长江水坝管理系统")
+        time.sleep(2)
+        formPage.Number_InChildForm_Sendkeys("关联订单","预估成本（人天）",10)
+        #点击子表保存按钮
+        formPage.click_ChildForm_Button('保存')
+        time.sleep(3)
+        self.assertEqual(formPage.Number_GetValue_readOnly("项目总金额"),"25555554444",msg="项目总金额计算错误")
+        self.assertEqual(formPage.Number_GetValue_readOnly("项目预估总成本（人天）"),"10",msg="项目预估总成本（人天）错误")
+        self.assertEqual(formPage.Date_GetValue_writable("项目启动时间"),DateTimeUtil().Today(),msg="项目启动时间错误")
+        time.sleep(1)
+        formPage.Selection_MonomialSelect_Sendkeys('项目类型','固定范围')
+        formPage.Selection_MonomialSelect_Sendkeys('项目等级','普通（普）')
+        formPage.Date_Sendkeys("预计验收时间",DateTimeUtil().Tomorrow())
+        formPage.Text_Sendkeys("客户名称", "李嘉诚")
+        formPage.Text_Sendkeys("甲方对接人", "李嘉诚")
+        formPage.Text_Sendkeys("联系方式", "13025805485")
+        formPage.Textarea_Sendkeys("备注信息", "中科信息立项申请哈哈哈哈哈哈哈")
 
+        # 点击项目里程碑添加按钮字段
+        formPage.ChildForm_AddButton_Click("项目里程碑")
+        formPage.Text_InChildForm_Sendkeys("项目里程碑","阶段名称", "测试")
+        formPage.Date_InChildForm_Sendkeys("项目里程碑","计划完成时间", DateTimeUtil().Tomorrow())
+        formPage.Selection_MonomialSelect_InChildForm_Sendkeys("项目里程碑","里程碑状态","已完成")
+        formPage.Date_InChildForm_Sendkeys("项目里程碑","实际完成时间", DateTimeUtil().Tomorrow())
 
+        # 点击子表保存按钮
+        formPage.click_ChildForm_Button('保存并继续添加')
+        time.sleep(2)
+        formPage.Text_InChildForm_Sendkeys("项目里程碑","阶段名称", "测试")
+        formPage.Date_InChildForm_Sendkeys("项目里程碑","计划完成时间", DateTimeUtil().Tomorrow())
+        formPage.click_ChildForm_Button('保存')
+        time.sleep(2)
+        formPage.Form_Button_Click("提交")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="流程发起失败")
+        time.sleep(2)
+        processPage.click_process_menu("我的待办")
+        processPage.click_process_record(1)
+        formPage.Form_Button_Click("审核通过")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第二个人工任务办理失败")
+        time.sleep(2)
+        processPage.click_process_menu("我的待办")
+        processPage.click_process_record(1)
+        formPage.Form_Button_Click("办理")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第三个人工任务办理失败")
+        time.sleep(2)
+        processPage.click_process_menu("我的待办")
+        processPage.click_process_record(1)
+        formPage.Form_Button_Click("办理")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第四个人工任务办理失败")
+        time.sleep(2)
+        processPage.click_process_menu("我的待办")
+        processPage.click_process_record(1)
+        formPage.Form_Button_Click("办理")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第五个人工任务办理失败")
 
 
 

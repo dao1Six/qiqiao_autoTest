@@ -41,6 +41,8 @@ class ListComponent(SeleniumPage):
     selectOptionName_loc = "//div[@data-mark='%s']//span[@title='%s']"  #查询项标题
     listTable_td_loc = "//div[contains(@class,'el-table__body-wrapper')]//tr[%row]//td[%col]//span" #列表单元格
 
+    listTable_checkbox_loc = "//div[contains(@class,'el-table__body-wrapper')]//tr[%row]//td[1]//label" #列表勾选框
+
     ListRow_Button_loc = "//span[@data-mark='%s_%row']/button/span[text()='%s']" #列表行按钮
 
     ListRow_MoreButton_loc = "//div[contains(@class,'el-table__body-wrapper')]//tr[%row]//span[contains(text(),'更多')]/parent::div[1]"#列表行更多按钮
@@ -106,7 +108,9 @@ class ListComponent(SeleniumPage):
         '''点击表单元格值'''
         self.clickElemByXpath_visibility(self.listTable_td_loc.replace('%row',str(row)).replace('%col',str(col)))
 
-
+    def ListComponent_checkbox_Click( self ,row):
+        '''点击列表勾选框'''
+        self.clickElemByXpath_visibility(self.listTable_checkbox_loc.replace('%row',str(row)))
 
     def ListComponent_QueryItem_Sendkeys( self, itemName, keys, *args,QueryItemType="text"):
         '''列表组件的查询项输入值
