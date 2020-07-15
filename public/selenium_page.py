@@ -204,6 +204,14 @@ class SeleniumPage (object):
         except:
             return None
 
+    def find_elemsByXPATH_visibility(self, locator, timeout=5):
+        '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
+        try:
+            return WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_any_elements_located((By.XPATH, locator)))
+        except:
+            return None
+
     def find_elemsByCSS(self, locator, timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
