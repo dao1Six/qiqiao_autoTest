@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     # 用例目录
     case_path = ProjectRootPath + "\\testcase"
-    discover = unittest.defaultTestLoader.discover("../testcase", pattern='test_00*.py')
+    discover = unittest.defaultTestLoader.discover(case_path, pattern='test_00*.py')
     # discover = unittest.defaultTestLoader.discover("../testcase/capital_app/mobile_testcase", pattern='test_001.py')
 
 
