@@ -7,7 +7,7 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 
 
-def send_mail(filePath):
+def send_mail(filePath,sb):
     sender_mail = 'wujianlun@do1.com.cn'
     sender_pass = 'Wjl123456'
     # 设置总的邮件体对象，对象类型为mixed
@@ -21,7 +21,7 @@ def send_mail(filePath):
     msg_root['From'] = sender_mail
     msg_root['To'] = Header(",".join(receivers))
     # 邮件的主题，显示在接收邮件的预览页面
-    subject = '七巧测试报告'
+    subject = sb
     msg_root['subject'] = subject
 
     # 构造超文本  邮件正文

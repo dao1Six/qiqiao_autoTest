@@ -44,7 +44,7 @@ if __name__ == '__main__':
     # result.report(filename='result', description='测试deafult报告', report_dir=reportpath, theme='theme_default')
 
     filename = reportpath+"\\result.html"
-    function.send_mail(filename)
+    function.send_mail(filename,'七巧测试报告')
 
 
 
