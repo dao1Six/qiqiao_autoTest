@@ -23,7 +23,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
-        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
+        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "diaohuiyun@auto", "do1qiqiao")
         time.sleep(3)
         #打开资产管理应用，资产列表把所有的资产设置为可借出状态
         portalPage = PortalPage(self.driver)
@@ -93,7 +93,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
 
     def setUp(self):
         '''登录'''
-        self.mbLogin("wujianlun@auto","do1qiqiao")
+        self.mbLogin("diaohuiyun@auto","do1qiqiao")
 
     def mbLogin(self,account,password):
         '''登录pc端'''
@@ -139,7 +139,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         time.sleep(10)
         self.driver.quit()
         #流程跑完，检查去PC端检查系统任务执行是否正确
-        self.pcLogin("wujianlun@auto","do1qiqiao")
+        self.pcLogin("diaohuiyun@auto","do1qiqiao")
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -174,7 +174,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         time.sleep(2)
         self.driver.quit()
         #检查第二个人工任务提交后系统任务执行是否成功
-        self.pcLogin("wujianlun@auto","do1qiqiao")
+        self.pcLogin("diaohuiyun@auto","do1qiqiao")
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -184,7 +184,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "维修中", msg="第二个人工任务提交后系统任务执行失败")
         self.driver.quit()
         #进行第4个人工任务处理
-        self.mbLogin("wujianlun@auto","do1qiqiao")
+        self.mbLogin("diaohuiyun@auto","do1qiqiao")
         homePage = MbHomePage(self.driver)
         homePage.HomePage_BottomNav_Click("待办")
         todoPage = MbTodoPage(self.driver)
@@ -196,7 +196,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         time.sleep(2)
         self.driver.quit()
         #检查第4个人工任务提交后系统任务执行是否成功
-        self.pcLogin("wujianlun@auto","do1qiqiao")
+        self.pcLogin("diaohuiyun@auto","do1qiqiao")
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -237,7 +237,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         time.sleep(2)
         self.driver.quit()
         #检查第二个人工任务提交后系统任务执行是否成功
-        self.pcLogin("wujianlun@auto","do1qiqiao")
+        self.pcLogin("diaohuiyun@auto","do1qiqiao")
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -278,7 +278,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         time.sleep(2)
         self.driver.quit()
         #检查第二个人工任务提交后系统任务执行是否成功
-        self.pcLogin("wujianlun@auto","do1qiqiao")
+        self.pcLogin("diaohuiyun@auto","do1qiqiao")
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -315,7 +315,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         time.sleep(2)
         self.driver.quit()
         #检查第二个人工任务提交后系统任务执行是否成功
-        self.pcLogin("wujianlun@auto","do1qiqiao")
+        self.pcLogin("diaohuiyun@auto","do1qiqiao")
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
