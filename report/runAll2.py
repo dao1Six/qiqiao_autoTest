@@ -36,6 +36,7 @@ def add_case(case_path, rule="test_00*.py"):
 
 
 def run_case(reportpathName,case_path):
+    print('当前线程的名字是： ',threading.current_thread().name)
     fp = open(reportpath + "\\%s.html" %reportpathName, "wb")
     runner = HTMLTestRunner(title="七巧测试报告", description="1.4.5版本灰度环境测试", stream=fp, verbosity=2,retry=1, save_last_try=True)
     # 执行测试用例
@@ -48,6 +49,8 @@ def run_case(reportpathName,case_path):
 
 
 if __name__ == "__main__":
+    start_time = time.time()
+    print('这是主线程：',threading.current_thread().name)
     threads = []
     case_path_List = add_case_path()[0]
     FirstDirList = add_case_path()[1]
@@ -55,6 +58,9 @@ if __name__ == "__main__":
         t = threading.Thread(target=run_case,args=(f,c))
         threads.append(t)
     for t in threads:
+        t.setDaemon(True)
         t.start()
-        # t.join()
-
+    for t in threads:
+        t.join()
+    print('主线程结束！' , threading.current_thread().name)
+    print('一共用时：', time.time()-start_time)
