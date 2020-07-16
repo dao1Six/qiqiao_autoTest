@@ -53,6 +53,7 @@ class MbDate(SeleniumPage):
             action.flick_element(cyear_elem, 0, -14*yeardiff,5).perform()
         if(self.isClickable(self.datali_loc.replace('%n',str(1)).replace('%value',keyList[0]))==True):
             self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n',str(1)).replace('%value',keyList[0])).click()
+            print("日期已点击年")
 
         #选择月
         cmonthValue = todayList[1]
@@ -70,7 +71,7 @@ class MbDate(SeleniumPage):
         if(self.isClickable(self.datali_loc.replace('%n',str(2)).replace('%value',tmonthValue))==True):
             self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
                 self.datali_loc.replace('%n',str(2)).replace('%value',tmonthValue)).click()
-
+            print("日期已点击月")
         #选择日
         cdayValue = todayList[2]
         if(len(todayList[2])==2 and list(todayList[2])[0]=="0"):
@@ -87,7 +88,7 @@ class MbDate(SeleniumPage):
         if(self.isClickable(self.datali_loc.replace('%n',str(3)).replace('%value',tdayValue))==True):
             self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
                 self.datali_loc.replace('%n',str(3)).replace('%value',tdayValue)).click()
-
+            print("日期已点击日")
         time.sleep(2)
         #点击确定按钮
         self.clickElemByXpath_visibility(self.confirm_loc)
