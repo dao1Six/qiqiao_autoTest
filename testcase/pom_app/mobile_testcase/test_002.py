@@ -20,8 +20,11 @@ class MbPomAppTest_002(unittest.TestCase):
     '''移动端生产运营应用填写工时测试'''
 
 
-    @classmethod
-    def setUpClass(self):
+    # @classmethod
+    # def setUpClass(self):
+    #     self.pdate()
+
+    def pdate(self):
         '''初始化数据'''
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
@@ -43,8 +46,6 @@ class MbPomAppTest_002(unittest.TestCase):
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
         self.driver.quit()
-
-
 
     def setUp(self):
         '''登录'''

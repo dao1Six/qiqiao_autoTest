@@ -78,9 +78,13 @@ class SeleniumPage (object):
         Action = TouchActions(self.driver)
         Action.flick_element(elem, x,y,speed).perform()
 
+
     def h5_tap_elem( self,elem):
         Action = TouchActions(self.driver)
-        Action.tap(elem).perform()
+        try:
+            Action.tap(elem).perform()
+        except:
+            print("点击出现异常不管")
 
 
 
