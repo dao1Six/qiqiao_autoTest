@@ -43,7 +43,7 @@ def run_case(reportpathName,case_path):
     runner.run(add_case(case_path))
     fp.close()
     filename = reportpath + "\\%s.html" %reportpathName
-    function.send_mail(filename,reportpathName+"测试报告")
+    function.send_mail(filename,reportpathName+"应用测试报告")
 
 
 
