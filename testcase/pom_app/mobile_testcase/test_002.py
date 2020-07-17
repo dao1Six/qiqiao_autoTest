@@ -22,7 +22,7 @@ class MbPomAppTest_002(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        self.pdate()
+        self.pdate(self)
 
     def pdate(self):
         '''初始化数据'''
