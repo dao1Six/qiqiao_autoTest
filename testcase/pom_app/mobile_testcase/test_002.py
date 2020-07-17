@@ -20,9 +20,9 @@ class MbPomAppTest_002(unittest.TestCase):
     '''移动端生产运营应用填写工时测试'''
 
 
-    # @classmethod
-    # def setUpClass(self):
-    #     self.pdate()
+    @classmethod
+    def setUpClass(self):
+        self.pdate()
 
     def pdate(self):
         '''初始化数据'''

@@ -50,6 +50,7 @@ def run_case(reportpathName,case_path):
 
 if __name__ == "__main__":
     start_time = time.time()
+    print('开始时间：',start_time)
     print('这是主线程：',threading.current_thread().name)
     threads = []
     case_path_List = add_case_path()[0]

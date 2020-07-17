@@ -23,7 +23,6 @@ class PomAppTest_001(unittest.TestCase):
 
     def dataPrepare( self ):
         '''数据准备'''
-        '''清理数据'''
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
