@@ -76,16 +76,15 @@ class PomAppTest_001(unittest.TestCase):
         # 清除项目信息管理相关数据
         businessPage.BusinessPage_LeftMenu_Click('项目信息管理')
         businessPage.BusinessPage_LeftMenu_Click('里程碑信息')
-        if (businessPage.ListComponent_GetRecordTotal() >= 3):
-            businessPage.ListComponent_checkbox_Click(1)
-            businessPage.ListComponent_checkbox_Click(2)
+        if (businessPage.ListComponent_GetRecordTotal() >0):
+            businessPage.ListComponent_SelectAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
         time.sleep(2)
         businessPage.BusinessPage_LeftMenu_Click('项目信息管理2')
         if (businessPage.ListComponent_GetRecordTotal() >= 3):
-            businessPage.ListComponent_checkbox_Click(2)
+            businessPage.ListComponent_checkbox_Click(1)
             businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -102,7 +101,7 @@ class PomAppTest_001(unittest.TestCase):
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
-        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
+        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wanghao@auto", "do1qiqiao")
         time.sleep(5)
 
 
@@ -156,7 +155,7 @@ class PomAppTest_001(unittest.TestCase):
         processPage.click_process_menu("我的待办")
         processPage.click_process_record(1)
         #选择实施人员
-        formPage.User_MonomialUser_Sendkeys("实施负责人","吴健伦")
+        formPage.User_MonomialUser_Sendkeys("实施负责人","王浩")
         formPage.Form_Button_Click("审批通过")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第2个人工任务办理失败")
@@ -398,7 +397,7 @@ class PomAppTest_001(unittest.TestCase):
         formPage.Text_Sendkeys("项目名称","中科信息立项申请")
         formPage.Textarea_Sendkeys("项目简介","中科信息立项申请哈哈哈哈哈哈哈")
         #
-        self.assertEquals(formPage.User_GetMonomialUserValue_readOnly("项目经理"),"吴健伦")
+        self.assertEquals(formPage.User_GetMonomialUserValue_readOnly("项目经理"),"王浩")
         formPage.Selection_MonomialSelect_Sendkeys("合作部门","仅通用产品部")
         #点击管理订单添加按钮字段
         formPage.ChildForm_AddButton_Click("关联订单")

@@ -74,9 +74,24 @@ class MbPomAppTest_001(unittest.TestCase):
             businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
-        time.sleep(2)
-        portalPage.PortalPage_qiqiao_logout()
-        self.driver.quit()
+            # 清除项目信息管理相关数据
+            businessPage.BusinessPage_LeftMenu_Click('项目信息管理')
+            businessPage.BusinessPage_LeftMenu_Click('里程碑信息')
+            if (businessPage.ListComponent_GetRecordTotal() >0):
+                businessPage.ListComponent_SelectAllRecord()
+                businessPage.ListComponent_Click_ListHeader_Button('删除')
+                businessPage.ListComponent_TooltipButton_Click('确定')
+                assert '成功' in businessPage.Public_GetAlertMessage()
+            time.sleep(2)
+            businessPage.BusinessPage_LeftMenu_Click('项目信息管理2')
+            if (businessPage.ListComponent_GetRecordTotal() >= 3):
+                businessPage.ListComponent_checkbox_Click(1)
+                businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
+                businessPage.ListComponent_TooltipButton_Click('确定')
+                assert '成功' in businessPage.Public_GetAlertMessage()
+            time.sleep(2)
+            portalPage.PortalPage_qiqiao_logout()
+            self.driver.quit()
 
 
 
@@ -84,7 +99,7 @@ class MbPomAppTest_001(unittest.TestCase):
 
     def setUp(self):
         '''登录'''
-        self.mbLogin("wujianlun@auto","do1qiqiao")
+        self.mbLogin("wanghao@auto","do1qiqiao")
 
     def mbLogin(self,account,password):
         '''登录移动端'''
@@ -152,7 +167,7 @@ class MbPomAppTest_001(unittest.TestCase):
         self.driver.back()
         todoPage.MbTodoPage_ProcessRecord_Click(1)
         #选择实施人员
-        formPage.MbUser_MonomialUser_Sendkeys("实施负责人","吴健伦")
+        formPage.MbUser_MonomialUser_Sendkeys("实施负责人","王浩")
         formPage.MbForm_Button_Click("审批通过")
         formPage.MbForm_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第2个人工任务办理失败")
@@ -183,7 +198,7 @@ class MbPomAppTest_001(unittest.TestCase):
         time.sleep(3)
         self.driver.quit()
         #检查流程产生的数据信息
-        self.pcLogin("wujianlun@auto","do1qiqiao")
+        self.pcLogin("wanghao@auto","do1qiqiao")
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -267,7 +282,7 @@ class MbPomAppTest_001(unittest.TestCase):
         time.sleep(3)
         self.driver.quit()
         # 检查流程产生的数据信息
-        self.pcLogin("wujianlun@auto","do1qiqiao")
+        self.pcLogin("wanghao@auto","do1qiqiao")
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)

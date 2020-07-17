@@ -96,7 +96,7 @@ class CapitalAppTest_001(unittest.TestCase):
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
-        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "diaohuiyun@auto", "do1qiqiao")
+        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
         time.sleep(5)
 
     # def tearDown(self):

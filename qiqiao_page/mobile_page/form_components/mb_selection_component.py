@@ -48,7 +48,7 @@ class MbSelection(SeleniumPage):
             self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
                 self.Xiala_Option_loc.replace('%title',option)))
         #点击确定按钮
-        time.sleep(3)
+        time.sleep(1)
         self.clickElemByXpath_visibility(self.Xiala_confirm_loc.replace('%s',fieldName))
 
 
