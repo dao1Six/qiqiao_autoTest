@@ -27,7 +27,7 @@ class SeleniumPage (object):
     def isClickable( self, locator):
         '''判断元素是否可以点击'''
         try:
-            WebDriverWait(self.driver,10).until(EC.visibility_of_any_elements_located((By.XPATH,locator)))
+            WebDriverWait(self.driver,10).until(EC.element_to_be_clickable((By.XPATH,locator)))
             return True
         except:
             return False
@@ -83,6 +83,7 @@ class SeleniumPage (object):
         Action = TouchActions(self.driver)
         try:
             Action.tap(elem).perform()
+            time.sleep(1)
         except:
             print("点击出现异常不管")
 

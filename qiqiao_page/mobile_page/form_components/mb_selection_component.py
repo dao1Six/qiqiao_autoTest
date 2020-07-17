@@ -43,7 +43,8 @@ class MbSelection(SeleniumPage):
         while(self.isClickable(self.Xiala_Option_loc.replace('%title',option))!=True):
             clickElemIndex = clickElemIndex+1
             self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Xiala_li_loc,index=clickElemIndex))
-        while (self.isClickable(self.Xiala_Option_loc.replace('%title', option)) == True):
+        if (self.isClickable(self.Xiala_Option_loc.replace('%title', option)) == True):
+            print("目标下拉元素已可见")
             self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
                 self.Xiala_Option_loc.replace('%title',option)))
         #点击确定按钮
