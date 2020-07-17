@@ -23,7 +23,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
-        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "diaohuiyun@auto", "do1qiqiao")
+        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
         time.sleep(3)
         #打开资产管理应用，资产列表把所有的资产设置为可借出状态
         portalPage = PortalPage(self.driver)
