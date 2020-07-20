@@ -3,6 +3,9 @@ from public.selenium_page import SeleniumPage
 
 
 class MbListComponent(SeleniumPage):
+
+
+
     # 列表记录元素
     CardList_loc = "div.dyCardList div.dyCardList_text_wrapper"
 
@@ -14,10 +17,11 @@ class MbListComponent(SeleniumPage):
     CardList_tabItem = "div.dyCardList div.dyCardList_tabItem"
 
     add_btn = "//div[@class='add_btn']"
+    dyCardList_item = "//div[@class='dyCardList_item']"
+
     def MbListComponent_AddButton_Click( self ):
         '''点击列表添加按钮'''
         self.clickElemByXpath_visibility(self.add_btn)
-
 
 
     # 长按列表某条记录
@@ -41,4 +45,10 @@ class MbListComponent(SeleniumPage):
         for tabItemElem in tabItemsElem:
             tabItems.append(tabItemElem.text)
         return tabItems
+
+
+    def MbListComponent_Get_RecoresNumber( self ):
+        '''返回当前列表记录数'''
+        return len(self.find_elemsByXPATH_presence(self.dyCardList_item))
+
 

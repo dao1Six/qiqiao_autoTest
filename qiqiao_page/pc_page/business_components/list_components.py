@@ -54,7 +54,11 @@ class ListComponent(SeleniumPage):
 
     pagination_total_loc = "//span[@class='el-pagination__total']"
     tabsOption_loc = "//div[@class='el-tabs__header is-top']//span[text()='%s']"
-
+    ColHeader_sort_down_loc = "//tr//span[@title='%s']/ancestor::div[@class='cell']//i[@class='sort-caret descending']"
+    ColHeader_sort_up_loc = "//tr//span[@title='%s']/ancestor::div[@class='cell']//i[@class='sort-caret ascending']"
+    ColHeader_iconxiala = "//tr//span[@title='%s']/ancestor::div[@class='cell']//i[contains(@class,'iconxiala')]"
+    ColHeader_checkbox = "//div[@class='content']//label[contains(@class,'el-checkbox')]"
+    ColHeader_confirm_btn = "//div[@class='content']/following-sibling::div//span[@class='confirm_btn']"
     def ListComponent_GetRecordTotal(self):
         '''获取列表总条数'''
         text = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.pagination_total_loc).text
@@ -73,6 +77,23 @@ class ListComponent(SeleniumPage):
     def ListComponent_TabsOption_Click( self,option ):
         '''点击选项卡'''
         self.clickElemByXpath_visibility(self.tabsOption_loc.replace('%s',option))
+
+    def ListComponent_ColHeader_sort( self,ColName,sortType):
+        '''点击列头排序按钮,sortType等于0为升序，sortType等于1为降序'''
+        if(sortType==0):
+            self.clickElemByXpath_visibility(self.ColHeader_sort_up_loc.replace('%s',ColName))
+        elif(sortType==1):
+            self.clickElemByXpath_visibility(self.ColHeader_sort_down_loc.replace('%s',ColName))
+
+    def ListComponent_ColHeader_search( self,ColName,searchList):
+        '''列头筛选'''
+        #点击列的筛选下拉按钮
+        self.clickElemByXpath_visibility(self.ColHeader_iconxiala.replace('%s',ColName))
+        #勾选筛选项
+        for i in searchList:
+            self.clickElemByXpath_visibility(self.ColHeader_checkbox,index=i-1)
+        #点击确定按钮
+        self.clickElemByXpath_visibility(self.ColHeader_confirm_btn)
 
 
     def ListComponent_Click_ListHeader_Button( self, btnname ):
@@ -111,6 +132,8 @@ class ListComponent(SeleniumPage):
     def ListComponent_GetTable_Td_Value( self ,row,col):
         '''获取列表单元格值'''
         elem = self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.listTable_td_loc.replace('%row',str(row)).replace('%col',str(col)))
+        if(elem==None):
+            return None
         return elem.text
     
     def ListComponent_TableTd_Click( self ,row,col):

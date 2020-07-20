@@ -12,7 +12,7 @@ from qiqiao_page.pc_page.portal_page import PortalPage
 
 @ddt
 class ValueAppTest_001(unittest.TestCase):
-    '''道一云价值观应用，数据过滤及查询检查'''
+    '''道一云价值观应用，数据过滤及查询检查，表头筛选查询'''
 
 
     def setUp(self):
@@ -126,3 +126,33 @@ class ValueAppTest_001(unittest.TestCase):
         businessPage.ListComponent_Click_SerachBtn()
         time.sleep(5)
         self.assertEqual(result,businessPage.ListComponent_GetRecordTotal())
+
+    @data(("人员",1,"王栋一",0,"李嘉诚"),
+          ("修改时间",1,"李嘉诚",0,"王栋一"))
+    @unpack
+    def test_08( self,ColName,sort1,result1,sort2,result2):
+        '''道一云价值观 全员价值观表 人员列排序'''
+        businessPage = BusinessPage(self.driver)
+        businessPage.ListComponent_TabsOption_Click("  全员价值观")
+        time.sleep(5)
+        businessPage.ListComponent_ColHeader_sort(ColName,sort1)
+        time.sleep(3)
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,7),result1)
+        businessPage.ListComponent_ColHeader_sort(ColName,sort2)
+        time.sleep(3)
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,7),result2)
+
+
+    def test_09( self):
+        '''道一云价值观 全员价值观表 季度列筛选'''
+        businessPage = BusinessPage(self.driver)
+        businessPage.ListComponent_TabsOption_Click("  全员价值观")
+        time.sleep(5)
+        #先取消全选
+        businessPage.ListComponent_ColHeader_search("季度",[1])
+        #选择第5，6项
+        businessPage.ListComponent_ColHeader_search("季度",[5,6])
+        time.sleep(3)
+        self.assertIsNone(businessPage.ListComponent_GetTable_Td_Value(1,7))
+
+

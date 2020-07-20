@@ -201,7 +201,7 @@ class SeleniumPage (object):
     #################
     # 查找元素方法
 
-    def find_elemsByXPATH(self, locator, timeout=5):
+    def find_elemsByXPATH_presence(self, locator, timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(

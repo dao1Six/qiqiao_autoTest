@@ -3,6 +3,7 @@ from public.selenium_page import SeleniumPage
 
 
 class MbBottomMenuComponent(SeleniumPage):
+    '''底部菜单'''
 
     dyBottomNavigation = "div.dyBottomNavigation div.dyBottomNavigation_nav div"
 
@@ -18,5 +19,5 @@ class MbBottomMenuComponent(SeleniumPage):
 
 
     #点击某个菜单
-    def ClickBottomMenu( self,title ):
+    def MbBottomMenuComponent_Click( self,title ):
         self.clickElemByXpath_visibility(self.dyBottomNavigation_item.replace('%s',title))

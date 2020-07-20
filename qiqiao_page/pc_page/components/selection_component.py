@@ -72,7 +72,7 @@ class Selection(SeleniumPage):
         fieldName：字段标题
         option：单项选项
         '''
-        while(self.find_elemsByXPATH(self.Selection_Option_check_loc.replace('%s',fieldName).replace('%option',option))==None):
+        while(self.find_elemsByXPATH_presence(self.Selection_Option_check_loc.replace('%s',fieldName).replace('%option',option))==None):
             #点击选项
             self.clickElemByXpath_visibility (self.Selection_Option_loc.replace('%s',fieldName).replace('%option',option))
 
@@ -81,7 +81,7 @@ class Selection(SeleniumPage):
         fieldName：字段标题
         option：单项选项
         '''
-        while(self.find_elemsByXPATH(self.Selection_Option_check_loc.replace('%s',fieldName).replace('%option',option))==None):
+        while(self.find_elemsByXPATH_presence(self.Selection_Option_check_loc.replace('%s',fieldName).replace('%option',option))==None):
             #点击选项
             self.clickElemByXpath_visibility (self.ChildFormPopup_loc.replace('%s',childFormName)+self.Selection_Option_loc.replace('%s',fieldName).replace('%option',option))
 

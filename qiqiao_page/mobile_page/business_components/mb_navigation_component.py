@@ -3,7 +3,7 @@ from public.selenium_page import SeleniumPage
 
 #导航组件
 class MbNavigationComponent(SeleniumPage):
-
+    '''导航组件'''
 
     dyListNavigation_item_title = "div.dyListNavigation_container ul li span.item_title"
 
@@ -11,7 +11,7 @@ class MbNavigationComponent(SeleniumPage):
 
 
     #获取页面导航名
-    def GetNavigationsName( self ):
+    def MbNavigationComponent_Get_NavigationsName( self ):
         NavigationsNameList = []
         for elem in self.find_elemsByCSS(self.dyListNavigation_item_title):
             NavigationsNameList.append(elem.text)

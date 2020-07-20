@@ -88,7 +88,7 @@ class SaySafeAppTest(unittest.TestCase):
         businessModelldPage = BusinessModelldPage(self.driver)
         time.sleep(1)
         # 校验我报平安页面导航是否显示齐全
-        self.assertEquals(businessModelldPage.GetNavigationsName(),["全员报平安","报表中心"])
+        self.assertEquals(businessModelldPage.MbNavigationComponent_Get_NavigationsName(),["全员报平安","报表中心"])
 
     def test_MbListComponent_GetListAllTab( self ):
         '''检查点击导航跳转是否正常并且检查列表获取选项卡值是否正确'''
@@ -114,11 +114,11 @@ class SaySafeAppTest(unittest.TestCase):
         businessModelldPage = BusinessModelldPage(self.driver)
         time.sleep(1)
         self.assertEquals(businessModelldPage.GetBottomMenus(), ['我报平安', '就医记录', '疫情动态'])
-        businessModelldPage.ClickBottomMenu('就医记录')
+        businessModelldPage.MbBottomMenuComponent_Click('就医记录')
         # 校验我报平安页面导航是否显示齐全
         time.sleep(1)
         self.driver.refresh()
-        self.assertEquals(businessModelldPage.GetNavigationsName(),["就医记录总表"])
+        self.assertEquals(businessModelldPage.MbNavigationComponent_Get_NavigationsName(),["就医记录总表"])
 
 
 

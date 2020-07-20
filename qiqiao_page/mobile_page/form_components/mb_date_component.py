@@ -59,7 +59,6 @@ class MbDate(SeleniumPage):
                                                                                                   replace('%value', clickYear)))  # 往上点击一个元素
                 time.sleep(1)
         self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n',str(1)).replace('%value',tyear)).click()
-        print("日期已点击年")
 
         #选择月
 
@@ -84,7 +83,6 @@ class MbDate(SeleniumPage):
                 time.sleep(1)
         self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
             self.datali_loc.replace('%n',str(2)).replace('%value',tmonthValue)).click()
-        print("日期已点击月")
 
         #选择日
         cdayValue = todayList[2]
@@ -107,8 +105,7 @@ class MbDate(SeleniumPage):
                                                                                                   replace('%value', clickDay))) # 往上点击一个元素
                 time.sleep(1)
         self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n',str(3)).replace('%value',tdayValue)))
-        print("日期已点击日")
-        time.sleep(2)
+        time.sleep(1)
         #点击确定按钮
         self.clickElemByXpath_visibility(self.confirm_loc)
         time.sleep(2)
