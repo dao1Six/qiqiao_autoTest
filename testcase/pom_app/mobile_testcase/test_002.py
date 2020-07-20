@@ -44,7 +44,6 @@ class MbPomAppTest_002(unittest.TestCase):
             businessPage.ListComponent_SelectAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
-            assert '成功' in businessPage.Public_GetAlertMessage()
         self.driver.quit()
 
     def setUp(self):
