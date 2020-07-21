@@ -47,6 +47,13 @@ class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,File
         '''点击表单按钮'''
         self.clickElemByXpath_visibility(self.FormPage_button_loc.replace('%s',buttonName))
 
+    def FormPage_button_isExistence( self ,buttonName):
+        elem = self.find_elemsByXPATH_presence(self.FormPage_button_loc.replace('%s',buttonName),timeout=2)
+        if(elem!=None):
+            return True
+        else:
+            return False
+
 
 
     #流程办理弹框相关方法
