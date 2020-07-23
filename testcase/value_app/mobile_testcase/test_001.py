@@ -25,11 +25,11 @@ class MbValueAppTest_001(unittest.TestCase):
 
 
 
-    @data(("diaohuiyun@auto",3),
-         ("wanghao@auto",2),
-         ("luolinyue@auto",1))
+    @data(("diaohuiyun@auto",3,"第二季度",['部门：技术委员会', '人员：李嘉诚', '总分：--']),
+         ("wanghao@auto",2,"第二季度",['部门：创新技术中心->产品研发二部->研发二组', '人员：庄荣填', '总分：0']),
+         ("luolinyue@auto",1,"第一季度",['部门：创新技术中心->产品研发二部->产品规划组', '人员：王栋一', '总分：100']))
     @unpack
-    def test_01( self,account,result):
+    def test_01( self,account,result,result2,result3):
         '''移动端部门价值观数据检查'''
         self.driver = Driver().phonedriver()
         self.driver.maximize_window()
@@ -47,3 +47,7 @@ class MbValueAppTest_001(unittest.TestCase):
         mbBusinessPage.MbNavigationComponent_Click_Navigation("部门价值观")
         #校验部门记录数
         self.assertEqual(mbBusinessPage.MbListComponent_Get_RecoresNumber(),result)
+        #检查记录状态值
+        self.assertEqual(mbBusinessPage.MbListComponent_Get_RecoreStatusValule(1),result2)
+        #检查记录文本值
+        self.assertEqual(mbBusinessPage.MbListComponent_Get_RecoreTextContents(1),result3)

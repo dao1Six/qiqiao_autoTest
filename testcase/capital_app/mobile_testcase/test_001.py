@@ -96,7 +96,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         self.mbLogin("wujianlun@auto","do1qiqiao")
 
     def mbLogin(self,account,password):
-        '''登录pc端'''
+        '''登录移动端'''
         self.driver = Driver().phonedriver()
         self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)

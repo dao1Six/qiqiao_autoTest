@@ -49,6 +49,16 @@ class SeleniumPage (object):
         except TimeoutException as ex:
             print('wait_elem_visible 异常：%s 获取 %s 超时' % (ex, locator))
 
+    def wait_elem_disappearByCSS(self, locator, timeout=3):
+        # 一直等待某个元素消失，默认超时3秒只做等待动作不返回值
+        try:
+            WebDriverWait(self.driver, timeout).until_not(
+                EC.visibility_of_element_located((By.CSS_SELECTOR, locator)))
+        except TimeoutException as ex:
+            print('wait_elem_visible 异常：%s 获取 %s 超时' % (ex, locator))
+
+
+
     def wait_elem_visible_XPATH(self, locator, timeout=10):
         # 一直等待某元素可见，默认超时3秒只做等待动作不返回值
         try:
@@ -57,11 +67,12 @@ class SeleniumPage (object):
         except TimeoutException as ex:
             print('wait_elem_visible 异常：%s 获取 %s 超时' % (ex, locator))
 
-    def wait_elem_disappearByCSS(self, locator, timeout=3):
+    def wait_elem_disappearByXPATH(self, locator, timeout=3):
         # 一直等待某个元素消失，默认超时3秒只做等待动作不返回值
         try:
             WebDriverWait(self.driver, timeout).until_not(
-                EC.visibility_of_element_located((By.CSS_SELECTOR, locator)))
+                EC.visibility_of_element_located((By.XPATH, locator)))
+            time.sleep(1)
         except TimeoutException as ex:
             print('wait_elem_visible 异常：%s 获取 %s 超时' % (ex, locator))
 
