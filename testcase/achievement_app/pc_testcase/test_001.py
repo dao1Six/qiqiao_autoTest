@@ -10,7 +10,7 @@ class AchievementAppTest_001 (unittest.TestCase):
     '''PC端科目成绩应用报表测试'''
 
 
-    Token = "f6674522eeffece2dddf1192702e04b8"
+    Token = "2ab1aec76513d9c293d36d05d4493957"
 
     http = "https://qy.do1.com.cn/qiqiao"
 
@@ -21,7 +21,8 @@ class AchievementAppTest_001 (unittest.TestCase):
         cls.headers = {"Accept": "application/json, text/plain, */*",
                         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36",
                         "X-Auth0-Token": cls.Token,
-                        "Content-Type": "application/json"}
+                        "Content-Type": "application/json",
+                       "Cookie": "corpAB = ww6b6c5c4fa6f34b16"}
 
 
     def test_01(self):
