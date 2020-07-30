@@ -61,6 +61,7 @@ if __name__ == "__main__":
     for t in threads:
         t.setDaemon(True)
         t.start()
+    # jion阻碍父线程运行
     for t in threads:
         t.join()
     print('主线程结束！' , threading.current_thread().name)

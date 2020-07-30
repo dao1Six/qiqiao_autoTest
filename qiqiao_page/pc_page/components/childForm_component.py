@@ -8,6 +8,8 @@ class ChildForm_component(SeleniumPage):
 
     ChildForm_AddButton_loc ='[data-mark=%title] [data-mark=button_添加]'  #子表添加按钮
 
+    ChildForm_AddOneRowButton_loc = "//div[@data-mark='%title']//button//span[text()='添加一行']" #子表添加一行按钮
+
     ChildForm_Input_loc = "[data-mark='%title'] .row_%title_%row [data-mark='%text'] input"  #子表输入框
 
     ChildForm_div_loc = "[data-mark='%title'] .row_%title_%row [data-mark='%text']"  # 子表输入框div
@@ -25,6 +27,8 @@ class ChildForm_component(SeleniumPage):
 
     ChildForm_Td_loc = "//div[@data-mark='%s']//tr[contains(@class,'el-table__row')][%row]//td[%col]"
 
+    ChildForm_Td_shanchu_loc = "//span[@class='iconfont iconyewusheji-shanchu']"
+
     def scroll_To_ChildForm_Div(self):
         self.scrollIntoView(self.ChildForm_div_loc)
 
@@ -37,27 +41,26 @@ class ChildForm_component(SeleniumPage):
         '''
         self.clickElemByCSS_visibility (self.ChildForm_AddButton_loc.replace ('%title', fieldName))
 
+    def ChildForm_AddOneRowButton_Click(self,fieldName,*args):
+        '''点击添加一行按钮
+        fieldName：字段标题
+        '''
+        self.clickElemByXpath_visibility (self.ChildForm_AddOneRowButton_loc.replace ('%title', fieldName))
+
     def click_ChildForm_Button( self,buttonName ):
         '''点击子表按钮'''
         self.clickElemByXpath_visibility(self.ChildForm_button_loc.replace('%s',buttonName))
 
 
 
-    def ChildForm_Record_Delete(self):
+    def ChildForm_Record_Delete(self,fileName,row):
         '''删除子表记录'''
-        pass
-
-
-    #给子表的单行文本组件字段添加数据
-    def sendkeys_To_ChildFormText(self,childformTitle,row,TextTitle,key):
-        '''给子表的单行文本组件输入值
-        childformTitle :子表字段名
-        row：行数
-        TextTitle：文本字段标题
-        key：文本值
-        '''
-        reallyRow = str(row-1)
-        self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',TextTitle),key)
+        #悬浮到单元格
+        td = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+            self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(1)))
+        self.move_to_element(td)
+        self.clickElemByXpath_visibility(self.ChildForm_Td_shanchu_loc)
+        #点击删除按钮
 
 
     def ChildForm_GetTdValue( self,fileName,row,col,*args):
@@ -67,10 +70,21 @@ class ChildForm_component(SeleniumPage):
             text = self.getElemAttrValue(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))+"//input"),"value")
         return text
 
-    # 给子表的多行文本组件字段添加数据
+########给子表行字段添加数据方法
+
+    def ChildForm_List_Text_sendkeys(self,childformTitle,row,TextTitle,key):
+        '''给子表的单行文本组件输入值
+        childformTitle :子表字段名
+        row：行数
+        TextTitle：文本字段标题
+        key：文本值
+        '''
+        reallyRow = str(row-1)
+        self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',TextTitle),key,isclear=True)
+
 
     # 给子表的选择框组件字段添加数据
-    def sendkeys_To_ChildFormSelect(self,childformTitle,row,SelectTitle,list,*args):
+    def ChildForm_List_Select_sendkeys(self,childformTitle,row,SelectTitle,list,*args):
         '''
         childformTitle :子表字段名
         row：行数
@@ -83,7 +97,7 @@ class ChildForm_component(SeleniumPage):
             self.clickElemByCSS_visibility(self.ChildForm_SelectOption_loc.replace('%option',i),index=1)
 
 
-    def sendkeys_To_ChildFormDate(self,childformTitle,DateTitle,row,key):
+    def ChildForm_List_Date_sendkeys(self,childformTitle,DateTitle,row,key):
         '''给子表的日期组件字段添加数据
         childformTitle :子表字段名
         DateTitle：日期字段标题
@@ -94,7 +108,7 @@ class ChildForm_component(SeleniumPage):
         self.clickElemByCSS_visibility(self.ChildForm_label_loc.replace('%title',childformTitle))
 
 
-    def sendkeys_To_ChildFormDateTime(self, childformTitle,DateTimeTitle, row, dateKey,timeKey):
+    def ChildForm_List_DateTime_sendkeys(self, childformTitle,DateTimeTitle, row, dateKey,timeKey):
         '''给子表的日期时间组件字段添加数据
         childformTitle :子表字段名
         DateTimeTitle：日期时间字段标题
@@ -112,7 +126,7 @@ class ChildForm_component(SeleniumPage):
 
 
 
-    def sendkeys_To_ChildFormTime(self,childformTitle,TimeTitle,row,key):
+    def ChildForm_List_Time_sendkeys(self,childformTitle,TimeTitle,row,key):
         '''给子表的时间组件字段添加数据
         childformTitle :子表字段名
         TimeTitle：时间字段标题
@@ -125,7 +139,7 @@ class ChildForm_component(SeleniumPage):
     # 给子表的富文本组件字段添加数据
 
     #
-    def sendkeys_To_ChildFormPicUpload(self,childformTitle,PicUploadTitle,row,picPath):
+    def ChildForm_List_PicUpload_sendkeys(self,childformTitle,PicUploadTitle,row,picPath):
         '''给子表的图片上传组件输入值
         childformTitle :子表字段名
         row：行数
@@ -137,7 +151,7 @@ class ChildForm_component(SeleniumPage):
 
 
     #
-    def sendkeys_To_ChildFormUser(self,childformTitle,UserTitle,row,userNameList):
+    def ChildForm_List_User_sendkeys(self,childformTitle,UserTitle,row,userNameList):
         '''给子表的人员选择组件字段添加数据
         childformTitle :子表字段名
         row：行数

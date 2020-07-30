@@ -203,10 +203,10 @@ class SeleniumPage (object):
         self.sendkeysElem(elem, key,isclear=isclear)
 
 
-    def sendkeysElemByCSS_Presence(self, locator, key, index=0):
+    def sendkeysElemByCSS_Presence(self, locator, key, index=0,isclear=False):
         """给存在dom里的元素组里的某个元素写入值CSS"""
         elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(locator, index)
-        self.sendkeysElem(elem,key)
+        self.sendkeysElem(elem,key,isclear=isclear)
 
 
     #################

@@ -40,3 +40,16 @@ class Number(SeleniumPage):
         elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Number_div_loc.replace('%s',fieldName))
         return elem.text
 
+    def Number_GetValue_Writable( self,fieldName ):
+        '''获取可写状态的数字组件值'''
+        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Number_input_loc.replace('%s',fieldName))
+        numberValue =self.getElemAttrValue(elem,'value')
+        if(numberValue!=""):
+            #判断是否有小数位
+            if("." not in numberValue):
+                return int(numberValue)
+            else:
+                return float(numberValue)
+        else:
+            return None
+
