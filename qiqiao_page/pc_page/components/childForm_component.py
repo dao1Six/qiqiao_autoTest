@@ -57,10 +57,14 @@ class ChildForm_component(SeleniumPage):
         '''删除子表记录'''
         #悬浮到单元格
         td = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
-            self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(1)))
+            self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(1)),index=1)
         self.move_to_element(td)
-        self.clickElemByXpath_visibility(self.ChildForm_Td_shanchu_loc)
-        #点击删除按钮
+        # time.sleep(3)
+        # 点击删除按钮
+        tdshanchu = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildForm_Td_shanchu_loc)
+        tdshanchu.click()
+        # self.clickElemByXpath_visibility(self.ChildForm_Td_shanchu_loc)
+
 
 
     def ChildForm_GetTdValue( self,fileName,row,col,*args):
