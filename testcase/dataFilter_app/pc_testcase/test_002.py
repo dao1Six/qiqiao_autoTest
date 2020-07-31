@@ -26,15 +26,16 @@ class DataFilterAppTest_001 (unittest.TestCase):
 
 
     def setUp(self):
+        #'''删除数据'''
+        filePath = self.downloadPath+"//列表.xls"
+        if(self.isFileExists(filePath)):
+            os.remove(filePath)
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wanghao@auto", "do1qiqiao")
         time.sleep(5)
-        #'''删除数据'''
-        filePath = self.downloadPath+"//列表.xls"
-        if(self.isFileExists(filePath)):
-            os.remove(filePath)
+
 
     def test_01( self ):
         '''单表导出'''
