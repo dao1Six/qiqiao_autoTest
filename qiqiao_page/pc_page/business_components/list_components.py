@@ -50,8 +50,8 @@ class ListComponent(SeleniumPage):
 
     ListRow_SelectAllInput_loc = "//div[contains(@class,'el-table__fixed-header-wrapper')]//th[1]//span[@class='el-checkbox__inner']" #列表首行全选元素
 
-    TooltipButton_loc = "//div[@role='tooltip']//button//span[text()='确定']"
-
+    TooltipButton_loc = "//div[@role='tooltip']//button//span[text()='%s']"
+    dialogfooterButton = "//div[@class='el-dialog__footer']//button/span[text()='%s']"
     pagination_total_loc = "//span[@class='el-pagination__total']"
     tabsOption_loc = "//div[@class='el-tabs__header is-top']//span[text()='%s']"
     ColHeader_sort_down_loc = "//tr//span[@title='%s']/ancestor::div[@class='cell']//i[@class='sort-caret descending']"
@@ -70,8 +70,12 @@ class ListComponent(SeleniumPage):
         self.clickElemByXpath_visibility(self.ListRow_SelectAllInput_loc)
 
     def ListComponent_TooltipButton_Click( self,ButtonNmae ):
-        '''点击列表按钮提示框按钮'''
+        '''点击列表按钮消息提示框按钮'''
         self.clickElemByXpath_visibility(self.TooltipButton_loc.replace('%s',ButtonNmae))
+
+    def ListComponent_dialogfooterButton_Click( self,ButtonNmae ):
+        '''点击列表按钮弹框按钮'''
+        self.clickElemByXpath_visibility(self.dialogfooterButton.replace('%s',ButtonNmae))
 
 
     def ListComponent_TabsOption_Click( self,option ):

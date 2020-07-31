@@ -10,10 +10,13 @@ class Driver():
     ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0]+"qiqiao_autoTest"
 
     chromedriverPath = ProjectRootPath+'\\file_data\\chromedriver.exe'
+
+    downloadPath = ProjectRootPath+'\\file_data\\downloadData'
+
     # 启动浏览器驱动
     def pcdriver(self):
         chrome_options = webdriver.ChromeOptions()
-        prefs = {"profile.default_content_setting_values.notifications" : 2}
+        prefs = {"profile.default_content_setting_values.notifications" : 2 ,"download.default_directory": self.downloadPath}
         chrome_options.add_experimental_option("prefs",prefs)   #禁用谷歌浏览器的通知框
         chrome_options.add_argument("–incognito")
         # chrome_options.add_argument('--headless')  # 无头模式
