@@ -6,7 +6,7 @@ import json
 
 
 
-class MbReportAppTest_001 (unittest.TestCase):
+class MbDataFilterAppTest_001 (unittest.TestCase):
     '''移动端数据过滤应用报表测试'''
 
 

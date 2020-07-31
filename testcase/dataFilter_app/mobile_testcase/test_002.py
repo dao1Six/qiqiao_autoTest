@@ -19,7 +19,7 @@ from qiqiao_page.pc_page.portal_page import PortalPage
 from util.dateTimeUtil import DateTimeUtil
 
 
-class MbReportAppTest_002(unittest.TestCase):
+class MbDataFilterAppTest_002(unittest.TestCase):
     '''移动端数据过滤测试应用数据显示及数据过滤检查'''
 
     def mbLogin(self,account,password):

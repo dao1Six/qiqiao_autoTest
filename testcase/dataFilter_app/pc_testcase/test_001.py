@@ -6,7 +6,7 @@ import json
 
 
 
-class ReportAppTest_001 (unittest.TestCase):
+class DataFilterAppTest_001 (unittest.TestCase):
     '''PC端数据过滤应用报表测试'''
 
 
