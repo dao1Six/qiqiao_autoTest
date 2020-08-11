@@ -15,7 +15,7 @@ class ApplicationListPage(SeleniumPage):
     openAppGroupLoc = "//span[@class='card_title card_title_blue1']"
     openself = "//p[@title='{appname}']/.."
 
-
+    close_btn_step2 = "//div[@class='guidemap_close_btn close_btn_step2']"
 
     def ApplicationListPage_ClickApplicationIcon(self,groupName,title,*args):
         '''点击分组里的应用
@@ -25,6 +25,10 @@ class ApplicationListPage(SeleniumPage):
         self.clickElemByXpath_visibility (
             self.ApplicationListPage_application_loc.replace ('%groupName', groupName).replace ('%applicationName', title))
         time.sleep(2)
+
+    def ApplicationListPage_CloseStep2Tip( self ):
+        '''关闭新手操作提示'''
+        self.clickElemByXpath_visibility(self.close_btn_step2)
 
 
 
