@@ -37,7 +37,13 @@ class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,File
 
     processUser_querenButton_loc = "//div[@aria-label='选择办理人']//button[@data-mark='确定按钮']"
 
+    MoreButton_loc = "//div[@class='header']//span[@class='dropdown_title' and contains(text(),'更多')]"
+    bottonInMore_loc = "//ul[@class='el-dropdown-menu el-popper']/li[contains(text(),'%s')]"
 
+    def Form_ButtonInMore_Click( self,buttonName):
+        '''点击表单更多按钮里的按钮'''
+        self.clickElemByXpath_visibility(self.MoreButton_loc)
+        self.clickElemByXpath_visibility(self.bottonInMore_loc.replace('%s',buttonName))
 
     #提交表单
     def click_submit_button(self,*args):
