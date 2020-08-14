@@ -37,7 +37,6 @@ class PcBugAppTest_001(unittest.TestCase):
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
-        applicationListPage.ApplicationListPage_CloseStep2Tip()
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
         businessPage = BusinessPage(self.driver)
         if (businessPage.ListComponent_GetRecordTotal() > 0):

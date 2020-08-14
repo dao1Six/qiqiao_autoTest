@@ -86,9 +86,8 @@ class CapitalAppTest_001(unittest.TestCase):
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功'in  businessPage.Public_GetAlertMessage()
-
         time.sleep(2)
-        portalPage.PortalPage_qiqiao_logout()
+        # portalPage.PortalPage_qiqiao_logout()
         self.driver.quit()
 
     def setUp(self):

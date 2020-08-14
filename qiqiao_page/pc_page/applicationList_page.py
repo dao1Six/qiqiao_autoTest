@@ -22,6 +22,10 @@ class ApplicationListPage(SeleniumPage):
         groupName:分组名
         title:应用名称
         '''
+        #判断是否有新手操作提示
+        if(self.isClickable(self.close_btn_step2,timeout=3)):
+            #关闭提示
+            self.ApplicationListPage_CloseStep2Tip()
         self.clickElemByXpath_visibility (
             self.ApplicationListPage_application_loc.replace ('%groupName', groupName).replace ('%applicationName', title))
         time.sleep(2)

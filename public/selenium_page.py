@@ -24,10 +24,10 @@ class SeleniumPage (object):
     def __init__(self, driver):
         self.driver = driver
 
-    def isClickable( self, locator):
+    def isClickable( self, locator,timeout = 10):
         '''判断元素是否可以点击'''
         try:
-            WebDriverWait(self.driver,10).until(EC.element_to_be_clickable((By.XPATH,locator)))
+            WebDriverWait(self.driver,timeout).until(EC.element_to_be_clickable((By.XPATH,locator)))
             return True
         except:
             return False
