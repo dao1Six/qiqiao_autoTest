@@ -37,3 +37,9 @@ class MbMultiFormAssociation(SeleniumPage):
         if(text==""):
             text = self.getElemAttrValue(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))+"//input"),"value")
         return text
+
+    def MultiForm_DeletTdValue( self,fileName,row,*args):
+        '''删除多表关联组件中间表数据'''
+        #点击删除数据的序号
+        self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(1))).click()
+        self.clickElemByXpath_visibility
