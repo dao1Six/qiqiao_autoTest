@@ -13,6 +13,8 @@ class MbMultiFormAssociation(SeleniumPage):
 
     MultiForm_Td_loc = "//div[@title='%s']//table[@class='el-table__body']//tr[%row]/td[%col]//div[@class='text_overflow']"
 
+    MultiForm_Td_iconDelete_loc = "//div[@title='%s']//i[@class='iconfont icon-del iconDelete']"
+
     def MultiForm_AddButton_Click(self,fileName,*args):
         '''点击添加按钮'''
         self.clickElemByXpath_visibility (self.MultiFormAssociation_AddButton_loc.replace ('%title', fileName))
@@ -42,4 +44,5 @@ class MbMultiFormAssociation(SeleniumPage):
         '''删除多表关联组件中间表数据'''
         #点击删除数据的序号
         self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(1))).click()
-        self.clickElemByXpath_visibility
+        #点击删除按钮
+        self.clickElemByXpath_visibility(self.MultiForm_Td_iconDelete_loc.replace('%s',fileName))
