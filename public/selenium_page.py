@@ -295,14 +295,14 @@ class SeleniumPage (object):
             print("根据"+locator+"信息在"+str(timeout)+"秒内没有查询到元素")
             return None
 
+    def switch_tab( self,num ):
+        '''浏览器窗口切换'''
+        driver = self.driver
+        handles = driver.window_handles  # 获取当前窗口句柄集合（列表类型）
+        driver.switch_to.window(handles[num - 1])  # 跳转到第num个窗口
 
 
-
-
-
-
-
-##栋一
+    ##栋一
     @retry (stop_max_attempt_number=5, wait_fixed=2000)
     def addAttributeElemsByXpath_Presence(self, locator, attributename,value, timeout=2):
         """给元素添加属性值，添加人（王栋一）"""
