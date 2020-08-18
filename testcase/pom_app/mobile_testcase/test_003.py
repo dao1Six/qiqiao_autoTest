@@ -58,6 +58,7 @@ class MbPomAppTest_003(unittest.TestCase):
         loginpage = MbLoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/mruntime', account, password)
         time.sleep(5)
+        self.driver.refresh()
 
     def pcLogin(self,account,password):
         '''登录pc端'''
@@ -82,11 +83,13 @@ class MbPomAppTest_003(unittest.TestCase):
         #添加明细数据
         time.sleep(2)
         formPage.MbForeignSelection_Sendkeys("项目名称", "广东")
+        time.sleep(2)
         formPage.MbSelection_Radio_Senkeys("工时类型","非项目工作")
+        time.sleep(2)
         formPage.MbSelection_Xiala_Senkeys("工作内容", "客户拜访")
         formPage.MbChildForm_Button_Click("保存")
         time.sleep(2)
-        self.assertEqual(formPage.MbChildForm_GetTdValue("工时明细",1,4),"",msg="项目名称值显示不正确")
+        self.assertEqual(formPage.MbChildForm_GetTdValue("工时明细",1,4),"—",msg="项目名称值显示不正确")
 
 
 
