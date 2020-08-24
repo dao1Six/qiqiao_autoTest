@@ -40,6 +40,9 @@ class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,File
     MoreButton_loc = "//div[@class='header']//span[@class='dropdown_title' and contains(text(),'更多')]"
     bottonInMore_loc = "//ul[@class='el-dropdown-menu el-popper']/li[contains(text(),'%s')]"
 
+
+    ProcessManagers_loc = "//div[@class='common_select_struct']/span"
+
     def Form_ButtonInMore_Click( self,buttonName):
         '''点击表单更多按钮里的按钮'''
         self.clickElemByXpath_visibility(self.MoreButton_loc)
@@ -72,8 +75,6 @@ class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,File
             self.clickElemByXpath_visibility(self.User_search_loc)
             self.sendkeysElemByXpath_visibility(self.User_search_loc,name)
             self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',name))
-
-
         #点击组织选择器确认按钮
         self.clickElemByXpath_visibility(self.processUser_querenButton_loc)
         time.sleep(1)
@@ -85,3 +86,11 @@ class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,File
         '''点击流程办理弹框确认按钮'''
         self.clickElemByXpath_visibility(self.process_querenButton_loc)
 
+
+    def Form_Get_ProcessManagers( self ):
+        '''获取流程弹框办理者'''
+        UsersName = []
+        UsersElem = self.find_elemsByXPATH_presence(self.ProcessManagers_loc)
+        for userElem in UsersElem:
+            UsersName.append(userElem.text())
+        return UsersName

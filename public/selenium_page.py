@@ -14,6 +14,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+import selenium.webdriver.support.ui as ui
 
 
 class SeleniumPage (object):
@@ -62,19 +63,18 @@ class SeleniumPage (object):
     def wait_elem_visible_XPATH(self, locator, timeout=10):
         # 一直等待某元素可见，默认超时3秒只做等待动作不返回值
         try:
-            WebDriverWait(self.driver, timeout).until(
-                EC.visibility_of_any_elements_located((By.XPATH, locator)))
-        except TimeoutException as ex:
-            print('wait_elem_visible 异常：%s 获取 %s 超时' % (ex, locator))
+            ui.WebDriverWait(self.driver,timeout).until(EC.visibility_of_element_located((By.XPATH,locator)))
+            return True
+        except TimeoutException:
+            return False
 
-    def wait_elem_disappearByXPATH(self, locator, timeout=3):
+    def wait_elem_disappearByXPATH(self, locator, timeout=5):
         # 一直等待某个元素消失，默认超时3秒只做等待动作不返回值
         try:
-            WebDriverWait(self.driver, timeout).until_not(
-                EC.visibility_of_element_located((By.XPATH, locator)))
-            time.sleep(1)
-        except TimeoutException as ex:
-            print('wait_elem_visible 异常：%s 获取 %s 超时' % (ex, locator))
+            ui.WebDriverWait(self.driver,timeout).until(EC.invisibility_of_element_located((By.XPATH,locator)))
+            return True
+        except TimeoutException:
+            return False
 
     #长按元素
     def click_and_hold( self,elem):
@@ -228,6 +228,14 @@ class SeleniumPage (object):
         except:
             return None
 
+    def find_elemByXPATH_visibility(self, locator, timeout=10):
+        '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
+        try:
+            return WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_element_located((By.XPATH, locator)))
+        except:
+            return None
+
     def find_elemsByCSS(self, locator, timeout=10):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
@@ -266,6 +274,8 @@ class SeleniumPage (object):
             return elem
 
 
+
+
     def find_elenmInElemsByXpath_element_to_be_clickable(self, locator, index=0,timeout=10):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
@@ -302,59 +312,6 @@ class SeleniumPage (object):
         driver.switch_to.window(handles[num - 1])  # 跳转到第num个窗口
 
 
-    ##栋一
-    @retry (stop_max_attempt_number=5, wait_fixed=2000)
-    def addAttributeElemsByXpath_Presence(self, locator, attributename,value, timeout=2):
-        """给元素添加属性值，添加人（王栋一）"""
-        element = WebDriverWait (self.driver, timeout).until (EC.visibility_of_element_located((By.XPATH, locator)))
-        try:
-            self.driver.execute_script("arguments[0].%s=arguments[1]" %attributename,element,value)
 
-        except TimeoutException:
-            print("等待元素超时！！")
-            raise
-
-    @retry (stop_max_attempt_number=5, wait_fixed=2000)
-    def refreshCurrentPage(self):
-        """刷新当前页面，添加人（王栋一）"""
-        time.sleep(1)
-        self.driver.refresh()
-
-    @retry(stop_max_attempt_number=5, wait_fixed=2000)
-    def waiteElemsByXpath(self, locator,  timeout=2):
-        """通过xpath等待元素出现，添加人（王栋一）"""
-        element = WebDriverWait (self.driver, timeout).until (EC.visibility_of_element_located((By.XPATH, locator)))
-        return element
-
-    @retry(stop_max_attempt_number=5, wait_fixed=2000)
-    def findElemsByXpath(self, locator):
-        '''通过xpath查看找多个元素，添加人（王栋一）'''
-        elements = self.driver.find_elements("xpath", locator)
-        return elements
-
-    @retry(stop_max_attempt_number=5, wait_fixed=2000)
-    def js(self,js,element):
-        '''执行就是脚本，添加人（王栋一）'''
-        self.driver.execute_script(js,element)
-
-
-    def clear(self, css):
-        """
-        清除输入框的内容.
-        用法:
-        driver.clear("css=>#el")
-        """
-        el = self.waiteElemsByXpath(css)
-        el.clear()
-
-
-    def getText(self, css):
-        """
-        获得元素文本信息
-        用法:
-        driver.get_text("css=>#el")
-        """
-        el = self.waiteElemsByXpath(css)
-        return el.text
 
 
