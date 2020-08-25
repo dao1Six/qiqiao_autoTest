@@ -43,6 +43,8 @@ class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,File
 
     ProcessManagers_loc = "//div[@class='common_select_struct']/span"
 
+    tabName_loc = "//div[@role='tablist']/div[text()='%s']"
+
     def Form_ButtonInMore_Click( self,buttonName):
         '''点击表单更多按钮里的按钮'''
         self.clickElemByXpath_visibility(self.MoreButton_loc)
@@ -67,7 +69,7 @@ class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,File
 
     #流程办理弹框相关方法
 
-    def selectProcessManager( self,userNameList ):
+    def Form_Select_ProcessManager( self,userNameList ):
         '''选择流程办理人'''
         # 点击办理人输入框
         self.clickElemByXpath_visibility(self.select_struct_box)
@@ -77,9 +79,7 @@ class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,File
             self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',name))
         #点击组织选择器确认按钮
         self.clickElemByXpath_visibility(self.processUser_querenButton_loc)
-        time.sleep(1)
-        # 点击流程办理框确认按钮
-        self.Form_ProcessHandle_Pop_QuerenButton_Click()
+
 
 
     def Form_ProcessHandle_Pop_QuerenButton_Click( self ):
@@ -92,5 +92,9 @@ class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,File
         UsersName = []
         UsersElem = self.find_elemsByXPATH_presence(self.ProcessManagers_loc)
         for userElem in UsersElem:
-            UsersName.append(userElem.text())
+            UsersName.append(userElem.text)
         return UsersName
+
+    def Form_Switch_Tab( self ,name):
+        '''切换表单选项卡'''
+        self.clickElemByXpath_visibility(self.tabName_loc.replace('%s',name))

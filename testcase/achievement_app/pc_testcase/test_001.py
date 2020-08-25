@@ -10,7 +10,7 @@ class AchievementAppTest_001 (unittest.TestCase):
     '''PC端科目成绩应用报表测试'''
 
 
-    Token = "dd144b0c102d743552857add0362fdbd"
+    Token = "cd10d473600ede7e7666eaa8d7c5b42d"
 
     http = "https://qy.do1.com.cn/qiqiao"
 

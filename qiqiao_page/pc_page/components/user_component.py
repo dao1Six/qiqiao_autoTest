@@ -33,6 +33,25 @@ class User(SeleniumPage):
         self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',userName))
         self.clickElemByXpath_visibility(self.User_querenButton_loc.replace('%s',fieldName))
 
+    def User_MultiUser_Sendkeys(self,fieldName,userNameList,*args):
+        ''' 给人员多选组件输入值
+        fieldName：字段标题
+        userNameList：人员名称集合  list类型
+        '''
+        #点击选择框
+        self.clickElemByXpath_visibility(self.User_selectBox_loc.replace('%s',fieldName))
+        self.selectUser(userNameList,fieldName)
+
+
+    def selectUser( self,userNameList,fieldName):
+        '''人员选择'''
+        for name in userNameList:
+            self.clickElemByXpath_visibility(self.User_search_loc)
+            self.sendkeysElemByXpath_visibility(self.User_search_loc,name,isclear=True)
+            self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',name))
+        self.clickElemByXpath_visibility(self.User_querenButton_loc.replace('%s',fieldName))
+
+
     def User_MonomialUser_InChildForm_Sendkeys(self,childFormName,fieldName,userName):
         '''在子表里给人员单选组件输入值
         fieldName：字段标题
@@ -55,21 +74,6 @@ class User(SeleniumPage):
 
 
 
-    def User_MultiUser_Sendkeys(self,fieldName,userNameList,*args):
-        ''' 给人员多选组件输入值
-        fieldName：字段标题
-        userNameList：人员名称集合  list类型
-        '''
-        #点击选择框
-        self.clickElemByXpath_visibility(self.User_selectBox_loc.replace('%s',fieldName))
-        self.selectUser(userNameList)
-
-    def selectUser( self,userNameList,fieldName):
-        for name in userNameList:
-            self.clickElemByXpath_visibility(self.User_search_loc)
-            self.sendkeysElemByXpath_visibility(self.User_search_loc,name)
-            self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',name),index=1)
-        self.clickElemByXpath_visibility(self.User_querenButton_loc.replace('%s',fieldName))
 
 
 
