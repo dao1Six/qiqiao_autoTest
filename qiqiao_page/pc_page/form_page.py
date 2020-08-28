@@ -31,11 +31,11 @@ class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,File
 
     FormPage_button_loc = "//div[@class='header']//span[contains(text(),'%s')]/parent::button[contains(@class,'el-button--small')]"
 
-    select_struct_box = "//div[@aria-label='办理']//div[contains(@class,'select_struct_box')]"
+    select_struct_box = "//div[contains(@class,'select_struct_box')]"
 
-    process_querenButton_loc = "//div[@aria-label='办理']//button[@data-mark='确定按钮']"
+    process_querenButton_loc = "//button[@data-mark='确定按钮']"
 
-    processUser_querenButton_loc = "//div[@aria-label='选择办理人']//button[@data-mark='确定按钮']"
+    processUser_querenButton_loc = "//button[@data-mark='确定按钮']"
 
     MoreButton_loc = "//div[@class='header']//span[@class='dropdown_title' and contains(text(),'更多')]"
     bottonInMore_loc = "//ul[@class='el-dropdown-menu el-popper']/li[contains(text(),'%s')]"
@@ -45,9 +45,15 @@ class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,File
 
     tabName_loc = "//div[@role='tablist']/div[text()='%s']"
 
+    Signature_option_loc = "//span[text()='%s' and @class='el-radio__label']"
+
+    RejectNode_Input_loc = "//input[@placeholder='请选择节点']"
+    RejectNode_loc = "//li[@class='el-select-dropdown__item']/span[text()='%s']"
+
     def Form_ButtonInMore_Click( self,buttonName):
         '''点击表单更多按钮里的按钮'''
         self.clickElemByXpath_visibility(self.MoreButton_loc)
+        time.sleep(2)
         self.clickElemByXpath_visibility(self.bottonInMore_loc.replace('%s',buttonName))
 
     #提交表单
@@ -78,7 +84,7 @@ class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,File
             self.sendkeysElemByXpath_visibility(self.User_search_loc,name)
             self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',name))
         #点击组织选择器确认按钮
-        self.clickElemByXpath_visibility(self.processUser_querenButton_loc)
+        self.clickElemByXpath_visibility(self.processUser_querenButton_loc,index=1)
 
 
 
@@ -98,3 +104,15 @@ class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,File
     def Form_Switch_Tab( self ,name):
         '''切换表单选项卡'''
         self.clickElemByXpath_visibility(self.tabName_loc.replace('%s',name))
+
+    def Form_Select_Signature( self ,optin):
+        '''选择加签方式'''
+        self.clickElemByXpath_visibility(self.Signature_option_loc.replace('%s',optin))
+
+
+    def Form_Select_RejectNode( self ,RejectNodeName):
+        '''选择驳回节点'''
+        self.clickElemByXpath_visibility(self.RejectNode_Input_loc)
+        time.sleep(1)
+        self.clickElemByXpath_visibility(self.RejectNode_loc.replace('%s',RejectNodeName))
+
