@@ -80,16 +80,15 @@ class MbPomAppTest_003(unittest.TestCase):
         listPage.MbListComponent_AddButton_Click()
         formPage = MbFormPage(self.driver)
         formPage.MbChildForm_AddButton_Click('工时明细')
-        #添加明细数据
+        formPage.MbForeignSelection_Sendkeys("项目名称","广东")
+        formPage.MbSelection_Xiala_Senkeys("工作内容","测试")
+        formPage.MbSelection_Radio_Senkeys("工时类型","产品研发工作")
         time.sleep(2)
-        formPage.MbForeignSelection_Sendkeys("项目名称", "广东")
-        time.sleep(2)
-        formPage.MbSelection_Radio_Senkeys("工时类型","非项目工作")
-        time.sleep(2)
-        formPage.MbSelection_Xiala_Senkeys("工作内容", "客户拜访")
+        formPage.MbForeignSelection_Sendkeys("产品名称","白云制药厂")
+        formPage.MbSelection_Xiala_Senkeys("工作内容","产品测试")
         formPage.MbChildForm_Button_Click("保存")
         time.sleep(2)
-        self.assertEqual(formPage.MbChildForm_GetTdValue("工时明细",1,4),"—",msg="项目名称值显示不正确")
+        self.assertEqual("—",formPage.MbChildForm_GetTdValue('工时明细',1,4),msg="项目名称值显示不正确")
 
 
 

@@ -33,7 +33,6 @@ class PcBugAppTest_001(unittest.TestCase):
 
     def test_01( self ):
         '''【补丁】——分组组件中的必填字段，打开方式为弹窗时，不可见的情况下，进行了必填校验'''
-        # 打开生产运营管理应用
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
