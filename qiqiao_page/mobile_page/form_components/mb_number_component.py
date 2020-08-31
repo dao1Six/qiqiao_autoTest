@@ -19,3 +19,10 @@ class MbNumber(SeleniumPage):
         elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Number_div_loc.replace('%s',fieldName))
         return elem.text
 
+    def MbNumber_IsVisible(self,fieldName):
+        '''数字字段是否可见'''
+        if(self.find_elemByXPATH_visibility(self.Number_input_loc.replace('%s',fieldName),timeout=3)==None):
+            return False
+        else:
+            return True
+

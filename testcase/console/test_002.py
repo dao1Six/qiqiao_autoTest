@@ -10,7 +10,7 @@ class ConsoleTest_002 (unittest.TestCase):
     '''开发平台报表接口'''
 
 
-    Token = "e0a253b9b26341729614fbcec739b17d"
+    Token = "40c4cbf6080cfe6edd4188cbc41bd827"
 
     http = "https://qy.do1.com.cn/qiqiao/console"
 
@@ -51,3 +51,14 @@ class ConsoleTest_002 (unittest.TestCase):
         responseJson3 = response3.json()
         print(responseJson3)
         self.assertEqual(responseJson3,{'msg': '执行成功', 'code': 0, 'data': {'total': 1, 'columns': [{'summary': False, 'realValue': None, 'children': [], 'dataIndex': '创建人名称', 'title': '创建人名称'}, {'summary': False, 'realValue': None, 'children': [], 'dataIndex': '客户全称', 'title': '客户全称'}], 'pageSize': 20, 'page': 1, 'rows': [{'summary': True, '创建人名称': '汇总', '客户全称': 0, '_extras_': {'创建人名称': {'fieldName': 'c80c2583dd38444797838ce1594104b1.author_name', 'value': '汇总'}}}], 'linkages': {'charts': [], 'rowDims': ['c80c2583dd38444797838ce1594104b1.author_name'], 'colDims': []}}})
+
+    def test_02( self ):
+        """【补丁】-开发平台，运行平台表单中有数据时，开发平台明细表配置时出现系统繁忙报错"""
+        url = self.http + "/api/v1/workbench/applications/f982d22df3bf4814bade00a2102fab85/reports/bc55e5583e7a4464a54a379244887f94/charts/a650d3b8ed9a4a638ee36d6a20789e51/chart_render_data?page=1&pageSize=20"
+        print(url)
+        data = json.dumps({"filter":[]})
+        response = requests.post(url=url,headers=self.headers,data=data.encode("utf-8").decode("latin1"))
+        responseJson = response.json()
+        print(responseJson)
+        self.assertEqual(responseJson,{'msg': '执行成功', 'code': 0, 'data': {'total': 1, 'columns': [{'fieldWidth': {'unit': 'px', 'width': 120, 'type': 'compactly'}, 'fieldName': '项目名称', 'uploadType': '', 'title': '项目名称', 'fieldType': 'textBox', 'fieldId': 'key_1586248723328_174764'}, {'fieldWidth': {'unit': 'px', 'width': 120, 'type': 'compactly'}, 'fieldName': '单位名称', 'uploadType': '', 'title': '单位名称', 'fieldType': 'textBox', 'fieldId': 'key_1586243371336_137302'}, {'fieldWidth': {'unit': 'px', 'width': 100, 'type': 'compactly'}, 'fieldName': '合同金额', 'uploadType': '', 'title': '合同金额（万元）', 'fieldType': 'number', 'fieldId': 'key_1586241891104_215866'}, {'fieldWidth': {'unit': 'px', 'width': 100, 'type': 'compactly'}, 'fieldName': '责任部门', 'uploadType': '', 'title': '责任部门', 'fieldType': 'singleDepartmentSelect', 'fieldId': 'key_1586241894280_200595'}, {'fieldWidth': {'unit': 'px', 'width': 100, 'type': 'compactly'}, 'fieldName': '告警情况', 'uploadType': '', 'title': '告警情况', 'fieldType': 'singleSelect', 'fieldId': 'key_1586241899520_288864'}], 'pageSize': 20, 'page': 1, 'rows': [{'项目名称': '所发生的防守打法', '告警情况': '正常', '合同金额（万元）': '', '责任部门': '', '单位名称': ''}], 'linkages': {'charts': [], 'rowDims': ['ee375638c64143779d046fbcf6010178.项目名称', 'ee375638c64143779d046fbcf6010178.单位名称', 'ee375638c64143779d046fbcf6010178.合同金额', 'ee375638c64143779d046fbcf6010178.责任部门', 'ee375638c64143779d046fbcf6010178.告警情况'], 'colDims': []}}})
+

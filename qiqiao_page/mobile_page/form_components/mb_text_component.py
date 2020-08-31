@@ -18,3 +18,10 @@ class MbText(SeleniumPage):
 
     #获取单行文本字段提示信息
 
+
+    def MbText_IsVisible( self,fieldName ):
+        '''单行文本组件是否可见'''
+        if(self.find_elemByCSS_visibility(self.Text_input_loc.replace('%s',fieldName),timeout=3)==None):
+            return False
+        else:
+            return True
