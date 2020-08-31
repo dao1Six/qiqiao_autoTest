@@ -12,6 +12,10 @@ class MbDept(SeleniumPage):
     searchResult_loc = "//div[@class='structSelector_searchResult']//div[@class='cube-checkbox']//input"
     confirmBtn_loc = "//button[@class='cube-btn fr confirmBtn cube-btn-inline cube-btn-primary']"
 
+    departmentList_name_loc = "//div[@title='%s']//div[@class='departmentList_name']"
+    departmentList_name_span_loc = "//div[@title='%s']//div[@class='departmentList_name']/span"
+
+
     def MbDept_MonomialDept_Sendkeys( self,fieldName,deptName,index=0,*args):
         '''给部门单选组件输入值
          fieldName：字段标题
@@ -28,3 +32,11 @@ class MbDept(SeleniumPage):
         self.clickElemByXpath_visibility(self.searchResult_loc,index=index)
         # 点击确定按钮
         self.clickElemByXpath_visibility(self.confirmBtn_loc)
+
+
+    def MbDept_MonomialDept_GetValue( self,fieldName,*args):
+        '''获取部门单选组件的值
+         fieldName：字段标题
+         deptName：部门名称
+         '''
+        return self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.departmentList_name_loc.replace('%s',fieldName)).text + self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.departmentList_name_span_loc.replace('%s',fieldName)).text

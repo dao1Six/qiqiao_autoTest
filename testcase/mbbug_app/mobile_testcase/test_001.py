@@ -49,3 +49,20 @@ class MbBugAppTest_001(unittest.TestCase):
         time.sleep(1)
         self.assertFalse(formPage.MbText_IsVisible("单行文本"))
         self.assertTrue(formPage.MbNumber_IsVisible("数字"))
+
+
+    def test_02( self ):
+        '''【补丁】移动端运行平台，在组织架构顶部搜索选择人员时，部门选择连带写入无效'''
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('外键数据升级','分组可见')
+        self.driver.refresh()
+        time.sleep(1)
+        listPage = MbListComponent(self.driver)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbUser_MonomialUser_Sendkeys("人员单选","吴健伦")
+        time.sleep(1)
+        self.assertEqual(formPage.MbDept_MonomialDept_GetValue("部门单选"),'创新技术中心->产品研发二部->产品规划组产品规划组')
+

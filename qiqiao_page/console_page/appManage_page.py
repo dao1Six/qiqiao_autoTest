@@ -11,7 +11,7 @@ class AppManagePage(SeleniumPage):
 
     def AppManagePage_get_appNumber( self ):
         '''获取应用数'''
-        text = self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.tab_0).text
+        text = self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.tab_0,timeout=10).text
         number = list(text.split("(")[1])[0]
         return int(number)
 
