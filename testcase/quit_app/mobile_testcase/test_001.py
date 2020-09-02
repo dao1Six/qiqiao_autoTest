@@ -9,11 +9,7 @@ from qiqiao_page.mobile_page.mobile_application_page import MbApplicationListPag
 from qiqiao_page.mobile_page.mobile_home_page import MbHomePage
 from qiqiao_page.mobile_page.mobile_login_page import MbLoginPage
 from qiqiao_page.mobile_page.mobile_to_do_page import MbTodoPage
-from qiqiao_page.pc_page.applicationList_page import ApplicationListPage
-from qiqiao_page.pc_page.business_page import BusinessPage
-from qiqiao_page.pc_page.form_page import FormPage
-from qiqiao_page.pc_page.portal_page import PortalPage
-from qiqiao_page.pc_page.process_page import ProcessPage
+
 
 
 class QuitAppTest_001(unittest.TestCase):
@@ -59,7 +55,7 @@ class QuitAppTest_001(unittest.TestCase):
         self.assertEqual(mbBusinessPage.MbListComponent_Get_RecoresNumber(),2)
 
 
-    def test_04( self ):
+    def test_03( self ):
         '''检查离职人员列表人员多选查询是否正常'''
         self.mbLogin("wujianlun@A1","qiqiao123")
         homepage = MbHomePage(self.driver)
@@ -74,7 +70,7 @@ class QuitAppTest_001(unittest.TestCase):
         self.assertEqual(mbBusinessPage.MbListComponent_Get_RecoresNumber(),2)
 
 
-    def test_05( self ):
+    def test_04( self ):
         '''检查离职人员在表单详情中显示是否正确'''
         self.mbLogin("wujianlun@A1","qiqiao123")
         homepage = MbHomePage(self.driver)
