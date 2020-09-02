@@ -11,6 +11,7 @@ class LoginPage(SeleniumPage):
     zhanghao = "//input[@title='请输入账号']"
     mima = "//input[@title='请输入密码']"
     anniu = "//button[text()='登录']"
+    imMsgBoxMsg_loc = "//p[@id='imMsgBoxMsg']"
 
 
     def user_login(self,login_url, username,password,*args):
@@ -24,3 +25,6 @@ class LoginPage(SeleniumPage):
         self.sendkeysElemByXpath_visibility(self.mima,password)
         self.clickElemByXpath_visibility(self.anniu)
 
+    def LoginPage_Get_ImMsg( self ):
+        '''获取登录提示框信息'''
+        return self.find_elemByXPATH_visibility(self.imMsgBoxMsg_loc).text

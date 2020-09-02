@@ -73,6 +73,14 @@ class User(SeleniumPage):
         return self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.UserValue_loc.replace('%s',fieldName)).text
 
 
+    def User_GetMultiUserValue_readOnly( self,fieldName):
+        '''获取只读状态下的人员多选字段的值'''
+        valus = []
+        spans = self.find_elemsByXPATH_presence(self.UserValue_loc.replace('%s',fieldName))
+        for span in spans:
+            valus.append(span.text)
+        return valus
+
 
 
 

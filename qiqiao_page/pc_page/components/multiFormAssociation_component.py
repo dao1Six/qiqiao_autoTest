@@ -1,4 +1,6 @@
 #多表关联组件
+import time
+
 from public.selenium_page import SeleniumPage
 
 
@@ -59,6 +61,7 @@ class MultiFormAssociation(SeleniumPage):
         for rowIndex in rowIndexList:
             str_rowIndex = str(rowIndex-1)
             self.clickElemByCSS_visibility (self.MultiFormManagementDialog_selected_loc.replace ('%title', fileName).replace('%rowIndex',str_rowIndex))
+            time.sleep(1)
 
     def MultiForm_GetTdValue( self,fileName,row,col,*args):
         '''获取多表关联组件中间表单元格值'''

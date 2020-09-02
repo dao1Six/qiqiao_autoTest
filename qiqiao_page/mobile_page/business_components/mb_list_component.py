@@ -1,5 +1,6 @@
 # coding=utf-8
 from public.selenium_page import SeleniumPage
+from qiqiao_page.mobile_page.form_components.mb_user_component import MbUser
 
 
 class MbListComponent(SeleniumPage):
@@ -29,6 +30,88 @@ class MbListComponent(SeleniumPage):
 
     fieldSelect_Item = "//div[contains(@class,'searchBar_leftDrawer_item') and contains(text(),'%s')]"
 
+    item_p_loc = "//div[@class='cube-swipe']//div[@class='cube-swipe-item'][%s]//p[%n]"
+
+    userSelect_Filter_addIcon_loc = "//h3[text()='%s']/following-sibling::ul/li[@class='icon_add_new']"
+
+    filter_button_loc = "//div[@class='filter_render_operation']//button[text()=' %s']"
+
+    def MbListComponent_FilterButton_Click( self,buttonName ):
+        '''点击列表筛选确定重置按钮'''
+        self.clickElemByXpath_visibility(self.filter_button_loc.replace('%s',buttonName))
+
+
+    def MbListComponent_QueryItem_Sendkeys( self, itemName, keys, *args,QueryItemType="text"):
+        '''列表组件的查询项输入值
+        :type QueryItemType: object
+        itemName ：查询项字段
+        keys: 查询项值
+        QueryItemType ： 查询项类型
+        '''
+        # 文本类型
+        if (QueryItemType == "text"):
+            self.sendkeysElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), keys)
+
+        # 日期类型
+        elif (QueryItemType == "date"):
+            #开始
+            self.clickElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), index=0)
+            self.sendkeysElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), keys, index=0)
+            #结束
+            self.clickElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), index=1)
+            self.sendkeysElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), args[0], index=1)
+        #时间
+        elif (QueryItemType == "time"):
+            # 开始
+            self.clickElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), index=0)
+            self.sendkeysElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), keys, index=0)
+            # 结束
+            self.clickElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), index=1)
+            self.sendkeysElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), args[0], index=1)
+        #日期时间
+        elif (QueryItemType == "datetime"):
+            self.sendkeysElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName), keys)
+
+        # 地址选择器类型
+        elif (QueryItemType == "address"):
+            # 点击地址输入框
+            self.clickElemByXpath_visibility("//span[@data-mark='地址选择下拉框']")
+            address = str(keys)
+            if "/" not in address:
+                raise Exception("地址输入格式不正确或者地址不存在，请使用如下输入格式：河南省/郑州市/金水区")
+            else:
+                # 将地址划分
+                sp = address.split("/")
+                for i in sp:
+                    # 点击选项
+                    self.clickElemByXpath_visibility(self.address_option_loc.format(addressname=i))
+        # 下拉框类型
+        elif (QueryItemType == "option"):
+            # 点击文本框
+            self.clickElemByXpath_visibility(self.QueryItem_loc.replace('%s', itemName))
+            # 点击选项
+            if(type(keys)==type("sasdr")):
+                #下拉单选
+                self.clickElemByXpath_visibility(self.li_selectOption_loc.replace('%s', keys))
+            elif(type(keys)==type([1,2])):
+                #下拉多选
+                for key in keys:
+                    self.clickElemByXpath_visibility(self.li_selectOption_loc.replace('%s', key))
+        # 人员部门类型
+        elif (QueryItemType == "user"):
+            #点击添加按钮
+            self.clickElemByXpath_visibility(self.userSelect_Filter_addIcon_loc.replace('%s',itemName))
+            #选择人员
+            MbUser(self.driver).MbUser_SelectUser(keys)
+        else:
+            print("类型值为：" + type)
+            raise Exception("查询项无此类型，请检查type参数的值")
+
+
+    def MbListComponent_ItemP_Get( self,row,now ):
+        '''获取列表记录行显示值'''
+        return self.find_elemByXPATH_visibility(self.item_p_loc.replace('%s',str(row)).replace('%n',str(now))).text
+
     def MbListComponent_shaixuanIcoon_Click( self ):
         '''点击列表筛选图标'''
         self.clickElemByXpath_visibility(self.shaixuanIcoon)
@@ -55,7 +138,7 @@ class MbListComponent(SeleniumPage):
 
     #点击列表某条记录
     def MbListComponent_Recore_Click( self, index ,*args):
-        elem = self.find_elemsByCSS(self.CardList_loc)[index]
+        elem = self.find_elemsByCSS(self.CardList_loc)[index-1]
         self.clickElem(elem)
 
 

@@ -50,7 +50,7 @@ class MbDataFilterAppTest_002(unittest.TestCase):
         #检查记录文本值
         # self.assertEqual(mbBusinessPage.MbListComponent_Get_RecoreTextContents(1),result2)
         print(mbBusinessPage.MbListComponent_Get_RecoreTextContents(1))
-        mbBusinessPage.MbListComponent_Recore_Click(1)
+        mbBusinessPage.MbListComponent_Recore_Click(2)
         time.sleep(5)
         self.driver.back()
         print(mbBusinessPage.MbListComponent_Get_RecoreStatusValule(1))

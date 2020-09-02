@@ -14,11 +14,15 @@ class MbUser(SeleniumPage):
     searchInput_loc = "//div[@class='structSelector_main_active']/input"
     searchResult_loc = "//div[@class='structSelector_searchResult']//div[@class='cube-checkbox']//input"
     confirmBtn_loc = "//button[@class='cube-btn fr confirmBtn cube-btn-inline cube-btn-primary']"
+
+    UserValue_loc = "//div[@title='%s']//span[@class='peopleList_name']"
+
     #获取表单人员组件的值
     def GetUserValue( self,fieldName):
         elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(self.peopleListName_loc.replace('%s',fieldName))
         value = elem.text
         return value
+
 
     def MbUser_MonomialUser_Sendkeys(self,fieldName,userName):
         '''给人员单选组件输入值
@@ -36,3 +40,21 @@ class MbUser(SeleniumPage):
         #点击确定按钮
         self.clickElemByXpath_visibility(self.confirmBtn_loc)
 
+    def MbUser_SelectUser( self,userName ):
+        # 点击搜索框
+        self.clickElemByXpath_visibility(self.structSelector_searchBar)
+        # 输入搜索人
+        self.sendkeysElemByXpath_visibility(self.searchInput_loc,userName)
+        # 点击查询结果
+        self.clickElemByXpath_visibility(self.searchResult_loc)
+        # 点击确定按钮
+        self.clickElemByXpath_visibility(self.confirmBtn_loc)
+
+
+    def MbUser_GetUserValue_readOnly( self,fieldName):
+        '''获取只读状态下的人员多选字段的值'''
+        valus = []
+        spans = self.find_elemsByXPATH_visibility(self.UserValue_loc.replace('%s',fieldName))
+        for span in spans:
+            valus.append(span.text)
+        return valus

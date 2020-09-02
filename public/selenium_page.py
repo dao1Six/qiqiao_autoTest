@@ -139,7 +139,9 @@ class SeleniumPage (object):
 
     def clickElem(self, elem):
         """给一个存在dom的元素写入值Xpath"""
+        #滚动元素至可见位置
         self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
+        #点击
         elem.click()
 
 

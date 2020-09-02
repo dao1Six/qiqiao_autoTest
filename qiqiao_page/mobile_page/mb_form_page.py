@@ -28,6 +28,10 @@ class MbFormPage(MbPublicPage,MbNumber,MbText,MbTextarea,MbDate,MbTime,MbDateTim
 
     process_querenButton_loc = "//div[@class='workFlowHandle']//button[contains(text(),'提交')]"
 
+    workFlowHandle_userList_span_loc = "//div[@class='workFlowHandle_userList']//span"
+
+    tabName_loc = "//div[@class='cube-tab']//div[text()='%s']"
+
     def MbForm_Button_Click( self,buttonName ):
         '''点击表单按钮'''
         self.clickElemByXpath_visibility(self.FormPage_button_loc.replace('%s',buttonName))
@@ -36,3 +40,16 @@ class MbFormPage(MbPublicPage,MbNumber,MbText,MbTextarea,MbDate,MbTime,MbDateTim
     def MbForm_ProcessHandle_Pop_QuerenButton_Click( self ):
         '''点击流程办理弹框提交按钮'''
         self.clickElemByXpath_visibility(self.process_querenButton_loc)
+
+
+    def MbForm_Get_ProcessManagers( self ):
+        '''获取流程办理人列表'''
+        valus = []
+        spans = self.find_elemsByXPATH_presence(self.workFlowHandle_userList_span_loc)
+        for span in spans:
+            valus.append(span.text)
+        return valus
+
+    def MbForm_Switch_Tab( self ,name):
+        '''切换表单选项卡'''
+        self.clickElemByXpath_visibility(self.tabName_loc.replace('%s',name))

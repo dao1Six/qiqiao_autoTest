@@ -59,6 +59,10 @@ class ListComponent(SeleniumPage):
     ColHeader_iconxiala = "//tr//span[@title='%s']/ancestor::div[@class='cell']//i[contains(@class,'iconxiala')]"
     ColHeader_checkbox = "//div[@class='content']//label[contains(@class,'el-checkbox')]"
     ColHeader_confirm_btn = "//div[@class='content']/following-sibling::div//span[@class='confirm_btn']"
+
+
+
+
     def ListComponent_GetRecordTotal(self):
         '''获取列表总条数'''
         text = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.pagination_total_loc).text

@@ -14,9 +14,11 @@ from qiqiao_page.pc_page.process_page import ProcessPage
 class CapitalAppTest_001(unittest.TestCase):
     '''PC端资产管理应用流程检查'''
 
-
     @classmethod
     def setUpClass(self):
+        self.dataPrepare(self)
+
+    def dataPrepare(self):
         '''初始化资产列表数据'''
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
