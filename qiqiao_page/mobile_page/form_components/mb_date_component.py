@@ -70,7 +70,7 @@ class MbDate(SeleniumPage):
         if(len(keyList[1])==2 and list(keyList[1])[0]=="0"):
             tmonthValue = list(keyList[1])[1]
         #判断的目标月是否可以点击
-        if(len(self.find_elemsByXPATH_visibility(self.datali_loc.replace('%n', str(2)).replace('%value', tmonthValue)))>0):
+        if(self.find_elemsByXPATH_visibility(self.datali_loc.replace('%n', str(2)).replace('%value', tmonthValue))!=None):
             self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n',str(2)).replace('%value',tmonthValue)))
         else:
             monthdiff = int(cmonthValue) - int(tmonthValue)
@@ -98,7 +98,7 @@ class MbDate(SeleniumPage):
         if(len(keyList[2])==2 and list(keyList[2])[0]=="0"):
             tdayValue = list(keyList[2])[1]
         #判断的目标日期是否可以点击
-        if(len(self.find_elemsByXPATH_visibility(self.datali_loc.replace('%n', str(3)).replace('%value', tdayValue)))>0):
+        if(self.find_elemsByXPATH_visibility(self.datali_loc.replace('%n', str(3)).replace('%value', tdayValue))!=None):
             self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n',str(3)).replace('%value',tdayValue)))
         else:
             daydiff = int(cdayValue) - int(tdayValue)

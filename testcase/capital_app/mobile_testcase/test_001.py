@@ -16,9 +16,13 @@ from qiqiao_page.pc_page.login_page import LoginPage
 class MbCapitalAppTest_001(unittest.TestCase):
     '''移动端资产管理应用流程检查'''
 
-
     @classmethod
     def setUpClass(self):
+        self.dataPrepare(self)
+
+
+
+    def dataPrepare(self):
         '''初始化资产列表数据'''
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
@@ -261,6 +265,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         todoPage.MbTodoPage_Faqiliucheng('资产管理', '归还')
         formPage = MbFormPage(self.driver)
         formPage.MultiForm_AddButton_Click("归还明细")
+        time.sleep(2)
         formPage.MultiForm_BathManagePage_Record_Tick("归还明细", [1, 2])
         formPage.MultiForm_BathManagePage_Button_Cick("归还明细","确定选择")
         time.sleep(3)
@@ -327,16 +332,3 @@ class MbCapitalAppTest_001(unittest.TestCase):
         print("检查完成，资产管理报废流程测试通过")
 
 
-
-    #
-    # def test_06( self ):
-    #     '''资产列表点击序列号值跳转至领用明细'''
-    #     portalPage = PortalPage(self.driver)
-    #     portalPage.PortalPage_Click_HeaderMenu("应用")
-    #     applicationListPage = ApplicationListPage(self.driver)
-    #     applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
-    #     businessPage = BusinessPage(self.driver)
-    #     businessPage.ListComponent_TableTd_Click(1,3)
-    #     time.sleep(3)
-    #     self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,3),"A1002",msg="")
-    #     self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,10),"已归还",msg="")

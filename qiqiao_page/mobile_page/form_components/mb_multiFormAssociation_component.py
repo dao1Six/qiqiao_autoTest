@@ -1,4 +1,6 @@
 #多表关联组件
+import time
+
 from public.selenium_page import SeleniumPage
 
 
@@ -34,6 +36,7 @@ class MbMultiFormAssociation(SeleniumPage):
             str_rowIndex = str(rowIndex)
             # self.clickElemByCSS_visibility (self.MultiFormManagementDialog_selected_loc.replace ('%title', fileName).replace('%rowIndex',str_rowIndex))
             self.clickElemByXpath_visibility(self.MultiFormManagementDialog_selected_loc.replace('%rowIndex',str_rowIndex))
+            time.sleep(2)
 
 
     def MultiForm_BathManagePage_Button_Cick(self,fileName,buttonName,*args):

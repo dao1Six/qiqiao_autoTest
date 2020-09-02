@@ -328,7 +328,7 @@ class PomAppTest_001(unittest.TestCase):
         formPage.ChildForm_AddButton_Click("其他类型结算管理")
         formPage.Number_InChildForm_Sendkeys("其他类型结算管理", "结算金额", 600)
         formPage.click_ChildForm_Button("保存")
-        time.sleep(2)
+        time.sleep(3)
         formPage.Form_Button_Click("发起结算")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第1个人工任务办理失败")

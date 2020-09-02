@@ -1,4 +1,7 @@
 # coding=utf-8
+import time
+import threadpool
+
 import threading
 import time
 import unittest
@@ -46,29 +49,23 @@ def run_case(reportpathName,case_path):
     function.send_mail(filename,reportpathName+"应用测试报告")
 
 
-
-
 if __name__ == "__main__":
     start_time = time.time()
     print('开始时间：',start_time)
     print('这是主线程：',threading.current_thread().name)
     threads = []
-    case_path_List = add_case_path()[0]
-    FirstDirList = add_case_path()[1]
-
+    func_var = []
+    case_path_List = add_case_path()[0] #用例目录
+    FirstDirList = add_case_path()[1] #app名
+    #生成多个列表
     for c,f in zip(case_path_List,FirstDirList):
-        #run_case参数：线程执行的函数
-        #f参数：报告生成放置的目录
-        #c参数：用例目录
-        t = threading.Thread(target=run_case,args=(f,c))
-        #把线程对象放到列表
-        threads.append(t)
-    #启动线程
-    for t in threads:
-        t.setDaemon(True)
-        t.start()
-    # jion会阻碍父线程运行所以写在另一个for循环：阻塞主线程，等子线程结束
-    for t in threads:
-        t.join()
-    print('主线程结束！' , threading.current_thread().name)
-    print('一共用时：', time.time()-start_time)
+        list=[f,c]
+        func_var.append((list,None))
+    # 定义了一个线程池，最多创建10个线程
+    pool = threadpool.ThreadPool(4)
+    # 创建要开启多线程的函数，以及函数相关参数和回调函数，其中回调数可以不写，default是none
+    requests = threadpool.makeRequests(run_case, func_var)
+    # 将所有要运行多线程的请求扔进线程池
+    [pool.putRequest(req) for req in requests]
+    pool.wait()
+    print('%d second' % (time.time()-start_time))

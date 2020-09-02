@@ -1,13 +1,19 @@
-# coding=utf-8
-import time
-from selenium import webdriver
+import threadpool
 
 
-driver = webdriver.Chrome()
-driver.maximize_window()
-driver.get("https://tqy.do1.net.cn/qa-console")
-time.sleep(2)
-driver.find_element_by_id("j_username").send_keys("wujianlun@B")
-driver.find_element_by_id("j_password").send_keys("qiqiao2019")
-driver.find_element_by_id("btn_login").click()
+def hello(m, n, o):
+    print("m = %s, n = %s, o = %s" % (m, n, o))
 
+
+
+if __name__ == '__main__':
+    # 方法1
+    lst_vars_1 = ['1', '2', '3']
+    func_var = [(lst_vars_1, None)]
+    pool = threadpool.ThreadPool(2)
+    requests = threadpool.makeRequests(hello, func_var)
+    print(requests)
+    for req in requests:
+        print(req)
+        pool.putRequest(req)
+    pool.wait()
