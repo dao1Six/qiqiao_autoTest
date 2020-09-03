@@ -19,6 +19,8 @@ class Dept(SeleniumPage):
 
     El_tree_loc = "//div[@id='tree-item']"
 
+    DeptValue_loc = "//div[@data-mark='%s']//div[contains(@class,'component_detail')]//i/following-sibling::span"  # 部门选择组件值元素
+
 
     # 给部门单选组件输入值
     def Dept_MonomialDept_Sendkeys(self,fieldName,DeptName,index=0,*args):
@@ -57,3 +59,12 @@ class Dept(SeleniumPage):
         # 点击确认按钮
         self.clickElemByXpath_visibility(self.Dept_querenButton_loc.replace('%s', fieldName))
 
+
+
+    def Dept_GetDeptValue_Writable( self,fieldName):
+        '''获取可写状态下的部门字段的值'''
+        valus = []
+        spans = self.find_elemsByXPATH_presence(self.DeptValue_loc.replace('%s',fieldName))
+        for span in spans:
+            valus.append(span.text)
+        return valus

@@ -15,7 +15,9 @@ class User(SeleniumPage):
     User_searchOption_loc = "//span[contains(text(),'%s')]/parent::li[contains(@class,'el-select-dropdown__item')]"  #人员选择组织架构搜索项
 
 
-    UserValue_loc = "//div[@data-mark='%s']//div[contains(@class,'component_detail')]//span"  #人员选择组件值元素
+    UserValue_readOnly_loc = "//div[@data-mark='%s']//div[contains(@class,'component_detail')]//li//span"  #人员选择组件值元素
+
+    UserValue_Writable_loc = "//div[@data-mark='%s']//div[contains(@class,'component_detail')]//i/following-sibling::span"
 
     ChildFormPopup_loc = "//div[@data-mark='子表弹层_%s']"
 
@@ -70,13 +72,23 @@ class User(SeleniumPage):
 
     def User_GetMonomialUserValue_readOnly( self,fieldName):
         '''获取只读状态下的人员单选字段的值'''
-        return self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.UserValue_loc.replace('%s',fieldName)).text
+        return self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.UserValue_readOnly_loc.replace('%s',fieldName)).text
 
 
     def User_GetMultiUserValue_readOnly( self,fieldName):
         '''获取只读状态下的人员多选字段的值'''
         valus = []
-        spans = self.find_elemsByXPATH_presence(self.UserValue_loc.replace('%s',fieldName))
+        spans = self.find_elemsByXPATH_presence(self.UserValue_readOnly_loc.replace('%s',fieldName))
+        for span in spans:
+            valus.append(span.text)
+        return valus
+
+
+    
+    def User_GetUserValue_Writable( self,fieldName):
+        '''获取可写状态下的人员字段的值'''
+        valus = []
+        spans = self.find_elemsByXPATH_presence(self.UserValue_Writable_loc.replace('%s',fieldName))
         for span in spans:
             valus.append(span.text)
         return valus

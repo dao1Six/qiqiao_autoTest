@@ -4,7 +4,7 @@ from public.selenium_page import SeleniumPage
 
 class DateTime(SeleniumPage):
 
-    DateTime_input_loc = "div[title='%s'] input[type='text']"  # 日期时间组件输入框
+    DateTime_input_loc = "//div[@data-mark='%s']//input"  # 日期时间组件输入框
     DateTime_label_loc = "div[title='%s']>label>span[title='%title']"   # 日期时间组件字段标题
 
     #给日期时间组件输入值
@@ -22,4 +22,7 @@ class DateTime(SeleniumPage):
         self.clickElemByCSS_visibility(self.DateTime_label_loc.replace('%s',fieldName).replace('%title',fieldName))
 
 
-    #获取日期组件的值
+    def DateTime_GetValue_writable( self,fieldName ):
+        '''获取可写状态的日期时间组件的值'''
+        elem = self.find_elemByXPATH_visibility(self.DateTime_input_loc.replace('%s',fieldName))
+        return self.getElemAttrValue(elem,"value")

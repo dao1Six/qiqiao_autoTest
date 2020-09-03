@@ -64,7 +64,7 @@ class Selection(SeleniumPage):
     def Selection_GetSelectionBoxValue_writable( self,fieldName):
         '''获取可写状态下的下拉框组件值'''
         elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.SelectionBox_Value_loc.replace('%s', fieldName))
-        return self.getElemAttrValue(elem, "value")
+        return self.getElemAttrValue(elem, "title")
 
     #
     def Selection_RadioSelect_Sendkeys(self,fieldName,option,*args):

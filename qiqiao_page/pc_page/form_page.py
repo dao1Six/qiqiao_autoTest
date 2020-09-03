@@ -6,6 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from qiqiao_page.pc_page.components.cascade_component import Cascade
 from qiqiao_page.pc_page.components.datetime_component import DateTime
 from qiqiao_page.pc_page.components.dept_component import Dept
+from qiqiao_page.pc_page.components.grade_component import Grade
 from qiqiao_page.pc_page.components.pic_Upload_component import PicUpload
 from public.selenium_page import SeleniumPage
 from qiqiao_page.pc_page.components.number_component import Number
@@ -24,7 +25,7 @@ from qiqiao_page.pc_page.components.multiFormAssociation_component import MultiF
 from qiqiao_page.pc_page.public_page import PublicPage
 
 
-class FormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Selection,User,Address,Cascade,ChildForm_component,ChildFormAssociation_component,ForeignSelection_component,MultiFormAssociation,Dept):
+class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Selection,User,Address,Cascade,ChildForm_component,ChildFormAssociation_component,ForeignSelection_component,MultiFormAssociation,Dept):
     '''PC表单页面'''
 
     FormPage_submit_button_loc = "//button[@type='button']/span[contains(text(),'提交')]"  #表单提交按钮
