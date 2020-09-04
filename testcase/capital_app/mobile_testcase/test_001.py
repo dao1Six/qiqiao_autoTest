@@ -16,9 +16,9 @@ from qiqiao_page.pc_page.login_page import LoginPage
 class MbCapitalAppTest_001(unittest.TestCase):
     '''移动端资产管理应用流程检查'''
 
-    @classmethod
-    def setUpClass(self):
-        self.dataPrepare(self)
+    # @classmethod
+    # def setUpClass(self):
+    #     self.dataPrepare(self)
 
 
 
@@ -269,7 +269,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         formPage.MultiForm_BathManagePage_Record_Tick("归还明细", [1, 2])
         formPage.MultiForm_BathManagePage_Button_Cick("归还明细","确定选择")
         time.sleep(3)
-        self.assertEqual("笔记本",formPage.MultiForm_GetTdValue("归还明细", 2, 2),msg="归还明细设备类别显示不正确")
+        self.assertEqual("笔记本",formPage.MultiForm_GetTdValue("归还明细", 1, 2),msg="归还明细设备类别显示不正确")
         formPage.MbForm_Button_Click("提交")
         formPage.MbForm_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第一个人工任务办理失败")
