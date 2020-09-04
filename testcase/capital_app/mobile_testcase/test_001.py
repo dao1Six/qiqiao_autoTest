@@ -16,9 +16,9 @@ from qiqiao_page.pc_page.login_page import LoginPage
 class MbCapitalAppTest_001(unittest.TestCase):
     '''移动端资产管理应用流程检查'''
 
-    # @classmethod
-    # def setUpClass(self):
-    #     self.dataPrepare(self)
+    @classmethod
+    def setUpClass(self):
+        self.dataPrepare(self)
 
 
 
