@@ -135,6 +135,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         formPage.MultiForm_AddButton_Click("领用明细")
         formPage.MultiForm_BathManagePage_Record_Tick("领用明细", [1, 2])
         formPage.MultiForm_BathManagePage_Button_Cick("领用明细","确定选择")
+        time.sleep(3)
         self.assertEqual("A1002",formPage.MultiForm_GetTdValue("领用明细", 1, 4),msg="领用明细序列号显示不正确")
         self.assertEqual("I5/8G120SSD+500G", formPage.MultiForm_GetTdValue("领用明细", 2, 5),msg="领用明细配置显示不正确")
         formPage.MbForm_Button_Click("办理")

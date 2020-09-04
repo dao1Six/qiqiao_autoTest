@@ -91,9 +91,9 @@ class PomAppTest_001(unittest.TestCase):
         portalPage.PortalPage_qiqiao_logout()
         self.driver.quit()
 
-    @classmethod
-    def setUpClass(self):
-        self.dataPrepare(self)
+    # @classmethod
+    # def setUpClass(self):
+    #     self.dataPrepare(self)
 
 
     def setUp(self):
@@ -322,8 +322,8 @@ class PomAppTest_001(unittest.TestCase):
         time.sleep(2)
         formPage.click_ChildForm_Button("保存")
         time.sleep(2)
-        self.assertEqual(formPage.ChildForm_GetTdValue("资源借调结算管理", 1, 9), "500", msg="结算费用汇总计算错误")
-        self.assertEqual(formPage.ChildForm_GetTdValue("资源借调结算管理", 2, 9), "600", msg="结算费用汇总计算错误")
+        self.assertEqual(formPage.ChildForm_GetTdValue("资源借调结算管理", 1, 9), "600", msg="结算费用汇总计算错误")
+        self.assertEqual(formPage.ChildForm_GetTdValue("资源借调结算管理", 2, 9), "500", msg="结算费用汇总计算错误")
         # 点击其他类型结算管理添加按钮字段
         formPage.ChildForm_AddButton_Click("其他类型结算管理")
         formPage.Number_InChildForm_Sendkeys("其他类型结算管理", "结算金额", 600)
