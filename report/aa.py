@@ -62,7 +62,7 @@ if __name__ == "__main__":
         list=[f,c]
         func_var.append((list,None))
     # 定义了一个线程池，最多创建10个线程
-    pool = threadpool.ThreadPool(4)
+    pool = threadpool.ThreadPool(3)
     # 创建要开启多线程的函数，以及函数相关参数和回调函数，其中回调数可以不写，default是none
     requests = threadpool.makeRequests(run_case, func_var)
     # 将所有要运行多线程的请求扔进线程池
