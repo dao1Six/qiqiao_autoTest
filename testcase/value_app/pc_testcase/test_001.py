@@ -65,6 +65,9 @@ class ValueAppTest_001(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
         businessPage.ListComponent_TabsOption_Click(" 全员价值观明细")
         time.sleep(5)
+        #点击展开按钮
+        businessPage.ListComponent_Click_ExpandBtn()
+        time.sleep(2)
         businessPage.ListComponent_QueryItem_Sendkeys("人员",option,QueryItemType="user")
         businessPage.ListComponent_Click_SerachBtn()
         time.sleep(5)
@@ -122,6 +125,8 @@ class ValueAppTest_001(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
         businessPage.ListComponent_TabsOption_Click(" 全员价值观明细")
         time.sleep(5)
+        businessPage.ListComponent_Click_ExpandBtn()
+        time.sleep(2)
         businessPage.ListComponent_QueryItem_Sendkeys("部门",option,QueryItemType="user")
         businessPage.ListComponent_Click_SerachBtn()
         time.sleep(5)

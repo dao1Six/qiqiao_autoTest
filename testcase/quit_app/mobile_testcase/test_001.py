@@ -82,4 +82,4 @@ class QuitAppTest_001(unittest.TestCase):
         formPage = MbFormPage(self.driver)
         formPage.MbForm_Switch_Tab("人员部门类组件")
         self.assertEqual(formPage.MbUser_GetUserValue_readOnly("人员单选"),["刘言"])
-        self.assertEqual(formPage.MbUser_GetUserValue_readOnly("人员多选"),["刘言","王浩"])
+        self.assertEqual(formPage.MbUser_GetUserValue_readOnly("人员多选"),['王浩', '刘言'])
