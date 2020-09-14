@@ -16,7 +16,7 @@ from qiqiao_page.pc_page.login_page import LoginPage
 
 
 class MbCapitalAppTest_002(unittest.TestCase):
-    '''移动端资产管理应用流程检查'''
+    '''移动端资产管理应用过往补丁2'''
 
     @classmethod
     def setUpClass( self ):
