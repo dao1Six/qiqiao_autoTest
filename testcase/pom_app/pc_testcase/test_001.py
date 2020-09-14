@@ -244,7 +244,7 @@ class PomAppTest_001(unittest.TestCase):
         formPage.click_ChildForm_Button("保存")
         time.sleep(2)
         self.assertEqual(formPage.ChildForm_GetTdValue("资源借调信息",1,3),"测试",msg="借调人连带职位错误")
-        self.assertEqual(formPage.ChildForm_GetTdValue("资源借调信息", 2, 4), "100", msg="借调人连带预估单价错误")
+        self.assertEqual(formPage.ChildForm_GetTdValue("资源借调信息", 2, 4), "100.00", msg="借调人连带预估单价错误")
         formPage.Form_Button_Click("提交")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第1个人工任务办理失败")

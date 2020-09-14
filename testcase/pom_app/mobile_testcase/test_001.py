@@ -90,7 +90,7 @@ class MbPomAppTest_001(unittest.TestCase):
                 businessPage.ListComponent_TooltipButton_Click('确定')
                 assert '成功' in businessPage.Public_GetAlertMessage()
         time.sleep(2)
-        portalPage.PortalPage_qiqiao_logout()
+        # portalPage.PortalPage_qiqiao_logout()
         self.driver.quit()
 
 
@@ -235,6 +235,7 @@ class MbPomAppTest_001(unittest.TestCase):
 
         #点击资源借调信息添加按钮字段
         formPage.MbChildForm_AddButton_Click("资源借调信息")
+        time.sleep(2)
         formPage.MbUser_MonomialUser_Sendkeys("借调人", "吴健伦")
         formPage.MbDate_SendKeys("借调开始时间",DateTimeUtil().Today())
         formPage.MbDate_SendKeys("借调预计结束时间", DateTimeUtil().Tomorrow())
