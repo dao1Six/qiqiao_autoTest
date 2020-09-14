@@ -29,6 +29,7 @@ class MultiFormAssociation(SeleniumPage):
 
     MultiForm_Td_loc = "//div[@data-mark='%s']//tr[@class='el-table__row'][%row]//td[%col]"
 
+    MultiForm_RelationForm_Td_loc = "//div[@data-mark='%s_table']//tr[@class='el-table__row'][%row]//td[%col]//span"
 
     def MultiForm_BatchManagementButton_Click(self,fileName,*args):
         '''点击批量管理按钮'''
@@ -69,6 +70,21 @@ class MultiFormAssociation(SeleniumPage):
         if(text==""):
             text = self.getElemAttrValue(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))+"//input"),"value")
         return text
+
+
+    def MultiForm_RelationForm_GetTdValue( self,fileName,row,col,*args):
+        '''获取多表关联组件关联表单元格值'''
+        tdElem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.MultiForm_RelationForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col)))
+        if tdElem!=None:
+            text = tdElem.text
+            if(text==""):
+                text = self.getElemAttrValue(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.MultiForm_RelationForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))+"//input"),"value")
+            return text
+        else:
+            #关联表数据为空
+            return None
+
+
 
 
 
