@@ -113,11 +113,10 @@ class ChildForm_component(SeleniumPage):
 
 
     def ChildForm_List_Date_sendkeys(self,childformTitle,DateTitle,row,key):
-        '''给子表的日期组件字段添加数据
-        childformTitle :子表字段名
-        DateTitle：日期字段标题
-        key：文本值
-        '''
+        '''给子表的日期组件字段添加数据   '''
+        # childformTitle :子表字段名
+        #         # DateTitle：日期字段标题
+        #         # key：文本值
         reallyRow = str(row-1)
         self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',DateTitle),key)
         self.clickElemByCSS_visibility(self.ChildForm_label_loc.replace('%title',childformTitle))
@@ -167,11 +166,11 @@ class ChildForm_component(SeleniumPage):
 
     #
     def ChildForm_List_User_sendkeys(self,childformTitle,UserTitle,row,userNameList):
-        '''给子表的人员选择组件字段添加数据
-        childformTitle :子表字段名
-        row：行数
-        UserTitle：人员字段标题
-        '''
+        '''给子表的人员选择组件字段添加数据'''
+        # childformTitle :子表字段名
+        # row：行数
+        # UserTitle：人员字段标题
+
         reallyRow = str(row-1)
         #点击人员选择
         self.clickElemByCSS_visibility(self.ChildForm_userSelect_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%user',UserTitle))

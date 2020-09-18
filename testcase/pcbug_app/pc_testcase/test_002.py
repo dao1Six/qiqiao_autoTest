@@ -143,21 +143,19 @@ class PcBugAppTest_002(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('项目信息管理')
         businessPage.BusinessPage_LeftMenu_Click('项目信息管理3')
-        # businessPage.ListComponent_Click_ListRow_Button('编辑',1)
         businessPage.ListComponent_Click_ListHeader_Button("添加")
         formPage = FormPage(self.driver)
-        formPage.ChildForm_AddOneRowButton_Click("项目团队成员")
-        formPage.ChildForm_List_Text_sendkeys("项目团队成员",1,"项目编号","2255555")
-        formPage.ChildForm_List_Text_sendkeys("项目团队成员",1,"项目编号","2255555")
-        # #把子表数据删至8条
-        # TotalRecordNumber = formPage.ChildForm_get_TotalRecordNumber("项目团队成员")
-        # while(TotalRecordNumber>8):
-        #     formPage.ChildForm_Record_Delete("项目团队成员",TotalRecordNumber)
-        #     TotalRecordNumber = TotalRecordNumber-1
-        #
-        # #添加子表数据到15条
-        # formPage.ChildForm_AddOneRowButton_Click("项目团队成员")
-        # formPage.ChildForm_List_Text_sendkeys("项目团队成员",9,"项目编号","2255555")
+        for i in range(1,15):
+            formPage.ChildForm_AddOneRowButton_Click("项目团队成员")
+            formPage.ChildForm_List_Text_sendkeys("项目团队成员",i,"项目编号","2255555")
+            formPage.ChildForm_List_User_sendkeys("项目团队成员","员工",i,["吴健伦"])
+            formPage.ChildForm_List_Text_sendkeys("项目团队成员",i,"岗位","2255555")
+            formPage.ChildForm_List_Date_sendkeys("项目团队成员","进入项目时间",i,"2020-09-18")
+        time.sleep(3)
+        formPage.Form_Button_Click("提交")
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="")
+
+
 
 
 

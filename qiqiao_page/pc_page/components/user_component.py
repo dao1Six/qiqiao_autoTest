@@ -6,8 +6,8 @@ from public.selenium_page import SeleniumPage
 
 class User(SeleniumPage):
 
-    User_querenButton_loc = "//div[@class='el-dialog %s']//button[@data-mark='确定按钮']" #人员选择确认按钮
-
+    # User_querenButton_loc = "//div[@class='el-dialog %s']//button[@data-mark='确定按钮']" #人员选择确认按钮
+    User_querenButton_loc = "//button[@data-mark='确定按钮']"
     User_selectBox_loc = "//div[@data-mark='%s']//span[text()='+选择人员']"  #人员选择字段添加按钮
 
     User_search_loc = "//input[@placeholder='搜索用户']"  #人员选择组织架构搜索框
