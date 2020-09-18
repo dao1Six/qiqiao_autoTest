@@ -16,7 +16,11 @@ class MbUser(SeleniumPage):
     confirmBtn_loc = "//button[@class='cube-btn fr confirmBtn cube-btn-inline cube-btn-primary']"
 
     UserValue_loc = "//div[@title='%s']//span[@class='peopleList_name']"
+    structSelector_tab = "//div[@class='cube-tab-bar bg_wh structSelector_tab']//div[text()='%s']"
 
+    structSelector_dataList_div = "//div[contains(@class,'structSelector_dataList')]//div[contains(text(),'%s')]"
+
+    struct_name_full = "//div[contains(@class,'structSelector_dataList')]//div[@class='struct_name_full']"
     #获取表单人员组件的值
     def GetUserValue( self,fieldName):
         elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(self.peopleListName_loc.replace('%s',fieldName))
@@ -25,10 +29,10 @@ class MbUser(SeleniumPage):
 
 
     def MbUser_MonomialUser_Sendkeys(self,fieldName,userName):
-        '''给人员单选组件输入值
-        fieldName：字段标题
-        userName：人员名称
-        '''
+        '''给人员单选组件输入值'''
+        #fieldName：字段标题
+        #userName：人员名称
+
         #点击添加选择框
         self.clickElemByXpath_visibility(self.icon_add_new_loc.replace('%s',fieldName))
         #点击搜索框
@@ -58,3 +62,21 @@ class MbUser(SeleniumPage):
         for span in spans:
             valus.append(span.text)
         return valus
+
+    def MbUser_Tag_GetUserValue( self,fieldName,TagName):
+        '''获取人员字段里某标签的人员数据'''
+        userlist = []
+        #点击添加选择框
+        self.clickElemByXpath_visibility(self.icon_add_new_loc.replace('%s',fieldName))
+        #切换至标签
+        self.clickElemByXpath_visibility(self.structSelector_tab.replace('%s',"标签"))
+        time.sleep(1)
+        #点击标签
+        self.clickElemByXpath_visibility(self.structSelector_dataList_div.replace('%s',TagName))
+        #获取显示人员数据
+        users = self.find_elemsByXPATH_visibility(self.struct_name_full)
+        for user in users:
+            userlist.append(user.text)
+        return userlist
+
+

@@ -83,3 +83,19 @@ class QuitAppTest_001(unittest.TestCase):
         formPage.MbForm_Switch_Tab("人员部门类组件")
         self.assertEqual(formPage.MbUser_GetUserValue_readOnly("人员单选"),["刘言"])
         self.assertEqual(formPage.MbUser_GetUserValue_readOnly("人员多选"),['王浩', '刘言'])
+
+
+    def test_05( self ):
+        '''【补丁】移动端运行平台，组织选择器，标签下绑定了部门时，运行平台标签下会显示部门名称'''
+        self.mbLogin("wujianlun@A1","qiqiao123")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('离职人员测试应用','列表数据过滤组')
+        mbBusinessPage = MbBusinessPage(self.driver)
+        #点击添加按钮
+        mbBusinessPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbForm_Switch_Tab("人员部门类组件")
+        self.assertEqual(['王浩', '李嘉诚', '王栋一'],formPage.MbUser_Tag_GetUserValue('人员单选','部门加用户'))
+

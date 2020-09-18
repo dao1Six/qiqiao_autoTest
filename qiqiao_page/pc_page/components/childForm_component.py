@@ -27,7 +27,9 @@ class ChildForm_component(SeleniumPage):
 
     ChildForm_Td_loc = "//div[@data-mark='%s']//tr[contains(@class,'el-table__row')][%row]//td[%col]"
 
-    ChildForm_Td_shanchu_loc = "//span[@class='iconfont iconyewusheji-shanchu']"
+    ChildForm_Td_shanchu_loc = "//div[@data-mark='%s']//div[@class='el-table__fixed']//tr[%row]//span[contains(@class,'shanchu')]"
+
+    order_number_div = "//div[@data-mark='%s']//div[@class='el-table__body-wrapper is-scrolling-left']//div[@class='order_number']"
 
     def scroll_To_ChildForm_Div(self):
         self.scrollIntoView(self.ChildForm_div_loc)
@@ -53,15 +55,15 @@ class ChildForm_component(SeleniumPage):
 
 
 
-    def ChildForm_Record_Delete(self,fileName,row):
+    def ChildForm_Record_Delete(self,fileName,row,index1=0):
         '''删除子表记录'''
         #悬浮到单元格
         td = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
-            self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(1)),index=1)
+            self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(1)),index=index1)
         self.move_to_element(td)
-        # time.sleep(3)
+        time.sleep(1)
         # 点击删除按钮
-        tdshanchu = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildForm_Td_shanchu_loc)
+        tdshanchu = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildForm_Td_shanchu_loc.replace('%s',fileName).replace('%row',str(row)))
         tdshanchu.click()
         # self.clickElemByXpath_visibility(self.ChildForm_Td_shanchu_loc)
 
@@ -74,16 +76,25 @@ class ChildForm_component(SeleniumPage):
             text = self.getElemAttrValue(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))+"//input"),"value")
         return text
 
+
+
+    def ChildForm_get_TotalRecordNumber(self,fileName):
+        '''获取子表记录数'''
+        elems = self.find_elemsByXPATH_presence(self.order_number_div.replace('%s',fileName))
+        if(elems!=None):
+            return len(elems)
+        else:
+            return 0
+
 ########给子表行字段添加数据方法
 
     def ChildForm_List_Text_sendkeys(self,childformTitle,row,TextTitle,key):
-        '''给子表的单行文本组件输入值
-        childformTitle :子表字段名
-        row：行数
-        TextTitle：文本字段标题
-        key：文本值
-        '''
-        reallyRow = str(row-1)
+        '''给子表的单行文本组件输入值'''
+        # childformTitle :子表字段名
+        # row：行数
+        # TextTitle：文本字段标题
+        # key：文本值
+        reallyRow = str(row - 1)
         self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',TextTitle),key,isclear=True)
 
 

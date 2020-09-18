@@ -16,7 +16,7 @@ from qiqiao_page.pc_page.portal_page import PortalPage
 
 
 class PcBugAppTest_001(unittest.TestCase):
-    '''PC端过往补丁应用'''
+    '''PC端过往补丁应用1'''
 
 
     def setUp(self):
@@ -126,6 +126,18 @@ class PcBugAppTest_001(unittest.TestCase):
 
 
 
+
+    def test_05( self ):
+        '''【补丁】--PC运行平台脚本执行异常:低代码获取的documentt没有form对象'''
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
+        businessPage = BusinessPage(self.driver)
+        businessPage.ListComponent_Click_ListHeader_Button('添加2')
+        popFormPage = PopupFormPage(self.driver)
+        popFormPage.PopupFormPage_Button_Click('提交')
+        self.assertIn("成功",businessPage.Public_GetAlertMessage())
 
 
 

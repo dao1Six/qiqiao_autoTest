@@ -27,9 +27,15 @@ class MultiFormAssociation(SeleniumPage):
 
     MultiFormManagementDialog__dialogfooter_loc = "div.dialog-footer"
 
-    MultiForm_Td_loc = "//div[@data-mark='%s']//tr[@class='el-table__row'][%row]//td[%col]"
+    MultiForm_Td_loc = "//div[@data-mark='%s']//tr[contains(@class,'el-table__row')][%row]//td[%col]"
 
     MultiForm_RelationForm_Td_loc = "//div[@data-mark='%s_table']//tr[@class='el-table__row'][%row]//td[%col]//span"
+
+    order_div = "//div[@data-mark='%s']//div[@class='order_number' and contains(text(),'%row')]"
+
+    order_number_div = "//div[@data-mark='%s']//div[@class='order_number']"
+
+    order_number_shanchu_span = "//div[@data-mark='%s']//div[@class='order_number' and contains(text(),'%row')]/parent::div//span[contains(@class,'shanchu')]"
 
     def MultiForm_BatchManagementButton_Click(self,fileName,*args):
         '''点击批量管理按钮'''
@@ -39,7 +45,6 @@ class MultiFormAssociation(SeleniumPage):
     def MultiForm_AddButton_Click(self,fileName,*args):
         '''点击添加按钮'''
         self.clickElemByCSS_visibility (self.MultiFormAssociation_AddButton_loc.replace ('%title', fileName))
-
 
 
     def click_MultiFormManagementDialog_paginationPrev(self,fileName,*args):
@@ -87,24 +92,36 @@ class MultiFormAssociation(SeleniumPage):
 
 
 
-
     def MultiForm_BathManagePage_ConfirmButton_Tick(self,fileName,*args):
         '''点击批量管理页面确认按钮'''
         self.clickElemByCSS_visibility (self.MultiFormManagementDialog_ConfirmButton_loc.replace ('%title', fileName))
 
 
-    def click_MultiFormManagementDialog_CancelButton(self,fileName,*args):
+    def MultiForm_click_MultiFormManagementDialog_CancelButton(self,fileName,*args):
         '''点击批量管理页面取消按钮'''
         self.clickElemByCSS_visibility (self.MultiFormManagementDialog_CancelButton_loc.replace ('%title', fileName))
 
-    def delete_MultiForm_Record(self):
-        '''删除多表记录'''
-        pass
+    # def MultiForm_delete_Record(self,fileName,row):
+    #     '''删除多表记录'''
+    #     #鼠标移至删除的数据的序列号
+    #     self.move_to_element(self.order_div.replace('%s',fileName).replace('%row',str(row)))
+    #     time.sleep(1.5)
+    #     #点击删除按钮
+    #     self.clickElemByXpath_visibility(self.order_number_shanchu_span.replace('%s',fileName).replace('%row',str(row)))
+
+    # def MultiForm_get_TotalRecordNumber(self,fileName):
+    #     '''获取多表记录数'''
+    #     elems = self.find_elemsByXPATH_visibility(self.order_number_div.replace('%s',fileName))
+    #     if(elems!=None):
+    #         return len(elems)
+    #     else:
+    #         return 0
+    # #
 
 
 
-    #
-    def sendkeys_To_MultiFormText(self,multiformTitle,row,TextTitle,key):
+
+    def MultiForm_sendkeysTo_Text(self,multiformTitle,row,TextTitle,key):
         '''给多表批量管理页面的中间表的单行文本组件字段添加数据
         multiformTitle :多表字段名
         row：行数

@@ -83,6 +83,7 @@ class SeleniumPage (object):
 
     #鼠标悬浮
     def move_to_element( self,elem):
+        '''鼠标悬浮'''
         ActionChains(self.driver).move_to_element(elem).perform()
 
     def h5_move_to_elem(self,elem,x,y,speed):

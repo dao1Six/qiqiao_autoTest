@@ -51,6 +51,8 @@ class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUploa
     RejectNode_Input_loc = "//input[@placeholder='请选择节点']"
     RejectNode_loc = "//li[@class='el-select-dropdown__item']/span[text()='%s']"
 
+    workflow_info = "//div[@class='workflow_info']//span"
+
     def Form_ButtonInMore_Click( self,buttonName):
         '''点击表单更多按钮里的按钮'''
         self.clickElemByXpath_visibility(self.MoreButton_loc)
@@ -117,3 +119,11 @@ class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUploa
         time.sleep(1)
         self.clickElemByXpath_visibility(self.RejectNode_loc.replace('%s',RejectNodeName))
 
+    def Form_Get_Sponsor( self):
+        '''获取表单流程发起人'''
+        return self.find_elemsByXPATH_visibility(self.workflow_info)[0].text
+
+
+    def Form_Get_LaunchTime( self):
+        '''获取表单流程发起时间'''
+        return self.find_elemsByXPATH_visibility(self.workflow_info)[1].text
