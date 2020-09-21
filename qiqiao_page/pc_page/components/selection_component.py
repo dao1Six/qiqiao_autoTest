@@ -14,7 +14,7 @@ class Selection(SeleniumPage):
 
     Selection_Option_loc = "//div[@data-mark='%s']//span[text()='%option']"  #单选多选选项
 
-    Selection_Option_check_loc = "//div[@title='%s']//span[text()='%option']/preceding-sibling::span[@class='el-radio__input is-checked']" #单选多选选项被选中后出来的元素
+    Selection_Option_check_loc = "//div[@data-mark='%s']//span[text()='%option']/preceding-sibling::span[@class='el-radio__input is-checked']" #单选多选选项被选中后出来的元素
 
     SelectionBox_Value_loc = "//div[@data-mark='%s']//div[contains(@class,'component_detail')]//input"   #下拉选择框值
 

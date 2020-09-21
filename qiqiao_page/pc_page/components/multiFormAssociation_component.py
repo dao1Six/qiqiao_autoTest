@@ -132,7 +132,16 @@ class MultiFormAssociation(SeleniumPage):
         self.sendkeysElemByCSS_Presence(self.MultiFormManagementDialog__Input_loc.replace('%title',multiformTitle).replace('%rowIndex',reallyRow).replace('%filename',TextTitle),key)
 
 
-    # 给多表批量管理页面的中间表的数字组件字段添加数据
+
+    def MultiForm_sendkeysTo_Number(self,multiformTitle,row,NumberTitle,key):
+        '''给多表批量管理页面的中间表的数字组件字段添加数据'''
+        # multiformTitle :多表字段名
+        # row：行数
+        # TextTitle：文本字段标题
+        # key：文本值
+
+        reallyRow = str(row-1)
+        self.sendkeysElemByCSS_Presence(self.MultiFormManagementDialog__Input_loc.replace('%title',multiformTitle).replace('%rowIndex',reallyRow).replace('%filename',NumberTitle),str(key))
 
     # 给多表批量管理页面的中间表的多行文本组件字段添加数据
 

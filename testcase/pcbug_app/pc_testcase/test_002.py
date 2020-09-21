@@ -143,6 +143,11 @@ class PcBugAppTest_002(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('项目信息管理')
         businessPage.BusinessPage_LeftMenu_Click('项目信息管理3')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
         businessPage.ListComponent_Click_ListHeader_Button("添加")
         formPage = FormPage(self.driver)
         for i in range(1,15):
@@ -153,10 +158,79 @@ class PcBugAppTest_002(unittest.TestCase):
             formPage.ChildForm_List_Date_sendkeys("项目团队成员","进入项目时间",i,"2020-09-18")
         time.sleep(3)
         formPage.Form_Button_Click("提交")
-        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="")
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="【补丁】-PC运行平台-子表单组件。通过“添加一行按钮”添加数据到第10条的时候。需要点击两次才出来。并且添加后第10条的数据不可用字段必填校验不生效")
 
 
 
+    def test_06( self ):
+        '''【补丁】PC运行平台--通过触发更新事件更新单行文本，更新的值通过公式计算【如截图所示】，提交表单后会多显示“.0”'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','问题复现-刁惠云')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('触发更新事件问题复现')
+        businessPage.BusinessPage_LeftMenu_Click('问题复现')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage = FormPage(self.driver)
+        formPage.Number_Sendkeys("整数",10)
+        formPage.Number_Sendkeys("小数",10)
+        formPage.Number_Sendkeys("金额",10)
+        formPage.Number_Sendkeys("百分比",10)
+        formPage.Number_Sendkeys("公式大写",10)
+        formPage.Form_Button_Click("提交")
+        time.sleep(2)
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage.Number_Sendkeys("整数",100)
+        formPage.Number_Sendkeys("小数",100)
+        formPage.Number_Sendkeys("金额",100)
+        formPage.Number_Sendkeys("百分比",100)
+        formPage.Number_Sendkeys("公式大写",100)
+        formPage.Form_Button_Click("提交")
+        time.sleep(3)
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2,13),"￥100￥301",msg="【补丁】PC运行平台--通过触发更新事件更新单行文本，更新的值通过公式计算【如截图所示】，提交表单后会多显示“.0”")
+
+
+    def test_07( self ):
+        '''【补丁】PC运行平台--触发更新事件中，数字字段配置更新公式（DAYSDIFF (本表字段.日期时间 ,TODAY ())），更新后数字字段显示为"--"'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','问题复现-刁惠云')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('触发更新事件问题复现')
+        businessPage.BusinessPage_LeftMenu_Click('目标表')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage = FormPage(self.driver)
+        formPage.Text_Sendkeys("单行文本","道一")
+        formPage.Form_Button_Click("提交")
+        time.sleep(2)
+        businessPage.BusinessPage_LeftMenu_Click('本表')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage.Text_Sendkeys("单行文本","道一")
+        formPage.DateTime_Sendkeys("日期时间",DateTimeUtil().Today()+" 00:00")
+        time.sleep(2)
+        formPage.Form_Button_Click("提交")
+        time.sleep(2)
+        businessPage.BusinessPage_LeftMenu_Click('目标表')
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,5),"0",msg="【补丁】PC运行平台--触发更新事件中，数字字段配置更新公式（DAYSDIFF (本表字段.日期时间 ,TODAY ())），更新后数字字段显示为--")
 
 
 

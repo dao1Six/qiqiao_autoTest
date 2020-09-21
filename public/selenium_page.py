@@ -215,12 +215,13 @@ class SeleniumPage (object):
     #################
     # 查找元素方法
 
-    def find_elemsByXPATH_presence(self, locator, timeout=10):
+    def find_elemsByXPATH_presence(self, locator, timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(
                 EC.presence_of_all_elements_located((By.XPATH, locator)))
         except:
+            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
             return None
 
     def find_elemsByXPATH_visibility(self, locator, timeout=10):
@@ -254,6 +255,7 @@ class SeleniumPage (object):
             return WebDriverWait(self.driver, timeout).until(
                 EC.presence_of_all_elements_located((By.CSS_SELECTOR, locator)))
         except:
+            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
             return None
 
     def find_elenmInElemsByCSS_visibility_of_any_elements_located(self, locator, index=0,timeout=10):
