@@ -15,7 +15,7 @@ from qiqiao_page.pc_page.portal_page import PortalPage
 from qiqiao_page.pc_page.login_page import LoginPage
 
 
-class MbHSEAppTest_003(unittest.TestCase):
+class MbHSEAppTest_004(unittest.TestCase):
     '''移动端HSE管理流程检查'''
 
 
@@ -44,11 +44,13 @@ class MbHSEAppTest_003(unittest.TestCase):
         formPage.MbText_Sendkeys("原因说明","很大很大空间等哈看进度哈大噶还记得噶还记得噶实践活动")
         formPage.MbSelection_SingleBox_Senkeys("检索类别","个人PPE")
         time.sleep(2)
-        formPage.MbMultiForm_BathManagePage_Record_Tick()
-        formPage.MultiForm_BatchManagementButton_Click("用品明细")
+        formPage.MbMultiForm_AddButton_Click("用品明细")
         formPage.MbMultiForm_BathManagePage_Record_Tick("用品明细", [1])
-        formPage.MultiForm_sendkeysTo_Number("用品明细",1,"申请数量",20)
-        formPage.MultiForm_BathManagePage_ConfirmButton_Tick("用品明细")
+        formPage.MbMultiForm_BathManagePage_Button_Cick("用品明细","确定选择")
+        #点击多表关联组件编辑按钮
+        formPage.MbMultiForm_edit_Record("用品明细",1)
+        formPage.MbNumber_Sendkeys("申请数量",20)
+        formPage.MbForm_Click_Button_InPopup("保存")
         #检查多表关联组件数据列表显示
         self.assertEqual("口罩",formPage.MbMultiForm_GetTdValue("用品明细",1,2),msg="用品明细用品名称显示不正确")
         self.assertEqual("个人PPE",formPage.MbMultiForm_GetTdValue("用品明细",1,3),msg="用品明细类别显示不正确")
@@ -56,15 +58,14 @@ class MbHSEAppTest_003(unittest.TestCase):
         self.assertEqual("道一",formPage.MbMultiForm_GetTdValue("用品明细",1,5),msg="用品明细单位显示不正确")
         self.assertEqual("20",formPage.MbMultiForm_GetTdValue("用品明细",1,6),msg="用品明细申请数量显示不正确")
         #点击多表关联组件编辑按钮
-        formPage.MultiForm_edit_Record("用品明细",1)
+        formPage.MbMultiForm_edit_Record("用品明细",1)
         #检查表单弹窗内的数据显示
-        self.assertEqual("口罩",formPage.ForeignSelection_GetValue_writable_InPopup("用品明细","用品名称"),msg="用品明细用品名称显示不正确")
-        self.assertEqual("个人PPE",formPage.Selection_SingleXiala_readOnly_InPopup("用品明细","类别"),msg="用品明细类别显示不正确")
-        self.assertEqual("50",formPage.Number_GetValue_readOnly_InPopup("用品明细","库存"),msg="用品明细库存显示不正确")
-        self.assertEqual("道一",formPage.Text_GetValue_readOnly_InPopup("用品明细","单位"),msg="用品明细单位显示不正确")
-        self.assertEqual(20,formPage.Number_GetValue_writable_InPopup("用品明细","申请数量"),msg="用品明细申请数量显示不正确")
-
-        formPage.Form_Close_Popup("用品明细")
+        self.assertEqual("口罩",formPage.MbForeignSelection_GetValue_writable_InPopup("用品名称"),msg="用品明细用品名称显示不正确")
+        self.assertEqual("个人PPE",formPage.MbSelection_SingleXiala_readOnly_InPopup("类别"),msg="用品明细类别显示不正确")
+        self.assertEqual("50",formPage.MbNumber_GetValue_readOnly("库存"),msg="用品明细库存显示不正确")
+        # self.assertEqual("道一",formPage.Text_GetValue_readOnly_InPopup("用品明细","单位"),msg="用品明细单位显示不正确")
+        self.assertEqual(20,formPage.MbNumber_GetValue_writable_InPopup("申请数量"),msg="用品明细申请数量显示不正确")
+        formPage.MbForm_Close_Popup()
         time.sleep(1)
         formPage.Form_Button_Click("提交")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()  # 点击流程办理弹框确认按钮

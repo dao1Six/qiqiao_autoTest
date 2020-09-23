@@ -32,10 +32,17 @@ class MbFormPage(MbPublicPage,MbNumber,MbText,MbTextarea,MbDate,MbTime,MbDateTim
 
     tabName_loc = "//div[@class='cube-tab']//div[text()='%s']"
 
+    PopupButton_loc = "//button[text()=' %s']"
+
+    Popup_close_icon = "//i[@class='iconfont icon-paitawangguan drawer_close']"
+
     def MbForm_Button_Click( self,buttonName ):
         '''点击表单按钮'''
         self.clickElemByXpath_visibility(self.FormPage_button_loc.replace('%s',buttonName))
 
+    def MbForm_Click_Button_InPopup( self,buttonName ):
+        '''点击表单按钮'''
+        self.clickElemByXpath_visibility(self.PopupButton_loc.replace('%s',buttonName))
 
     def MbForm_ProcessHandle_Pop_QuerenButton_Click( self ):
         '''点击流程办理弹框提交按钮'''
@@ -53,3 +60,7 @@ class MbFormPage(MbPublicPage,MbNumber,MbText,MbTextarea,MbDate,MbTime,MbDateTim
     def MbForm_Switch_Tab( self ,name):
         '''切换表单选项卡'''
         self.clickElemByXpath_visibility(self.tabName_loc.replace('%s',name))
+
+    def MbForm_Close_Popup( self):
+        '''关闭子表弹层'''
+        self.clickElemByXpath_visibility(self.Popup_close_icon)

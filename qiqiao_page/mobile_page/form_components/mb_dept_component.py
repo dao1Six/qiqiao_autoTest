@@ -17,10 +17,10 @@ class MbDept(SeleniumPage):
 
 
     def MbDept_MonomialDept_Sendkeys( self,fieldName,deptName,index=0,*args):
-        '''给部门单选组件输入值
-         fieldName：字段标题
-         deptName：部门名称
-         '''
+        '''给部门单选组件输入值'''
+         # fieldName：字段标题
+         # deptName：部门名称
+
         # 点击添加选择框
         self.clickElemByXpath_visibility(self.icon_add_new_loc.replace('%s',fieldName))
         # 点击搜索框

@@ -21,6 +21,12 @@ class MbMultiFormAssociation(SeleniumPage):
 
     MultiForm_Td_iconDelete_loc = "//div[@title='%s']//i[@class='iconfont icon-del iconDelete']"
 
+#多表关联外部操作
+
+    def MbMultiForm_edit_Record(self,fileName,row):
+        '''点击多表关联组件编辑按钮'''
+        self.clickElemByXpath_visibility(self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(2)))
+
     def MbMultiForm_AddButton_Click(self,fileName,*args):
         '''点击添加按钮'''
         self.clickElemByXpath_visibility (self.MultiFormAssociation_AddButton_loc.replace ('%title', fileName))
@@ -29,6 +35,27 @@ class MbMultiFormAssociation(SeleniumPage):
         '''点击右上角添加按钮'''
         self.clickElemByXpath_visibility (self.MultiFormAssociation_rightAddButton_loc.replace ('%title', fileName))
 
+    def MbMultiForm_GetTdValue( self,fileName,row,col,*args ):
+        '''获取多表关联组件中间表单元格值'''
+        text = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+            self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))).text
+        if (text == ""):
+            text = self.getElemAttrValue(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+                self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',
+                                                                                              str(col)) + "//input"),
+                                         "value")
+        return text
+
+    def MbMultiForm_DeletTdValue( self,fileName,row,*args ):
+        '''删除多表关联组件中间表数据'''
+        # 点击删除数据的序号
+        self.clickElemByXpath_visibility(
+            self.MultiForm_Td_order_operation_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',
+                                                                                                          str(1)))
+        # 点击删除按钮
+        self.clickElemByXpath_visibility(self.MultiForm_Td_iconDelete_loc.replace('%s',fileName))
+
+#多表关联批量管理页面内部操作
 
     def MbMultiForm_BathManagePage_Record_Tick(self,fileName,rowIndexList,*args):
         '''勾选批量管理页面关联表记录'''
@@ -44,16 +71,3 @@ class MbMultiFormAssociation(SeleniumPage):
         self.clickElemByXpath_visibility (self.MultiFormManagementDialog_Button_loc.replace ('%s', buttonName))
 
 
-    def MbMultiForm_GetTdValue( self,fileName,row,col,*args):
-        '''获取多表关联组件中间表单元格值'''
-        text = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))).text
-        if(text==""):
-            text = self.getElemAttrValue(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))+"//input"),"value")
-        return text
-
-    def MbMultiForm_DeletTdValue( self,fileName,row,*args):
-        '''删除多表关联组件中间表数据'''
-        #点击删除数据的序号
-        self.clickElemByXpath_visibility(self.MultiForm_Td_order_operation_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(1)))
-        #点击删除按钮
-        self.clickElemByXpath_visibility(self.MultiForm_Td_iconDelete_loc.replace('%s',fileName))

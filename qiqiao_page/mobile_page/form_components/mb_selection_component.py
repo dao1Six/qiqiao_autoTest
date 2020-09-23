@@ -18,12 +18,13 @@ class MbSelection(SeleniumPage):
 
     Xiala_confirm_loc = "//h1[text()='%s']/parent::div[1]/preceding-sibling::span[@class='cube-picker-confirm']"
 
-
+    ChildFormPopup_SingleXiala_divReadonlyValue_loc = "//div[@title='%title']//div[@class='readonly_value']"
 
 #单项
 
     def MbSelection_SingleXiala_Senkeys( self,fieldName,option):
         '''单项下拉字段输入值'''
+        #option---字符串，选项值
         # 点击选择框
         self.clickElemByXpath_visibility(self.placeholder_loc.replace('%s',fieldName))
         clickElemIndex = 0
@@ -44,6 +45,11 @@ class MbSelection(SeleniumPage):
         '''单项字段输入值'''
         self.clickElemByXpath_visibility(self.Radio_Option_loc.replace('%s',fieldName).replace('%title',option))
 
+    def MbSelection_SingleXiala_readOnly_InPopup( self,fieldName ):
+        '''在表单弹窗里获取只读状态下的单项下拉框组件值'''
+        loc = self.ChildFormPopup_SingleXiala_divReadonlyValue_loc.replace('%title',fieldName)
+        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(loc)
+        return elem.text
 
 #多项
 
