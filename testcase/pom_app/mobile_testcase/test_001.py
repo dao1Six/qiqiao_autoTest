@@ -131,13 +131,13 @@ class MbPomAppTest_001(unittest.TestCase):
         #第一个人工任务
         orderName ="长江水坝管理系统"
         formPage.MbText_Sendkeys("订单名称",orderName)
-        formPage.MbSelection_Xiala_Senkeys("产品/服务类型","代理产品")
-        formPage.MbSelection_Xiala_Senkeys("付费类型", "订阅")
-        formPage.MbSelection_Xiala_Senkeys("软硬件类型", "软件")
+        formPage.MbSelection_SingleXiala_Senkeys("产品/服务类型","代理产品")
+        formPage.MbSelection_SingleXiala_Senkeys("付费类型", "订阅")
+        formPage.MbSelection_SingleXiala_Senkeys("软硬件类型", "软件")
 
         formPage.MbTextarea_Sendkeys("订单描述","dasdsadasdsadddasdsadsadsadsadasdsadasdas")
         formPage.MbNumber_Sendkeys("订单金额",25555554444)
-        formPage.MbSelection_Xiala_Senkeys("战略意义", "标杆作用")
+        formPage.MbSelection_SingleXiala_Senkeys("战略意义", "标杆作用")
 
         formPage.MbText_Sendkeys("客户名称", "长江水坝管理局")
         formPage.MbText_Sendkeys("客户类型", "政府")
@@ -221,13 +221,13 @@ class MbPomAppTest_001(unittest.TestCase):
         orderName ="长江水坝管理系统内部订单"
         formPage.MbText_Sendkeys("订单名称",orderName)
         time.sleep(2)
-        formPage.MbSelection_Xiala_Senkeys("订单来源","外部订单")
+        formPage.MbSelection_SingleXiala_Senkeys("订单来源","外部订单")
         time.sleep(3)
         formPage.MbForeignSelection_Sendkeys("对应订单名称","长江水坝管理系统")
         time.sleep(2)
         formPage.MbDept_MonomialDept_Sendkeys("结算收入一级部门","创新技术中心")
         formPage.MbDept_MonomialDept_Sendkeys("结算收入二级部门", "产品研发二部",index=1)
-        formPage.MbSelection_Xiala_Senkeys("订单类型", "项目转包")
+        formPage.MbSelection_SingleXiala_Senkeys("订单类型", "项目转包")
         formPage.MbTextarea_Sendkeys("订单说明","dasdsadasdsadddasdsadsadsadsadasdsadasdas")
         formPage.MbNumber_Sendkeys("订单预估金额",25555554444)
         formPage.MbDate_SendKeys("项目开始时间", DateTimeUtil().Today())

@@ -71,16 +71,16 @@ class PomAppTest_002(unittest.TestCase):
         for i in range(workingDays):
             #添加明细数据
             if (i < 1):
-                formPage.Selection_RadioSelect_InChildForm_Sendkeys("工时明细", "工时类型", "产品研发工作")
+                formPage.Selection_SingleBox_InPopup_Sendkeys("工时明细", "工时类型", "产品研发工作")
                 time.sleep(2)
                 formPage.Date_InChildForm_Sendkeys("工时明细", "工时日期", daysList[i], isclear=True)
-                formPage.ForeignSelection_InChildForm_Sendkeys("工时明细", "产品名称", "白云制药厂")
-                formPage.Selection_MonomialSelect_InChildForm_Sendkeys("工时明细", "工作内容", "产品测试")
+                formPage.ForeignSelection_InPopup_Sendkeys("工时明细", "产品名称", "白云制药厂")
+                formPage.Selection_SingleXiala_InPopup_Sendkeys("工时明细", "工作内容", "产品测试")
             elif(i>=1):
                 formPage.Date_InChildForm_Sendkeys("工时明细", "工时日期", daysList[i],
                                                    isclear=True)
-                formPage.ForeignSelection_InChildForm_Sendkeys("工时明细", "项目名称", "广东")
-                formPage.Selection_MonomialSelect_InChildForm_Sendkeys("工时明细", "工作内容", "测试")
+                formPage.ForeignSelection_InPopup_Sendkeys("工时明细", "项目名称", "广东")
+                formPage.Selection_SingleXiala_InPopup_Sendkeys("工时明细", "工作内容", "测试")
             if(i<workingDays-1):
                 formPage.click_ChildForm_Button("保存并继续添加")
             else:

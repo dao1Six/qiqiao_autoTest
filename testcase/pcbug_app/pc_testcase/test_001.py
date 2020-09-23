@@ -121,7 +121,7 @@ class PcBugAppTest_001(unittest.TestCase):
         self.assertEqual(formPage.Date_GetValue_writable("日期"),"2020-09-25")
         self.assertEqual(formPage.Time_GetValue_writable("时间"),"16:15")
         self.assertEqual(formPage.DateTime_GetValue_writable("日期时间"),"2020-09-22 06:06")
-        self.assertEqual(formPage.Selection_GetSelectionBoxValue_writable("多项下拉"),"奥迪A4L;宝马X6;")
+        self.assertEqual(formPage.Selection_MultiXialaValue_writable("多项下拉"),"奥迪A4L;宝马X6;")
 
 
 

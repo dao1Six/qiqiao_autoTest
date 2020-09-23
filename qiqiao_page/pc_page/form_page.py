@@ -53,6 +53,12 @@ class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUploa
 
     workflow_info = "//div[@class='workflow_info']//span"
 
+    Popup_close_icon = "//div[@data-mark='子表弹层_%s']//i[@class='el-icon-close close']"
+
+    def Form_Close_Popup( self,childFormName ):
+        '''关闭子表弹层'''
+        self.clickElemByXpath_visibility(self.Popup_close_icon.replace('%s',childFormName))
+
     def Form_ButtonInMore_Click( self,buttonName):
         '''点击表单更多按钮里的按钮'''
         self.clickElemByXpath_visibility(self.MoreButton_loc)

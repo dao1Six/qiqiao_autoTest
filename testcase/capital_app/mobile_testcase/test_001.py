@@ -123,7 +123,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         todoPage = MbTodoPage(self.driver)
         todoPage.MbTodoPage_Faqiliucheng('资产管理','领用')
         formPage = MbFormPage(self.driver)
-        formPage.Selection_CheckboxSelect_Sendkeys("设备类别",["平板","手机"])
+        formPage.MbSelection_MultiBox_Sendkeys("设备类别",["平板","手机"])
         formPage.MbTextarea_Sendkeys("备注","很大很大空间等哈看进度哈大噶还记得噶还记得噶实践活动")
         formPage.MbForm_Button_Click("提交")
         formPage.MbForm_ProcessHandle_Pop_QuerenButton_Click()   #点击流程办理弹框确认按钮
@@ -225,7 +225,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         formPage.MultiForm_AddButton_Click("归还已领设备")
         formPage.MultiForm_BathManagePage_Record_Tick("归还已领设备", [1, 2])
         formPage.MultiForm_BathManagePage_Button_Cick("归还已领设备","确定选择")
-        formPage.Selection_CheckboxSelect_Sendkeys("更换设备类型", ["显示器", "笔记本电脑"])
+        formPage.MbSelection_MultiBox_Sendkeys("更换设备类型", ["显示器", "笔记本电脑"])
         formPage.MbForm_Button_Click("提交")
         formPage.MbForm_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第一个人工任务办理失败")

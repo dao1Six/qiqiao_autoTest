@@ -35,3 +35,18 @@ class PomAppTest_003(unittest.TestCase):
         self.assertEqual(['导出', '导入', '删除（临时）'],businessPage.ListComponent_Get_ListHeader_Buttons())
         businessPage.ListComponent_TabsOption_Click(" 视图2")
         self.assertEqual(['导出', '导入', '推送（停用）', '填充未填数据', '删除(临时)'],businessPage.ListComponent_Get_ListHeader_Buttons())
+
+
+    def test_02( self ):
+        '''【补丁】PC运行平台，列表外键查询报系统繁忙'''
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','生产运管系统')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('开票记录管理')
+        businessPage.ListComponent_Click_ExpandBtn()
+        businessPage.ListComponent_QueryItem_Sendkeys("关联订单编号","aaaaa",QueryItemType="text")
+        businessPage.ListComponent_Click_SerachBtn()
+        time.sleep(3)
+        self.assertEqual(0,businessPage.ListComponent_GetRecordTotal())

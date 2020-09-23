@@ -372,7 +372,7 @@ class ProcessAppTest_001(unittest.TestCase):
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="脚本人工任务办理失败")
         self.driver.quit()
-        self.pcLogin("wujianlun@A1","qiqiao123")
+        self.pcLogin("wangdongyi@A1","qiqiao123")
         formPage = FormPage(self.driver)
         processPage = ProcessPage(self.driver)
         portalPage = PortalPage(self.driver)

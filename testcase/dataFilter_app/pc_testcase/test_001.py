@@ -10,7 +10,7 @@ class DataFilterAppTest_001 (unittest.TestCase):
     '''PC端数据过滤应用报表测试'''
 
 
-    Token = "42fc091772ace7b6979b1e95fed752f2"
+    Token = "302b2a938a19a8a744e2f0e3c8afae9d"
 
     http = "https://qy.do1.com.cn/qiqiao"
 
@@ -107,3 +107,7 @@ class DataFilterAppTest_001 (unittest.TestCase):
         responseJson = response.json()
         print(responseJson)
         self.assertEqual(responseJson,{'msg': '执行成功', 'code': 0, 'data': {'datastore': {'currPage': 1, 'list': [{'author_name': None, '生成编码': None, '地理位置': '', '小数': None, '级联选择': None, '百分比': None, '多项选择': None, '评分': None, 'operations': None, '日期': '2020-01-01', '外键选择': '', '整数和': 600.0, 'id': None, '图片上传': None, 'createDate': None, 'last_modify_date': None, 'author': None, '地址选择器': None, '单项选择': None, '整数': None, 'rownum': None, '单行文本': None, '时间': None, '数字公式': None, '日期时间': None, '多行文本': None, '文件上传': None, '子表外键': '', '金额': None}, {'author_name': None, '生成编码': None, '地理位置': '', '小数': None, '级联选择': None, '百分比': None, '多项选择': None, '评分': None, 'operations': None, '日期': '2020-01-06', '外键选择': '', '整数和': 150.0, 'id': None, '图片上传': None, 'createDate': None, 'last_modify_date': None, 'author': None, '地址选择器': None, '单项选择': None, '整数': None, 'rownum': None, '单行文本': None, '时间': None, '数字公式': None, '日期时间': None, '多行文本': None, '文件上传': None, '子表外键': '', '金额': None}, {'author_name': None, '生成编码': None, '地理位置': '', '小数': None, '级联选择': None, '百分比': None, '多项选择': None, '评分': None, 'operations': None, '日期': '2021-01-01', '外键选择': '', '整数和': 8910.0, 'id': None, '图片上传': None, 'createDate': None, 'last_modify_date': None, 'author': None, '地址选择器': None, '单项选择': None, '整数': None, 'rownum': None, '单行文本': None, '时间': None, '数字公式': None, '日期时间': None, '多行文本': None, '文件上传': None, '子表外键': '', '金额': None}, {'author_name': None, '生成编码': None, '地理位置': '', '小数': None, '级联选择': None, '百分比': None, '多项选择': None, '评分': None, 'operations': None, '日期': None, '外键选择': '', '整数和': 0, 'id': None, '图片上传': None, 'createDate': None, 'last_modify_date': None, 'author': None, '地址选择器': None, '单项选择': None, '整数': None, 'rownum': None, '单行文本': None, '时间': None, '数字公式': None, '日期时间': None, '多行文本': None, '文件上传': None, '子表外键': '', '金额': None}], 'pageSize': 20, 'totalCount': 4, 'totalPage': 1}, 'datagrid': {'currentPage': 1, 'dataSet': {'applicationId': 'e8e7124ff51846118f602b349a1a243a', 'id': 'bab9e16407e349aeb9f4688488e33272', 'name': 'f_基础表单_04f7d58a18f294c3', 'tableName': 'f_基础表单_04f7d58a18f294c3', 'type': 'formds'}, 'dataSetFilterGroups': [], 'device': '', 'dimensionFields': [{'childFormAssociation': None, 'children': [], 'detail': [], 'displayFields': [], 'field': '日期', 'id': 'key_1578037549438_594851', 'linkageFilters': None, 'multiFormAssociation': None, 'onlineDocConfig': None, 'permissionType': None, 'subFormConfig': None, 'text': '日期1', 'value': '', 'widgetType': ''}], 'id': 'key_1600075037814_152423', 'pageSize': 20, 'summaryFields': [{'expression': 'SUM', 'field': '整数', 'id': 'key_1578037108251_97826', 'showName': '整数和'}], 'tableNameDisplay': False, 'tablePage': [20], 'text': '汇总列表', 'type': ''}, 'id': 'key_1600075037814_88185', 'type': 'summaryList'}})
+
+
+
+

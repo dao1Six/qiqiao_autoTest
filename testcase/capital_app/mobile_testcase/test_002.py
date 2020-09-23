@@ -122,7 +122,7 @@ class MbCapitalAppTest_002(unittest.TestCase):
         businessPage.MbNavigationComponent_Click_Navigation("领用")
         time.sleep(2)
         formPage = MbFormPage(self.driver)
-        formPage.Selection_CheckboxSelect_Sendkeys("设备类别",["平板","手机"])
+        formPage.MbSelection_MultiBox_Sendkeys("设备类别",["平板","手机"])
         formPage.MbTextarea_Sendkeys("备注","很大很大空间等哈看进度哈大噶还记得噶还记得噶实践活动")
         formPage.MbForm_Button_Click("提交")
         formPage.MbForm_ProcessHandle_Pop_QuerenButton_Click()  # 点击流程办理弹框确认按钮

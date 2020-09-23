@@ -117,7 +117,7 @@ class CapitalAppTest_001(unittest.TestCase):
         processPage = ProcessPage(self.driver)
         processPage.ProcessPage_click_process_icon("领用")
         formPage = FormPage(self.driver)
-        formPage.Selection_CheckboxSelect_Sendkeys("设备类别",["平板","手机"])
+        formPage.Selection_MultiBox_Sendkeys("设备类别",["平板","手机"])
         formPage.Textarea_Sendkeys("备注","很大很大空间等哈看进度哈大噶还记得噶还记得噶实践活动")
         formPage.Form_Button_Click("提交")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()   #点击流程办理弹框确认按钮
@@ -210,7 +210,7 @@ class CapitalAppTest_001(unittest.TestCase):
         formPage.MultiForm_BatchManagementButton_Click("归还已领设备")
         formPage.MultiForm_BathManagePage_Record_Tick("归还已领设备", [1, 2])
         formPage.MultiForm_BathManagePage_ConfirmButton_Tick("归还已领设备")
-        formPage.Selection_CheckboxSelect_Sendkeys("更换设备类型", ["显示器", "笔记本电脑"])
+        formPage.Selection_MultiBox_Sendkeys("更换设备类型", ["显示器", "笔记本电脑"])
         formPage.Form_Button_Click("提交")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第一个人工任务办理失败")

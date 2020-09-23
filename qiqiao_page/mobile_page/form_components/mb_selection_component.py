@@ -20,22 +20,10 @@ class MbSelection(SeleniumPage):
 
 
 
-    def Selection_CheckboxSelect_Sendkeys(self,fieldName,list,*args):
-        '''给多项选择组件输入值
-        fieldName：字段标题
-        list：多项选项 list里存放选项文本值
-        '''
-        for i in list:
-            self.clickElemByXpath_visibility(self.Selection_Option_loc.replace('%s',fieldName).replace('%option',i))
+#单项
 
-    def MbSelection_Radio_Senkeys( self,fieldName,option):
-        '''单选字段输入值'''
-        self.clickElemByXpath_visibility(self.Radio_Option_loc.replace('%s',fieldName).replace('%title',option))
-
-
-    def MbSelection_Xiala_Senkeys( self,fieldName,option):
-        '''下拉字段输入值'''
-
+    def MbSelection_SingleXiala_Senkeys( self,fieldName,option):
+        '''单项下拉字段输入值'''
         # 点击选择框
         self.clickElemByXpath_visibility(self.placeholder_loc.replace('%s',fieldName))
         clickElemIndex = 0
@@ -50,5 +38,26 @@ class MbSelection(SeleniumPage):
         #点击确定按钮
         time.sleep(1)
         self.clickElemByXpath_visibility(self.Xiala_confirm_loc.replace('%s',fieldName))
+
+
+    def MbSelection_SingleBox_Senkeys( self,fieldName,option):
+        '''单项字段输入值'''
+        self.clickElemByXpath_visibility(self.Radio_Option_loc.replace('%s',fieldName).replace('%title',option))
+
+
+#多项
+
+    def MbSelection_MultiBox_Sendkeys(self,fieldName,list,*args):
+        '''给多项选择组件输入值
+        fieldName：字段标题
+        list：多项选项 list里存放选项文本值
+        '''
+        for i in list:
+            self.clickElemByXpath_visibility(self.Selection_Option_loc.replace('%s',fieldName).replace('%option',i))
+
+
+
+
+
 
 

@@ -21,5 +21,5 @@ class Time(SeleniumPage):
 
     def Time_GetValue_writable( self,fieldName ):
         '''获取可写状态的时间组件的值'''
-        elem = self.find_elemByXPATH_visibility(self.Time_input_loc.replace('%s',fieldName))
+        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Time_input_loc.replace('%s',fieldName))
         return self.getElemAttrValue(elem,"value")

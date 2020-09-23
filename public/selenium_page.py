@@ -238,6 +238,7 @@ class SeleniumPage (object):
             return WebDriverWait(self.driver, timeout).until(
                 EC.visibility_of_element_located((By.XPATH, locator)))
         except:
+            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
             return None
 
     def find_elemByCSS_visibility(self, locator, timeout=10):
@@ -246,6 +247,7 @@ class SeleniumPage (object):
             return WebDriverWait(self.driver, timeout).until(
                 EC.visibility_of_element_located((By.CSS_SELECTOR, locator)))
         except:
+            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
             return None
 
 
