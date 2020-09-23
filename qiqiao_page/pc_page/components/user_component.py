@@ -25,10 +25,10 @@ class User(SeleniumPage):
 
     #
     def User_MonomialUser_Sendkeys(self,fieldName,userName):
-        '''给人员单选组件输入值
-        fieldName：字段标题
-        userName：人员名称
-        '''
+        '''给人员单选组件输入值'''
+        # fieldName：字段标题
+        # userName：人员名称
+
         #点击选择框
         self.clickElemByXpath_visibility(self.User_selectBox_loc.replace('%s',fieldName))
         self.sendkeysElemByXpath_visibility(self.User_search_loc,userName)

@@ -234,3 +234,28 @@ class PcBugAppTest_002(unittest.TestCase):
 
 
 
+    def test_08( self ):
+        '''人员信息连带写入'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('人员部门连带写入')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage = FormPage(self.driver)
+        formPage.User_MonomialUser_Sendkeys("人员单选","吴健伦")
+        time.sleep(3)
+        formPage.Form_Button_Click("提交")
+        assert '成功' in businessPage.Public_GetAlertMessage()
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,3),'吴健伦',msg='人员姓名显示不对')
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,4),'创新技术中心->产品研发二部->产品规划组',msg='人员部门显示不对')
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,5),'01783',msg='人员工号显示不对')
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,6),'wujianlun',msg='人员账号显示不对')
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,7),'13025805485',msg='人员手机号显示不对')
