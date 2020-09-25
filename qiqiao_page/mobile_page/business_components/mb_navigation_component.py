@@ -13,7 +13,7 @@ class MbNavigationComponent(SeleniumPage):
     #获取页面导航名
     def MbNavigationComponent_Get_NavigationsName( self ):
         NavigationsNameList = []
-        for elem in self.find_elemsByCSS(self.dyListNavigation_item_title):
+        for elem in self.find_elemsByCSS_presence(self.dyListNavigation_item_title):
             NavigationsNameList.append(elem.text)
         return NavigationsNameList
 

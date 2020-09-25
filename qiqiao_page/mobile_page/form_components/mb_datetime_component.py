@@ -15,8 +15,8 @@ class MbDateTime(SeleniumPage):
         timekey：时间值 格式：19:20
         '''
         locator = self.DateTime_input_loc.replace('%s',fieldName)
-        dataElem = self.find_elemsByCSS(locator)[0]
-        timeElem = self.find_elemsByCSS(locator)[1]
+        dataElem = self.find_elemsByCSS_presence(locator)[0]
+        timeElem = self.find_elemsByCSS_presence(locator)[1]
         dataElem.send_keys(datekey)
         timeElem.send_keys(timekey)
         self.clickElemByCSS_visibility(self.DateTime_label_loc.replace('%s',fieldName).replace('%title',fieldName))

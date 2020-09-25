@@ -17,8 +17,11 @@ class MbListComponent(SeleniumPage):
 
     CardList_tabItem = "div.dyCardList div.dyCardList_tabItem"
 
+    CardList_tabItem_div_loc = "//div[@class='dyCardList_tabItem' and contains(text(),'%s')]"
+
     add_btn = "//div[@class='add_btn']"
     dyCardList_item = "//div[@class='dyCardList_item']"
+    lastPage_div = "//div[@class='myScroll_loadText' and contains(text(),'已经是最后一页了')]"
     dyCardList_status =  "//div[@class='dyCardList_item']//div[@class='dyCardList_status']"
     dyCardList_text_main = "//div[@class='dyCardList_item']//h2[@class='dyCardList_text_main']"
     dyCardList_text_content = "//div[@class='cube-swipe']/div[%r]//p"
@@ -133,19 +136,20 @@ class MbListComponent(SeleniumPage):
 
     # 长按列表某条记录
     def MbListComponent_Recore_ClickAndHole( self, index ,*args):
-        elem = self.find_elemsByCSS(self.CardList_loc)[index]
+        elem = self.find_elemsByCSS_presence(self.CardList_loc)[index]
         self.click_and_hold(elem)
 
     #点击列表某条记录
     def MbListComponent_Recore_Click( self, index ,*args):
-        elem = self.find_elemsByCSS(self.CardList_loc)[index-1]
+        '''点击列表某条记录'''
+        elem = self.find_elemsByCSS_presence(self.CardList_loc)[index-1]
         self.clickElem(elem)
 
 
     # 判断列表记录是否有某按钮操作权限
     def MbListComponent_GetRecoreButton( self ):
         buttonList = []
-        cardListButtons = self.find_elemsByCSS(self.CardListButton_loc)
+        cardListButtons = self.find_elemsByCSS_presence(self.CardListButton_loc)
         for cardListButton in cardListButtons:
             buttonList.append(cardListButton.get_attribute("title"))
         buttonList.append(self.find_elenmInElemsByCSS_visibility_of_any_elements_located(self.CardListBottomButton_loc).get_attribute("title"))
@@ -154,15 +158,27 @@ class MbListComponent(SeleniumPage):
     #获取列表选项卡所有选项
     def MbListComponent_GetListAllTab( self ):
         tabItems = []
-        tabItemsElem = self.find_elemsByCSS(self.CardList_tabItem)
+        tabItemsElem = self.find_elemsByCSS_presence(self.CardList_tabItem)
         for tabItemElem in tabItemsElem:
             tabItems.append(tabItemElem.text)
         return tabItems
+
+    def MbListComponent_SwitchTab( self,itemName):
+        '''切换到具体选项卡'''
+        self.clickElemByXpath_visibility(self.CardList_tabItem_div_loc.replace('%s',itemName))
 
 
     def MbListComponent_Get_RecoresNumber( self ):
         '''返回当前列表记录数'''
         return len(self.find_elemsByXPATH_presence(self.dyCardList_item))
+
+    def MbListComponent_Scroll_To_Bottom( self ):
+        '''滚动到列表底部'''
+        while(self.find_elemByXPATH_visibility(self.lastPage_div,timeout=2)==None):
+            elem = self.find_elemsByCSS_visibility(self.CardList_loc)[-1]
+            print(elem)
+            self.h5_scroll(elem,0,5000)
+
 
 
     def MbListComponent_Get_RecoreStatusValule( self,index):

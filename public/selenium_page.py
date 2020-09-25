@@ -86,12 +86,15 @@ class SeleniumPage (object):
         '''鼠标悬浮'''
         ActionChains(self.driver).move_to_element(elem).perform()
 
-    def h5_move_to_elem(self,elem,x,y,speed):
+    def h5_scroll(self,elem,x,y):
+        '''H5以元素为起点以一定速度向下滑动'''
+        # 　向下滑动为负数，向上滑动为正数
         Action = TouchActions(self.driver)
-        Action.flick_element(elem, x,y,speed).perform()
+        Action.scroll_from_element(elem, x,y).perform()
 
 
     def h5_tap_elem( self,elem):
+        '''H5点击元素'''
         Action = TouchActions(self.driver)
         try:
             Action.tap(elem).perform()
@@ -214,7 +217,7 @@ class SeleniumPage (object):
 
     #################
     # 查找元素方法
-
+#xpath
     def find_elemsByXPATH_presence(self, locator, timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
@@ -230,7 +233,9 @@ class SeleniumPage (object):
             return WebDriverWait(self.driver, timeout).until(
                 EC.visibility_of_any_elements_located((By.XPATH, locator)))
         except:
+            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
             return None
+
 
     def find_elemByXPATH_visibility(self, locator, timeout=10):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
@@ -241,39 +246,15 @@ class SeleniumPage (object):
             print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
             return None
 
-    def find_elemByCSS_visibility(self, locator, timeout=10):
+
+    def find_elemByXPATH_presence(self, locator, timeout=10):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(
-                EC.visibility_of_element_located((By.CSS_SELECTOR, locator)))
+                EC.presence_of_element_located((By.XPATH, locator)))
         except:
             print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
             return None
-
-
-    def find_elemsByCSS(self, locator, timeout=10):
-        '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
-        try:
-            return WebDriverWait(self.driver, timeout).until(
-                EC.presence_of_all_elements_located((By.CSS_SELECTOR, locator)))
-        except:
-            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
-            return None
-
-    def find_elenmInElemsByCSS_visibility_of_any_elements_located(self, locator, index=0,timeout=10):
-        '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
-        try:
-            return WebDriverWait(self.driver, timeout).until(
-                EC.visibility_of_any_elements_located((By.CSS_SELECTOR, locator)))[index]
-        except IndexError as e:
-            print(e)
-            print(locator + "页面无此元素" + "index值为" + str(index))
-            return None
-        except TimeoutException as t:
-            print(t)
-            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
-            return None
-
     def find_elenmInElemsByXpath_visibility_of_any_elements_located(self, locator, index=0,timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
@@ -320,6 +301,53 @@ class SeleniumPage (object):
             print(t)
             print("根据"+locator+"信息在"+str(timeout)+"秒内没有查询到元素")
             return None
+
+###Css
+    def find_elemByCSS_visibility(self, locator, timeout=10):
+        '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
+        try:
+            return WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_element_located((By.CSS_SELECTOR, locator)))
+        except:
+            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
+            return None
+
+
+    def find_elemsByCSS_presence(self, locator, timeout=10):
+        '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
+        try:
+            return WebDriverWait(self.driver, timeout).until(
+                EC.presence_of_all_elements_located((By.CSS_SELECTOR, locator)))
+        except:
+            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
+            return None
+
+    def find_elemsByCSS_visibility(self, locator, timeout=10):
+        '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
+        try:
+            return WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_all_elements_located((By.CSS_SELECTOR, locator)))
+        except:
+            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
+            return None
+
+    def find_elenmInElemsByCSS_visibility_of_any_elements_located(self, locator, index=0,timeout=10):
+        '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
+        try:
+            return WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_any_elements_located((By.CSS_SELECTOR, locator)))[index]
+        except IndexError as e:
+            print(e)
+            print(locator + "页面无此元素" + "index值为" + str(index))
+            return None
+        except TimeoutException as t:
+            print(t)
+            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
+            return None
+
+
+
+
 
     def switch_tab( self,num ):
         '''浏览器窗口切换'''

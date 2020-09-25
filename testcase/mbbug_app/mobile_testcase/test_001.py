@@ -4,6 +4,7 @@ import unittest
 
 from public.driver import Driver
 from qiqiao_page.mobile_page.business_components.mb_list_component import MbListComponent
+from qiqiao_page.mobile_page.business_components.mb_navigation_component import MbNavigationComponent
 from qiqiao_page.mobile_page.mb_form_page import MbFormPage
 from qiqiao_page.mobile_page.mobile_application_page import MbApplicationListPage
 from qiqiao_page.mobile_page.mobile_home_page import MbHomePage
@@ -65,4 +66,21 @@ class MbBugAppTest_001(unittest.TestCase):
         formPage.MbUser_MonomialUser_Sendkeys("人员单选","吴健伦")
         time.sleep(1)
         self.assertEqual(formPage.MbDept_MonomialDept_GetValue("部门单选"),'创新技术中心->产品研发二部->产品规划组产品规划组')
+
+
+    def test_03( self ):
+        '''【补丁】移动端运行平台-列表第一个选项卡的显示多少页。第二个选项卡最多也就显示那么多页。导致第二个选项卡数据有可能显示不全'''
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('小蜜蜂','应用首页')
+        self.driver.refresh()
+        time.sleep(1)
+        Navigation = MbNavigationComponent(self.driver)
+        Navigation.MbNavigationComponent_Click_Navigation("委外项目")
+        listPage = MbListComponent(self.driver)
+        listPage.MbListComponent_SwitchTab("已完成")
+        listPage.MbListComponent_Scroll_To_Bottom()
+        self.assertEqual(31,listPage.MbListComponent_Get_RecoresNumber())
+
 

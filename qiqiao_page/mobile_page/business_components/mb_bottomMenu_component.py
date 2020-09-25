@@ -12,7 +12,7 @@ class MbBottomMenuComponent(SeleniumPage):
     #获取底部菜单内容
     def GetBottomMenus( self ):
         BottomMenus = []
-        BottomNavigationElems = self.find_elemsByCSS(self.dyBottomNavigation)
+        BottomNavigationElems = self.find_elemsByCSS_presence(self.dyBottomNavigation)
         for Elem in BottomNavigationElems:
             BottomMenus.append(Elem.text)
         return BottomMenus
