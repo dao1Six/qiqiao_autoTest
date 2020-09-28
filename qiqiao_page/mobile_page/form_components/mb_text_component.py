@@ -7,6 +7,8 @@ class MbText(SeleniumPage):
 
     Text_input_loc = "div[title='%s'] input[type='text']"  #单行文本组件字段输入框
 
+    Text_div_loc = "//div[@title='%s']//div[@class='readonly_text']"
+
     #
     def MbText_Sendkeys(self,fieldName,key,*args):
         '''给单行文本组件输入值
@@ -25,3 +27,9 @@ class MbText(SeleniumPage):
             return False
         else:
             return True
+
+
+    def MbText_GetValue_readOnly(self,fieldName):
+        '''获取只读状态的单行文本组件值'''
+        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Text_div_loc.replace('%s',fieldName))
+        return elem.text

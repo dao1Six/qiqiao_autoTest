@@ -14,6 +14,8 @@ class MbForeignSelection_component(SeleniumPage):
 
     ChildFormPopup_ForeignSelectionBox_SpanValue_loc = "//div[@title='%title']//span[@class='value']"
 
+    ChildFormPopup_ForeignSelectionBox_Span_readonlyValue_loc = "//div[@title='%title']//span[@class='value readonly']"
+
     def MbForeignSelection_Sendkeys(self,fieldName,option,*args):
         '''外键选择组件输入值
         fieldName：字段标题
@@ -34,3 +36,10 @@ class MbForeignSelection_component(SeleniumPage):
         loc = self.ChildFormPopup_ForeignSelectionBox_SpanValue_loc.replace('%title',fieldName)
         elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(loc)
         return elem.text
+
+
+    def MbForeignSelection_GetValue_readOnly_InPopup( self,fieldName):
+        '''表单弹层获取只读状态的外键字段值'''
+        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildFormPopup_ForeignSelectionBox_Span_readonlyValue_loc.replace('%title',fieldName))
+        return elem.text
+
