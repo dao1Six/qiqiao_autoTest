@@ -15,6 +15,8 @@ class MbDept(SeleniumPage):
     departmentList_name_loc = "//div[@title='%s']//div[@class='departmentList_name']"
     departmentList_name_span_loc = "//div[@title='%s']//div[@class='departmentList_name']/span"
 
+    ChildFormPopup_dept_divReadonlyValue_loc = "//div[@title='%s']//div[@class='departmentList_name']"
+
 
     def MbDept_MonomialDept_Sendkeys( self,fieldName,deptName,index=0,*args):
         '''给部门单选组件输入值'''
@@ -40,3 +42,10 @@ class MbDept(SeleniumPage):
          deptName：部门名称
          '''
         return self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.departmentList_name_loc.replace('%s',fieldName)).text + self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.departmentList_name_span_loc.replace('%s',fieldName)).text
+
+
+    def MbDept_GetValue_readOnly_InPopup( self,fieldName ):
+        '''在表单弹窗里获取只读状态下的部门组件值'''
+        loc = self.ChildFormPopup_dept_divReadonlyValue_loc.replace('%s',fieldName)
+        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(loc)
+        return elem.text

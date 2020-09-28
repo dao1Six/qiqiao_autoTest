@@ -20,6 +20,8 @@ class MbSelection(SeleniumPage):
 
     ChildFormPopup_SingleXiala_divReadonlyValue_loc = "//div[@title='%title']//div[@class='readonly_value']"
 
+    ChildFormPopup_SingleBox_liReadonlyValue_loc = "//div[@title='%title']//li[@class='item_li']"
+
 #单项
 
     def MbSelection_SingleXiala_Senkeys( self,fieldName,option):
@@ -50,6 +52,13 @@ class MbSelection(SeleniumPage):
         loc = self.ChildFormPopup_SingleXiala_divReadonlyValue_loc.replace('%title',fieldName)
         elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(loc)
         return elem.text
+
+    def MbSelection_SingleBox_readOnly_InPopup( self,fieldName ):
+        '''在表单弹窗里获取只读状态下的单项选择框组件值'''
+        loc = self.ChildFormPopup_SingleBox_liReadonlyValue_loc.replace('%title',fieldName)
+        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(loc)
+        return elem.text
+
 
 #多项
 

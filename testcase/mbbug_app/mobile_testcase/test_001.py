@@ -9,6 +9,7 @@ from qiqiao_page.mobile_page.mb_form_page import MbFormPage
 from qiqiao_page.mobile_page.mobile_application_page import MbApplicationListPage
 from qiqiao_page.mobile_page.mobile_home_page import MbHomePage
 from qiqiao_page.mobile_page.mobile_login_page import MbLoginPage
+from qiqiao_page.mobile_page.mobile_to_do_page import MbTodoPage
 from qiqiao_page.pc_page.applicationList_page import ApplicationListPage
 from qiqiao_page.pc_page.business_page import BusinessPage
 from qiqiao_page.pc_page.form_page import FormPage
@@ -119,3 +120,36 @@ class MbBugAppTest_001(unittest.TestCase):
         formPage.MbForm_Button_Click("提交")
         self.assertIn('成功',formPage.Public_GetAlertMessage())
         self.assertEqual(['部门单选：创新技术中心->产品研发二部->产品规划组', '工号：01783', '账号：wujianlun', '手机号：13025805485'],listPage.MbListComponent_Get_RecoreTextContents(1))
+
+
+    def test_05( self ):
+        '''【补丁】移动端运行平台--多表关联组件--关联表单行文本字段传递配置仅展示，在编辑表单时不显示值【部门、单项选择、数字】也不显示'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homePage = MbHomePage(self.driver)
+        homePage.HomePage_BottomNav_Click("待办")
+        # 发起流程
+        todoPage = MbTodoPage(self.driver)
+        todoPage.MbTodoPage_Faqiliucheng('绩效','绩效考核申请')
+        time.sleep(2)
+        self.driver.refresh()
+        formPage = MbFormPage(self.driver)
+        time.sleep(2)
+        formPage.MbMultiForm_AddButton_Click("考核明细")
+        formPage.MbMultiForm_BathManagePage_Record_Tick("考核明细",[1])
+        formPage.MbMultiForm_BathManagePage_Button_Cick("考核明细","确定选择")
+        time.sleep(1)
+        #检查多表关联组件数据列表显示
+        self.assertEqual("七巧",formPage.MbMultiForm_GetTdValue("考核明细",1,2),msg="用品明细用品名称显示不正确")
+        self.assertEqual("创新技术中心->产品研发二部->产品规划组",formPage.MbMultiForm_GetTdValue("考核明细",1,3),msg="用品明细类别显示不正确")
+        self.assertEqual("KPI指标",formPage.MbMultiForm_GetTdValue("考核明细",1,4),msg="用品明细库存显示不正确")
+        self.assertEqual("50",formPage.MbMultiForm_GetTdValue("考核明细",1,5),msg="用品明细单位显示不正确")
+        self.assertEqual("七巧",formPage.MbMultiForm_GetTdValue("考核明细",1,6),msg="用品明细申请数量显示不正确")
+        #点击多表关联组件编辑按钮
+        formPage.MbMultiForm_edit_Record("考核明细",1)
+        time.sleep(2)
+        #检查表单弹窗内的数据显示
+        self.assertEqual("七巧",formPage.MbForeignSelection_GetValue_readOnly_InPopup("考核项目"),msg="考核项目显示不正确")
+        self.assertEqual("KPI指标",formPage.MbSelection_SingleBox_readOnly_InPopup("类型"),msg="用品明细类别显示不正确")
+        self.assertEqual("50",formPage.MbNumber_GetValue_readOnly("分值权重(%)"),msg="用品明细库存显示不正确")
+        self.assertEqual("七巧",formPage.MbText_GetValue_readOnly("项目名称"),msg="用品明细单位显示不正确")
+        self.assertEqual("创新技术中心->产品研发二部->产品规划组",formPage.MbDept_GetValue_readOnly_InPopup("承担部门"))
