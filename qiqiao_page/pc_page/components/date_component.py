@@ -22,7 +22,7 @@ class Date(SeleniumPage):
         #点击表单标题脱离光标
         self.clickElemByXpath_visibility(self.form_title_loc)
 
-    def Date_InChildForm_Sendkeys( self,childFormName,fieldName,key,isclear=False,*args ):
+    def Date_Sendkeys_InPop( self,childFormName,fieldName,key,isclear=False,*args ):
         '''子表弹框输入文本值'''
         loc = self.ChildFormPopup_loc.replace('%s',childFormName)+self.Date_input_loc.replace('%s',fieldName)
         self.sendkeysElemByXpath_visibility(loc,key,isclear=isclear)

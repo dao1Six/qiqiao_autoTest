@@ -17,6 +17,8 @@ class ChildForm_component(SeleniumPage):
 
     ChildForm_SelectOption_loc = "[data-mark='%option']"  #下拉选项
 
+    ChildForm_ForeignSelectOption_loc = "//div[@id='app']/following-sibling::div[1]//li[@data-mark='option_%s']"  #外键选项
+
     ChildForm_label_loc = "[data-mark='%title']>label"  #字段标题
 
     ChildForm_userSelect_loc = "[data-mark=%title] .row_%title_%row [data-mark=%user] [data-mark='选择人员按钮']"  #子表人员选择
@@ -97,15 +99,34 @@ class ChildForm_component(SeleniumPage):
         reallyRow = str(row - 1)
         self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',TextTitle),key,isclear=True)
 
+    def ChildForm_List_Number_sendkeys(self,childformTitle,NumberTitle,row,key):
+        '''给子表的数字组件输入值'''
+        # childformTitle :子表字段名
+        # row：行数
+        # TextTitle：文本字段标题
+        # key：文本值
+        reallyRow = str(row - 1)
+        self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',NumberTitle),key,isclear=True)
 
-    # 给子表的选择框组件字段添加数据
+    def ChildForm_List_ForeignSelection_sendkeys(self,childformTitle,row,TextTitle,option):
+        '''给子表的外键组件输入值'''
+        # childformTitle :子表字段名
+        # row：行数
+        # TextTitle：文本字段标题
+        # option：选项值
+        reallyRow = str(row - 1)
+        self.clickElemByCSS_visibility(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',TextTitle))
+        #选择选项
+        self.clickElemByXpath_visibility(self.ChildForm_ForeignSelectOption_loc.replace('%s',option))
+
+
     def ChildForm_List_Select_sendkeys(self,childformTitle,row,SelectTitle,list,*args):
-        '''
-        childformTitle :子表字段名
-        row：行数
-        TextTitle：文本字段标题
-        key：文本值
-        '''
+        '''给子表的选择框组件字段添加数据'''
+        # childformTitle :子表字段名
+        # row：行数
+        # TextTitle：文本字段标题
+        # key：文本值
+        # '''
         reallyRow = str (row - 1)
         self.clickElemByCSS_visibility (self.ChildForm_Input_loc.replace ('%title', childformTitle).replace ('%row', reallyRow).replace ('%text',SelectTitle))
         for i in list:
