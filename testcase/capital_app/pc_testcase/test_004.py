@@ -10,6 +10,7 @@ from qiqiao_page.pc_page.form_page import FormPage
 from qiqiao_page.pc_page.login_page import LoginPage
 from qiqiao_page.pc_page.portal_page import PortalPage
 from qiqiao_page.pc_page.process_page import ProcessPage
+from util.dateTimeUtil import DateTimeUtil
 
 
 class OAAppTest_004(unittest.TestCase):
@@ -46,3 +47,46 @@ class OAAppTest_004(unittest.TestCase):
         time.sleep(5)
 
 
+    def test_02( self ):
+        '''【补丁】PC运行平台--列表添加按钮发起流程--提示多表关联组件中的字段 值不符合规则'''
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','绩效')
+        businessPage = BusinessPage(self.driver)
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage = FormPage(self.driver)
+        formPage.Dept_MonomialDept_Sendkeys("考核部门","产品规划组",index=1)
+        formPage.Date_Sendkeys("考核日期",DateTimeUtil().Today())
+        formPage.MultiForm_BatchManagementButton_Click("考核明细")
+        formPage.MultiForm_BathManagePage_Record_Tick("考核明细", [1])
+        formPage.MultiForm_BathManagePage_ConfirmButton_Tick("考核明细")
+        formPage.Form_Button_Click("发起流程")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()  # 点击流程办理弹框确认按钮
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第一个人工任务办理失败")
+        time.sleep(5)
+        businessPage.BusinessPage_HeardItem_AllApp_Click()
+        portalPage.PortalPage_Click_HeaderMenu("流程")
+        processPage = ProcessPage(self.driver)
+        processPage.ProcessPage_click_process_menu("我的待办")
+        processPage.ProcessPage_click_process_record(1)
+        formPage.MultiForm_List_click_Td("考核明细",1,7)
+        formPage.MultiForm_List_sendkeysTo_Number("考核明细",1,7,50)
+        time.sleep(2)
+        formPage.Form_Button_Click("办理")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()  # 点击流程办理弹框确认按钮
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第二个人工任务办理失败")
+        processPage.ProcessPage_click_process_menu("我的待办")
+        processPage.ProcessPage_click_process_record(1)
+        formPage.MultiForm_List_click_Td("考核明细",1,8)
+        formPage.MultiForm_List_sendkeysTo_Number("考核明细",1,8,60)
+        formPage.MultiForm_List_sendkeysTo_SingleXiala("考核明细",1,9,"A")
+        time.sleep(2)
+        formPage.Form_Button_Click("办理")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()  # 点击流程办理弹框确认按钮
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第三个人工任务办理失败")

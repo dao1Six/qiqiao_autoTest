@@ -21,9 +21,6 @@ class MbBugAppTest_001(unittest.TestCase):
     '''移动端过往补丁'''
 
 
-    def setUp(self):
-        '''登录'''
-        self.mbLogin("wujianlun@auto","do1qiqiao")
 
 
     def mbLogin(self,account,password):
@@ -34,9 +31,17 @@ class MbBugAppTest_001(unittest.TestCase):
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/mruntime', account, password)
         time.sleep(5)
 
+    def pcLogin(self,account,password):
+        '''登录pc端'''
+        self.driver = Driver().pcdriver()
+        self.driver.maximize_window()
+        loginpage = LoginPage(self.driver)
+        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', account, password)
+        time.sleep(5)
 
     def test_01( self ):
         '''【补丁】移动端运行平台，分组可见条件无效'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
         homepage = MbHomePage(self.driver)
         homepage.HomePage_BottomNav_Click('应用')
         applicationListPage = MbApplicationListPage(self.driver)
@@ -54,6 +59,7 @@ class MbBugAppTest_001(unittest.TestCase):
 
     def test_02( self ):
         '''【补丁】移动端运行平台，在组织架构顶部搜索选择人员时，部门选择连带写入无效'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
         homepage = MbHomePage(self.driver)
         homepage.HomePage_BottomNav_Click('应用')
         applicationListPage = MbApplicationListPage(self.driver)
@@ -70,6 +76,7 @@ class MbBugAppTest_001(unittest.TestCase):
 
     def test_03( self ):
         '''【补丁】移动端运行平台-列表第一个选项卡的显示多少页。第二个选项卡最多也就显示那么多页。导致第二个选项卡数据有可能显示不全'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
         homepage = MbHomePage(self.driver)
         homepage.HomePage_BottomNav_Click('应用')
         applicationListPage = MbApplicationListPage(self.driver)
@@ -81,6 +88,34 @@ class MbBugAppTest_001(unittest.TestCase):
         listPage = MbListComponent(self.driver)
         listPage.MbListComponent_SwitchTab("已完成")
         listPage.MbListComponent_Scroll_To_Bottom()
-        self.assertEqual(31,listPage.MbListComponent_Get_RecoresNumber())
+        self.assertEqual(31,listPage.MbListComponent_Get_RecoresNumber(),msg="列表数据显示不全")
 
 
+
+
+    def test_04( self ):
+        '''人员信息连带写入'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('人员部门连带写入')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        self.driver.quit()
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('PC端补丁收集应用','人员部门连带写入')
+        listPage = MbListComponent(self.driver)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbForm_Button_Click("提交")
+        self.assertIn('成功',formPage.Public_GetAlertMessage())
+        self.assertEqual(['部门单选：创新技术中心->产品研发二部->产品规划组', '工号：01783', '账号：wujianlun', '手机号：13025805485'],listPage.MbListComponent_Get_RecoreTextContents(1))

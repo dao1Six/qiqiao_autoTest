@@ -24,10 +24,10 @@ class Dept(SeleniumPage):
 
     # 给部门单选组件输入值
     def Dept_MonomialDept_Sendkeys(self,fieldName,DeptName,index=0,*args):
-        ''' 给部门单选组件输入值
-        fieldName：字段标题
-        DeptName：部门名称
-        '''
+        ''' 给部门单选组件输入值'''
+        # fieldName：字段标题
+        # DeptName：部门名称
+
         #点击选择框
         self.clickElemByXpath_visibility(self.Dept_selectBox_loc.replace('%s',fieldName))
         #等待组织架构加载

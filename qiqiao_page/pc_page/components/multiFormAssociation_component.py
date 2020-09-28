@@ -29,7 +29,13 @@ class MultiFormAssociation(SeleniumPage):
 
     MultiForm_Td_loc = "//div[@data-mark='%s']//tr[contains(@class,'el-table__row')][%row]//td[%col]"
 
-    MultiForm_RelationForm_Td_loc = "//div[@data-mark='%s_table']//tr[@class='el-table__row'][%row]//td[%col]//span"
+    MultiForm_Td_span_loc = "//div[@data-mark='%s']//tr[contains(@class,'el-table__row')][%row]//td[%col]//span[@class='overflow-text-span']"
+
+    MultiForm_Td_input_loc = "//div[@data-mark='%s']//tr[contains(@class,'el-table__row')][%row]//td[%col]//input"
+
+    MultiForm_Td_cell_loc = "//div[@data-mark='%s']//tr[contains(@class,'el-table__row')][%row]//td[%col]//div[@class='cell']"
+
+    MultiForm_RelationForm_Td_loc = "//div[@data-mark='%s_table']//div[@class='el-table__fixed']//tr[@class='el-table__row'][%row]//td[%col]//span"
 
     order_div = "//div[@data-mark='%s']//div[@class='el-table__fixed']//div[@class='order_number' and contains(text(),'%row')]"
 
@@ -38,6 +44,8 @@ class MultiFormAssociation(SeleniumPage):
     order_number_shanchu_span = "//div[@data-mark='%s']//div[@class='el-table__fixed']//div[@class='order_number' and contains(text(),'%row')]/parent::div//span[contains(@class,'shanchu')]"
 
     order_number_bianji_span = "//div[@data-mark='%s']//div[@class='el-table__fixed']//div[@class='order_number' and contains(text(),'%row')]/parent::div//span[contains(@class,'iconfont iconbianji primary_color')]"
+
+    Selection_monomialSelectOption_loc = "//div[@id='app']//li[@data-mark='%value']"  #下拉单选选项
 
 #多表关联组件外部操作
 
@@ -81,6 +89,35 @@ class MultiFormAssociation(SeleniumPage):
         elem = self.find_elemByXPATH_visibility(self.order_div.replace('%s',fileName).replace('%row',str(row)))
         self.clickElem(elem)
 
+
+    def MultiForm_List_sendkeysTo_Number(self,fileName,row,col,key):
+        '''给多表数据列表的中间表的数字组件字段添加数据'''
+        # multiformTitle :多表字段名
+        # row：行数
+        # TextTitle：文本字段标题
+        # key：文本值
+        self.sendkeysElemByXpath_visibility(self.MultiForm_Td_input_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col)),key)
+
+    def MultiForm_List_click_Td( self,fileName,row,col ):
+       '''点击输入框使其变成可编辑状态'''
+       self.clickElemByXpath_visibility(self.MultiForm_Td_cell_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col)))
+       time.sleep(1)
+
+
+
+    def MultiForm_List_sendkeysTo_SingleXiala(self,fileName,row,col,value):
+        '''给多表数据列表的中间表的单项选择组件字段添加数据'''
+        # multiformTitle :多表字段名
+        # row：行数
+        # TextTitle：文本字段标题
+        # value：文本值
+        self.clickElemByXpath_visibility(self.MultiForm_Td_input_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col)))
+        time.sleep(1)
+        self.wait_elem_visible_XPATH(self.Selection_monomialSelectOption_loc.replace('%value',value))
+        # 点击选项
+        self.clickElemByXpath_visibility(self.Selection_monomialSelectOption_loc.replace('%value',value))
+
+
     # def MultiForm_get_TotalRecordNumber(self,fileName):
     #     '''获取多表记录数'''
     #     elems = self.find_elemsByXPATH_visibility(self.order_number_div.replace('%s',fileName))
@@ -89,6 +126,33 @@ class MultiFormAssociation(SeleniumPage):
     #     else:
     #         return 0
     # #
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # 多表关联组件批量管理页面内操作
 
@@ -138,7 +202,7 @@ class MultiFormAssociation(SeleniumPage):
 
 
 
-    def MultiForm_sendkeysTo_Text(self,multiformTitle,row,TextTitle,key):
+    def MultiForm_BathManagePage_sendkeysTo_Text(self,multiformTitle,row,TextTitle,key):
         '''给多表批量管理页面内的中间表的单行文本组件字段添加数据
         multiformTitle :多表字段名
         row：行数
@@ -150,7 +214,7 @@ class MultiFormAssociation(SeleniumPage):
 
 
 
-    def MultiForm_sendkeysTo_Number(self,multiformTitle,row,NumberTitle,key):
+    def MultiForm_BathManagePage_sendkeysTo_Number(self,multiformTitle,row,NumberTitle,key):
         '''给多表批量管理页面内的中间表的数字组件字段添加数据'''
         # multiformTitle :多表字段名
         # row：行数
@@ -163,7 +227,7 @@ class MultiFormAssociation(SeleniumPage):
 
 
     # 给多表批量管理页面的中间表的选择框组件字段添加数据
-    def MultiForm_sendkeys_To_MultiFormSelect(self,multiformTitle,row,SelectTitle,list,*args):
+    def MultiForm_BathManagePage_sendkeys_To_Select(self,multiformTitle,row,SelectTitle,list,*args):
         '''
         multiformTitle :子表字段名
         row：行数
@@ -176,7 +240,7 @@ class MultiFormAssociation(SeleniumPage):
             self.clickElemByCSS_visibility(self.MultiForm_SelectOption_loc.replace('%option',i),index=1)
 
     #
-    def MultiForm_sendkeys_To_MultiFormDate(self,MultiFormTitle,DateTitle,row,key):
+    def MultiForm_BathManagePage_sendkeys_To_Date(self,MultiFormTitle,DateTitle,row,key):
         '''给多表批量管理页面的中间表的日期组件字段添加数据
         MultiFormTitle :子表字段名
         DateTitle：日期字段标题
@@ -187,7 +251,7 @@ class MultiFormAssociation(SeleniumPage):
         self.clickElemByCSS_visibility(self.MultiFormManagementDialog__dialogfooter_loc,index=2)
 
     #
-    def MultiForm_sendkeys_To_MultiFormDateTime(self, MultiFormTitle,DateTimeTitle, row, dateKey,timeKey):
+    def MultiForm_BathManagePage_sendkeys_To_DateTime(self, MultiFormTitle,DateTimeTitle, row, dateKey,timeKey):
         '''给多表批量管理页面的中间表的日期时间组件字段添加数据
         MultiFormTitle :子表字段名
         DateTimeTitle：日期时间字段标题
@@ -202,7 +266,7 @@ class MultiFormAssociation(SeleniumPage):
         self.clickElemByCSS_visibility (self.MultiFormManagementDialog__dialogfooter_loc, index=2)
 
     #
-    def MultiForm_sendkeys_To_MultiFormTime(self,MultiFormTitle,TimeTitle,row,key):
+    def MultiForm_BathManagePage_sendkeys_To_Time(self,MultiFormTitle,TimeTitle,row,key):
         '''给多表批量管理页面的中间表的时间组件字段添加数据
         MultiFormTitle :子表字段名
         TimeTitle：时间字段标题
@@ -216,7 +280,7 @@ class MultiFormAssociation(SeleniumPage):
     # 给多表批量管理页面的中间表的富文本组件字段添加数据
 
     #
-    def MultiForm_sendkeys_To_ChildPicUpload(self,MultiFormTitle,PicUploadTitle,row,picPath):
+    def MultiForm_BathManagePage_sendkeys_To_PicUpload(self,MultiFormTitle,PicUploadTitle,row,picPath):
         '''给多表批量管理页面的中间表的图片上传组件字段添加数据
         MultiFormTitle :子表字段名
         row：行数

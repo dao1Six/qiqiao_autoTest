@@ -41,7 +41,7 @@ class HSEAppTest_003(unittest.TestCase):
         time.sleep(2)
         formPage.MultiForm_BatchManagementButton_Click("用品明细")
         formPage.MultiForm_BathManagePage_Record_Tick("用品明细", [1])
-        formPage.MultiForm_sendkeysTo_Number("用品明细",1,"申请数量",20)
+        formPage.MultiForm_BathManagePage_sendkeysTo_Number("用品明细",1,"申请数量",20)
         formPage.MultiForm_BathManagePage_ConfirmButton_Tick("用品明细")
         #检查多表关联组件数据列表显示
         self.assertEqual("口罩",formPage.MultiForm_GetTdValue("用品明细",1,2),msg="用品明细用品名称显示不正确")

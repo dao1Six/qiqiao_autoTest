@@ -299,7 +299,7 @@ class SeleniumPage (object):
             return None
         except TimeoutException as t:
             print(t)
-            print("根据"+locator+"信息在"+str(timeout)+"秒内没有查询到元素")
+            print("使用presence_of_all_elements_located根据"+locator+"信息在"+str(timeout)+"秒内没有查询到元素")
             return None
 
 ###Css
