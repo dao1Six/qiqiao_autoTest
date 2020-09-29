@@ -15,7 +15,7 @@ from qiqiao_page.pc_page.portal_page import PortalPage
 from qiqiao_page.pc_page.login_page import LoginPage
 
 
-class MbCapitalAppTest_002(unittest.TestCase):
+class MbCapitalAppTest_003(unittest.TestCase):
     '''移动端资产管理应用过往补丁2'''
 
     @classmethod

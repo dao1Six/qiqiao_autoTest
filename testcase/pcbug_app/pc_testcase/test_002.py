@@ -259,3 +259,21 @@ class PcBugAppTest_002(unittest.TestCase):
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,5),'01783',msg='人员工号显示不对')
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,6),'wujianlun',msg='人员账号显示不对')
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,7),'13025805485',msg='人员手机号显示不对')
+
+
+    def test_09( self ):
+        '''【补丁】——PC端日期函数HOURSDIFF计算时间类型字段时，无效'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('日期时间计算')
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage = FormPage(self.driver)
+        formPage.Time_Sendkeys("时间1","23:59")
+        time.sleep(2)
+        formPage.Time_Sendkeys("时间2","22:59")
+        time.sleep(2)
+        self.assertEqual(1,formPage.Number_GetValue_Writable("时间差"),msg="【补丁】——PC端日期函数HOURSDIFF计算时间类型字段时，无效")

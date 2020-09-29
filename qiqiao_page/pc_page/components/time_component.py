@@ -1,4 +1,6 @@
 #时间组件
+import time
+
 from public.selenium_page import SeleniumPage
 
 
@@ -6,7 +8,7 @@ class Time(SeleniumPage):
 
     Time_input_loc = "//div[@data-mark='%s']//input"  #时间组件字段输入框
 
-    Time_label_loc = "div[title='%s']>label>span[title='%s']"  #时间组件字段名
+    Time_label_loc = "div[data-mark='%s']>label>span[title='%s']"  #时间组件字段名
 
     #
     def Time_Sendkeys(self,fieldName,key,*args):
@@ -15,7 +17,10 @@ class Time(SeleniumPage):
         key：时间值  格式：19:20
         '''
         locator = self.Time_input_loc.replace('%s',fieldName)
-        self.sendkeysElemByXpath_visibility(locator, key)
+        self.clickElemByXpath_visibility(locator)
+        time.sleep(1)
+        self.sendkeysElemByXpath_visibility(locator, key,isclear=True)
+        #点击字段标题
         self.clickElemByCSS_visibility(self.Time_label_loc.replace('%s',fieldName))
 
 

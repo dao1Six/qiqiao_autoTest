@@ -469,13 +469,21 @@ class PomAppTest_001(unittest.TestCase):
 
 
 
-
-
-
-
-
-
-
+    # def test_05( self ):
+    #     '''道一云生产运营应用，事业一部项目转让流程'''
+    #     processPage = ProcessPage(self.driver)
+    #     portalPage = PortalPage(self.driver)
+    #     portalPage.PortalPage_Click_HeaderMenu("应用")
+    #     applicationListPage = ApplicationListPage(self.driver)
+    #     applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '生产运管系统')
+    #     businessPage = BusinessPage(self.driver)
+    #     businessPage.BusinessPage_LeftMenu_Click('项目信息管理2')
+    #     time.sleep(2)
+    #     businessPage.ListComponent_Click_ListRow_Button("团队管理",1)
+    #     formPage = FormPage(self.driver)
+    #     formPage.ChildForm_AddOneRowButton_Click("项目团队成员")
+    #     formPage.ChildForm_List_User_sendkeys
+    #     formPage.ChildForm_List_DateTime_sendkeys()
 
 
 
