@@ -11,7 +11,7 @@ from qiqiao_page.pc_page.portal_page import PortalPage
 from qiqiao_page.pc_page.process_page import ProcessPage
 
 
-class CapitalAppTest_001(unittest.TestCase):
+class CapitalAppTest_002(unittest.TestCase):
     '''PC端资产管理应用流程检查'''
 
 
