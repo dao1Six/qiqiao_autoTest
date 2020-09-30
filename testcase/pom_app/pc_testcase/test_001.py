@@ -13,13 +13,24 @@ from qiqiao_page.pc_page.login_page import LoginPage
 from qiqiao_page.pc_page.portal_page import PortalPage
 from qiqiao_page.pc_page.process_page import ProcessPage
 from util.dateTimeUtil import DateTimeUtil
+from util.excel_xlrd import ExcelReadUtil
 from util.parseExcel import ParseExcel
 
 
 class PomAppTest_001(unittest.TestCase):
     '''PC生产运营应用流程操作'''
 
+    ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
+    downloadPath = ProjectRootPath + '\\file_data\\downloadData'
 
+
+    def isFileExists(self,path):
+        if os.path.exists(path):  # 如果文件存在
+            # 删除文件，可使用以下两种方法。
+            # os.remove(path)
+            return True
+        else:
+            return False # 则返回文件不存在
 
     def dataPrepare( self ):
         '''数据准备'''
@@ -105,10 +116,17 @@ class PomAppTest_001(unittest.TestCase):
         # portalPage.PortalPage_qiqiao_logout()
         self.driver.quit()
 
-    @classmethod
-    def setUpClass(self):
-        self.dataPrepare(self)
+    # @classmethod
+    # def setUpClass(self):
+    #     self.dataPrepare(self)
 
+    def pcLogin(self,account,password):
+        '''登录pc端'''
+        self.driver = Driver().pcdriver()
+        self.driver.maximize_window()
+        loginpage = LoginPage(self.driver)
+        loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', account, password)
+        time.sleep(5)
 
     def setUp(self):
         self.driver = Driver().pcdriver()
@@ -219,9 +237,32 @@ class PomAppTest_001(unittest.TestCase):
         self.assertEqual(formPage.ChildForm_GetTdValue("开票回款计划",2,4),"221113333",msg="开票回款计划信息错误")
 
 
-
-
     def test_02( self ):
+        ''''''
+        filePath = self.downloadPath+"//订单管理列表.xls"
+        if(self.isFileExists(filePath)):
+            os.remove(filePath)
+            # 打开生产运营管理应用
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','生产运管系统')
+        businessPage = BusinessPage(self.driver)
+        businessPage.ListComponent_Click_ListHeader_Button("导出")
+        businessPage.ListComponent_dialogfooterButton_Click("确 定")
+        time.sleep(10)
+        filePath = self.downloadPath + "//订单管理列表.xls"
+        self.assertTrue(self.isFileExists(filePath),msg="导出不成功")
+        excelReader = ExcelReadUtil()
+        sheet = excelReader.getSheetValue(filePath,1)
+
+        excelReader.getRowValues(sheet,1)
+
+
+
+
+
+    def test_03( self ):
         '''道一云生产运营应用，事业一部内部订单发起 流程'''
         #第一个人工任务
         portalPage = PortalPage(self.driver)
@@ -313,7 +354,7 @@ class PomAppTest_001(unittest.TestCase):
         # businessPage.ListComponent_Click_ListRow_Button("详情",1)
 
 
-    def test_03( self ):
+    def test_04( self ):
         '''道一云生产运营应用，事业一部结算流程'''
         processPage = ProcessPage(self.driver)
         portalPage = PortalPage(self.driver)
@@ -412,7 +453,7 @@ class PomAppTest_001(unittest.TestCase):
 
 
 
-    def test_04( self ):
+    def test_05( self ):
         '''道一云生产运营应用，事业一部立项申请流程'''
         portalPage = PortalPage(self.driver)
         #打开“发起流程列表”
@@ -493,7 +534,7 @@ class PomAppTest_001(unittest.TestCase):
 
 
 
-    def test_05( self ):
+    def test_06( self ):
         '''道一云生产运营应用，事业一部项目转让流程'''
         processPage = ProcessPage(self.driver)
         portalPage = PortalPage(self.driver)

@@ -5,7 +5,9 @@ from openpyxl import load_workbook
 class ParseExcel(object):
 
     def __init__(self, excelPath, sheetName):
+        #wb整个excel的内容
         self.wb = load_workbook(excelPath)
+        # 某个sheet的内容
         self.ws = self.wb.get_sheet_by_name(sheetName)
 
     # 获取表格的总行数和总列数
