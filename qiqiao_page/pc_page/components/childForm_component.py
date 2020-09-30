@@ -12,10 +12,12 @@ class ChildForm_component(SeleniumPage):
 
     ChildForm_Input_loc = "[data-mark='%title'] .row_%title_%row [data-mark='%text'] input"  #子表输入框
 
+    ChildForm_textarea_loc = "[data-mark='%title'] .row_%title_%row [data-mark='%text'] textarea"
+
     ChildForm_div_loc = "[data-mark='%title'] .row_%title_%row [data-mark='%text']"  # 子表输入框div
 
 
-    ChildForm_SelectOption_loc = "[data-mark='%option']"  #下拉选项
+    ChildForm_SelectOption_loc = "//div[@id='app']/following-sibling::div[@class='el-select-dropdown el-popper %title']//li[@data-mark='%s']"   #下拉选项
 
     ChildForm_ForeignSelectOption_loc = "//div[@id='app']/following-sibling::div[1]//li[@data-mark='option_%s']"  #外键选项
 
@@ -99,6 +101,17 @@ class ChildForm_component(SeleniumPage):
         reallyRow = str(row - 1)
         self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',TextTitle),key,isclear=True)
 
+
+    def ChildForm_List_Textarea_sendkeys(self,childformTitle,row,TextTitle,key):
+        '''给子表的多行文本组件输入值'''
+        # childformTitle :子表字段名
+        # row：行数
+        # TextTitle：文本字段标题
+        # key：文本值
+        reallyRow = str(row - 1)
+        self.sendkeysElemByCSS_Presence(self.ChildForm_textarea_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',TextTitle),key,isclear=True)
+
+
     def ChildForm_List_Number_sendkeys(self,childformTitle,NumberTitle,row,key):
         '''给子表的数字组件输入值'''
         # childformTitle :子表字段名
@@ -130,7 +143,7 @@ class ChildForm_component(SeleniumPage):
         reallyRow = str (row - 1)
         self.clickElemByCSS_visibility (self.ChildForm_Input_loc.replace ('%title', childformTitle).replace ('%row', reallyRow).replace ('%text',SelectTitle))
         for i in list:
-            self.clickElemByCSS_visibility(self.ChildForm_SelectOption_loc.replace('%option',i),index=1)
+            self.clickElemByXpath_visibility(self.ChildForm_SelectOption_loc.replace('%title',SelectTitle).replace('%s',i))
 
 
     def ChildForm_List_Date_sendkeys(self,childformTitle,DateTitle,row,key):
@@ -139,7 +152,7 @@ class ChildForm_component(SeleniumPage):
         #         # DateTitle：日期字段标题
         #         # key：文本值
         reallyRow = str(row-1)
-        self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',DateTitle),key)
+        self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',DateTitle),key,isclear=True)
         self.clickElemByCSS_visibility(self.ChildForm_label_loc.replace('%title',childformTitle))
 
 
