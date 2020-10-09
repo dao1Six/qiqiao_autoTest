@@ -38,7 +38,7 @@ class PomAppTest_001(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
-        time.sleep(10)
+        time.sleep(5)
         # 打开生产运营管理应用
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
@@ -255,8 +255,7 @@ class PomAppTest_001(unittest.TestCase):
         self.assertTrue(self.isFileExists(filePath),msg="导出不成功")
         excelReader = ExcelReadUtil()
         sheet = excelReader.getSheetValue(filePath,1)
-
-        excelReader.getRowValues(sheet,1)
+        self.assertEqual(['1', '创新技术中心->产品研发二部->产品规划组', '创新技术中心->产品研发二部->产品规划组', '王浩', '王浩', '进行中', '产品', '代理产品', '软件', '长江水坝管理局', '政府', '', '订阅', 'dasdsadasdsadddasdsadsadsadsadasdsadasdas', '已签合同', '大大实打实的的', '大大实打实的的', 25555554444.0, '', '', '', 44103.0, 44104.0, 44105.0, '', '', 'do1-WBDD-20200930211', '长江水坝管理系统', 25555554444.0, '标杆作用', '长江水坝管理系统', 'do1-WBDD-20200930211', '未开票', '合同款', 233333.0, '', 44104.0, '', '', '未开票', '', '', '', '', '', '', '否', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'do1-WBDD-20200930211', '', '', '', '', '', '', '', '', '', '', '', '', 'do1-WBDD-20200930211', '', '', '', '长江水坝管理系统', '', ''],excelReader.getRowValues(sheet,2))
 
 
 

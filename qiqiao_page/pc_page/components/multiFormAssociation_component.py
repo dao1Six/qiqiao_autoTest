@@ -47,6 +47,8 @@ class MultiFormAssociation(SeleniumPage):
 
     Selection_monomialSelectOption_loc = "//div[@id='app']//li[@data-mark='%value']"  #下拉单选选项
 
+    ForeignSelection_loc = "//div[@id='app']/following-sibling::div[@class='el-select-dropdown el-popper load_more']//span[text()='%value']/parent ::li"  # 外键选项
+
 #多表关联组件外部操作
 
     def MultiForm_BatchManagementButton_Click(self,fileName,*args):
@@ -77,7 +79,7 @@ class MultiFormAssociation(SeleniumPage):
 
     def MultiForm_edit_Record(self,fileName,row):
         '''编辑多表记录'''
-        #鼠标移至删除的数据的序列号
+        #鼠标移至数据的序列号
         elem = self.find_elemByXPATH_visibility(self.order_div.replace('%s',fileName).replace('%row',str(row)))
         self.move_to_element(elem)
         time.sleep(1.5)
@@ -116,6 +118,17 @@ class MultiFormAssociation(SeleniumPage):
         self.wait_elem_visible_XPATH(self.Selection_monomialSelectOption_loc.replace('%value',value))
         # 点击选项
         self.clickElemByXpath_visibility(self.Selection_monomialSelectOption_loc.replace('%value',value))
+
+
+    def MultiForm_List_ForeignSelection_sendkeys(self,fileName,row,col,value):
+        '''给多表的外键组件输入值'''
+        # childformTitle :子表字段名
+        # row：行数
+        # TextTitle：文本字段标题
+        # option：选项值
+        self.clickElemByXpath_visibility(self.MultiForm_Td_input_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col)))
+        # 点击选项
+        self.clickElemByXpath_visibility(self.ForeignSelection_loc.replace('%value',value))
 
 
     # def MultiForm_get_TotalRecordNumber(self,fileName):

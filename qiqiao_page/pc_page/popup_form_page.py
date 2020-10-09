@@ -36,3 +36,7 @@ class PopupFormPage(PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload
         '''点击弹窗表单按钮'''
         self.clickElemByXpath_visibility(self.FormPage_button_loc.replace('%s',buttonName))
 
+
+
+
+

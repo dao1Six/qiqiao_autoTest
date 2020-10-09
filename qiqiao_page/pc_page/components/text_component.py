@@ -5,23 +5,23 @@ from public.selenium_page import SeleniumPage
 class Text(SeleniumPage):
 
 
-    Text_input_loc = "//div[@data-mark='%s']//input"  #单行文本组件字段输入框
+    Text_input_loc = "//div[@class='formItem']//div[@data-mark='%s']//input"  #单行文本组件字段输入框
 
-    Text_label_loc = "//div[@data-mark='%s']/label/span[@title='%s']"
+    Text_label_loc = "//div[@class='formItem']//div[@data-mark='%s']/label/span[@title='%s']"
 
     ChildFormPopup_loc = "//div[@data-mark='子表弹层_%s']"
 
     ChildFormPopup_Text_div_loc = "//div[@title='%title']//div[contains(@class,'component_detail')]//div"
     #
-    def Text_Sendkeys(self,fieldName,key,*args):
+    def Text_Sendkeys(self,fieldName,key,isclear=False,labelIndex=0,*args):
         '''给单行文本组件输入值
         fieldName：字段标题
         key：文本值
         '''
         loc = self.Text_input_loc.replace('%s',fieldName)
-        self.sendkeysElemByXpath_visibility(loc,key)
+        self.sendkeysElemByXpath_visibility(loc,key,isclear=isclear)
         #点击脱离光标
-        self.clickElemByXpath_visibility(self.Text_label_loc.replace('%s',fieldName))
+        self.clickElemByXpath_visibility(self.Text_label_loc.replace('%s',fieldName),index=labelIndex)
 
     def Text_InPopup_Sendkeys( self,childFormName,fieldName,key,*args ):
 

@@ -277,3 +277,43 @@ class PcBugAppTest_002(unittest.TestCase):
         formPage.Time_Sendkeys("时间2","22:59")
         time.sleep(2)
         self.assertEqual(1,formPage.Number_GetValue_Writable("时间差"),msg="【补丁】——PC端日期函数HOURSDIFF计算时间类型字段时，无效")
+
+
+    def test_10( self ):
+        '''【补丁】PC运行平台--看板-详情按钮-页面内操作的编辑和删除按钮点击一直在loading'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','项目管理')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('任务列表')
+        businessPage.KanBanComponent_addButton_click(1)
+        formPage = PopupFormPage(self.driver)
+        formPage.ForeignSelection_Sendkeys("项目标题","dadasdad")
+        formPage.Text_Sendkeys("任务名称","会打开等哈记得哈加达和")
+        formPage.Number_Sendkeys("任务分值",99)
+        formPage.DateTime_Sendkeys("任务开始时间",DateTimeUtil().Today()+" 00:00")
+        formPage.DateTime_Sendkeys("任务截止时间",DateTimeUtil().Tomorrow() + " 00:00")
+        formPage.Selection_SingleXiala_Sendkeys("重要程度","紧急但不重要")
+        time.sleep(2)
+        formPage.PopupFormPage_Button_Click("提交")
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="看板视图添加数据失败")
+        self.assertEqual({'项目标题': 'dadasdad', '任务分值': '99', '任务负责人': '--', '任务开始时间': DateTimeUtil().Today()+" 00:00", '任务截止时间': DateTimeUtil().Tomorrow() + " 00:00"},businessPage.KanBanComponent_Get_RecoreTextContents(1,1),msg="看板视图显示字段值不正确")
+        businessPage.KanBanComponent_MoveTo_Item_MoreButton(1,1)
+        businessPage.KanBanComponent_Button_click("编辑")
+        formPage.Text_Sendkeys("任务名称","2222222",isclear=True)
+        formPage.PopupFormPage_Button_Click("提交")
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="看板视图编辑数据失败")
+        businessPage.KanBanComponent_ItemContent_click(1,1)
+        formPage.PopupFormPage_Button_Click("编辑")
+        time.sleep(2)
+        formPage.Text_Sendkeys("任务名称","33333",isclear=True,labelIndex=1)
+        formPage.PopupFormPage_Button_Click("提交")
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="看板视图详情按钮进入编辑数据失败")
+        businessPage.KanBanComponent_ItemContent_click(1,1)
+        formPage.PopupFormPage_Button_Click("删除")
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="看板视图详情按钮进入删除数据失败")
+
+
+

@@ -144,7 +144,6 @@ class MbCapitalAppTest_002(unittest.TestCase):
         formPage.MbForm_Button_Click("办理")
         formPage.MbForm_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第二个人工任务办理失败")
-        time.sleep(10)
         self.driver.quit()
         # 流程跑完，检查去PC端检查系统任务执行是否正确
         self.pcLogin("wujianlun@auto","do1qiqiao")
@@ -155,6 +154,5 @@ class MbCapitalAppTest_002(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,7),"已借出",msg="系统任务执行失败")
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2,7),"已借出",msg="系统任务执行失败")
-        time.sleep(10)
         print("检查完成，资产管理领用流程测试通过")
 

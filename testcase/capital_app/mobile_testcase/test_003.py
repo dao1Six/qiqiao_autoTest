@@ -170,6 +170,5 @@ class MbCapitalAppTest_003(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,7),"已借出",msg="系统任务执行失败")
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2,7),"已借出",msg="系统任务执行失败")
-        time.sleep(10)
         print("检查完成，资产管理领用流程测试通过")
 
