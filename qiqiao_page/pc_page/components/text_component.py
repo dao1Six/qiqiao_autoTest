@@ -12,6 +12,10 @@ class Text(SeleniumPage):
     ChildFormPopup_loc = "//div[@data-mark='子表弹层_%s']"
 
     ChildFormPopup_Text_div_loc = "//div[@title='%title']//div[contains(@class,'component_detail')]//div"
+
+    ChildFormPopup_Text_input_loc = "//div[@data-mark='%s']//input"
+
+    ChildFormPopup_Text_label_loc = "//div[@data-mark='%s']/label/span[@title='%s']"
     #
     def Text_Sendkeys(self,fieldName,key,isclear=False,labelIndex=0,*args):
         '''给单行文本组件输入值
@@ -26,10 +30,10 @@ class Text(SeleniumPage):
     def Text_InPopup_Sendkeys( self,childFormName,fieldName,key,*args ):
 
         '''表单弹层输入文本值'''
-        loc = self.ChildFormPopup_loc.replace('%s',childFormName)+self.Text_input_loc.replace('%s',fieldName)
+        loc = self.ChildFormPopup_loc.replace('%s',childFormName)+self.ChildFormPopup_Text_input_loc.replace('%s',fieldName)
         self.sendkeysElemByXpath_visibility(loc,key)
         #点击脱离光标
-        self.clickElemByXpath_visibility(self.Text_label_loc.replace('%s',fieldName))
+        self.clickElemByXpath_visibility(self.ChildFormPopup_Text_label_loc.replace('%s',fieldName))
 
 
     def Text_GetValue_writable( self,fieldName ):
@@ -39,7 +43,7 @@ class Text(SeleniumPage):
 
     def Text_GetValue_writable_InPopup( self,childFormName,fieldName ):
         '''表单弹层获取可写状态的单行文本字段值'''
-        loc = self.ChildFormPopup_loc.replace('%s',childFormName) + self.Text_input_loc.replace('%s',fieldName)
+        loc = self.ChildFormPopup_loc.replace('%s',childFormName) + self.ChildFormPopup_Text_input_loc.replace('%s',fieldName)
         return self.getElemAttrValue(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(loc),'value')
 
     def Text_GetValue_readOnly_InPopup( self,childFormName,fieldName ):
