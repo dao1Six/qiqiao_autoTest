@@ -153,3 +153,24 @@ class MbBugAppTest_001(unittest.TestCase):
         self.assertEqual("50",formPage.MbNumber_GetValue_readOnly("分值权重(%)"),msg="用品明细库存显示不正确")
         self.assertEqual("七巧",formPage.MbText_GetValue_readOnly("项目名称"),msg="用品明细单位显示不正确")
         self.assertEqual("创新技术中心->产品研发二部->产品规划组",formPage.MbDept_GetValue_readOnly_InPopup("承担部门"))
+
+
+    def test_06( self ):
+        '''【补丁】移动端/PC版企业微信--数字组件小数类型设置数值限制校验为（0-2.5），移动端与PC版企业微信端输入2.3时，显示了校验信息'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('补丁转自动化应用','数字组件测试列表')
+        listPage = MbListComponent(self.driver)
+        if(listPage.MbListComponent_Get_RecoresNumber()>0):
+            listPage.MbListComponent_Recore_ClickAndHole(1)
+            listPage.MbListComponent_Click_CardListBottomButton("删除")
+            listPage.MbListComponent_Click_Cube_dialog_Button("确定")
+        self.driver.refresh()
+        time.sleep(1)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbNumber_Sendkeys("数字",2.3)
+        formPage.MbForm_Button_Click("提交")
+        self.assertIn('成功',formPage.Public_GetAlertMessage())

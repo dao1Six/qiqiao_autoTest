@@ -13,7 +13,7 @@ class MbNumber(SeleniumPage):
         fieldName：字段标题
         key：数值  数字类型
         '''
-        self.sendkeysElemByXpath_visibility(self.Number_input_loc.replace('%s',fieldName),key)
+        self.sendkeysElemByXpath_visibility(self.Number_input_loc.replace('%s',fieldName),str(key))
 
     def MbNumber_GetValue_readOnly(self,fieldName):
         '''获取只读状态的数字组件值'''

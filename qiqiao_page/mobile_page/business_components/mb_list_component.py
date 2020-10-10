@@ -12,6 +12,7 @@ class MbListComponent(SeleniumPage):
 
     # 列表按钮
     CardListButton_loc = "div.cube-action-sheet-content li"
+
     # 列表底部按钮
     CardListBottomButton_loc = "div.cube-action-sheet-panel div:last-child"
 
@@ -39,9 +40,135 @@ class MbListComponent(SeleniumPage):
 
     filter_button_loc = "//div[@class='filter_render_operation']//button[text()=' %s']"
 
+    CubeActionBottomButton = "//li[@title='%s']"
+
+    CubeActionBottomCancelButton = "//div[@class='cube-action-sheet-cancel']"
+    Cube_dialog_Button = "//a[text()='%s']"
+
+    def MbListComponent_Click_CardListBottomButton( self,buttonName ):
+        '''点击底部按钮'''
+        if(buttonName=="取消"):
+            self.clickElemByXpath_visibility(self.CubeActionBottomCancelButton)
+        else:
+            self.clickElemByXpath_visibility(self.CubeActionBottomButton.replace('%s',buttonName))
+
+    def MbListComponent_Click_Cube_dialog_Button(  self,buttonName  ):
+        '''列表弹框按钮'''
+        self.clickElemByXpath_visibility(self.Cube_dialog_Button.replace('%s',buttonName))
+
+
     def MbListComponent_FilterButton_Click( self,buttonName ):
         '''点击列表筛选确定重置按钮'''
         self.clickElemByXpath_visibility(self.filter_button_loc.replace('%s',buttonName))
+
+    def MbListComponent_ItemP_Get( self,row,now ):
+        '''获取列表记录行显示值'''
+        return self.find_elemByXPATH_visibility(self.item_p_loc.replace('%s',str(row)).replace('%n',str(now))).text
+
+    def MbListComponent_shaixuanIcoon_Click( self ):
+        '''点击列表筛选图标'''
+        self.clickElemByXpath_visibility(self.shaixuanIcoon)
+
+    def MbListComponent_searchInput_Sendkeys( self,key ):
+        '''点击列表搜索框输入值'''
+        self.clickElemByXpath_visibility(self.searchBar_i)
+        self.sendkeysElemByXpath_visibility(self.searchBar_input,key)
+
+    def MbListComponent_searchItem_Switch( self,Item ):
+        '''点击列表切换搜索项'''
+        self.clickElemByXpath_visibility(self.fieldSelect_i)
+        self.clickElemByXpath_visibility(self.fieldSelect_Item,Item)
+
+
+    def MbListComponent_AddButton_Click( self ):
+        '''点击列表添加按钮'''
+        self.clickElemByXpath_visibility(self.add_btn)
+
+    # 长按列表某条记录
+    def MbListComponent_Recore_ClickAndHole( self, index ,*args):
+        elem = self.find_elemsByCSS_presence(self.CardList_loc)[index]
+        self.click_and_hold(elem)
+
+    #点击列表某条记录
+    def MbListComponent_Recore_Click( self, index ,*args):
+        '''点击列表某条记录'''
+        elem = self.find_elemsByCSS_presence(self.CardList_loc)[index-1]
+        self.clickElem(elem)
+
+
+
+    def MbListComponent_GetRecoreButton( self ):
+        '''获取列表底部按钮'''
+        buttonList = []
+        cardListButtons = self.find_elemsByCSS_presence(self.CardListButton_loc)
+        for cardListButton in cardListButtons:
+            buttonList.append(cardListButton.get_attribute("title"))
+        buttonList.append(self.find_elenmInElemsByCSS_visibility_of_any_elements_located(self.CardListBottomButton_loc).get_attribute("title"))
+        return buttonList
+
+
+
+    def MbListComponent_GetListAllTab( self ):
+        '''获取列表选项卡所有选项'''
+        tabItems = []
+        tabItemsElem = self.find_elemsByCSS_presence(self.CardList_tabItem)
+        for tabItemElem in tabItemsElem:
+            tabItems.append(tabItemElem.text)
+        return tabItems
+
+    def MbListComponent_SwitchTab( self,itemName):
+        '''切换到具体选项卡'''
+        self.clickElemByXpath_visibility(self.CardList_tabItem_div_loc.replace('%s',itemName))
+
+
+    def MbListComponent_Get_RecoresNumber( self ):
+        '''返回当前列表记录数'''
+        elems =self.find_elemsByXPATH_presence(self.dyCardList_item,timeout=3)
+        if(elems!=None):
+            return len(elems)
+        else:
+            return 0
+
+    def MbListComponent_Scroll_To_Bottom( self ):
+        '''滚动到列表底部'''
+        while(self.find_elemByXPATH_visibility(self.lastPage_div,timeout=2)==None):
+            elem = self.find_elemsByCSS_visibility(self.CardList_loc)[-1]
+            print(elem)
+            self.h5_scroll(elem,0,5000)
+
+
+
+    def MbListComponent_Get_RecoreStatusValule( self,index):
+        '''返回当前列表记录状态值'''
+        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.dyCardList_status,index=index-1)
+        if (elem!=None):
+            return elem.text
+        else:
+            return None
+
+
+
+
+
+    def MbListComponent_Get_RecoreTitleValule( self,index ):
+        '''返回当前列表记录标题值'''
+        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.dyCardList_text_main,index=index-1)
+        if (elem!=None):
+            return elem.text
+        else:
+            return None
+
+
+    def MbListComponent_Get_RecoreTextContents( self,r ):
+        '''返回当前列表记录标题值'''
+        list = []
+        elems = self.find_elemsByXPATH_visibility(self.dyCardList_text_content.replace("%r",str(r)))
+        if (elems!=None):
+            for elem in elems:
+                list.append(elem.text)
+            return list
+        else:
+            return None
 
 
     def MbListComponent_QueryItem_Sendkeys( self, itemName, keys, *args,QueryItemType="text"):
@@ -109,103 +236,3 @@ class MbListComponent(SeleniumPage):
         else:
             print("类型值为：" + type)
             raise Exception("查询项无此类型，请检查type参数的值")
-
-
-    def MbListComponent_ItemP_Get( self,row,now ):
-        '''获取列表记录行显示值'''
-        return self.find_elemByXPATH_visibility(self.item_p_loc.replace('%s',str(row)).replace('%n',str(now))).text
-
-    def MbListComponent_shaixuanIcoon_Click( self ):
-        '''点击列表筛选图标'''
-        self.clickElemByXpath_visibility(self.shaixuanIcoon)
-
-    def MbListComponent_searchInput_Sendkeys( self,key ):
-        '''点击列表搜索框输入值'''
-        self.clickElemByXpath_visibility(self.searchBar_i)
-        self.sendkeysElemByXpath_visibility(self.searchBar_input,key)
-
-    def MbListComponent_searchItem_Switch( self,Item ):
-        '''点击列表切换搜索项'''
-        self.clickElemByXpath_visibility(self.fieldSelect_i)
-        self.clickElemByXpath_visibility(self.fieldSelect_Item,Item)
-
-
-    def MbListComponent_AddButton_Click( self ):
-        '''点击列表添加按钮'''
-        self.clickElemByXpath_visibility(self.add_btn)
-
-    # 长按列表某条记录
-    def MbListComponent_Recore_ClickAndHole( self, index ,*args):
-        elem = self.find_elemsByCSS_presence(self.CardList_loc)[index]
-        self.click_and_hold(elem)
-
-    #点击列表某条记录
-    def MbListComponent_Recore_Click( self, index ,*args):
-        '''点击列表某条记录'''
-        elem = self.find_elemsByCSS_presence(self.CardList_loc)[index-1]
-        self.clickElem(elem)
-
-
-    # 判断列表记录是否有某按钮操作权限
-    def MbListComponent_GetRecoreButton( self ):
-        buttonList = []
-        cardListButtons = self.find_elemsByCSS_presence(self.CardListButton_loc)
-        for cardListButton in cardListButtons:
-            buttonList.append(cardListButton.get_attribute("title"))
-        buttonList.append(self.find_elenmInElemsByCSS_visibility_of_any_elements_located(self.CardListBottomButton_loc).get_attribute("title"))
-        return buttonList
-
-    #获取列表选项卡所有选项
-    def MbListComponent_GetListAllTab( self ):
-        tabItems = []
-        tabItemsElem = self.find_elemsByCSS_presence(self.CardList_tabItem)
-        for tabItemElem in tabItemsElem:
-            tabItems.append(tabItemElem.text)
-        return tabItems
-
-    def MbListComponent_SwitchTab( self,itemName):
-        '''切换到具体选项卡'''
-        self.clickElemByXpath_visibility(self.CardList_tabItem_div_loc.replace('%s',itemName))
-
-
-    def MbListComponent_Get_RecoresNumber( self ):
-        '''返回当前列表记录数'''
-        return len(self.find_elemsByXPATH_presence(self.dyCardList_item))
-
-    def MbListComponent_Scroll_To_Bottom( self ):
-        '''滚动到列表底部'''
-        while(self.find_elemByXPATH_visibility(self.lastPage_div,timeout=2)==None):
-            elem = self.find_elemsByCSS_visibility(self.CardList_loc)[-1]
-            print(elem)
-            self.h5_scroll(elem,0,5000)
-
-
-
-    def MbListComponent_Get_RecoreStatusValule( self,index):
-        '''返回当前列表记录状态值'''
-        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.dyCardList_status,index=index-1)
-        if (elem!=None):
-            return elem.text
-        else:
-            return None
-
-
-    def MbListComponent_Get_RecoreTitleValule( self,index ):
-        '''返回当前列表记录标题值'''
-        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.dyCardList_text_main,index=index-1)
-        if (elem!=None):
-            return elem.text
-        else:
-            return None
-
-
-    def MbListComponent_Get_RecoreTextContents( self,r ):
-        '''返回当前列表记录标题值'''
-        list = []
-        elems = self.find_elemsByXPATH_visibility(self.dyCardList_text_content.replace("%r",str(r)))
-        if (elems!=None):
-            for elem in elems:
-                list.append(elem.text)
-            return list
-        else:
-            return None
