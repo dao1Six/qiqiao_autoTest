@@ -116,9 +116,9 @@ class PomAppTest_001(unittest.TestCase):
         # portalPage.PortalPage_qiqiao_logout()
         self.driver.quit()
 
-    # @classmethod
-    # def setUpClass(self):
-    #     self.dataPrepare(self)
+    @classmethod
+    def setUpClass(self):
+        self.dataPrepare(self)
 
     def pcLogin(self,account,password):
         '''登录pc端'''

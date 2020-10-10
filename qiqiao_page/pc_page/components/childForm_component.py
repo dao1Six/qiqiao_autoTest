@@ -42,9 +42,9 @@ class ChildForm_component(SeleniumPage):
         self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildForm_CloseIcon_loc)
 
     def ChildForm_AddButton_Click(self,fieldName,*args):
-        '''点击添加按钮
-        fieldName：字段标题
-        '''
+        '''点击添加按钮'''
+        #fieldName：字段标题
+
         self.clickElemByCSS_visibility (self.ChildForm_AddButton_loc.replace ('%title', fieldName))
 
     def ChildForm_AddOneRowButton_Click(self,fieldName,*args):

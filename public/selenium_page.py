@@ -64,10 +64,8 @@ class SeleniumPage (object):
         # 一直等待某元素可见，默认超时3秒只做等待动作不返回值
         try:
             ui.WebDriverWait(self.driver,timeout).until(EC.visibility_of_element_located((By.XPATH,locator)))
-            print(locator+"已可见")
             return True
         except TimeoutException:
-            print(locator + "不可见")
             return False
 
     def wait_elem_disappearByXPATH(self, locator, timeout=5):
