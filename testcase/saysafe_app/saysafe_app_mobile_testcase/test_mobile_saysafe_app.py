@@ -70,7 +70,7 @@ class SaySafeAppTest(unittest.TestCase):
         '''检查我报平安列表按钮权限'''
         businessModelldPage = BusinessModelldPage(self.driver)
         time.sleep(1)
-        businessModelldPage.MbListComponent_Recore_ClickAndHole(0)
+        businessModelldPage.MbListComponent_Recore_ClickAndHole(1)
         #校验列表按钮操作权限
         self.assertListEqual(["编辑","删除","取消"],businessModelldPage.MbListComponent_GetRecoreButton())
 

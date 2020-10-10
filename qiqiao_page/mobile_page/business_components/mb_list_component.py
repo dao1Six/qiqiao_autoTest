@@ -86,7 +86,7 @@ class MbListComponent(SeleniumPage):
 
     # 长按列表某条记录
     def MbListComponent_Recore_ClickAndHole( self, index ,*args):
-        elem = self.find_elemsByCSS_presence(self.CardList_loc)[index]
+        elem = self.find_elemsByCSS_presence(self.CardList_loc)[index-1]
         self.click_and_hold(elem)
 
     #点击列表某条记录

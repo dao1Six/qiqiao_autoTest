@@ -27,7 +27,6 @@ class MbBugAppTest_001(unittest.TestCase):
     def mbLogin(self,account,password):
         '''登录移动端'''
         self.driver = Driver().phonedriver()
-        self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/mruntime', account, password)
         time.sleep(5)
@@ -163,10 +162,6 @@ class MbBugAppTest_001(unittest.TestCase):
         applicationListPage = MbApplicationListPage(self.driver)
         applicationListPage.MbApplicationListPage_Menu_Click('补丁转自动化应用','数字组件测试列表')
         listPage = MbListComponent(self.driver)
-        if(listPage.MbListComponent_Get_RecoresNumber()>0):
-            listPage.MbListComponent_Recore_ClickAndHole(1)
-            listPage.MbListComponent_Click_CardListBottomButton("删除")
-            listPage.MbListComponent_Click_Cube_dialog_Button("确定")
         self.driver.refresh()
         time.sleep(1)
         listPage.MbListComponent_AddButton_Click()
@@ -174,3 +169,4 @@ class MbBugAppTest_001(unittest.TestCase):
         formPage.MbNumber_Sendkeys("数字",2.3)
         formPage.MbForm_Button_Click("提交")
         self.assertIn('成功',formPage.Public_GetAlertMessage())
+
