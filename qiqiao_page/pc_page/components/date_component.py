@@ -1,4 +1,6 @@
 #日期组件
+import time
+
 from public.selenium_page import SeleniumPage
 
 
@@ -12,6 +14,8 @@ class Date(SeleniumPage):
 
     form_title_loc = "//div[@class='header']/div[@class='title']"
 
+    ChildFormPopup_DateDateIcon_loc = "//div[@data-mark='子表弹层_%s']//div[@data-mark='%f']//i[@class='el-input__icon el-icon-date']"
+    ChildFormPopup_DateClearIcon_loc = "//div[@data-mark='子表弹层_%s']//div[@data-mark='%f']//i[@class='el-input__icon el-icon-circle-close']"
     #给日期组件输入值
     def Date_Sendkeys(self,fieldName,key,isclear=False,*args):
         '''给日期组件输入值
@@ -23,11 +27,20 @@ class Date(SeleniumPage):
         self.clickElemByXpath_visibility(self.form_title_loc)
 
     def Date_Sendkeys_InPop( self,childFormName,fieldName,key,isclear=False,*args ):
-        '''子表弹框输入文本值'''
+        '''子表弹框输入日期值'''
+
         loc = self.ChildFormPopup_loc.replace('%s',childFormName)+self.Date_input_loc.replace('%s',fieldName)
         self.sendkeysElemByXpath_visibility(loc,key,isclear=isclear)
         #点击表单标题脱离光标
         self.clickElemByXpath_visibility(self.form_title_loc,index=1)
+
+    def Date_clearValue_InPop( self,childFormName,fieldName,*args ):
+        '''子表弹框清除日期值'''
+        elem = self.find_elemByXPATH_visibility(self.ChildFormPopup_DateDateIcon_loc.replace('%s',childFormName).replace('%f',fieldName))
+        self.move_to_element(elem)
+        closeElem = self.find_elemByXPATH_visibility(self.ChildFormPopup_DateClearIcon_loc.replace('%s',childFormName).replace('%f',fieldName))
+        self.clickElem(closeElem)
+
 
 
 

@@ -35,7 +35,7 @@ class MultiFormAssociation(SeleniumPage):
 
     MultiForm_Td_cell_loc = "//div[@data-mark='%s']//tr[contains(@class,'el-table__row')][%row]//td[%col]//div[@class='cell']"
 
-    MultiForm_RelationForm_Td_loc = "//div[@data-mark='%s_table']//div[@class='el-table__fixed']//tr[@class='el-table__row'][%row]//td[%col]//span"
+    MultiForm_RelationForm_Td_loc = "//div[@data-mark='%s_table']//div[@class='el-table__body-wrapper is-scrolling-left']//tr[@class='el-table__row'][%row]//td[%col]//span"
 
     order_div = "//div[@data-mark='%s']//div[@class='el-table__fixed']//div[@class='order_number' and contains(text(),'%row')]"
 

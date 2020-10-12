@@ -6,6 +6,13 @@ from public.selenium_page import SeleniumPage
 
 class ChildForm_component(SeleniumPage):
 
+    User_querenButton_loc = "//button[@data-mark='确定按钮']"
+    User_selectBox_loc = "//div[@data-mark='%s']//span[text()='+选择人员']"  #人员选择字段添加按钮
+
+    User_search_loc = "//input[@placeholder='搜索用户']"  #人员选择组织架构搜索框
+
+    User_searchOption_loc = "//span[contains(text(),'%s')]/parent::li[contains(@class,'el-select-dropdown__item')]"  #人员选择组织架构搜索项
+
     ChildForm_AddButton_loc ='[data-mark=%title] [data-mark=button_添加]'  #子表添加按钮
 
     ChildForm_AddOneRowButton_loc = "//div[@data-mark='%title']//button//span[text()='添加一行']" #子表添加一行按钮
@@ -35,6 +42,10 @@ class ChildForm_component(SeleniumPage):
 
     order_number_div = "//div[@data-mark='%s']//div[@class='el-table__body-wrapper is-scrolling-left']//div[@class='order_number']"
 
+    ChildFormList_DateDateIcon_loc = "//tr[@class='el-table__row row_%c_%n']//div[@data-mark='%f']//i[@class='el-input__icon el-icon-date']"
+
+    ChildFormList_DateClearIcon_loc = "//i[@class='el-input__icon el-icon-circle-close']"
+
     def scroll_To_ChildForm_Div(self):
         self.scrollIntoView(self.ChildForm_div_loc)
 
@@ -42,9 +53,9 @@ class ChildForm_component(SeleniumPage):
         self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildForm_CloseIcon_loc)
 
     def ChildForm_AddButton_Click(self,fieldName,*args):
-        '''点击添加按钮'''
-        #fieldName：字段标题
-
+        '''点击添加按钮
+        fieldName：字段标题
+        '''
         self.clickElemByCSS_visibility (self.ChildForm_AddButton_loc.replace ('%title', fieldName))
 
     def ChildForm_AddOneRowButton_Click(self,fieldName,*args):
@@ -154,6 +165,17 @@ class ChildForm_component(SeleniumPage):
         reallyRow = str(row-1)
         self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',DateTitle),key,isclear=True)
         self.clickElemByCSS_visibility(self.ChildForm_label_loc.replace('%title',childformTitle))
+
+    def ChildForm_List_Date_clearValue(self,childformTitle,DateTitle,row):
+        '''给子表的日期组件字段清除数据   '''
+        # childformTitle :子表字段名
+        #         # DateTitle：日期字段标题
+        #         # key：文本值
+        reallyRow = str(row-1)
+        elem = self.find_elemByCSS_visibility(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',DateTitle))
+        self.move_to_element(elem)
+        closeElem = self.find_elemByXPATH_visibility(self.ChildFormList_DateClearIcon_loc)
+        self.clickElem(closeElem)
 
 
     def ChildForm_List_DateTime_sendkeys(self, childformTitle,DateTimeTitle, row, dateKey,timeKey):

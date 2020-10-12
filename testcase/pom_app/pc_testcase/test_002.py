@@ -73,10 +73,12 @@ class PomAppTest_002(unittest.TestCase):
             if (i < 1):
                 formPage.Selection_SingleBox_InPopup_Sendkeys("工时明细", "工时类型", "产品研发工作")
                 time.sleep(2)
+                formPage.Date_clearValue_InPop("工时明细", "工时日期")
                 formPage.Date_Sendkeys_InPop("工时明细", "工时日期", daysList[i], isclear=True)
                 formPage.ForeignSelection_InPopup_Sendkeys("工时明细", "产品名称", "白云制药厂")
                 formPage.Selection_SingleXiala_InPopup_Sendkeys("工时明细", "工作内容", "产品测试")
             elif(i>=1):
+                formPage.Date_clearValue_InPop("工时明细","工时日期")
                 formPage.Date_Sendkeys_InPop("工时明细", "工时日期", daysList[i],
                                                    isclear=True)
                 formPage.ForeignSelection_InPopup_Sendkeys("工时明细", "项目名称", "广东")

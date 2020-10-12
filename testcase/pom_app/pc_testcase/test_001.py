@@ -116,9 +116,9 @@ class PomAppTest_001(unittest.TestCase):
         # portalPage.PortalPage_qiqiao_logout()
         self.driver.quit()
 
-    @classmethod
-    def setUpClass(self):
-        self.dataPrepare(self)
+    # @classmethod
+    # def setUpClass(self):
+    #     self.dataPrepare(self)
 
     def pcLogin(self,account,password):
         '''登录pc端'''
@@ -248,6 +248,7 @@ class PomAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','生产运管系统')
         businessPage = BusinessPage(self.driver)
+        orderid = businessPage.ListComponent_GetTable_Td_Value(1,7)
         businessPage.ListComponent_Click_ListHeader_Button("导出")
         businessPage.ListComponent_dialogfooterButton_Click("确 定")
         time.sleep(10)
@@ -255,7 +256,8 @@ class PomAppTest_001(unittest.TestCase):
         self.assertTrue(self.isFileExists(filePath),msg="导出不成功")
         excelReader = ExcelReadUtil()
         sheet = excelReader.getSheetValue(filePath,1)
-        self.assertEqual(['1', '创新技术中心->产品研发二部->产品规划组', '创新技术中心->产品研发二部->产品规划组', '王浩', '王浩', '进行中', '产品', '代理产品', '软件', '长江水坝管理局', '政府', '', '订阅', 'dasdsadasdsadddasdsadsadsadsadasdsadasdas', '已签合同', '大大实打实的的', '大大实打实的的', 25555554444.0, '', '', '', 44103.0, 44104.0, 44105.0, '', '', 'do1-WBDD-20200930211', '长江水坝管理系统', 25555554444.0, '标杆作用', '长江水坝管理系统', 'do1-WBDD-20200930211', '未开票', '合同款', 233333.0, '', 44104.0, '', '', '未开票', '', '', '', '', '', '', '否', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'do1-WBDD-20200930211', '', '', '', '', '', '', '', '', '', '', '', '', 'do1-WBDD-20200930211', '', '', '', '长江水坝管理系统', '', ''],excelReader.getRowValues(sheet,2))
+        print(excelReader.getRowValues(sheet,2))
+        self.assertEqual(['1', '创新技术中心->产品研发二部->产品规划组', '创新技术中心->产品研发二部->产品规划组', '王浩', '王浩', '进行中', '产品', '代理产品', '软件', '长江水坝管理局', '政府', '', '订阅', 'dasdsadasdsadddasdsadsadsadsadasdsadasdas', '已签合同', '大大实打实的的', '大大实打实的的', 25555554444.0, '', '', '', 44115.0, 44116.0, 44117.0, '', '', orderid, '长江水坝管理系统', 25555554444.0, '标杆作用', '长江水坝管理系统', orderid, '未开票', '合同款', 233333.0, '', 44116.0, '', '', '未开票', '', '', '', '', '', '', '否', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', orderid, '', '', '', '', '', '', '', '', '', '', '', '', orderid, '', '', '', '长江水坝管理系统', '', ''],excelReader.getRowValues(sheet,2))
 
 
 
@@ -570,6 +572,7 @@ class PomAppTest_001(unittest.TestCase):
 
         businessPage.ListComponent_Click_ListRow_Button("进度管理",1)
         formPage.ChildForm_AddOneRowButton_Click("项目进度管理")
+        formPage.ChildForm_List_Date_clearValue("项目进度管理","更新日期",1)
         formPage.ChildForm_List_Date_sendkeys("项目进度管理","更新日期",1,DateTimeUtil().Today())
         formPage.ChildForm_List_Number_sendkeys("项目进度管理","剩余工作量（人天）",1,20)
         formPage.ChildForm_List_Select_sendkeys("项目进度管理",1,"项目阶段",["测试"])
@@ -577,6 +580,7 @@ class PomAppTest_001(unittest.TestCase):
         formPage.ChildForm_List_Date_sendkeys("项目进度管理","预估实际完成时间",1,DateTimeUtil().Tomorrow())
 
         formPage.ChildForm_AddOneRowButton_Click("项目进度管理")
+        formPage.ChildForm_List_Date_clearValue("项目进度管理","更新日期",2)
         formPage.ChildForm_List_Date_sendkeys("项目进度管理","更新日期",2,DateTimeUtil().Yesterday())
         formPage.ChildForm_List_Number_sendkeys("项目进度管理","剩余工作量（人天）",2,20)
         formPage.ChildForm_List_Select_sendkeys("项目进度管理",2,"项目阶段",["测试"])
@@ -584,6 +588,7 @@ class PomAppTest_001(unittest.TestCase):
         formPage.ChildForm_List_Date_sendkeys("项目进度管理","预估实际完成时间",2,DateTimeUtil().Tomorrow())
 
         formPage.ChildForm_AddOneRowButton_Click("项目进度管理")
+        formPage.ChildForm_List_Date_clearValue("项目进度管理","更新日期",3)
         formPage.ChildForm_List_Date_sendkeys("项目进度管理","更新日期",3,DateTimeUtil().Tomorrow())
         formPage.ChildForm_List_Number_sendkeys("项目进度管理","剩余工作量（人天）",3,20)
         formPage.ChildForm_List_Select_sendkeys("项目进度管理",3,"项目阶段",["测试"])

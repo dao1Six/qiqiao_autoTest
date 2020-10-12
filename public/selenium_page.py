@@ -42,7 +42,7 @@ class SeleniumPage (object):
         for n in range(1,5):
             self.driver.execute_script('document.querySelector(".myScroll_main").scrollTop = 10000')  # 从上往下滑
 
-    def wait_elem_visible_CSS(self, locator, timeout=10):
+    def wait_elem_visible_CSS(self, locator, timeout=5):
         # 一直等待某元素可见，默认超时3秒只做等待动作不返回值
         try:
             WebDriverWait(self.driver, timeout).until(
@@ -60,7 +60,7 @@ class SeleniumPage (object):
 
 
 
-    def wait_elem_visible_XPATH(self, locator, timeout=10):
+    def wait_elem_visible_XPATH(self, locator, timeout=5):
         # 一直等待某元素可见，默认超时3秒只做等待动作不返回值
         try:
             ui.WebDriverWait(self.driver,timeout).until(EC.visibility_of_element_located((By.XPATH,locator)))
@@ -144,13 +144,17 @@ class SeleniumPage (object):
     def clickElem(self, elem):
         """给一个存在dom的元素写入值Xpath"""
         #滚动元素至可见位置
-        self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
-        #点击
-        elem.click()
+        if(elem.is_enabled()):
+            elem.click()
+        else:
+            self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
+            elem.click()
 
 
 
-    @retry(retry_on_exception=retry_if_clickOtherelement, stop_max_attempt_number=5, wait_fixed=3000,
+
+
+    @retry(retry_on_exception=retry_if_clickOtherelement, stop_max_attempt_number=3, wait_fixed=1500,
            wrap_exception=True)
     def clickElemByXpath_clickable(self, locator, index=0):
         """点击单个可见元素Xpath"""
@@ -163,7 +167,7 @@ class SeleniumPage (object):
             elem = locator
             self.clickElem(elem)
 
-    @retry(retry_on_exception=retry_if_clickOtherelement, stop_max_attempt_number=5, wait_fixed=3000,
+    @retry(retry_on_exception=retry_if_clickOtherelement, stop_max_attempt_number=3, wait_fixed=1500,
            wrap_exception=True)
     def clickElemByXpath_visibility(self, locator, index=0):
         """点击单个可见元素Xpath"""
@@ -176,7 +180,7 @@ class SeleniumPage (object):
             elem = locator
             self.clickElem(elem)
 
-    @retry(retry_on_exception=retry_if_clickOtherelement, stop_max_attempt_number=5, wait_fixed=3000,
+    @retry(retry_on_exception=retry_if_clickOtherelement, stop_max_attempt_number=3, wait_fixed=1500,
            wrap_exception=True)
     def clickElemByCSS_visibility(self, locator,index = 0):
         """点击单个可见元素CSS"""
@@ -194,7 +198,7 @@ class SeleniumPage (object):
 
 
     ####元素写值方法
-    @retry (stop_max_attempt_number=5, wait_fixed=2000,wrap_exception=True)
+    @retry (stop_max_attempt_number=3, wait_fixed=2000,wrap_exception=True)
     def sendkeysElem(self, elem, key,isclear =False):
         """给一个存在dom的元素写入值Xpath"""
         self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
@@ -227,7 +231,7 @@ class SeleniumPage (object):
             print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
             return None
 
-    def find_elemsByXPATH_visibility(self, locator, timeout=10):
+    def find_elemsByXPATH_visibility(self, locator, timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(
@@ -237,7 +241,7 @@ class SeleniumPage (object):
             return None
 
 
-    def find_elemByXPATH_visibility(self, locator, timeout=10):
+    def find_elemByXPATH_visibility(self, locator, timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(
@@ -247,7 +251,7 @@ class SeleniumPage (object):
             return None
 
 
-    def find_elemByXPATH_presence(self, locator, timeout=10):
+    def find_elemByXPATH_presence(self, locator, timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(
@@ -255,6 +259,8 @@ class SeleniumPage (object):
         except:
             print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
             return None
+
+
     def find_elenmInElemsByXpath_visibility_of_any_elements_located(self, locator, index=0,timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
@@ -273,7 +279,7 @@ class SeleniumPage (object):
 
 
 
-    def find_elenmInElemsByXpath_element_to_be_clickable(self, locator, index=0,timeout=10):
+    def find_elenmInElemsByXpath_element_to_be_clickable(self, locator, index=0,timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(
@@ -303,7 +309,7 @@ class SeleniumPage (object):
             return None
 
 ###Css
-    def find_elemByCSS_visibility(self, locator, timeout=10):
+    def find_elemByCSS_visibility(self, locator, timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(
@@ -313,7 +319,7 @@ class SeleniumPage (object):
             return None
 
 
-    def find_elemsByCSS_presence(self, locator, timeout=10):
+    def find_elemsByCSS_presence(self, locator, timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(
@@ -322,7 +328,7 @@ class SeleniumPage (object):
             print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
             return None
 
-    def find_elemsByCSS_visibility(self, locator, timeout=10):
+    def find_elemsByCSS_visibility(self, locator, timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(
@@ -331,7 +337,7 @@ class SeleniumPage (object):
             print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
             return None
 
-    def find_elenmInElemsByCSS_visibility_of_any_elements_located(self, locator, index=0,timeout=10):
+    def find_elenmInElemsByCSS_visibility_of_any_elements_located(self, locator, index=0,timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(

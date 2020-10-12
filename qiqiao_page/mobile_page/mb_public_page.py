@@ -16,7 +16,7 @@ class MbPublicPage(SeleniumPage):
         '''获取表单消息提示'''
         #返回弹框文本值
         # self.Public_LoadingAlert_disappear()
-        return self.find_elemByXPATH_visibility(self.Alert_loc,timeout=10).text
+        return self.find_elemByXPATH_visibility(self.Alert_loc,timeout=5).text
 
 
     def Public_Alert_disappear( self ):
