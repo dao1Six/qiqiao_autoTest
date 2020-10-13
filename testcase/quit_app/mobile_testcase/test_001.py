@@ -35,6 +35,7 @@ class QuitAppTest_001(unittest.TestCase):
         todoPage.MbTodoPage_Faqiliucheng('离职人员测试应用','离职人员测试流程')
         formPage = MbFormPage(self.driver)
         formPage.MbText_Sendkeys("单行文本","用户")
+        time.sleep(1)
         formPage.MbForm_Button_Click("办理")
         self.assertEqual(formPage.MbForm_Get_ProcessManagers(),["吴健伦"],msg="固定用户人工任务办理者错误")
 

@@ -347,4 +347,36 @@ class PcBugAppTest_002(unittest.TestCase):
 
 
 
+    def test_12( self ):
+        '''【补丁】——数据过滤高级函数，日期字段大于等于today函数时，等于逻辑不生效，只显示满足大于的数据'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('日期高级函数测试')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        businessPage.BusinessPage_LeftMenu_Click('小数和列表')
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage = FormPage(self.driver)
+        formPage.Date_Sendkeys("日期",DateTimeUtil().Yesterday())
+        formPage.Form_Button_Click("保存并继续添加")
+        time.sleep(1)
+        formPage.Date_Sendkeys("日期",DateTimeUtil().Today())
+        formPage.Form_Button_Click("保存并继续添加")
+        time.sleep(1)
+        formPage.Date_Sendkeys("日期",DateTimeUtil().Tomorrow())
+        formPage.Form_Button_Click("提交")
+        time.sleep(1)
+        self.assertEqual(DateTimeUtil().Tomorrow(),businessPage.ListComponent_GetTable_Td_Value(1,3),msg="列表值显示错误")
+        self.assertEqual(2,businessPage.ListComponent_GetRecordTotal(),msg="过滤条数不正确")
+
+
+
+
 

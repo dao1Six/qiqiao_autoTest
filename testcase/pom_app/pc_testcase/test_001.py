@@ -548,6 +548,7 @@ class PomAppTest_001(unittest.TestCase):
         time.sleep(2)
         businessPage.ListComponent_Click_ListRow_Button("团队管理",1)
         formPage = FormPage(self.driver)
+        # if(formPage.ChildForm_get_TotalRecordNumber("项目团队成员")==0):
         formPage.ChildForm_AddOneRowButton_Click("项目团队成员")
         formPage.ChildForm_List_User_sendkeys("项目团队成员","员工",1,["吴健伦"])
         formPage.ChildForm_List_Text_sendkeys("项目团队成员",1,"岗位","dasdasdas")

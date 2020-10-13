@@ -29,6 +29,7 @@ class MbMultiFormAssociation(SeleniumPage):
 
     def MbMultiForm_AddButton_Click(self,fileName,*args):
         '''点击添加按钮'''
+        time.sleep(1)
         self.clickElemByXpath_visibility (self.MultiFormAssociation_AddButton_loc.replace ('%title', fileName))
 
     def MbMultiForm_rightAddButton_Click(self,fileName,*args):

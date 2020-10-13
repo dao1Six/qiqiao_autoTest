@@ -40,7 +40,7 @@ class ChildForm_component(SeleniumPage):
 
     ChildForm_Td_shanchu_loc = "//div[@data-mark='%s']//div[@class='el-table__fixed']//tr[%row]//span[contains(@class,'shanchu')]"
 
-    order_number_div = "//div[@data-mark='%s']//div[@class='el-table__body-wrapper is-scrolling-left']//div[@class='order_number']"
+    order_number_div = "//div[@data-mark='%s']//div[@class='el-table__body-wrapper is-scrolling-none']//div[@class='order_number']"
 
     ChildFormList_DateDateIcon_loc = "//tr[@class='el-table__row row_%c_%n']//div[@data-mark='%f']//i[@class='el-input__icon el-icon-date']"
 
@@ -84,11 +84,11 @@ class ChildForm_component(SeleniumPage):
 
 
 
-    def ChildForm_GetTdValue( self,fileName,row,col,*args):
+    def ChildForm_GetTdValue( self,fileName,row,col,index=0,*args):
         '''获取子表组件表单元格值'''
-        text = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))).text
+        text = self.find_elemsByXPATH_visibility(self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col)))[index].text
         if(text==""):
-            text = self.getElemAttrValue(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))+"//input"),"value")
+            text = self.getElemAttrValue(self.find_elemsByXPATH_visibility(self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))+"//input")[index],"value")
         return text
 
 
@@ -139,7 +139,7 @@ class ChildForm_component(SeleniumPage):
         # TextTitle：文本字段标题
         # option：选项值
         reallyRow = str(row - 1)
-        self.clickElemByCSS_visibility(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',TextTitle))
+        self.clickElemByCSS_presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',TextTitle))
         #选择选项
         self.clickElemByXpath_visibility(self.ChildForm_ForeignSelectOption_loc.replace('%s',option))
 

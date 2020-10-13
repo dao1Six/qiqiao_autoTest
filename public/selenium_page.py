@@ -8,6 +8,7 @@ from logging import exception
 import selenium
 from retrying import retry
 from selenium.webdriver import ActionChains, TouchActions
+from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException, WebDriverException
 from selenium.webdriver.common.by import By
@@ -127,7 +128,7 @@ class SeleniumPage (object):
         else:
             print('page-->get_attr,NoneType没有属性')
 
-    ####点击元素方法
+########################################################################点击元素方法
 
     def retry_if_clickOtherelement( exception ):
         exceptionInfo = str(exception)
@@ -140,32 +141,12 @@ class SeleniumPage (object):
             print("页面刷新导致元素点击失败"+exceptionInfo)
             return isinstance(exception, WebDriverException)
 
-
     def clickElem(self, elem):
         """给一个存在dom的元素写入值Xpath"""
         #滚动元素至可见位置
-        self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
+        self.driver.execute_script("arguments[0].scrollIntoView();",elem)
         elem.click()
 
-
-
-
-
-    @retry( stop_max_attempt_number=3, wait_fixed=1500,
-           wrap_exception=True)
-    def clickElemByXpath_clickable(self, locator, index=0):
-        """点击单个可见元素Xpath"""
-        #传元素地址
-        if(type(locator)==str):
-            elem = self.find_elenmInElemsByXpath_element_to_be_clickable(locator,index=index)
-            if(elem==None):
-                raise TypeError("elem不能为None")
-            else:
-                self.clickElem(elem)
-        #传元素
-        elif(type(locator)==selenium.webdriver.remote.webelement.WebElement):
-            elem = locator
-            self.clickElem(elem)
 
     @retry( stop_max_attempt_number=3, wait_fixed=1500,
            wrap_exception=True)
@@ -173,11 +154,12 @@ class SeleniumPage (object):
         """点击单个可见元素Xpath"""
         #传元素地址
         if(type(locator)==str):
-            elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index=index)
-            if(elem==None):
+            elems = self.find_elemsByXPATH_visibility(locator)
+            # elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index=index)
+            if(elems==None):
                 raise TypeError("elem不能为None")
             else:
-                self.clickElem(elem)
+                self.clickElem(elems[index])
         #传元素
         elif(type(locator)==selenium.webdriver.remote.webelement.WebElement):
             elem = locator
@@ -189,16 +171,33 @@ class SeleniumPage (object):
         """点击单个可见元素CSS"""
         #传元素地址
         if(type(locator)==str):
-            elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(locator,index=index)
-            if(elem==None):
+            elems = self.find_elemsByCSS_visibility(locator)
+            # elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(locator,index=index)
+            if(elems==None):
                 raise TypeError("elem不能为None")
             else:
-                self.clickElem(elem)
+                self.clickElem(elems[index])
         #传元素
         elif(type(locator)==selenium.webdriver.remote.webelement.WebElement):
             elem = locator
             self.clickElem(elem)
 
+    @retry( stop_max_attempt_number=3, wait_fixed=1500,
+           wrap_exception=True)
+    def clickElemByCSS_presence(self, locator,index = 0):
+        """点击单个可见元素CSS"""
+        #传元素地址
+        if(type(locator)==str):
+            elems = self.find_elemsByCSS_presence(locator)
+            # elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(locator,index=index)
+            if(elems==None):
+                raise TypeError("elem不能为None")
+            else:
+                self.clickElem(elems[index])
+        #传元素
+        elif(type(locator)==selenium.webdriver.remote.webelement.WebElement):
+            elem = locator
+            self.clickElem(elem)
 
 
 
@@ -215,14 +214,22 @@ class SeleniumPage (object):
 
     def sendkeysElemByXpath_visibility(self, locator, key, index=0,isclear=False):
         """给一个存在dom的元素写入值Xpath"""
-        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index)
-        self.sendkeysElem(elem, key,isclear=isclear)
+        elems = self.find_elemsByXPATH_visibility(locator)
+        # elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index)
+        if (elems == None):
+            raise TypeError("elem不能为None")
+        else:
+            self.sendkeysElem(elems[index], key,isclear=isclear)
 
 
     def sendkeysElemByCSS_Presence(self, locator, key, index=0,isclear=False):
         """给存在dom里的元素组里的某个元素写入值CSS"""
-        elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(locator, index)
-        self.sendkeysElem(elem,key,isclear=isclear)
+        elems = self.find_elemsByCSS_presence(locator)
+        # elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(locator, index)
+        if (elems == None):
+            raise TypeError("elem不能为None")
+        else:
+            self.sendkeysElem(elems[index],key,isclear=isclear)
 
 
     #################
@@ -271,15 +278,15 @@ class SeleniumPage (object):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:
             return WebDriverWait(self.driver, timeout).until(
-                EC.visibility_of_any_elements_located((By.XPATH, locator)))[index]
+                EC.visibility_of_all_elements_located((By.XPATH, locator)))[index]
         except IndexError as e:
             print(e)
             print(locator + "页面无此元素"+"index值为"+str(index))
             return None
         except TimeoutException as t:
-            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
+            print("根据" + locator + "信息: visibility_of_any_elements_located方式在" + str(timeout) + "秒内没有查询到元素")
             print("visibility_of_any_elements_located方式转presence_of_all_elements_located方式")
-            elem = self.find_elenmInElemsByXpath_presence_of_all_elements_located(locator,index=index)
+            elem = self.find_elenmInElemsByXpath_presence_of_all_elements_located(locator,index=index,timeout=3)
             return elem
 
 
@@ -340,7 +347,7 @@ class SeleniumPage (object):
             return WebDriverWait(self.driver, timeout).until(
                 EC.visibility_of_all_elements_located((By.CSS_SELECTOR, locator)))
         except:
-            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
+            print("根据" + locator + "信息在visibility_of_all_elements_located方式下" + str(timeout) + "秒内没有查询到元素")
             return None
 
     def find_elenmInElemsByCSS_visibility_of_any_elements_located(self, locator, index=0,timeout=5):
