@@ -167,6 +167,24 @@ class SeleniumPage (object):
 
     @retry( stop_max_attempt_number=3, wait_fixed=1500,
            wrap_exception=True)
+    def clickElemByXpath_presence(self, locator, index=0):
+        """点击单个可见元素Xpath"""
+        #传元素地址
+        if(type(locator)==str):
+            elems = self.find_elemsByXPATH_presence(locator)
+            # elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index=index)
+            if(elems==None):
+                raise TypeError("elem不能为None")
+            else:
+                self.clickElem(elems[index])
+        #传元素
+        elif(type(locator)==selenium.webdriver.remote.webelement.WebElement):
+            elem = locator
+            self.clickElem(elem)
+
+
+    @retry( stop_max_attempt_number=3, wait_fixed=1500,
+           wrap_exception=True)
     def clickElemByCSS_visibility(self, locator,index = 0):
         """点击单个可见元素CSS"""
         #传元素地址

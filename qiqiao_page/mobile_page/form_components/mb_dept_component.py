@@ -31,7 +31,7 @@ class MbDept(SeleniumPage):
         self.sendkeysElemByXpath_visibility(self.searchInput_loc,deptName)
         time.sleep(2)
         # 点击查询结果
-        self.clickElemByXpath_visibility(self.searchResult_loc,index=index)
+        self.clickElemByXpath_presence(self.searchResult_loc,index=index)
         # 点击确定按钮
         self.clickElemByXpath_visibility(self.confirmBtn_loc)
 

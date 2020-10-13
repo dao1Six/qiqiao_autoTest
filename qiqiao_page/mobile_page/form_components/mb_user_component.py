@@ -40,7 +40,7 @@ class MbUser(SeleniumPage):
         #输入搜索人
         self.sendkeysElemByXpath_visibility(self.searchInput_loc,userName)
         #点击查询结果
-        self.clickElemByXpath_visibility(self.searchResult_loc)
+        self.clickElemByXpath_presence(self.searchResult_loc)
         #点击确定按钮
         self.clickElemByXpath_visibility(self.confirmBtn_loc)
 
@@ -50,7 +50,7 @@ class MbUser(SeleniumPage):
         # 输入搜索人
         self.sendkeysElemByXpath_visibility(self.searchInput_loc,userName)
         # 点击查询结果
-        self.clickElemByXpath_visibility(self.searchResult_loc)
+        self.clickElemByXpath_presence(self.searchResult_loc)
         # 点击确定按钮
         self.clickElemByXpath_visibility(self.confirmBtn_loc)
 
