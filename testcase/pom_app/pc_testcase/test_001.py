@@ -116,9 +116,9 @@ class PomAppTest_001(unittest.TestCase):
         # portalPage.PortalPage_qiqiao_logout()
         self.driver.quit()
 
-    # @classmethod
-    # def setUpClass(self):
-    #     self.dataPrepare(self)
+    @classmethod
+    def setUpClass(self):
+        self.dataPrepare(self)
 
     def pcLogin(self,account,password):
         '''登录pc端'''
@@ -238,7 +238,7 @@ class PomAppTest_001(unittest.TestCase):
 
 
     def test_02( self ):
-        ''''''
+        '''【补丁】PC运行平台--导出数据--显示#######'''
         filePath = self.downloadPath+"//订单管理列表.xls"
         if(self.isFileExists(filePath)):
             os.remove(filePath)

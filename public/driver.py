@@ -20,7 +20,7 @@ class Driver():
         chrome_options.add_experimental_option("prefs",prefs)   #禁用谷歌浏览器的通知框
         chrome_options.add_argument('window-size=1920x3000')
         chrome_options.add_argument("–incognito")
-        # chrome_options.add_argument('--headless')  # 无头模式
+        chrome_options.add_argument('--headless')  # 无头模式
 
         driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=self.chromedriverPath)
         return driver
@@ -33,7 +33,7 @@ class Driver():
         chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
         chrome_options.add_argument("–incognito")#无痕模式
         chrome_options.add_argument('--start-maximized')
-        # chrome_options.add_argument('--headless')#无头模式
+        chrome_options.add_argument('--headless')#无头模式
         # chrome_options.add_argument('--disable-infobars')  # 禁止策略化
         # chrome_options.add_argument('lang=zh_CN.UTF-8')
         chrome_options.add_argument(

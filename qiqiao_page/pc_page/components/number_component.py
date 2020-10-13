@@ -21,7 +21,7 @@ class Number(SeleniumPage):
         key：数值  数字类型
         '''
         a = self.Number_input_loc.replace('%s',fieldName)
-        self.sendkeysElemByXpath_visibility(a, key)
+        self.sendkeysElemByXpath_visibility(a, str(key))
         #点击脱离光标
         self.clickElemByXpath_visibility(self.label_loc.replace('%s',fieldName))
 

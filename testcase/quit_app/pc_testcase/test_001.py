@@ -76,7 +76,6 @@ class QuitAppTest_001(unittest.TestCase):
     def test_05( self ):
         '''检查离职人员在表单详情中显示是否正确'''
         self.pcLogin("wujianlun@A1","qiqiao123")
-        time.sleep(5)
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)

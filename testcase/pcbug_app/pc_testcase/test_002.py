@@ -316,4 +316,35 @@ class PcBugAppTest_002(unittest.TestCase):
         self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="看板视图详情按钮进入删除数据失败")
 
 
+    def test_11( self ):
+        '''【补丁】——（优化）触发事件，使用插入事件，把sum函数计算的记过用，upper_ram函数转换为大写时，前后结果不一致'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('小数转换插入列表')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        businessPage.BusinessPage_LeftMenu_Click('小数和列表')
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage = FormPage(self.driver)
+        formPage.Number_Sendkeys("数字1",10.12600)
+        formPage.Number_Sendkeys("数字2",10.12600)
+        formPage.Number_Sendkeys("数字3",10.12600)
+        time.sleep(1)
+        self.assertEqual(30.38,formPage.Number_GetValue_Writable("总和"),msg="小数和计算错误")
+        formPage.Form_Button_Click("提交")
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="提交失败")
+        businessPage.BusinessPage_LeftMenu_Click('小数转换插入列表')
+        self.assertEqual("$叁拾元叁角捌分",businessPage.ListComponent_GetTable_Td_Value(1,3),msg="列表值显示错误")
+        businessPage.ListComponent_Click_ListRow_Button("详情",1)
+        self.assertEqual("$叁拾元叁角捌分",formPage.Text_GetValue_readOnly("单行文本1"),msg="详情值显示错误")
+
+
+
 

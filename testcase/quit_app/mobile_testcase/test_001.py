@@ -28,6 +28,8 @@ class QuitAppTest_001(unittest.TestCase):
         self.mbLogin("wujianlun@A1","qiqiao123")
         homePage = MbHomePage(self.driver)
         homePage.HomePage_BottomNav_Click("待办")
+        time.sleep(1)
+        self.driver.refresh()
         #发起流程
         todoPage = MbTodoPage(self.driver)
         todoPage.MbTodoPage_Faqiliucheng('离职人员测试应用','离职人员测试流程')
@@ -73,6 +75,8 @@ class QuitAppTest_001(unittest.TestCase):
     def test_04( self ):
         '''检查离职人员在表单详情中显示是否正确'''
         self.mbLogin("wujianlun@A1","qiqiao123")
+        time.sleep(1)
+        self.driver.refresh()
         homepage = MbHomePage(self.driver)
         homepage.HomePage_BottomNav_Click('应用')
         applicationListPage = MbApplicationListPage(self.driver)
@@ -88,6 +92,8 @@ class QuitAppTest_001(unittest.TestCase):
     def test_05( self ):
         '''【补丁】移动端运行平台，组织选择器，标签下绑定了部门时，运行平台标签下会显示部门名称'''
         self.mbLogin("wujianlun@A1","qiqiao123")
+        time.sleep(1)
+        self.driver.refresh()
         homepage = MbHomePage(self.driver)
         homepage.HomePage_BottomNav_Click('应用')
         applicationListPage = MbApplicationListPage(self.driver)
