@@ -152,7 +152,8 @@ class ChildForm_component(SeleniumPage):
         # key：文本值
         # '''
         reallyRow = str (row - 1)
-        self.clickElemByCSS_visibility (self.ChildForm_Input_loc.replace ('%title', childformTitle).replace ('%row', reallyRow).replace ('%text',SelectTitle))
+        #点击
+        self.clickElemByCSS_presence (self.ChildForm_Input_loc.replace ('%title', childformTitle).replace ('%row', reallyRow).replace ('%text',SelectTitle))
         for i in list:
             self.clickElemByXpath_visibility(self.ChildForm_SelectOption_loc.replace('%title',SelectTitle).replace('%s',i))
 
@@ -229,12 +230,12 @@ class ChildForm_component(SeleniumPage):
 
         reallyRow = str(row-1)
         #点击人员选择
-        self.clickElemByCSS_visibility(self.ChildForm_userSelect_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%user',UserTitle))
+        self.clickElemByCSS_presence(self.ChildForm_userSelect_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%user',UserTitle))
 
         for name in userNameList:
-            self.clickElemByXpath_visibility (self.User_search_loc)
-            self.sendkeysElemByXpath_visibility (self.User_search_loc, name)
-            self.clickElemByXpath_visibility (self.User_searchOption_loc.replace ('%s', name))
+            self.clickElemByXpath_presence(locator=self.User_search_loc)
+            self.sendkeysElemByXpath_presence (self.User_search_loc,name)
+            self.clickElemByXpath_presence (self.User_searchOption_loc.replace('%s',name))
         self.clickElemByXpath_visibility (self.User_querenButton_loc)
 
 

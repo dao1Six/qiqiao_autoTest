@@ -186,7 +186,7 @@ class MultiFormAssociation(SeleniumPage):
         '''勾选批量管理页面关联表记录'''
         for rowIndex in rowIndexList:
             str_rowIndex = str(rowIndex-1)
-            self.clickElemByCSS_visibility (self.MultiFormManagementDialog_selected_loc.replace ('%title', fileName).replace('%rowIndex',str_rowIndex))
+            self.clickElemByCSS_presence (self.MultiFormManagementDialog_selected_loc.replace ('%title', fileName).replace('%rowIndex',str_rowIndex),index=1)
             time.sleep(1)
 
 

@@ -6,7 +6,7 @@ from public.selenium_page import SeleniumPage
 
 class Time(SeleniumPage):
 
-    Time_input_loc = "//div[@data-mark='%s']//input"  #时间组件字段输入框
+    Time_input_loc = "//div[@data-mark='%s']//input[@class='el-input__inner']"  #时间组件字段输入框
 
     Time_label_loc = "div[data-mark='%s']>label>span[title='%s']"  #时间组件字段名
 
@@ -26,5 +26,5 @@ class Time(SeleniumPage):
 
     def Time_GetValue_writable( self,fieldName ):
         '''获取可写状态的时间组件的值'''
-        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Time_input_loc.replace('%s',fieldName))
+        elem = self.find_elemsByXPATH_presence(self.Time_input_loc.replace('%s',fieldName))[0]
         return self.getElemAttrValue(elem,"value")

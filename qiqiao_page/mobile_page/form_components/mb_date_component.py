@@ -50,15 +50,15 @@ class MbDate(SeleniumPage):
         while (clickYear != tyear):
             if(yeardiff>0):#
                 clickYear = str(int(clickYear)+1)
-                self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n', str(1)).
-                                                                                                  replace('%value', clickYear))) #往下点击一个元素
+                self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n', str(1)).
+                                                                                                  replace('%value', clickYear))[0]) #往下点击一个元素
                 time.sleep(1)
             if (yeardiff < 0):  #
                 clickYear = str(int(clickYear) - 1)
-                self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n', str(1)).
-                                                                                                  replace('%value', clickYear)))  # 往上点击一个元素
+                self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n', str(1)).
+                                                                                                  replace('%value', clickYear))[0])  # 往上点击一个元素
                 time.sleep(1)
-        self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n',str(1)).replace('%value',tyear)).click()
+        self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n',str(1)).replace('%value',tyear))[0])
 
         #选择月
 
@@ -71,22 +71,22 @@ class MbDate(SeleniumPage):
             tmonthValue = list(keyList[1])[1]
         #判断的目标月是否可以点击
         if(self.find_elemsByXPATH_visibility(self.datali_loc.replace('%n', str(2)).replace('%value', tmonthValue))!=None):
-            self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n',str(2)).replace('%value',tmonthValue)))
+            self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n',str(2)).replace('%value',tmonthValue))[0])
         else:
             monthdiff = int(cmonthValue) - int(tmonthValue)
             while (clickMonth != tmonthValue):
                 if(monthdiff>0):
                     clickMonth = str(int(clickMonth) - 1)
-                    self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n', str(2)).
-                                                                                                      replace('%value', clickMonth)))  # 往下点击一个元素
+                    self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n', str(2)).
+                                                                                                      replace('%value', clickMonth))[0])  # 往下点击一个元素
                     time.sleep(1)
                 if(monthdiff<0):
                     clickMonth = str(int(clickMonth) + 1)
-                    self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n', str(2)).
-                                                                                                      replace('%value', clickMonth)))  # 往上点击一个元素
+                    self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n', str(2)).
+                                                                                                      replace('%value', clickMonth))[0])  # 往上点击一个元素
                     time.sleep(1)
-            self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
-                self.datali_loc.replace('%n',str(2)).replace('%value',tmonthValue)).click()
+                    self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+                self.datali_loc.replace('%n',str(2)).replace('%value',tmonthValue)))
 
         time.sleep(1)
         #选择日
@@ -99,21 +99,21 @@ class MbDate(SeleniumPage):
             tdayValue = list(keyList[2])[1]
         #判断的目标日期是否可以点击
         if(self.find_elemsByXPATH_visibility(self.datali_loc.replace('%n', str(3)).replace('%value', tdayValue))!=None):
-            self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n',str(3)).replace('%value',tdayValue)))
+            self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n',str(3)).replace('%value',tdayValue))[0])
         else:
             daydiff = int(cdayValue) - int(tdayValue)
             while(clickDay!=tdayValue):
                 if (daydiff > 0):
                     clickDay = str(int(clickDay) - 1)
-                    self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n', str(3)).
-                                                                                                      replace('%value', clickDay)))  # 往下点击一个元素
+                    self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n', str(3)).
+                                                                                                      replace('%value', clickDay))[0])  # 往下点击一个元素
                     time.sleep(1)
                 if (daydiff < 0):
                     clickDay = str(int(clickDay) + 1)
-                    self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n', str(3)).
-                                                                                                      replace('%value', clickDay))) # 往上点击一个元素
+                    self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n', str(3)).
+                                                                                                      replace('%value', clickDay))[0]) # 往上点击一个元素
                     time.sleep(1)
-            self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.datali_loc.replace('%n',str(3)).replace('%value',tdayValue)))
+            self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n',str(3)).replace('%value',tdayValue))[0])
         time.sleep(1)
         #点击确定按钮
         self.clickElemByXpath_visibility(self.confirm_loc)

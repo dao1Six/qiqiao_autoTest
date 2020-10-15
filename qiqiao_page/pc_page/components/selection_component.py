@@ -93,5 +93,5 @@ class Selection(SeleniumPage):
 
     def Selection_MultiXialaValue_writable( self,fieldName):
         '''获取可写状态下的多项下拉框组件值'''
-        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.SelectionBox_Value_loc.replace('%s', fieldName))
+        elem = self.find_elemsByXPATH_visibility(self.SelectionBox_Value_loc.replace('%s', fieldName))[0]
         return self.getElemAttrValue(elem, "title")

@@ -87,9 +87,11 @@ class MbPomAppTest_002(unittest.TestCase):
         for i in range(workingDays):
             #添加明细数据
             if (i < 1):
+                time.sleep(2)
                 formPage.MbSelection_SingleBox_Senkeys("工时类型", "产品研发工作")
                 time.sleep(2)
                 formPage.MbDate_SendKeys("工时日期", daysList[i])
+
                 formPage.MbForeignSelection_Sendkeys("产品名称", "白云制药厂")
                 formPage.MbSelection_SingleXiala_Senkeys("工作内容", "产品测试")
             elif(i>=1):

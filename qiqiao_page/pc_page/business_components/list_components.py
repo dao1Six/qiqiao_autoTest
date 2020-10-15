@@ -63,9 +63,9 @@ class ListComponent(SeleniumPage):
 
 
 
-    def ListComponent_GetRecordTotal(self):
+    def ListComponent_GetRecordTotal(self,index=0):
         '''获取列表总条数'''
-        text = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.pagination_total_loc).text
+        text = self.find_elemsByXPATH_visibility(self.pagination_total_loc)[index].text
         num = int(text[1:-1])
         return num
 

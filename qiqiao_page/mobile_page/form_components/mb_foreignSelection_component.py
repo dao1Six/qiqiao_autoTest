@@ -28,7 +28,7 @@ class MbForeignSelection_component(SeleniumPage):
         time.sleep(1)
         self.sendkeysElemByXpath_visibility(self.search_input_loc,option)
         #点击结果
-        self.clickElemByXpath_visibility(self.search_item_loc.replace('%s',option))
+        self.clickElemByXpath_presence(self.search_item_loc.replace('%s',option))
 
 
     def MbForeignSelection_GetValue_writable_InPopup( self,fieldName):

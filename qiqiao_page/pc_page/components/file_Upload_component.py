@@ -15,7 +15,7 @@ class FileUpload(SeleniumPage):
         key：文件路径
         '''
         locator = self.FileUpload_input_loc.replace('%s',fieldName)
-        self.sendkeysElemByXpath_visibility(locator,key)
+        self.sendkeysElemByXpath_presence(locator,key)
         #等待上传成功
         # self.wait_elem_visible_CSS(self.FileUpload_success_loc.replace('%s',fieldName))
 

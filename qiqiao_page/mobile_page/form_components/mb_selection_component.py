@@ -31,13 +31,13 @@ class MbSelection(SeleniumPage):
         self.clickElemByXpath_visibility(self.placeholder_loc.replace('%s',fieldName))
         clickElemIndex = 0
         # 当目标元素可见时点击
-        while(self.isClickable(self.Xiala_Option_loc.replace('%title',option))!=True):
+        while(self.isClickable(self.Xiala_Option_loc.replace('%title',option),timeout=3)!=True):
             clickElemIndex = clickElemIndex+1
-            self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.Xiala_li_loc,index=clickElemIndex))
-        if (self.isClickable(self.Xiala_Option_loc.replace('%title', option)) == True):
-            print("目标下拉元素已可见")
-            self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
-                self.Xiala_Option_loc.replace('%title',option)))
+            # self.h5_tap_elem(self.find_elemsByXPATH_presence(self.Xiala_li_loc,index=clickElemIndex))
+            self.h5_tap_elem(self.find_elemsByXPATH_visibility(self.Xiala_li_loc)[clickElemIndex])
+        if (self.isClickable(self.Xiala_Option_loc.replace('%title', option),timeout=3) == True):
+            self.h5_tap_elem(self.find_elemsByXPATH_visibility(
+                self.Xiala_Option_loc.replace('%title',option))[0])
         #点击确定按钮
         time.sleep(1)
         self.clickElemByXpath_visibility(self.Xiala_confirm_loc.replace('%s',fieldName))

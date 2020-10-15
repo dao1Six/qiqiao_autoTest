@@ -116,9 +116,9 @@ class PomAppTest_001(unittest.TestCase):
         # portalPage.PortalPage_qiqiao_logout()
         self.driver.quit()
 
-    @classmethod
-    def setUpClass(self):
-        self.dataPrepare(self)
+    # @classmethod
+    # def setUpClass(self):
+    #     self.dataPrepare(self)
 
     def pcLogin(self,account,password):
         '''登录pc端'''
@@ -595,6 +595,7 @@ class PomAppTest_001(unittest.TestCase):
         formPage.ChildForm_List_Select_sendkeys("项目进度管理",3,"项目阶段",["测试"])
         formPage.ChildForm_List_Textarea_sendkeys("项目进度管理",3,"项目执行情况简述","dasdasdas")
         formPage.ChildForm_List_Date_sendkeys("项目进度管理","预估实际完成时间",3,DateTimeUtil().Tomorrow())
+        time.sleep(2)
         formPage.Form_Button_Click('提交')
         time.sleep(2)
         businessPage.ListComponent_MoveTo_ListRow_MoreButton(1)
