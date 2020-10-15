@@ -393,3 +393,6 @@ class ProcessAppTest_001(unittest.TestCase):
         formPage.Form_Button_Click("办理")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="人工任务3办理失败")
+
+
+

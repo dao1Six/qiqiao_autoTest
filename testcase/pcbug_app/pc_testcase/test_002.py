@@ -377,6 +377,54 @@ class PcBugAppTest_002(unittest.TestCase):
         self.assertEqual(2,businessPage.ListComponent_GetRecordTotal(),msg="过滤条数不正确")
 
 
+    def test_13( self ):
+        '''PC业务建模页面权限测试'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
+        businessPage = BusinessPage(self.driver)
+        self.assertTrue(businessPage.BusinessPage_LeftMenu_isExist('应用管理员权限页面'),msg="权限错误")
+        self.pcLogin("diaohuiyun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
+        businessPage = BusinessPage(self.driver)
+        self.assertFalse(businessPage.BusinessPage_LeftMenu_isExist('应用管理员权限页面'),msg="权限错误")
+
+
+
+    def test_14( self ):
+        '''【补丁】——数字组件sum函数，计算结果数值过大（上亿），提交数据之后，结果失真（1787222333765623.69变为1787222333760000）'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','费用管理测试版')
+        businessPage = BusinessPage(self.driver)
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage = FormPage(self.driver)
+        formPage.ChildForm_AddOneRowButton_Click("费用报销明细")
+        formPage.ChildForm_List_Number_sendkeys("费用报销明细","费用金额",1,1234567891230.34)
+        formPage.ChildForm_AddOneRowButton_Click("费用报销明细")
+        formPage.ChildForm_List_Number_sendkeys("费用报销明细","费用金额",2,1234567891230.34)
+        time.sleep(2)
+        self.assertEqual(2469135782460.68,formPage.Number_GetValue_Writable("费用总额"),msg="费用总额计算错误")
+        formPage.Form_Button_Click("提交")
+        self.assertEqual("2469135782460.68",businessPage.ListComponent_GetTable_Td_Value(1,7),msg="费用总额列表显示错误")
+        businessPage.ListComponent_Click_ListRow_Button("详情",1)
+        self.assertEqual("2469135782460.68",formPage.Number_GetValue_readOnly("费用总额"),msg="费用总额详情表单显示错误")
+
+
+
+
 
 
 

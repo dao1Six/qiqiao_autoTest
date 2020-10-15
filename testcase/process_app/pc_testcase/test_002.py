@@ -301,3 +301,20 @@ class ProcessAppTest_001(unittest.TestCase):
         formPage.Form_Button_Click("办理")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="人工任务3办理失败")
+
+    def test_02( self ):
+        '''【补丁】--PC运行平台--百分比号未显示'''
+        # 发起流程
+        self.pcLogin("diaohuiyun@A1","qiqiao123")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu('流程')
+        time.sleep(2)
+        processPage = ProcessPage(self.driver)
+        processPage.ProcessPage_click_process_icon("TC员工年度评价流程")
+        formPage = FormPage(self.driver)
+        formPage.MultiForm_BatchManagementButton_Click("业绩评价")
+        formPage.MultiForm_BathManagePage_Record_Tick("业绩评价",[1,2])
+        formPage.MultiForm_BathManagePage_ConfirmButton_Tick("业绩评价")
+        time.sleep(1)
+        self.assertEqual("80.5%",formPage.MultiForm_GetTdValue("业绩评价",1,10),msg="业绩评价权重显示不对")
+        self.assertEqual("70%",formPage.MultiForm_GetTdValue("业绩评价",2,10),msg="业绩评价权重显示不对")

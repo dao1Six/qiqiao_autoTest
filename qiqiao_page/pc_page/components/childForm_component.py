@@ -130,7 +130,7 @@ class ChildForm_component(SeleniumPage):
         # TextTitle：文本字段标题
         # key：文本值
         reallyRow = str(row - 1)
-        self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',NumberTitle),key,isclear=True)
+        self.sendkeysElemByCSS_Presence(self.ChildForm_Input_loc.replace('%title',childformTitle).replace('%row',reallyRow).replace('%text',NumberTitle),str(key),isclear=True)
 
     def ChildForm_List_ForeignSelection_sendkeys(self,childformTitle,row,TextTitle,option):
         '''给子表的外键组件输入值'''
