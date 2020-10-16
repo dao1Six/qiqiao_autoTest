@@ -24,6 +24,10 @@ class PomAppTest_001(unittest.TestCase):
     downloadPath = ProjectRootPath + '\\file_data\\downloadData'
 
 
+    @classmethod
+    def setUpClass(self):
+        self.dataPrepare(self)
+
     def isFileExists(self,path):
         if os.path.exists(path):  # 如果文件存在
             # 删除文件，可使用以下两种方法。
@@ -116,9 +120,7 @@ class PomAppTest_001(unittest.TestCase):
         # portalPage.PortalPage_qiqiao_logout()
         self.driver.quit()
 
-    # @classmethod
-    # def setUpClass(self):
-    #     self.dataPrepare(self)
+
 
     def pcLogin(self,account,password):
         '''登录pc端'''
@@ -256,8 +258,19 @@ class PomAppTest_001(unittest.TestCase):
         self.assertTrue(self.isFileExists(filePath),msg="导出不成功")
         excelReader = ExcelReadUtil()
         sheet = excelReader.getSheetValue(filePath,1)
-        print(excelReader.getRowValues(sheet,2))
-        self.assertEqual(['1', '创新技术中心->产品研发二部->产品规划组', '创新技术中心->产品研发二部->产品规划组', '王浩', '王浩', '进行中', '产品', '代理产品', '软件', '长江水坝管理局', '政府', '', '订阅', 'dasdsadasdsadddasdsadsadsadsadasdsadasdas', '已签合同', '大大实打实的的', '大大实打实的的', 25555554444.0, '', '', '', 44115.0, 44116.0, 44117.0, '', '', orderid, '长江水坝管理系统', 25555554444.0, '标杆作用', '长江水坝管理系统', orderid, '未开票', '合同款', 233333.0, '', 44116.0, '', '', '未开票', '', '', '', '', '', '', '否', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', orderid, '', '', '', '', '', '', '', '', '', '', '', '', orderid, '', '', '', '长江水坝管理系统', '', ''],excelReader.getRowValues(sheet,2))
+
+        rowValues = excelReader.getRowValues(sheet,3)
+        print(rowValues)
+        self.assertEqual("1",excelReader.getRowValues(sheet,3)[0])
+        self.assertEqual("创新技术中心->产品研发二部->产品规划组",excelReader.getRowValues(sheet,3)[1])
+        self.assertEqual(orderid,excelReader.getRowValues(sheet,3)[26])
+        self.assertEqual(25555554444.0,excelReader.getRowValues(sheet,3)[28])
+        self.assertEqual(orderid,excelReader.getRowValues(sheet,3)[31])
+        self.assertEqual(233333.0,excelReader.getRowValues(sheet,3)[34])
+        self.assertEqual(orderid,excelReader.getRowValues(sheet,3)[64])
+        self.assertEqual(orderid,excelReader.getRowValues(sheet,3)[77])
+        self.assertEqual("长江水坝管理系统",excelReader.getRowValues(sheet,3)[81])
+
 
 
 
@@ -352,7 +365,7 @@ class PomAppTest_001(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('内部订单管理2')
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 5), "进行中", msg="订单状态信息错误")
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 6), "未结算", msg="订单状态信息错误")
-        # businessPage.ListComponent_Click_ListRow_Button("详情",1)
+
 
 
     def test_04( self ):
