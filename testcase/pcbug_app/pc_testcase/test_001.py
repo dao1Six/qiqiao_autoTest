@@ -140,6 +140,13 @@ class PcBugAppTest_001(unittest.TestCase):
         self.assertIn("成功",businessPage.Public_GetAlertMessage())
 
 
+    def test_06( self ):
+        '''pc运行平台浏览器标题'''
+        title_page = self.driver.title
+        self.assertEqual("接口自动化七巧广泛广泛",title_page,msg="浏览器标题不正确")
+
+
+
 
 
 
