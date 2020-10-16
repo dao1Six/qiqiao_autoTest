@@ -15,6 +15,7 @@ from qiqiao_page.pc_page.form_page import FormPage
 from qiqiao_page.pc_page.portal_page import PortalPage
 from qiqiao_page.pc_page.process_page import ProcessPage
 from util.dateTimeUtil import DateTimeUtil
+from util.excel_xlrd import ExcelReadUtil
 
 
 class PcBugAppTest_002(unittest.TestCase):
@@ -22,6 +23,16 @@ class PcBugAppTest_002(unittest.TestCase):
 
     ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
     excelPath = ProjectRootPath+"\\file_data\\testcase_data\\测试数据.xlsx"
+
+    downloadPath = ProjectRootPath + '\\file_data\\downloadData'
+
+    def isFileExists(self,path):
+        if os.path.exists(path):  # 如果文件存在
+            # 删除文件，可使用以下两种方法。
+            # os.remove(path)
+            return True
+        else:
+            return False # 则返回文件不存在
 
     def pcLogin(self,account,password):
         '''登录pc端'''
@@ -421,6 +432,11 @@ class PcBugAppTest_002(unittest.TestCase):
         self.assertEqual("2469135782460.68",businessPage.ListComponent_GetTable_Td_Value(1,7),msg="费用总额列表显示错误")
         businessPage.ListComponent_Click_ListRow_Button("详情",1)
         self.assertEqual("2469135782460.68",formPage.Number_GetValue_readOnly("费用总额"),msg="费用总额详情表单显示错误")
+
+
+
+
+
 
 
 

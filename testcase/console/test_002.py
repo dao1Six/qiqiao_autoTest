@@ -10,7 +10,7 @@ class ConsoleTest_002 (unittest.TestCase):
     '''开发平台报表接口'''
 
 
-    Token = "569d96aa22c546702db41f7d5b0efeb1"
+    Token = "b16f8ce8dbf5e055e1c98ffb815c4cb6"
 
     http = "https://qy.do1.com.cn/qiqiao/console"
 
@@ -86,3 +86,14 @@ class ConsoleTest_002 (unittest.TestCase):
         responseJson = response.json()
         print(responseJson)
         self.assertEqual(responseJson,{'msg': '执行成功', 'code': 0, 'data': {'total': 1, 'columns': [{'fieldWidth': {'unit': 'px', 'width': 100, 'type': 'compactly'}, 'fieldName': 'user_name', 'uploadType': '', 'title': '代表姓名', 'fieldType': 'singleUserSelect', 'fieldId': 'key_1596327531716_294664'}, {'fieldWidth': {'unit': 'px', 'width': 150, 'type': 'compactly'}, 'fieldName': 'user_department', 'uploadType': '', 'title': '代表部门', 'fieldType': 'multiDepartmentSelect', 'fieldId': 'key_1596376234122_343700'}, {'fieldWidth': {'unit': 'px', 'width': 120, 'type': 'compactly'}, 'fieldName': 'id_card', 'uploadType': '', 'title': '账号', 'fieldType': 'textBox', 'fieldId': 'key_1596433857209_1421'}], 'pageSize': 20, 'page': 1, 'rows': [{'账号': '热给对方', '代表姓名': '罗琳月', '代表部门': '创新技术中心->产品研发二部->产品规划组'}], 'linkages': {'charts': [], 'rowDims': ['ba17f7b1a94842e5a7130c530b8c28a6.user_name', 'ba17f7b1a94842e5a7130c530b8c28a6.user_department', 'ba17f7b1a94842e5a7130c530b8c28a6.id_card'], 'colDims': []}}})
+
+
+    def test_05( self ):
+        """开发平台/identity/info接口"""
+        url = self.http + "/api/v1/workbench/identity/info"
+        print(url)
+        data = json.dumps({"users":[""]})
+        response = requests.put(url=url,headers=self.headers,data=data.encode("utf-8").decode("latin1"))
+        responseJson = response.json()
+        print(responseJson)
+        self.assertEqual(responseJson['code'],0,msg="/identity/info接口请求失败")

@@ -9,6 +9,7 @@ from qiqiao_page.pc_page.form_page import FormPage
 from qiqiao_page.pc_page.login_page import LoginPage
 from qiqiao_page.pc_page.portal_page import PortalPage
 from qiqiao_page.pc_page.process_page import ProcessPage
+from util.dateTimeUtil import DateTimeUtil
 
 
 class ProcessAppTest_001(unittest.TestCase):
@@ -318,3 +319,29 @@ class ProcessAppTest_001(unittest.TestCase):
         time.sleep(1)
         self.assertEqual("80.5%",formPage.MultiForm_GetTdValue("业绩评价",1,10),msg="业绩评价权重显示不对")
         self.assertEqual("70%",formPage.MultiForm_GetTdValue("业绩评价",2,10),msg="业绩评价权重显示不对")
+
+
+    def test_03( self ):
+        '''【【补丁】--流程审批节点设置了触发事件后，驳回操作会校验必填字段'''
+        self.pcLogin("wujianlun@A1","qiqiao123")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu('流程')
+        time.sleep(2)
+        processPage = ProcessPage(self.driver)
+        processPage.ProcessPage_click_process_icon("换班申请审批")
+        formPage = FormPage(self.driver)
+        formPage.User_MonomialUser_Sendkeys("拟换值带班人员","张月娟")
+        formPage.Date_Sendkeys("换班日期",DateTimeUtil().Today())
+        time.sleep(1)
+        formPage.Textarea_Sendkeys("换班事由","到拉萨扩大哈十大十大开始打火山")
+        time.sleep(1)
+        formPage.Form_Button_Click("提交")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="提交失败")
+        self.driver.quit()
+        self.pcLogin("zhangyuejuan@A1","qiqiao123")
+        formPage.Form_Button_Click("驳回")
+        formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
+        self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="驳回失败")
+
+
