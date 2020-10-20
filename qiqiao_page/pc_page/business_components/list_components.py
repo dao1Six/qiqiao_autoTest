@@ -33,6 +33,8 @@ class ListComponent(SeleniumPage):
     #six
     ListHeader_Button_loc = "//div[@class='listView_headerButtonWrapper']//div[@data-mark='%s']"  #列表头部按钮
     ListHeader_Buttons_loc = "//div[@class='listView_headerButtonWrapper']//div[@class='view_toolbar_panel']/div"  # 列表头部按钮
+
+    tablist_loc = "//div[@role='tablist']//div[@role='tab']"
     search_btn_loc = "//button[@data-mark='筛选条件搜索按钮']"   #列表组件的搜索按钮
     reset_btn_loc = "//button[@data-mark='筛选条件重置按钮']"  #列表组件的重置按钮
     expand_btn_loc = "//div[@class='view_search_panel']//span[@class='expand']" #列表组件的展开收起按钮
@@ -53,7 +55,7 @@ class ListComponent(SeleniumPage):
     TooltipButton_loc = "//div[@role='tooltip']//button//span[text()='%s']"
     dialogfooterButton = "//div[@class='el-dialog__footer']//button/span[text()='%s']"
     pagination_total_loc = "//span[@class='el-pagination__total']"
-    tabsOption_loc = "//div[@class='el-tabs__header is-top']//span[text()='%s']"
+    containerViewOption_loc = "//div[@class='el-tabs__header is-top']//span[text()='%s']"
     ColHeader_sort_down_loc = "//tr//span[@title='%s']/ancestor::div[@class='cell']//i[@class='sort-caret descending']"
     ColHeader_sort_up_loc = "//tr//span[@title='%s']/ancestor::div[@class='cell']//i[@class='sort-caret ascending']"
     ColHeader_iconxiala = "//tr//span[@title='%s']/ancestor::div[@class='cell']//i[contains(@class,'iconxiala')]"
@@ -81,10 +83,18 @@ class ListComponent(SeleniumPage):
         '''点击列表按钮弹框按钮'''
         self.clickElemByXpath_visibility(self.dialogfooterButton.replace('%s',ButtonNmae))
 
+    def ListComponent_get_tablistValule( self ):
+        '''获取列表所有选项卡文本值'''
+        tablist = []
+        elems = self.find_elemsByXPATH_visibility(self.tablist_loc)
+        for elem in elems:
+            tablist.append(elem.text)
+        return tablist
 
-    def ListComponent_TabsOption_Click( self,option ):
-        '''点击选项卡'''
-        self.clickElemByXpath_visibility(self.tabsOption_loc.replace('%s',option))
+
+    def ListComponent_containerViewOption_Click( self,option ):
+        '''点击容器视图选项'''
+        self.clickElemByXpath_visibility(self.containerViewOption_loc.replace('%s',option))
 
     def ListComponent_ColHeader_sort( self,ColName,sortType):
         '''点击列头排序按钮,sortType等于0为升序，sortType等于1为降序'''

@@ -35,7 +35,7 @@ class ValueAppTest_001(unittest.TestCase):
         '''道一云价值观 全员价值观明细,季度查询'''
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
-        businessPage.ListComponent_TabsOption_Click(" 全员价值观明细")
+        businessPage.ListComponent_containerViewOption_Click(" 全员价值观明细")
         time.sleep(5)
         businessPage.ListComponent_QueryItem_Sendkeys("季度",option,QueryItemType="option")
         businessPage.ListComponent_Click_SerachBtn()
@@ -49,7 +49,7 @@ class ValueAppTest_001(unittest.TestCase):
         '''道一云价值观 全员价值观明细,创建人查询'''
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
-        businessPage.ListComponent_TabsOption_Click(" 全员价值观明细")
+        businessPage.ListComponent_containerViewOption_Click(" 全员价值观明细")
         time.sleep(5)
         businessPage.ListComponent_Click_ExpandBtn()
         businessPage.ListComponent_QueryItem_Sendkeys("创建人",option,QueryItemType="user")
@@ -63,7 +63,7 @@ class ValueAppTest_001(unittest.TestCase):
         '''道一云价值观 全员价值观明细,人员查询'''
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
-        businessPage.ListComponent_TabsOption_Click(" 全员价值观明细")
+        businessPage.ListComponent_containerViewOption_Click(" 全员价值观明细")
         time.sleep(5)
         #点击展开按钮
         businessPage.ListComponent_Click_ExpandBtn()
@@ -79,7 +79,7 @@ class ValueAppTest_001(unittest.TestCase):
         '''道一云价值观 全员价值观明细,修改时间查询'''
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
-        businessPage.ListComponent_TabsOption_Click(" 全员价值观明细")
+        businessPage.ListComponent_containerViewOption_Click(" 全员价值观明细")
         time.sleep(5)
         businessPage.ListComponent_Click_ExpandBtn()
         businessPage.ListComponent_QueryItem_Sendkeys("修改时间",option1,option2,QueryItemType="date")
@@ -94,7 +94,7 @@ class ValueAppTest_001(unittest.TestCase):
         '''道一云价值观 全员价值观明细,年份查询'''
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
-        businessPage.ListComponent_TabsOption_Click(" 全员价值观明细")
+        businessPage.ListComponent_containerViewOption_Click(" 全员价值观明细")
         time.sleep(5)
         businessPage.ListComponent_Click_ExpandBtn()
         businessPage.ListComponent_QueryItem_Sendkeys("年度",option1,QueryItemType="datetime")
@@ -110,7 +110,7 @@ class ValueAppTest_001(unittest.TestCase):
         '''道一云价值观 全员价值观明细,价值观查询'''
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
-        businessPage.ListComponent_TabsOption_Click(" 全员价值观明细")
+        businessPage.ListComponent_containerViewOption_Click(" 全员价值观明细")
         time.sleep(5)
         businessPage.ListComponent_QueryItem_Sendkeys("价值观",option,QueryItemType="option")
         businessPage.ListComponent_Click_SerachBtn()
@@ -123,7 +123,7 @@ class ValueAppTest_001(unittest.TestCase):
         '''道一云价值观 全员价值观明细,部门查询'''
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
-        businessPage.ListComponent_TabsOption_Click(" 全员价值观明细")
+        businessPage.ListComponent_containerViewOption_Click(" 全员价值观明细")
         time.sleep(5)
         businessPage.ListComponent_Click_ExpandBtn()
         time.sleep(2)
@@ -138,7 +138,7 @@ class ValueAppTest_001(unittest.TestCase):
     def test_08( self,ColName,sort1,result1,sort2,result2):
         '''道一云价值观 全员价值观表 人员列排序'''
         businessPage = BusinessPage(self.driver)
-        businessPage.ListComponent_TabsOption_Click("  全员价值观")
+        businessPage.ListComponent_containerViewOption_Click("  全员价值观")
         time.sleep(5)
         businessPage.ListComponent_ColHeader_sort(ColName,sort1)
         time.sleep(3)
@@ -151,7 +151,7 @@ class ValueAppTest_001(unittest.TestCase):
     def test_09( self):
         '''道一云价值观 全员价值观表 季度列筛选'''
         businessPage = BusinessPage(self.driver)
-        businessPage.ListComponent_TabsOption_Click("  全员价值观")
+        businessPage.ListComponent_containerViewOption_Click("  全员价值观")
         time.sleep(5)
         #先取消全选
         businessPage.ListComponent_ColHeader_search("季度",[1])

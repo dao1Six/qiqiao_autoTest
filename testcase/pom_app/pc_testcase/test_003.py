@@ -33,7 +33,7 @@ class PomAppTest_003(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('组合页面')
         self.assertEqual(['导出', '导入', '删除（临时）'],businessPage.ListComponent_Get_ListHeader_Buttons())
-        businessPage.ListComponent_TabsOption_Click(" 视图2")
+        businessPage.ListComponent_containerViewOption_Click(" 视图2")
         self.assertEqual(['导出', '导入', '推送（停用）', '填充未填数据', '删除(临时)'],businessPage.ListComponent_Get_ListHeader_Buttons())
 
 

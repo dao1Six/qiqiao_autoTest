@@ -392,13 +392,12 @@ class SeleniumPage (object):
 
 
 
-
-
     def switch_tab( self,num ):
         '''浏览器窗口切换'''
         driver = self.driver
         handles = driver.window_handles  # 获取当前窗口句柄集合（列表类型）
         driver.switch_to.window(handles[num - 1])  # 跳转到第num个窗口
+
 
 
 

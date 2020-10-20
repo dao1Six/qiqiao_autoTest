@@ -35,6 +35,6 @@ class ValueAppTest_002(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '道一云价值观')
         businessPage = BusinessPage(self.driver)
-        businessPage.ListComponent_TabsOption_Click(" 部门价值观")
+        businessPage.ListComponent_containerViewOption_Click(" 部门价值观")
         time.sleep(5)
         self.assertEqual(result, businessPage.ListComponent_GetRecordTotal(),msg="部门价值观数据过滤错误")

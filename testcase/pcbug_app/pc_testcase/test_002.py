@@ -436,8 +436,16 @@ class PcBugAppTest_002(unittest.TestCase):
 
 
 
-
-
+    def test_15( self ):
+        '''【补丁】——PC端运行平台，列表配置自定义角色范围，选项卡显示统计数量错误'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','数据过滤测试应用')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click("测试列表选项卡统计")
+        self.assertEqual(['全部(150)', '单项选择1(150)', '单项选择2(0)', '单项选择3(0)'],businessPage.ListComponent_get_tablistValule(),msg="【补丁】——PC端运行平台，列表配置自定义角色范围，选项卡显示统计数量错误'")
 
 
 

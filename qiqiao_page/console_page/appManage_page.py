@@ -1,8 +1,9 @@
 # coding=utf-8
 from public.selenium_page import SeleniumPage
+from qiqiao_page.console_page.header_page import HeaderPage
 
 
-class AppManagePage(SeleniumPage):
+class AppManagePage(HeaderPage):
     """开发平台应用管理页面"""
 
     tab_0 = "//div[@class='el-tabs__nav-wrap is-top']//div[@id='tab-0']/span"
