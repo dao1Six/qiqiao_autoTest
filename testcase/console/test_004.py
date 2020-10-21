@@ -10,7 +10,7 @@ from qiqiao_page.console_page.console_login_page import ConsoleLoginPage
 from qiqiao_page.console_page.help_page import HelpPage
 
 
-class ConsoleTest_001(unittest.TestCase):
+class ConsoleTest_004(unittest.TestCase):
     '''开发平台检查'''
 
     driver = Driver().pcdriver()
