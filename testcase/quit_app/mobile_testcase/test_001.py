@@ -30,6 +30,7 @@ class QuitAppTest_001(unittest.TestCase):
         homePage.HomePage_BottomNav_Click("待办")
         time.sleep(1)
         self.driver.refresh()
+        time.sleep(2)
         #发起流程
         todoPage = MbTodoPage(self.driver)
         todoPage.MbTodoPage_Faqiliucheng('离职人员测试应用','离职人员测试流程')
