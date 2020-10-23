@@ -36,6 +36,8 @@ class MbFormPage(MbPublicPage,MbNumber,MbText,MbTextarea,MbDate,MbTime,MbDateTim
 
     Popup_close_icon = "//i[@class='iconfont icon-paitawangguan drawer_close']"
 
+    field_label_loc = "//div[contains(@class,'cube-form-item') and @title='%s']"
+
     def MbForm_Button_Click( self,buttonName ):
         '''点击表单按钮'''
         self.clickElemByXpath_visibility(self.FormPage_button_loc.replace('%s',buttonName))
@@ -64,3 +66,11 @@ class MbFormPage(MbPublicPage,MbNumber,MbText,MbTextarea,MbDate,MbTime,MbDateTim
     def MbForm_Close_Popup( self):
         '''关闭子表弹层'''
         self.clickElemByXpath_visibility(self.Popup_close_icon)
+
+
+    def MbForm_field_isVisibility( self,fieldName ):
+        '''表单字段是否可见'''
+        if(self.find_elemByXPATH_visibility(self.field_label_loc.replace("%s",fieldName),timeout=3)!=None):
+            return True
+        else:
+            return False

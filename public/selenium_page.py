@@ -174,7 +174,6 @@ class SeleniumPage (object):
         #传元素地址
         if(type(locator)==str):
             elems = self.find_elemsByXPATH_presence(locator)
-            # elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index=index)
             if(elems==None):
                 raise TypeError("elem不能为None")
             else:

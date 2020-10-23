@@ -204,3 +204,72 @@ class MbBugAppTest_001(unittest.TestCase):
         self.assertEqual(2469135782460.68,formPage.MbNumber_GetValue_formula("费用总额"),msg="费用总额计算错误")
         formPage.MbForm_Button_Click("提交")
         self.assertEqual(['费用总额：2469135782460.68'],listPage.MbListComponent_Get_RecoreTextContents(1),msg="费用总额列表显示错误")
+
+    def test_08( self ):
+        '''【补丁】——外键选择组件设置可用条件为高级函数OR，对另外外键字段值进行判断时不生效'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('美安居建材云办公系统','生产任务单明细')
+        listPage = MbListComponent(self.driver)
+        self.driver.refresh()
+        time.sleep(1)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbForeignSelection_Sendkeys("生产机组","生产机组甲")
+        self.assertTrue(formPage.MbForm_field_isVisibility("袋装重量"))
+
+
+    def test_09( self ):
+        '''【补丁】——外键选择组件配置关联筛选字段为外键选择时，填写数据之后，关联选项重复'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('美安居建材云办公系统','砂浆型号登记表')
+        listPage = MbListComponent(self.driver)
+        self.driver.refresh()
+        time.sleep(1)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbForeignSelection_SelectionBox_Click("砂浆品种")
+        time.sleep(1)
+        formPage.MbForeignSelection_Option_scrollDown()
+        time.sleep(2)
+        foreignList = formPage.MbForeignSelection_get_OptionValue("砂浆品种")
+        foreignSet = set(foreignList)
+        self.assertEqual(len(foreignList),len(foreignSet),msg="【补丁】——外键选择组件配置关联筛选字段为外键选择时，填写数据之后，关联选项重复")
+        self.assertEqual(len(foreignSet),26,msg="外键选项数目显示不对")
+
+
+    def test_10( self ):
+        '''外键联动筛选'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('美安居建材云办公系统','品种型号配比登记表')
+        listPage = MbListComponent(self.driver)
+        listPage.MbListComponent_AddButton_Click()
+        time.sleep(1)
+        self.driver.refresh()
+        time.sleep(1)
+        formPage = MbFormPage(self.driver)
+        formPage.MbForeignSelection_Sendkeys("砂浆品种","砂浆测试1")
+        formPage.MbSelection_SingleBox_Senkeys("是否防冻","防冻")
+        time.sleep(1)
+        formPage.MbForeignSelection_SelectionBox_Click("砂浆型号")
+        foreignList = formPage.MbForeignSelection_get_OptionValue("砂浆型号")
+        self.assertEqual(len(foreignList),0,msg="外键联动筛选选项数目显示不对")
+        self.driver.back()
+        time.sleep(1)
+        formPage.MbSelection_SingleBox_Senkeys("是否防冻","非防冻")
+        time.sleep(1)
+        formPage.MbForeignSelection_SelectionBox_Click("砂浆型号")
+        foreignList = formPage.MbForeignSelection_get_OptionValue("砂浆型号")
+        self.assertTrue(formPage.MbForeignSelection_SelectOption_isExist("A0001"),msg="外键联动筛选选项值筛选不正确")
+        self.assertEqual(len(foreignList),1,msg="外键联动筛选选项数目显示不对")
+
+
+

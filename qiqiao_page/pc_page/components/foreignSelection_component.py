@@ -43,7 +43,7 @@ class ForeignSelection_component(SeleniumPage):
         self.clickElemByXpath_visibility(self.ForeignSelectOption_loc.replace('%s',value),index=index2)
 
     def ForeignSelection_SelectionBox_Click(self,fieldName,index1=0,*args):
-        '''外键选择组件输入值'''
+        '''点击外键选择组件输入框'''
         # fieldName：字段标题
         loc = self.ForeignSelectionBox_loc.replace('%title',fieldName)
         #点击外键的输入框
@@ -69,7 +69,7 @@ class ForeignSelection_component(SeleniumPage):
 
     def ForeignSelection_Option_scrollDown( self,fieldName,scrollNumber=10):
         '''外键选项滚动至底部'''
-        js = "document.getElementsByClassName('%s')[0].children[0].children[0].scrollTop=1000" %fieldName
+        js = "document.getElementsByClassName('%s')[0].children[0].children[0].scrollTop=100000" %fieldName
         for n in range(1,scrollNumber):
             self.driver.execute_script(js)  # 从上往下滑
             time.sleep(0.5)
