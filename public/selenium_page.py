@@ -40,8 +40,10 @@ class SeleniumPage (object):
 
     def dynamicScroll( self ):
         '''动态滚动'''
+        js = "document.getElementsByClassName('test')[0].scrollTop=100000"
         for n in range(1,5):
-            self.driver.execute_script('document.querySelector(".myScroll_main").scrollTop = 10000')  # 从上往下滑
+            self.driver.execute_script(js)  # 从上往下滑
+            time.sleep(0.5)
 
     def wait_elem_visible_CSS(self, locator, timeout=5):
         # 一直等待某元素可见，默认超时3秒只做等待动作不返回值
@@ -157,7 +159,6 @@ class SeleniumPage (object):
         #传元素地址
         if(type(locator)==str):
             elems = self.find_elemsByXPATH_visibility(locator)
-            # elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index=index)
             if(elems==None):
                 raise TypeError("elem不能为None")
             else:

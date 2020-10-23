@@ -55,6 +55,17 @@ class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUploa
 
     Popup_close_icon = "//div[@data-mark='子表弹层_%s']//i[@class='el-icon-close close']"
 
+    field_label_loc = "//div[@data-mark='%s']//label"
+
+
+    def Form_field_isVisibility( self,fieldName ):
+        '''表单字段是否可见'''
+        if(self.find_elemByXPATH_visibility(self.field_label_loc.replace("%s",fieldName),timeout=3)!=None):
+            return True
+        else:
+            return False
+
+
     def Form_Close_Popup( self,childFormName ):
         '''关闭子表弹层'''
         self.clickElemByXpath_visibility(self.Popup_close_icon.replace('%s',childFormName))

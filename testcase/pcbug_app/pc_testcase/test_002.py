@@ -4,6 +4,7 @@ import time
 import unittest
 from functools import wraps
 
+from Enum.buttonEnum import ButtonEnum
 from public.HTMLTestRunner_cn import _TestResult
 from public.driver import Driver
 from qiqiao_page.pc_page.applicationList_page import ApplicationListPage
@@ -473,3 +474,92 @@ class PcBugAppTest_002(unittest.TestCase):
 
 
 
+    def test_17( self ):
+        '''【补丁】——外键选择组件设置可用条件为高级函数OR，对另外外键字段值进行判断时不生效'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','美安居建材云办公系统')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click("生产任务单明细")
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage = FormPage(self.driver)
+        formPage.ForeignSelection_Sendkeys("生产机组","生产机组甲")
+        self.assertTrue(formPage.Form_field_isVisibility("袋装重量"))
+
+
+    def test_18( self ):
+        '''【补丁】——外键选择组件配置关联筛选字段为外键选择时，填写数据之后，关联选项重复'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','美安居建材云办公系统')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click("品种型号配比登记表")
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage = FormPage(self.driver)
+        formPage.ForeignSelection_SelectionBox_Click("砂浆品种")
+        page1 =  formPage.ForeignSelection_GetValue_InDialog()
+        formPage.ForeignSelection_fanye_InDialog(ButtonEnum.DOWN.value)
+        page2 = formPage.ForeignSelection_GetValue_InDialog()
+        formPage.ForeignSelection_fanye_InDialog(ButtonEnum.DOWN.value)
+        page3 = formPage.ForeignSelection_GetValue_InDialog()
+        foreignList = page1+page2+page3
+        foreignSet = set(foreignList)
+        self.assertEqual(len(foreignList),len(foreignSet),msg="【补丁】——外键选择组件配置关联筛选字段为外键选择时，填写数据之后，关联选项重复")
+        self.assertEqual(len(foreignSet),26,msg="外键选项数目显示不对")
+
+
+    def test_19( self ):
+        '''【补丁】——外键选择组件配置关联筛选字段为外键选择时，填写数据之后，关联选项重复'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','美安居建材云办公系统')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click("砂浆型号登记表")
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        time.sleep(1)
+        formPage = FormPage(self.driver)
+        formPage.ForeignSelection_SelectionBox_Click("砂浆品种",index1=1)
+        time.sleep(1)
+        formPage.ForeignSelection_Option_scrollDown("砂浆品种")
+        time.sleep(2)
+        foreignList =  formPage.ForeignSelection_get_OptionValue("砂浆品种")
+        foreignSet = set(foreignList)
+        self.assertEqual(len(foreignList),len(foreignSet),msg="【补丁】——外键选择组件配置关联筛选字段为外键选择时，填写数据之后，关联选项重复")
+        self.assertEqual(len(foreignSet),26,msg="外键选项数目显示不对")
+
+
+
+    def test_20( self ):
+        '''外键联动筛选'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','美安居建材云办公系统')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click("品种型号配比登记表")
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage = FormPage(self.driver)
+        formPage.ForeignSelection_SelectionBox_Click("砂浆品种")
+        formPage.ForeignSelection_SearchaInputSendkeys_InDialog("砂浆测试1")
+        time.sleep(2)
+        formPage.ForeignSelection_fanye_InDialog(ButtonEnum.DOWN.value)
+        time.sleep(1)
+        formPage.ForeignSelection_ClickOption_InDialog("砂浆测试1")
+        formPage.Selection_SingleBox_Sendkeys("是否防冻","防冻")
+        time.sleep(1)
+        formPage.ForeignSelection_SelectionBox_Click("砂浆型号")
+        foreignList = formPage.ForeignSelection_get_OptionValue("砂浆型号")
+        self.assertEqual(len(foreignList),0,msg="外键联动筛选选项数目显示不对")
+        formPage.Selection_SingleBox_Sendkeys("是否防冻","非防冻")
+        time.sleep(1)
+        formPage.ForeignSelection_SelectionBox_Click("砂浆型号")
+        foreignList = formPage.ForeignSelection_get_OptionValue("砂浆型号")
+        self.assertTrue(formPage.ForeignSelection_SelectOption_isExist("A0001"),msg="外键联动筛选选项值筛选不正确")
+        self.assertEqual(len(foreignList),1,msg="外键联动筛选选项数目显示不对")
