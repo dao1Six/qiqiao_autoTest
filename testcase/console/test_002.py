@@ -10,7 +10,7 @@ class ConsoleTest_002 (unittest.TestCase):
     '''开发平台报表接口'''
 
 
-    Token = "3a31c14540770d4a5f41dd316975227c"
+    Token = "ab244d5938abc1185bc2e7a1f4f68685"
 
     http = "https://qy.do1.com.cn/qiqiao/console"
 
@@ -92,7 +92,7 @@ class ConsoleTest_002 (unittest.TestCase):
         """开发平台/identity/info接口"""
         url = self.http + "/api/v1/workbench/identity/info"
         print(url)
-        data = json.dumps({"users":[""]})
+        data = json.dumps({"users":[]})
         response = requests.put(url=url,headers=self.headers,data=data.encode("utf-8").decode("latin1"))
         responseJson = response.json()
         print(responseJson)
