@@ -9,7 +9,7 @@ class PortalPage(PublicPage,SeleniumPage):
     '''工作台页面'''
 
     #Action
-    PortalPage_headerMenu_loc = "//a[contains(@class,'header_menu_title')and contains(@data-mark,'%menu')]"  #工作台顶部菜单栏菜单
+    PortalPage_headerMenu_loc = "//a[contains(@class,'header_menu_title')and contains(@data-mark,'%menu')]/parent::div"  #工作台顶部菜单栏菜单
 
     userName_loc = "span.userName"
 
