@@ -345,7 +345,17 @@ class SeleniumPage (object):
             print("根据"+locator+"信息在"+str(timeout)+"秒内没有查询到元素")
             return None
 
+    def retry_if_findElementException(exception ):
+        exceptionInfo = str(exception)
+        if("stale element reference: element is not attached to the page document" in exceptionInfo):
+            print(datetime.datetime.now())
+            print("页面刷新导致元素点击失败"+exceptionInfo)
+            return isinstance(exception, WebDriverException)
 
+
+
+    @retry( retry_on_exception=retry_if_findElementException,stop_max_attempt_number=3, wait_fixed=1000,
+           wrap_exception=True,stop_max_delay=3000)
     def find_elenmInElemsByXpath_presence_of_all_elements_located(self, locator, index=0,timeout=5):
         '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
         try:

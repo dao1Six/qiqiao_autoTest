@@ -21,11 +21,11 @@ class MbListComponent(SeleniumPage):
     CardList_tabItem_div_loc = "//div[@class='dyCardList_tabItem' and contains(text(),'%s')]"
 
     add_btn = "//div[@class='add_btn']"
-    dyCardList_item = "//div[@class='dyCardList_item']"
+    dyCardList_item = "//div[starts-with(@class,'dyCardList_item')]"
     lastPage_div = "//div[@class='myScroll_loadText' and contains(text(),'已经是最后一页了')]"
     dyCardList_status =  "//div[@class='dyCardList_item']//div[@class='dyCardList_status']"
     dyCardList_text_main = "//div[@class='dyCardList_item']//h2[@class='dyCardList_text_main']"
-    dyCardList_text_content = "//div[@class='cube-swipe']/div[%r]//p"
+    dyCardList_text_content = "//div[@class='myScroll_container']/div[@index='%r']//p"
     shaixuanIcoon = "//i[@class='icon iconfont icon-huaban16']"
     searchBar_i = "//div[@class='searchBar_search_input']//i"
     searchBar_input = "//div[@class='searchBar_search_input']//input"
@@ -133,8 +133,7 @@ class MbListComponent(SeleniumPage):
         '''滚动到列表底部'''
         while(self.find_elemByXPATH_visibility(self.lastPage_div,timeout=2)==None):
             elem = self.find_elemsByCSS_visibility(self.CardList_loc)[-1]
-            print(elem)
-            self.h5_scroll(elem,0,5000)
+            self.h5_scroll(elem,0,1000)
 
 
 
@@ -162,7 +161,7 @@ class MbListComponent(SeleniumPage):
     def MbListComponent_Get_RecoreTextContents( self,r ):
         '''返回当前列表记录标题值'''
         list = []
-        elems = self.find_elemsByXPATH_visibility(self.dyCardList_text_content.replace("%r",str(r)))
+        elems = self.find_elemsByXPATH_visibility(self.dyCardList_text_content.replace("%r",str(r-1)))
         if (elems!=None):
             for elem in elems:
                 list.append(elem.text)

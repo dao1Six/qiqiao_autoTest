@@ -88,6 +88,7 @@ class MbBugAppTest_001(unittest.TestCase):
         listPage = MbListComponent(self.driver)
         listPage.MbListComponent_SwitchTab("已完成")
         listPage.MbListComponent_Scroll_To_Bottom()
+        time.sleep(2)
         self.assertEqual(31,listPage.MbListComponent_Get_RecoresNumber(),msg="列表数据显示不全")
 
 

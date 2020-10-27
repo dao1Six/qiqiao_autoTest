@@ -6,8 +6,8 @@ class ConsoleLoginPage(SeleniumPage):
     """登录界面"""
 
 
-    zhanghao = "//input[@class='loginFormTdIpt search-input' and @name='j_username']"
-    mima = "//input[@class='loginFormTdIpt search-input' and @name='j_password']"
+    zhanghao = "//input[@class='loginFormTdIpt search-input' and @name='username']"
+    mima = "//input[@class='loginFormTdIpt search-input' and @name='password']"
     anniu = "//button[@class='login_btn']"
 
 
