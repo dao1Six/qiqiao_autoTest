@@ -30,7 +30,7 @@ class MbPomAppTest_001(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
-        time.sleep(5)
+        time.sleep(3)
         # 打开生产运营管理应用
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
@@ -107,7 +107,7 @@ class MbPomAppTest_001(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/mruntime', account, password)
-        time.sleep(5)
+        time.sleep(3)
 
     def pcLogin(self,account,password):
         '''登录pc端'''
@@ -115,7 +115,7 @@ class MbPomAppTest_001(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', account, password)
-        time.sleep(5)
+        time.sleep(3)
 
 
 

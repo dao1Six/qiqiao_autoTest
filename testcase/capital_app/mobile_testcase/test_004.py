@@ -25,7 +25,7 @@ class MbHSEAppTest_004(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/mruntime', account, password)
-        time.sleep(5)
+        time.sleep(3)
 
 
 

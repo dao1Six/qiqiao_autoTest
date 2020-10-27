@@ -25,14 +25,14 @@ class OAAppTest_004(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime',"wujianlun@auto","do1qiqiao")
-        time.sleep(5)
+        time.sleep(3)
 
     def test_01( self ):
         '''【补丁】--OA系统中的付款申请流程点击办理时提示按钮执行异常'''
         portalPage = PortalPage(self.driver)
         # 打开“发起流程列表”
         portalPage.PortalPage_Click_HeaderMenu('流程')
-        time.sleep(5)
+        time.sleep(3)
         processPage = ProcessPage(self.driver)
         processPage.ProcessPage_click_process_icon("付款申请流程")
         formPage = FormPage(self.driver)
@@ -44,7 +44,7 @@ class OAAppTest_004(unittest.TestCase):
         formPage.Form_Button_Click("提交")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()  # 点击流程办理弹框确认按钮
         self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第一个人工任务办理失败")
-        time.sleep(5)
+        time.sleep(3)
 
 
     def test_02( self ):
@@ -69,7 +69,7 @@ class OAAppTest_004(unittest.TestCase):
         formPage.Form_Button_Click("发起流程")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()  # 点击流程办理弹框确认按钮
         self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第一个人工任务办理失败")
-        time.sleep(5)
+        time.sleep(3)
         businessPage.BusinessPage_HeardItem_AllApp_Click()
         portalPage.PortalPage_Click_HeaderMenu("流程")
         processPage = ProcessPage(self.driver)

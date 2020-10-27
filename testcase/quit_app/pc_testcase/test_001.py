@@ -45,7 +45,7 @@ class QuitAppTest_001(unittest.TestCase):
     def test_03( self ):
         '''检查离职人员列表人员单选查询是否正常'''
         self.pcLogin("wujianlun@A1","qiqiao123")
-        time.sleep(5)
+        time.sleep(3)
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -56,13 +56,13 @@ class QuitAppTest_001(unittest.TestCase):
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,5),'刘言',msg="列表人员创建人显示离职人员不正确")
         businessPage.ListComponent_QueryItem_Sendkeys("人员单选","刘言",QueryItemType="user")
         businessPage.ListComponent_Click_SerachBtn()
-        time.sleep(5)
+        time.sleep(3)
         self.assertEqual(2,businessPage.ListComponent_GetRecordTotal())
 
     def test_04( self ):
         '''检查离职人员列表人员多选查询是否正常'''
         self.pcLogin("wujianlun@A1","qiqiao123")
-        time.sleep(5)
+        time.sleep(3)
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -70,7 +70,7 @@ class QuitAppTest_001(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.ListComponent_QueryItem_Sendkeys("人员多选","刘言",QueryItemType="user")
         businessPage.ListComponent_Click_SerachBtn()
-        time.sleep(5)
+        time.sleep(3)
         self.assertEqual(2,businessPage.ListComponent_GetRecordTotal())
 
     def test_05( self ):

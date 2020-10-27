@@ -41,7 +41,7 @@ class PcBugAppTest_002(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', account, password)
-        time.sleep(5)
+        time.sleep(3)
 
 
     def test_01( self ):

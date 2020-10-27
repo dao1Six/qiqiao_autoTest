@@ -42,7 +42,7 @@ class PomAppTest_001(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
-        time.sleep(5)
+        time.sleep(3)
         # 打开生产运营管理应用
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
@@ -128,14 +128,14 @@ class PomAppTest_001(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', account, password)
-        time.sleep(5)
+        time.sleep(3)
 
     def setUp(self):
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wanghao@auto", "do1qiqiao")
-        time.sleep(5)
+        time.sleep(3)
 
 
 
@@ -148,7 +148,7 @@ class PomAppTest_001(unittest.TestCase):
         portalPage = PortalPage(self.driver)
         #打开“发起流程列表”
         portalPage.PortalPage_Click_HeaderMenu('流程')
-        time.sleep(5)
+        time.sleep(2)
         processPage = ProcessPage(self.driver)
         processPage.ProcessPage_click_process_icon("事业一部订单发起")
         formPage = FormPage(self.driver)
@@ -284,7 +284,7 @@ class PomAppTest_001(unittest.TestCase):
         portalPage = PortalPage(self.driver)
         #打开“发起流程列表”
         portalPage.PortalPage_Click_HeaderMenu('流程')
-        time.sleep(5)
+        time.sleep(3)
         processPage = ProcessPage(self.driver)
         processPage.ProcessPage_click_process_icon("事业一部内部订单发起")
         formPage = FormPage(self.driver)
@@ -294,7 +294,7 @@ class PomAppTest_001(unittest.TestCase):
         formPage.Selection_SingleXiala_Sendkeys("订单来源","外部订单")
         time.sleep(3)
         formPage.ForeignSelection_Sendkeys("对应订单名称","长江水坝管理系统")
-        time.sleep(5)
+        time.sleep(3)
         self.assertNotEqual(formPage.Text_GetValue_writable("对应订单编号"),"",msg="对应订单编号没有连带写入")
 
         formPage.Dept_MonomialDept_Sendkeys("结算收入一级部门","创新技术中心")
@@ -474,7 +474,7 @@ class PomAppTest_001(unittest.TestCase):
         portalPage = PortalPage(self.driver)
         #打开“发起流程列表”
         portalPage.PortalPage_Click_HeaderMenu('流程')
-        time.sleep(5)
+        time.sleep(3)
         processPage = ProcessPage(self.driver)
         processPage.ProcessPage_click_process_icon("事业一部立项申请")
         formPage = FormPage(self.driver)

@@ -130,13 +130,26 @@ class SeleniumPage (object):
         else:
             print('page-->get_attr,NoneType没有属性')
 
+
+    def hide_loadingMask_by_jq(self):
+        '''通过jq将元素隐藏'''
+        script = '$("div.el-loading-mask").hide()'
+        self.driver.execute_script(script)
+
+    @classmethod
+    def hide_alert_by_jq(self):
+        '''通过jq将元素隐藏'''
+        script = '$("div[role="alert"]").hide()'
+        self.driver.execute_script(script)
+
+
 ########################################################################点击元素方法
 
-    def retry_if_clickOtherelement( exception ):
+    def retry_if_clickOtherelement(exception ):
         exceptionInfo = str(exception)
         if ("Other element would receive the click" in exceptionInfo):
             print(datetime.datetime.now())
-            print("操作的元素被其他元素挡住导致点击失败"+exceptionInfo)
+            print("操作的元素被其他元素挡住导致点击失败" + exceptionInfo)
             return isinstance(exception, WebDriverException)
         elif("stale element reference: element is not attached to the page document" in exceptionInfo):
             print(datetime.datetime.now())

@@ -29,7 +29,7 @@ class MbBugAppTest_001(unittest.TestCase):
         self.driver = Driver().phonedriver()
         loginpage = MbLoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/mruntime', account, password)
-        time.sleep(5)
+        time.sleep(3)
 
     def pcLogin(self,account,password):
         '''登录pc端'''
@@ -37,7 +37,7 @@ class MbBugAppTest_001(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', account, password)
-        time.sleep(5)
+        time.sleep(3)
 
     def test_01( self ):
         '''【补丁】移动端运行平台，分组可见条件无效'''

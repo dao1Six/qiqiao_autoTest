@@ -21,7 +21,7 @@ class CalculationAppTest_001(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
-        time.sleep(5)
+        time.sleep(3)
 
 
 
@@ -34,9 +34,9 @@ class CalculationAppTest_001(unittest.TestCase):
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '公式计算测试应用')
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('子表单')
-        time.sleep(5)
+        time.sleep(3)
         businessPage.ListComponent_Click_ListHeader_Button("添加")
-        time.sleep(5)
+        time.sleep(3)
         formPage = FormPage(self.driver)
         self.assertEqual(formPage.Number_GetValue_Writable("sum"),30.1)
         self.assertEqual(formPage.Number_GetValue_Writable("avg"),7.53)
@@ -48,7 +48,7 @@ class CalculationAppTest_001(unittest.TestCase):
         portalPage = PortalPage(self.driver)
         # 打开“发起流程列表”
         portalPage.PortalPage_Click_HeaderMenu('流程')
-        time.sleep(5)
+        time.sleep(3)
         processPage = ProcessPage(self.driver)
         processPage.ProcessPage_click_process_icon("流程测试")
         formPage = FormPage(self.driver)
@@ -64,7 +64,7 @@ class CalculationAppTest_001(unittest.TestCase):
         portalPage = PortalPage(self.driver)
         # 打开“发起流程列表”
         portalPage.PortalPage_Click_HeaderMenu('流程')
-        time.sleep(5)
+        time.sleep(3)
         processPage = ProcessPage(self.driver)
         processPage.ProcessPage_click_process_icon("流程测试")
         formPage = FormPage(self.driver)

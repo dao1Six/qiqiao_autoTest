@@ -35,7 +35,7 @@ class MbValueAppTest_001(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/mruntime', account,"do1qiqiao")
-        time.sleep(5)
+        time.sleep(3)
         homepage = MbHomePage(self.driver)
         homepage.HomePage_BottomNav_Click('应用')
         applicationListPage = MbApplicationListPage(self.driver)

@@ -102,7 +102,7 @@ class MbCapitalAppTest_002(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/mruntime', account, password)
-        time.sleep(5)
+        time.sleep(3)
 
     def pcLogin(self,account,password):
         '''登录pc端'''
@@ -110,7 +110,7 @@ class MbCapitalAppTest_002(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', account, password)
-        time.sleep(5)
+        time.sleep(3)
 
     def test_01( self ):
         '''移动端运行平台，导航列表发起流程设置可见范围小于流程发布范围时，发起流程'''
@@ -127,7 +127,7 @@ class MbCapitalAppTest_002(unittest.TestCase):
         formPage.MbForm_Button_Click("提交")
         formPage.MbForm_ProcessHandle_Pop_QuerenButton_Click()  # 点击流程办理弹框确认按钮
         self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第一个人工任务办理失败")
-        time.sleep(5)
+        time.sleep(3)
         self.driver.quit()
         # 进行第二个人工任务处理
         self.mbLogin("wujianlun@auto","do1qiqiao")

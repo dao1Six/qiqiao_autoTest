@@ -28,7 +28,7 @@ class MbDataFilterAppTest_002(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/mruntime', account, password)
-        time.sleep(5)
+        time.sleep(3)
 
 
     def setUp(self):
@@ -51,7 +51,7 @@ class MbDataFilterAppTest_002(unittest.TestCase):
         # self.assertEqual(mbBusinessPage.MbListComponent_Get_RecoreTextContents(1),result2)
         print(mbBusinessPage.MbListComponent_Get_RecoreTextContents(1))
         mbBusinessPage.MbListComponent_Recore_Click(2)
-        time.sleep(5)
+        time.sleep(3)
         self.driver.back()
         print(mbBusinessPage.MbListComponent_Get_RecoreStatusValule(1))
         print(mbBusinessPage.MbListComponent_Get_RecoreTextContents(1))

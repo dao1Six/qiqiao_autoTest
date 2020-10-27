@@ -21,7 +21,7 @@ class MbJiXiaoAppTest_005(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/mruntime',account,password)
-        time.sleep(5)
+        time.sleep(3)
 
     def test_01( self ):
         '''【补丁】移动端运行平台--多表关联组件--中间表-单选字段配置仅展示--值传递过来但是仍提示不能为空'''

@@ -96,7 +96,7 @@ class CapitalAppTest_002(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
-        time.sleep(5)
+        time.sleep(3)
 
     # def tearDown(self):
     #     '''关闭浏览器'''
@@ -112,7 +112,7 @@ class CapitalAppTest_002(unittest.TestCase):
         portalPage = PortalPage(self.driver)
         #打开“发起流程列表”
         portalPage.PortalPage_Click_HeaderMenu('流程')
-        time.sleep(5)
+        time.sleep(3)
         processPage = ProcessPage(self.driver)
         processPage.ProcessPage_click_process_icon("领用")
         formPage = FormPage(self.driver)
@@ -121,7 +121,7 @@ class CapitalAppTest_002(unittest.TestCase):
         formPage.Form_Button_Click("提交")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()   #点击流程办理弹框确认按钮
         self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第一个人工任务办理失败")
-        time.sleep(5)
+        time.sleep(3)
         #进行第二个人工任务处理
         portalPage.PortalPage_Click_HeaderMenu('流程')
         processPage.ProcessPage_click_process_menu("我的待办")

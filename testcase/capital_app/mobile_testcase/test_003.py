@@ -102,7 +102,7 @@ class MbCapitalAppTest_003(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/mruntime', account, password)
-        time.sleep(5)
+        time.sleep(3)
 
     def pcLogin(self,account,password):
         '''登录pc端'''
@@ -110,7 +110,7 @@ class MbCapitalAppTest_003(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', account, password)
-        time.sleep(5)
+        time.sleep(3)
 
     def test_01( self ):
         '''【补丁】--移动端资产管理应用，领用流程在第二个节点添加领用明细后点击暂存，再删除原来的领用明细添加新的领用明细后点击暂存，领用明细显示为空'''
@@ -127,7 +127,7 @@ class MbCapitalAppTest_003(unittest.TestCase):
         formPage.MbForm_Button_Click("提交")
         formPage.MbForm_ProcessHandle_Pop_QuerenButton_Click()  # 点击流程办理弹框确认按钮
         self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第一个人工任务办理失败")
-        time.sleep(5)
+        time.sleep(3)
         self.driver.quit()
         # 进行第二个人工任务处理
         self.mbLogin("wujianlun@auto","do1qiqiao")
@@ -145,12 +145,12 @@ class MbCapitalAppTest_003(unittest.TestCase):
         formPage.MbForm_Button_Click("暂存")
         # print("点击暂存按钮")
         # self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="暂存失败")
-        time.sleep(5)
+        time.sleep(3)
         #删除子表数据
         formPage.MbMultiForm_DeletTdValue("领用明细",2)
-        time.sleep(5)
+        time.sleep(3)
         formPage.MbMultiForm_DeletTdValue("领用明细",1)
-        time.sleep(5)
+        time.sleep(3)
         formPage.MbMultiForm_rightAddButton_Click("领用明细")
         formPage.MbMultiForm_BathManagePage_Record_Tick("领用明细",[1,2])
         formPage.MbMultiForm_BathManagePage_Button_Cick("领用明细","确定选择")

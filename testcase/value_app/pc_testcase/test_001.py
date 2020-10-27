@@ -20,7 +20,7 @@ class ValueAppTest_001(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', "wujianlun@auto", "do1qiqiao")
-        time.sleep(5)
+        time.sleep(3)
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -36,10 +36,10 @@ class ValueAppTest_001(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
         businessPage.ListComponent_containerViewOption_Click(" 全员价值观明细")
-        time.sleep(5)
+        time.sleep(3)
         businessPage.ListComponent_QueryItem_Sendkeys("季度",option,QueryItemType="option")
         businessPage.ListComponent_Click_SerachBtn()
-        time.sleep(5)
+        time.sleep(3)
         self.assertEqual(result,businessPage.ListComponent_GetRecordTotal())
 
 
@@ -50,11 +50,11 @@ class ValueAppTest_001(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
         businessPage.ListComponent_containerViewOption_Click(" 全员价值观明细")
-        time.sleep(5)
+        time.sleep(3)
         businessPage.ListComponent_Click_ExpandBtn()
         businessPage.ListComponent_QueryItem_Sendkeys("创建人",option,QueryItemType="user")
         businessPage.ListComponent_Click_SerachBtn()
-        time.sleep(5)
+        time.sleep(3)
         self.assertEqual(result,businessPage.ListComponent_GetRecordTotal())
 
     @data(("王栋一",2),("吴健伦",0))
@@ -64,13 +64,13 @@ class ValueAppTest_001(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
         businessPage.ListComponent_containerViewOption_Click(" 全员价值观明细")
-        time.sleep(5)
+        time.sleep(3)
         #点击展开按钮
         businessPage.ListComponent_Click_ExpandBtn()
         time.sleep(2)
         businessPage.ListComponent_QueryItem_Sendkeys("人员",option,QueryItemType="user")
         businessPage.ListComponent_Click_SerachBtn()
-        time.sleep(5)
+        time.sleep(3)
         self.assertEqual(result,businessPage.ListComponent_GetRecordTotal())
 
     @data(("2020-07-01","2020-07-10",4),("2020-07-05","2020-07-10",0))
@@ -80,11 +80,11 @@ class ValueAppTest_001(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
         businessPage.ListComponent_containerViewOption_Click(" 全员价值观明细")
-        time.sleep(5)
+        time.sleep(3)
         businessPage.ListComponent_Click_ExpandBtn()
         businessPage.ListComponent_QueryItem_Sendkeys("修改时间",option1,option2,QueryItemType="date")
         businessPage.ListComponent_Click_SerachBtn()
-        time.sleep(5)
+        time.sleep(3)
         self.assertEqual(result,businessPage.ListComponent_GetRecordTotal())
 
 
@@ -95,11 +95,11 @@ class ValueAppTest_001(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
         businessPage.ListComponent_containerViewOption_Click(" 全员价值观明细")
-        time.sleep(5)
+        time.sleep(3)
         businessPage.ListComponent_Click_ExpandBtn()
         businessPage.ListComponent_QueryItem_Sendkeys("年度",option1,QueryItemType="datetime")
         businessPage.ListComponent_Click_SerachBtn()
-        time.sleep(5)
+        time.sleep(3)
         self.assertEqual(result,businessPage.ListComponent_GetRecordTotal())
 
     @data((["客户第一：必须给客户带来惊喜","持续创新：技术驱动，敏捷迭代","追求卓越：目标高远，挑战不可能"],4),
@@ -111,10 +111,10 @@ class ValueAppTest_001(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
         businessPage.ListComponent_containerViewOption_Click(" 全员价值观明细")
-        time.sleep(5)
+        time.sleep(3)
         businessPage.ListComponent_QueryItem_Sendkeys("价值观",option,QueryItemType="option")
         businessPage.ListComponent_Click_SerachBtn()
-        time.sleep(5)
+        time.sleep(3)
         self.assertEqual(result,businessPage.ListComponent_GetRecordTotal())
 
     @data(("创新技术中心->产品研发二部->产品规划组",2),("财务管理中心",0))
@@ -124,12 +124,12 @@ class ValueAppTest_001(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('全员价值观')
         businessPage.ListComponent_containerViewOption_Click(" 全员价值观明细")
-        time.sleep(5)
+        time.sleep(3)
         businessPage.ListComponent_Click_ExpandBtn()
         time.sleep(2)
         businessPage.ListComponent_QueryItem_Sendkeys("部门",option,QueryItemType="user")
         businessPage.ListComponent_Click_SerachBtn()
-        time.sleep(5)
+        time.sleep(3)
         self.assertEqual(result,businessPage.ListComponent_GetRecordTotal())
 
     @data(("人员",1,"王栋一",0,"李嘉诚"),
@@ -139,7 +139,7 @@ class ValueAppTest_001(unittest.TestCase):
         '''道一云价值观 全员价值观表 人员列排序'''
         businessPage = BusinessPage(self.driver)
         businessPage.ListComponent_containerViewOption_Click("  全员价值观")
-        time.sleep(5)
+        time.sleep(3)
         businessPage.ListComponent_ColHeader_sort(ColName,sort1)
         time.sleep(3)
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,7),result1)
@@ -152,7 +152,7 @@ class ValueAppTest_001(unittest.TestCase):
         '''道一云价值观 全员价值观表 季度列筛选'''
         businessPage = BusinessPage(self.driver)
         businessPage.ListComponent_containerViewOption_Click("  全员价值观")
-        time.sleep(5)
+        time.sleep(3)
         #先取消全选
         businessPage.ListComponent_ColHeader_search("季度",[1])
         #选择第5，6项

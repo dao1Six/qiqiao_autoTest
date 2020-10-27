@@ -55,7 +55,7 @@ class QuitAppTest_001(unittest.TestCase):
         mbBusinessPage.MbListComponent_shaixuanIcoon_Click()
         mbBusinessPage.MbListComponent_QueryItem_Sendkeys("人员单选","刘言",QueryItemType='user')
         mbBusinessPage.MbListComponent_FilterButton_Click("确定")
-        time.sleep(5)
+        time.sleep(3)
         self.assertEqual(mbBusinessPage.MbListComponent_Get_RecoresNumber(),2)
 
 
@@ -70,7 +70,7 @@ class QuitAppTest_001(unittest.TestCase):
         mbBusinessPage.MbListComponent_shaixuanIcoon_Click()
         mbBusinessPage.MbListComponent_QueryItem_Sendkeys("人员多选","刘言",QueryItemType='user')
         mbBusinessPage.MbListComponent_FilterButton_Click("确定")
-        time.sleep(5)
+        time.sleep(3)
         self.assertEqual(mbBusinessPage.MbListComponent_Get_RecoresNumber(),2)
 
 

@@ -105,7 +105,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/mruntime', account, password)
-        time.sleep(5)
+        time.sleep(3)
 
     def pcLogin(self,account,password):
         '''登录pc端'''
@@ -113,7 +113,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', account, password)
-        time.sleep(5)
+        time.sleep(3)
 
     def test_01( self ):
         '''移动端资产管理应用领用流程'''
@@ -128,7 +128,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         formPage.MbForm_Button_Click("提交")
         formPage.MbForm_ProcessHandle_Pop_QuerenButton_Click()   #点击流程办理弹框确认按钮
         self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第一个人工任务办理失败")
-        time.sleep(5)
+        time.sleep(3)
         self.driver.back()
         #进行第二个人工任务处理
         todoPage.MbTodoPage_ProcessRecord_Click(1)
@@ -167,7 +167,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         formPage.MbForm_Button_Click("提交")
         formPage.MbForm_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第一个人工任务办理失败")
-        time.sleep(5)
+        time.sleep(3)
         #进行第二个人工任务处理
         self.driver.back()
         todoPage.MbTodoPage_ProcessRecord_Click(1)
@@ -226,7 +226,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         formPage.MbForm_Button_Click("提交")
         formPage.MbForm_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第一个人工任务办理失败")
-        time.sleep(5)
+        time.sleep(3)
         #进行第二个人工任务处理
         self.driver.back()
         todoPage.MbTodoPage_ProcessRecord_Click(1)
@@ -270,7 +270,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         formPage.MbForm_Button_Click("提交")
         formPage.MbForm_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第一个人工任务办理失败")
-        time.sleep(5)
+        time.sleep(3)
         #进行第二个人工任务处理
         self.driver.back()
         todoPage.MbTodoPage_ProcessRecord_Click(1)
@@ -306,7 +306,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         formPage.MbForm_Button_Click("提交")
         formPage.MbForm_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第一个人工任务办理失败")
-        time.sleep(5)
+        time.sleep(3)
         #进行第二个人工任务处理
         self.driver.back()
         todoPage.MbTodoPage_ProcessRecord_Click(1)
