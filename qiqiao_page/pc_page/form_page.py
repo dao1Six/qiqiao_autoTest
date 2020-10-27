@@ -51,7 +51,7 @@ class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUploa
     RejectNode_Input_loc = "//input[@placeholder='请选择节点']"
     RejectNode_loc = "//li[@class='el-select-dropdown__item']/span[text()='%s']"
 
-    workflow_info = "//div[@class='workflow_info']//span"
+    workflow_info = "//div[@class='workflow-info_row']//span"
 
     Popup_close_icon = "//div[@data-mark='子表弹层_%s']//i[@class='el-icon-close close']"
 

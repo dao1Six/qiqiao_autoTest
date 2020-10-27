@@ -23,7 +23,7 @@ class MbListComponent(SeleniumPage):
     add_btn = "//div[@class='add_btn']"
     dyCardList_item = "//div[starts-with(@class,'dyCardList_item')]"
     lastPage_div = "//div[@class='myScroll_loadText' and contains(text(),'已经是最后一页了')]"
-    dyCardList_status =  "//div[@class='dyCardList_item']//div[@class='dyCardList_status']"
+    dyCardList_status =  "//div[starts-with(@class,'dyCardList_item')]//div[@class='dyCardList_status']"
     dyCardList_text_main = "//div[@class='dyCardList_item']//h2[@class='dyCardList_text_main']"
     dyCardList_text_content = "//div[@class='myScroll_container']/div[@index='%r']//p"
     shaixuanIcoon = "//i[@class='icon iconfont icon-huaban16']"
@@ -34,7 +34,7 @@ class MbListComponent(SeleniumPage):
 
     fieldSelect_Item = "//div[contains(@class,'searchBar_leftDrawer_item') and contains(text(),'%s')]"
 
-    item_p_loc = "//div[@class='cube-swipe']//div[@class='cube-swipe-item'][%s]//p[%n]"
+    item_p_loc = "//div[starts-with(@class,'dyCardList_item')][%s]//p[%n]"
 
     userSelect_Filter_addIcon_loc = "//h3[text()='%s']/following-sibling::ul/li[@class='icon_add_new']"
 

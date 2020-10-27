@@ -78,7 +78,7 @@ class QuitAppTest_001(unittest.TestCase):
         '''检查离职人员在表单详情中显示是否正确'''
         self.mbLogin("wujianlun@A1","qiqiao123")
         time.sleep(1)
-        self.driver.refresh()
+        # self.driver.refresh()
         homepage = MbHomePage(self.driver)
         homepage.HomePage_BottomNav_Click('应用')
         applicationListPage = MbApplicationListPage(self.driver)
@@ -95,7 +95,7 @@ class QuitAppTest_001(unittest.TestCase):
         '''【补丁】移动端运行平台，组织选择器，标签下绑定了部门时，运行平台标签下会显示部门名称'''
         self.mbLogin("wujianlun@A1","qiqiao123")
         time.sleep(1)
-        self.driver.refresh()
+        # self.driver.refresh()
         homepage = MbHomePage(self.driver)
         homepage.HomePage_BottomNav_Click('应用')
         applicationListPage = MbApplicationListPage(self.driver)
