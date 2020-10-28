@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
     ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
     # 报告目录
-    reportpath = ProjectRootPath + "\\report"
+    reportpath = ProjectRootPath + "\\report\\qiqiao"
     if not os.path.exists(reportpath): os.mkdir(reportpath)
 
 
@@ -45,7 +45,7 @@ if __name__ == '__main__':
     # result.report(filename='result', description='测试deafult报告', report_dir=reportpath, theme='theme_default')
 
     filename = reportpath+"\\result.html"
-    function.send_mail(filename,'七巧测试报告')
+    function.send_HtmlFileEmail(filename,'七巧测试报告')
 
 
 

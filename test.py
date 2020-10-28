@@ -1,12 +1,16 @@
-import datetime
+from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED, FIRST_COMPLETED
 import time
 
-time1 = datetime.datetime.now()
-print(time1)
-start_time = datetime.datetime.strftime(datetime.datetime.now(),'%Y-%m-%d %H:%M:%S')
-print('开始时间：',start_time)
-time.sleep(2)
-time2 = datetime.datetime.now()
-end_time = datetime.datetime.strftime(datetime.datetime.now(),'%Y-%m-%d %H:%M:%S')
-print('结束时间：',end_time)
-print(time2-time1)
+# 参数times用来模拟网络请求的时间
+def download_video(index,a):
+    time.sleep(2)
+    print("download video {} finished at {}".format(index,time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime())))
+    return index
+
+executor = ThreadPoolExecutor(max_workers=2)
+urls = [(1,3),(2,3),(3,5),(4,6)]
+all_task = [executor.submit(download_video,(url)) for url in urls]
+
+wait(all_task,return_when=ALL_COMPLETED)
+
+print("main ")

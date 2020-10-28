@@ -19,7 +19,7 @@ from util.fileUtil import FileUtil
 
 ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
 # 报告目录
-reportpath = ProjectRootPath + "\\report"
+reportpath = ProjectRootPath + "\\report\\qiqiao"
 if not os.path.exists(reportpath): os.mkdir(reportpath)
 testcase_path = ProjectRootPath + "\\testcase"  # 用例库目录
 
@@ -49,7 +49,7 @@ def run_case( reportpathName,case_path ):
     runner.run(add_case(case_path))
     fp.close()
     filename = reportpath + "\\%s.html" % reportpathName
-    function.send_mail(filename,reportpathName + "应用测试报告")
+    function.send_HtmlFileEmail(filename,reportpathName + "应用测试报告")
 
 
 def runThread( Threads ):
@@ -73,7 +73,7 @@ def runThread( Threads ):
 if __name__ == "__main__":
     time1 = datetime.datetime.now()
     start_time = datetime.datetime.strftime(datetime.datetime.now(),'%Y-%m-%d %H:%M:%S')
-    runThread(5)
+    runThread(6)
     time2 = datetime.datetime.now()
     end_time = datetime.datetime.strftime(datetime.datetime.now(),'%Y-%m-%d %H:%M:%S')
     print('开始时间：' + start_time + '    结束时间：' + end_time + "   总耗时：" + str(time2 - time1))

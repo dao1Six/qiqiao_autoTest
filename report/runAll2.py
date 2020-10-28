@@ -15,7 +15,7 @@ ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
 # 报告目录
 reportpath = ProjectRootPath + "\\report"
 if not os.path.exists(reportpath): os.mkdir(reportpath)
-testcase_path = ProjectRootPath + "\\testcase"
+testcase_path = ProjectRootPath + "\\testcase\\qiqiao"
 
 # 用例目录
 def add_case_path():
@@ -43,7 +43,7 @@ def run_case(reportpathName,case_path):
     runner.run(add_case(case_path))
     fp.close()
     filename = reportpath + "\\%s.html" %reportpathName
-    function.send_mail(filename,reportpathName+"应用测试报告")
+    function.send_HtmlFileEmail(filename,reportpathName+"应用测试报告")
 
 
 
