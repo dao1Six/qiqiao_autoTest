@@ -77,7 +77,6 @@ if __name__ == "__main__":
     runThread(6)
     time2 = datetime.datetime.now()
     end_time = datetime.datetime.strftime(datetime.datetime.now(),'%Y-%m-%d %H:%M:%S')
-    print()
     info = SummaryReport().summaryReportInfo()
     function.send_TextEmail("七巧测试汇总报告",'开始时间：' + start_time + '    结束时间：' + end_time + "   总耗时：" + str(time2 - time1)+"\n"+info)
 
