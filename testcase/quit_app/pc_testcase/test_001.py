@@ -25,7 +25,7 @@ class QuitAppTest_001(unittest.TestCase):
         '''离职人员登录检查'''
         self.pcLogin("liuyan@A1", "qiqiao123")
         loginpage = LoginPage(self.driver)
-        self.assertEqual(loginpage.LoginPage_Get_ImMsg(),"账号或密码验证失败")
+        self.assertEqual(loginpage.LoginPage_Get_ImMsg(),"登录失败,登录服务请求失败")
 
     def test_02( self ):
         '''检查流程处理人为离职人员时，是否仍然显示'''

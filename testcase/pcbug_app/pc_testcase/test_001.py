@@ -4,6 +4,7 @@ import time
 import unittest
 from functools import wraps
 
+from Enum.fileTypeEnum import FileTypeEnum
 from public.HTMLTestRunner_cn import _TestResult
 from public.driver import Driver
 from qiqiao_page.pc_page.applicationList_page import ApplicationListPage
@@ -13,6 +14,7 @@ from qiqiao_page.pc_page.login_page import LoginPage
 from qiqiao_page.pc_page.popup_form_page import PopupFormPage
 from qiqiao_page.pc_page.form_page import FormPage
 from qiqiao_page.pc_page.portal_page import PortalPage
+from qiqiao_page.pc_page.process_page import ProcessPage
 
 
 class PcBugAppTest_001(unittest.TestCase):
@@ -144,6 +146,21 @@ class PcBugAppTest_001(unittest.TestCase):
         '''pc运行平台浏览器标题'''
         title_page = self.driver.title
         self.assertEqual("接口自动化七巧广泛广泛",title_page,msg="浏览器标题不正确")
+
+
+    def test_07( self ):
+        '''流程管理打开数据不能滚动'''
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("流程")
+        processPage = ProcessPage(self.driver)
+        processPage.ProcessPage_click_process_menu("流程管理")
+        processPage.ProcessPage_searchItem_sendkeys("流程名称","事业一部订单发起",FileType=FileTypeEnum.Text)
+        processPage.ProcessPage_searchButton_Click("搜索")
+        time.sleep(3)
+        processPage.ProcessPage_click_process_record(1)
+        formPage = FormPage(self.driver)
+        formPage.Form_scroll(10000)
+        formPage.Form_field_isVisibility("订单状态")
 
 
 

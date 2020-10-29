@@ -513,7 +513,7 @@ class PcBugAppTest_002(unittest.TestCase):
 
 
     def test_19( self ):
-        '''【补丁】——外键选择组件配置关联筛选字段为外键选择时，填写数据之后，关联选项重复'''
+        '''【外键弹框形式】【补丁】——外键选择组件配置关联筛选字段为外键选择时，填写数据之后，关联选项重复'''
         self.pcLogin("wujianlun@auto","do1qiqiao")
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
@@ -563,3 +563,17 @@ class PcBugAppTest_002(unittest.TestCase):
         foreignList = formPage.ForeignSelection_get_OptionValue("砂浆型号")
         self.assertTrue(formPage.ForeignSelection_SelectOption_isExist("A0001"),msg="外键联动筛选选项值筛选不正确")
         self.assertEqual(len(foreignList),1,msg="外键联动筛选选项数目显示不对")
+
+
+    # def test_21( self ):
+    #     '''【正式】PC运行平台—多表关联组件中间表关联表外键字段设置联动筛选后，筛选无效'''
+    #     self.pcLogin("wujianlun@auto","do1qiqiao")
+    #     portalPage = PortalPage(self.driver)
+    #     portalPage.PortalPage_Click_HeaderMenu("应用")
+    #     applicationListPage = ApplicationListPage(self.driver)
+    #     applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','美安居建材云办公系统')
+    #     businessPage = BusinessPage(self.driver)
+    #     businessPage.ListComponent_Click_ListHeader_Button("添加")
+    #     formPage = FormPage(self.driver)
+    #     formPage.MultiForm_AddButton_Click("任务单明细")
+    #     formPage.MultiForm_List_click_Td("任务单明细",1,8)

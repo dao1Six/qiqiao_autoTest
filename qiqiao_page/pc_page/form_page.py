@@ -57,6 +57,11 @@ class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUploa
 
     field_label_loc = "//div[@data-mark='%s']//label"
 
+    def Form_scroll( self,number):
+        ''''''
+        js = 'var action=document.documentElement.scrollTop={}'.format(str(number))
+        self.driver.execute_script(js)  # 执行脚本
+
 
     def Form_field_isVisibility( self,fieldName ):
         '''表单字段是否可见'''

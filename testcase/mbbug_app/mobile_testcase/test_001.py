@@ -245,32 +245,13 @@ class MbBugAppTest_001(unittest.TestCase):
 
 
     def test_10( self ):
-        '''外键联动筛选'''
+        '''【正式环境】在待办搜索数据无效（输入框无法输入文字）'''
         self.mbLogin("wujianlun@auto","do1qiqiao")
         homepage = MbHomePage(self.driver)
-        homepage.HomePage_BottomNav_Click('应用')
-        applicationListPage = MbApplicationListPage(self.driver)
-        applicationListPage.MbApplicationListPage_Menu_Click('美安居建材云办公系统','品种型号配比登记表')
-        listPage = MbListComponent(self.driver)
-        listPage.MbListComponent_AddButton_Click()
-        time.sleep(1)
+        homepage.HomePage_BottomNav_Click('待办')
+        time.sleep(2)
         self.driver.refresh()
-        time.sleep(1)
-        formPage = MbFormPage(self.driver)
-        formPage.MbForeignSelection_Sendkeys("砂浆品种","砂浆测试1")
-        formPage.MbSelection_SingleBox_Senkeys("是否防冻","防冻")
-        time.sleep(1)
-        formPage.MbForeignSelection_SelectionBox_Click("砂浆型号")
-        foreignList = formPage.MbForeignSelection_get_OptionValue("砂浆型号")
-        self.assertEqual(len(foreignList),0,msg="外键联动筛选选项数目显示不对")
-        self.driver.back()
-        time.sleep(1)
-        formPage.MbSelection_SingleBox_Senkeys("是否防冻","非防冻")
-        time.sleep(1)
-        formPage.MbForeignSelection_SelectionBox_Click("砂浆型号")
-        foreignList = formPage.MbForeignSelection_get_OptionValue("砂浆型号")
-        self.assertTrue(formPage.MbForeignSelection_SelectOption_isExist("A0001"),msg="外键联动筛选选项值筛选不正确")
-        self.assertEqual(len(foreignList),1,msg="外键联动筛选选项数目显示不对")
-
-
-
+        todoPage = MbTodoPage(self.driver)
+        todoPage.MbTodoPage_searchInput_sendkeys("王浩")
+        time.sleep(2)
+        self.assertIn("王浩",todoPage.MbTodoPage_Get_RecoreTitleValule(1))

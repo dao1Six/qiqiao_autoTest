@@ -18,13 +18,16 @@ class MbTodoPage(MbPublicPage,SeleniumPage):
 
     record = "//div[@class='item_inner']" #记录
 
+    search_input_loc = "//div[@class='search_input']//input"  #搜索框
+
+    item_name_loc = "//ul//div[@class='item_row']//h2[@class='item_name']"  #记录标题
+
     def MbTodoPage_BottomNav_Click( self ,buttonName):
         '''首页底部导航菜单点击'''
         self.clickElemByXpath_visibility(self.bottom_nav_loc.replace('%s',buttonName))
 
     def MbTodoPage_Faqiliucheng_Click( self ):
         '''待办页面发起流程'''
-
         #点击发起流程按钮
         self.clickElemByXpath_visibility(self.add_btn_loc)
         #点击内部发起流程按钮
@@ -46,3 +49,27 @@ class MbTodoPage(MbPublicPage,SeleniumPage):
     def MbTodoPage_ProcessRecord_Click( self,index ):
         '''打开流程记录'''
         self.clickElemByXpath_visibility(self.record,index=index-1)
+
+    def MbTodoPage_searchInput_sendkeys( self,key ):
+        '''搜索框输入值'''
+        self.sendkeysElemByXpath_visibility(self.search_input_loc,key=key)
+
+    def MbTodoPage_Get_RecoreTitleValule( self,index ):
+        '''返回当前列表记录标题值'''
+        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.item_name_loc,index=index-1)
+        if (elem!=None):
+            return elem.text
+        else:
+            return None
+
+
+    def MbTodoPage_Get_RecoreTextContents( self,r ):
+        '''返回当前列表记录标题值'''
+        list = []
+        elems = self.find_elemsByXPATH_visibility(self.dyCardList_text_content.replace("%r",str(r-1)))
+        if (elems!=None):
+            for elem in elems:
+                list.append(elem.text)
+            return list
+        else:
+            return None
