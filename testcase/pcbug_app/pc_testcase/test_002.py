@@ -490,7 +490,7 @@ class PcBugAppTest_002(unittest.TestCase):
 
 
     def test_18( self ):
-        '''【补丁】——外键选择组件配置关联筛选字段为外键选择时，填写数据之后，关联选项重复'''
+        '''【外键弹框形式】【补丁】——外键选择组件配置关联筛选字段为外键选择时，填写数据之后，关联选项重复'''
         self.pcLogin("wujianlun@auto","do1qiqiao")
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
@@ -513,7 +513,7 @@ class PcBugAppTest_002(unittest.TestCase):
 
 
     def test_19( self ):
-        '''【外键弹框形式】【补丁】——外键选择组件配置关联筛选字段为外键选择时，填写数据之后，关联选项重复'''
+        '''【补丁】——外键选择组件配置关联筛选字段为外键选择时，填写数据之后，关联选项重复'''
         self.pcLogin("wujianlun@auto","do1qiqiao")
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
@@ -549,8 +549,8 @@ class PcBugAppTest_002(unittest.TestCase):
         formPage.ForeignSelection_SelectionBox_Click("砂浆品种")
         formPage.ForeignSelection_SearchaInputSendkeys_InDialog("砂浆测试1")
         time.sleep(2)
-        formPage.ForeignSelection_fanye_InDialog(ButtonEnum.DOWN.value)
-        time.sleep(1)
+        # formPage.ForeignSelection_fanye_InDialog(ButtonEnum.DOWN.value)
+        # time.sleep(1)
         formPage.ForeignSelection_ClickOption_InDialog("砂浆测试1")
         formPage.Selection_SingleBox_Sendkeys("是否防冻","防冻")
         time.sleep(1)

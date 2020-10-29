@@ -24,7 +24,7 @@ class PortalPage(PublicPage):
         '''点击工作台头部菜单
         menu：菜单名
         '''
-        self.clickElemByXpath_visibility(self.PortalPage_headerMenu_loc.replace('%menu',menu))
+        self.clickElemByXpath_clickable(self.PortalPage_headerMenu_loc.replace('%menu',menu))
 
     def PortalPage_qiqiao_logout( self ):
         '''退出登录'''

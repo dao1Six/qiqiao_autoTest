@@ -181,6 +181,22 @@ class SeleniumPage (object):
             elem = locator
             self.clickElem(elem)
 
+    def clickElemByXpath_clickable(self, locator):
+        """点击单个可见元素Xpath"""
+        #传元素地址
+        if(type(locator)==str):
+            elem = self.find_elemByXPATH_clickable(locator)
+            if(elem==None):
+                raise TypeError("elem不能为None")
+            else:
+                self.clickElem(elem)
+        #传元素
+        elif(type(locator)==selenium.webdriver.remote.webelement.WebElement):
+            elem = locator
+            self.clickElem(elem)
+
+
+
 
     def clickElemByXpath_presence(self, locator, index=0):
         """点击单个可见元素Xpath"""
@@ -288,6 +304,15 @@ class SeleniumPage (object):
         try:
             return WebDriverWait(self.driver, timeout).until(
                 EC.visibility_of_any_elements_located((By.XPATH, locator)))
+        except:
+            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
+            return None
+
+    def find_elemByXPATH_clickable(self, locator, timeout=5):
+        '''判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None'''
+        try:
+            return WebDriverWait(self.driver, timeout).until(
+                EC.element_to_be_clickable((By.XPATH, locator)))
         except:
             print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
             return None
