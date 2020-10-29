@@ -44,6 +44,7 @@ def add_case( case_path,rule="test_00*.py" ):
 
 
 def run_case( reportpathName,case_path ):
+    print(threading.currentThread().name+"正在测试"+reportpathName)
     fp = open(reportpath + "\\%s.html" % reportpathName,"wb")
     runner = HTMLTestRunner(title="七巧测试报告",description="1.4.5版本灰度环境测试",stream=fp,verbosity=2,retry=1,save_last_try=True)
     # 执行测试用例
