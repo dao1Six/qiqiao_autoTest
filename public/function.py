@@ -57,6 +57,8 @@ def send_TextEmail(subject,text_info ):
     msg_root['subject'] = subject
     # 构造超文本  邮件正文
     content = MIMEText(text_info,'plain', 'utf-8')
+    # content = MIMEText(text_info,'html','utf-8')
+    # content["Content-Disposition"] = 'attachment; filename="csdn.html"'
     msg_root.attach(content)
     try:
         sftp_obj = smtplib.SMTP('smtp.exmail.qq.com')

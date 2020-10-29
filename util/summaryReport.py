@@ -43,7 +43,7 @@ class SummaryReport(object):
             curApppassed = int(bs.find('a',attrs={"class": "passed detail_button"}).get_text()[3:-1])
             passed = passed+curApppassed
             if(curApperrored>0 or curAppfailed>0):
-                errorApp.append(fileName)
+                errorApp.append(fileName+":   "+filePath)
         passedPercent = str('{:.2%}'.format(passed/all))
         return ("本次覆盖: "+str(len(files))+"个应用。\n"
                                        "总条数为"+str(all)+"\n"
@@ -61,4 +61,15 @@ if __name__ == '__main__':
 
 
 
-
+#         html_info = """
+# <p>七巧测试汇总报告</p>
+# <p>本次覆盖: {}个应用。
+# 总条数为{}
+# 通过: {}条
+# 失败: {}条
+# 错误: {}条
+# 跳过: {}条
+# 通过率为: {}</p>
+# <p><a href="D:\pythonwork\wujianlunTeam\qiqiao_autoTest\report\qiqiao\capital_app.html">capital_app</a></p> <p><a href="D:\pythonwork\wujianlunTeam\qiqiao_autoTest\report\qiqiao\capital_app.html">capital_app</a></p>
+#            """.format(str(len(files)), str(all),str(passed),str(failed),str(errored),str(skiped),passedPercent)
+#         return html_info
