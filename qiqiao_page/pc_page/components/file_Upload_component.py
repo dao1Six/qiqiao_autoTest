@@ -1,3 +1,4 @@
+# coding=utf-8
 #文件组件
 from public.selenium_page import SeleniumPage
 
@@ -6,7 +7,16 @@ class FileUpload(SeleniumPage):
 
     FileUpload_input_loc = "//div[@data-mark='%s']//input"  # 文件上传组件输入框
     FileUpload_success_loc ="div[title='%s'] ul.file_content"  #文件上传成功标识
+    fileNameList_loc  = "//div[@data-mark='%s']//div[@class='fileList fileList_notReadonly']//div[@class='fileWrapper onlyFile']//div[@class='fileName']"
+    file_loc = "//div[@class='fileList fileList_notReadonly']//div[@class='fileWrapper onlyFile']//div[@class='fileName']"
 
+    def FileUpload_get_fileNameList( self,fieldName ):
+        '''获取已上传文件名列表'''
+        fileNameList = []
+        fileNames = self.find_elemsByXPATH_presence(self.fileNameList_loc.replace('%s',fieldName))
+        for fileName in fileNames:
+            fileNameList.append(self.getElemAttrValue(fileName,"title"))
+        return fileNameList
 
 
     def FileUpload_Sendkeys(self,fieldName,key,*args):

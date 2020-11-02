@@ -187,7 +187,7 @@ class MultiFormAssociation(SeleniumPage):
         for rowIndex in rowIndexList:
             str_rowIndex = str(rowIndex-1)
             self.clickElemByCSS_presence (self.MultiFormManagementDialog_selected_loc.replace ('%title', fileName).replace('%rowIndex',str_rowIndex),index=1)
-            time.sleep(1)
+            time.sleep(2)
 
 
     def MultiForm_RelationForm_GetTdValue( self,fileName,row,col,*args):

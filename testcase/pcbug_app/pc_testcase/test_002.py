@@ -25,6 +25,8 @@ class PcBugAppTest_002(unittest.TestCase):
     ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
     excelPath = ProjectRootPath+"\\file_data\\testcase_data\\测试数据.xlsx"
 
+    pptPath = ProjectRootPath+"\\file_data\\testcase_data\\大于60M.pptx"
+
     downloadPath = ProjectRootPath + '\\file_data\\downloadData'
 
     def isFileExists(self,path):
@@ -595,4 +597,20 @@ class PcBugAppTest_002(unittest.TestCase):
         formPage.click_ChildForm_Button("保存")
         formPage.ChildForm_Record_Edit("子表单",1)
         self.assertEqual("道一",formPage.ForeignSelection_GetValue_writable_InPopup("子表单","外键选择"),msg="【正式】——子表单，添加数据点击保存之后，再去编辑，在编辑页面已填写的外键字段数据丢失")
+
+
+    def test_23( self ):
+        '''【补丁】——文件上传，上传文件大小为60M时，上传失败'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','数据过滤测试应用')
+        businessPage = BusinessPage(self.driver)
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage = FormPage(self.driver)
+        formPage.Form_Switch_Tab("文件类组件")
+        formPage.FileUpload_Sendkeys("文件上传",self.pptPath)
+        time.sleep(15)
+        self.assertEqual("大于60M.pptx",formPage.FileUpload_get_fileNameList("文件上传"),msg="【补丁】——文件上传，上传文件大小为60M时，上传失败")
 
