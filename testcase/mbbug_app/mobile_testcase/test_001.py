@@ -255,3 +255,19 @@ class MbBugAppTest_001(unittest.TestCase):
         todoPage.MbTodoPage_searchInput_sendkeys("王浩")
         time.sleep(2)
         self.assertIn("王浩",todoPage.MbTodoPage_Get_RecoreTitleValule(1))
+
+
+    def test_11( self ):
+        '''移动端详情页面页面内操作按钮检查'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('数据过滤测试应用','列表数据过滤组')
+        listPage = MbListComponent(self.driver)
+        self.driver.refresh()
+        time.sleep(1)
+        listPage.MbListComponent_Recore_Click(1)
+        formPage = MbFormPage(self.driver)
+        self.assertEqual(['添加', '编辑', '删除'],formPage.MbForm_Get_buttonGroup(),msg="移动端详情页面页面内操作显示不正确")
+

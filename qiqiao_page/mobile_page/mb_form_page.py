@@ -37,6 +37,15 @@ class MbFormPage(MbPublicPage,MbNumber,MbText,MbTextarea,MbDate,MbTime,MbDateTim
     Popup_close_icon = "//i[@class='iconfont icon-paitawangguan drawer_close']"
 
     field_label_loc = "//div[contains(@class,'cube-form-item') and @title='%s']"
+    buttonGroup_loc = "//ul[@class='cube-toolbar-group']//li//button//span"
+
+    def MbForm_Get_buttonGroup( self ):
+        '''获取表单底部按钮'''
+        valus = []
+        spans = self.find_elemsByXPATH_visibility(self.buttonGroup_loc)
+        for span in spans:
+            valus.append(span.text)
+        return valus
 
     def MbForm_Button_Click( self,buttonName ):
         '''点击表单按钮'''

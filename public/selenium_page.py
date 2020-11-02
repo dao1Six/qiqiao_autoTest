@@ -87,6 +87,8 @@ class SeleniumPage (object):
     #鼠标悬浮
     def move_to_element( self,elem):
         '''鼠标悬浮'''
+        if(elem==None):
+            raise TypeError
         ActionChains(self.driver).move_to_element(elem).perform()
 
     def h5_scroll(self,elem,x,y):

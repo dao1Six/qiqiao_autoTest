@@ -40,6 +40,8 @@ class ChildForm_component(SeleniumPage):
 
     ChildForm_Td_shanchu_loc = "//div[@data-mark='%s']//div[@class='el-table__fixed']//tr[%row]//span[contains(@class,'shanchu')]"
 
+    ChildForm_Td_bianji_loc = "//div[@data-mark='%s']//div[@class='el-table__fixed']//tr[%row]//span[contains(@class,'iconbianji')]"
+
     order_number_div = "//div[@data-mark='%s']//div[@class='el-table__body-wrapper is-scrolling-none']//div[@class='order_number']"
 
     ChildFormList_DateDateIcon_loc = "//tr[@class='el-table__row row_%c_%n']//div[@data-mark='%f']//i[@class='el-input__icon el-icon-date']"
@@ -80,7 +82,19 @@ class ChildForm_component(SeleniumPage):
         # 点击删除按钮
         tdshanchu = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildForm_Td_shanchu_loc.replace('%s',fileName).replace('%row',str(row)))
         tdshanchu.click()
-        # self.clickElemByXpath_visibility(self.ChildForm_Td_shanchu_loc)
+
+
+    def ChildForm_Record_Edit(self,fileName,row,index1=0):
+        '''编辑子表记录'''
+        #悬浮到单元格
+        td = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+            self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(1)),index=index1)
+        self.move_to_element(td)
+        time.sleep(1)
+        # 点击编辑按钮
+        tdbianji = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildForm_Td_bianji_loc.replace('%s',fileName).replace('%row',str(row)))
+        tdbianji.click()
+
 
 
 

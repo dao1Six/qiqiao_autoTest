@@ -12,7 +12,7 @@ from qiqiao_page.pc_page.process_page import ProcessPage
 from util.dateTimeUtil import DateTimeUtil
 
 
-class ProcessAppTest_001(unittest.TestCase):
+class ProcessAppTest_002(unittest.TestCase):
     '''流程应用检查'''
 
 

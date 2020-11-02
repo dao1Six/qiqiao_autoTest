@@ -577,3 +577,22 @@ class PcBugAppTest_002(unittest.TestCase):
     #     formPage = FormPage(self.driver)
     #     formPage.MultiForm_AddButton_Click("任务单明细")
     #     formPage.MultiForm_List_click_Td("任务单明细",1,8)
+
+
+    def test_22( self ):
+        '''【正式】——子表单，添加数据点击保存之后，再去编辑，在编辑页面已填写的外键字段数据丢失'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','数据过滤测试应用')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click("子表")
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage = FormPage(self.driver)
+        formPage.ChildForm_AddButton_Click("子表单")
+        formPage.ForeignSelection_InPopup_Sendkeys("子表单","外键选择","道一")
+        formPage.click_ChildForm_Button("保存")
+        formPage.ChildForm_Record_Edit("子表单",1)
+        self.assertEqual("道一",formPage.ForeignSelection_GetValue_writable_InPopup("子表单","外键选择"),msg="【正式】——子表单，添加数据点击保存之后，再去编辑，在编辑页面已填写的外键字段数据丢失")
+
