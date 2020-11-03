@@ -9,7 +9,7 @@ from util.codeUtil import CodeUtil
 
 
 class ConsoleTest_003 (unittest.TestCase):
-    '''开发平台集成中心表单接口'''
+    """开发平台集成中心表单接口"""
 
     domainName = "https://qiqiao.do1.com.cn/cgi-bin"
     corpid ="ww6b6c5c4fa6f34b16"

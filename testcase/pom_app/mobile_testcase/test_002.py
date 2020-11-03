@@ -17,7 +17,7 @@ from util.dateTimeUtil import DateTimeUtil
 
 
 class MbPomAppTest_002(unittest.TestCase):
-    '''移动端生产运营应用填写工时测试'''
+    """移动端生产运营应用填写工时测试"""
 
 
     @classmethod
@@ -25,7 +25,7 @@ class MbPomAppTest_002(unittest.TestCase):
         self.pdate(self)
 
     def pdate(self):
-        '''初始化数据'''
+        """初始化数据"""
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
@@ -47,12 +47,12 @@ class MbPomAppTest_002(unittest.TestCase):
         self.driver.quit()
 
     def setUp(self):
-        '''登录'''
+        """登录"""
         self.mbLogin("wujianlun@auto","do1qiqiao")
 
 
     def mbLogin(self,account,password):
-        '''登录pc端'''
+        """登录pc端"""
         self.driver = Driver().phonedriver()
         self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)
@@ -60,7 +60,7 @@ class MbPomAppTest_002(unittest.TestCase):
         time.sleep(3)
 
     def pcLogin(self,account,password):
-        '''登录pc端'''
+        """登录pc端"""
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
@@ -69,7 +69,7 @@ class MbPomAppTest_002(unittest.TestCase):
 
 
     def test_01( self ):
-        '''移动端填写本周工时'''
+        """移动端填写本周工时"""
         homepage = MbHomePage(self.driver)
         homepage.HomePage_BottomNav_Click('应用')
         applicationListPage = MbApplicationListPage(self.driver)

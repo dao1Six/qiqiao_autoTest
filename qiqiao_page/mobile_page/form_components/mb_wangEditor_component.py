@@ -10,10 +10,10 @@ class MbWangEditor(SeleniumPage):
 
     #
     def WangEditor_Sendkeys(self,fieldName,key,*args):
-        '''给富文本组件输入值
+        """给富文本组件输入值
         fieldName：字段标题
         key：文本值
-        '''
+        """
         self.sendkeysElemByCSS_Presence(self.WangEditor_input_loc.replace('%s',fieldName),key)
 
 

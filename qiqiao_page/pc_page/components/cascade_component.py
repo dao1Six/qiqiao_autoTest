@@ -10,10 +10,10 @@ class Cascade(SeleniumPage):
 
     #输入级联组件的值
     def Cascade_Sendkeys(self,fieldName,optionsList,*args):
-        '''输入级联组件的值
+        """输入级联组件的值
         fieldName：字段标题
         optionsList：级联选项  list类型
-        '''
+        """
         self.clickElemByXpath_visibility(self.Cascade_selectionBox_loc.replace('%s', fieldName))
         for i in optionsList:
             self.clickElemByXpath_visibility(self.Cascade_selecOption_loc.replace('%s', i))

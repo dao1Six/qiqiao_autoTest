@@ -10,10 +10,10 @@ class MbPicUpload(SeleniumPage):
 
     #给图片组件输入值
     def PicUpload_Sendkeys(self,fieldName,picPath,*args):
-        '''给文件组件输入值
+        """给文件组件输入值
         fieldName：字段标题
         picPath：图片路径
-        '''
+        """
         locator = self.PicUpload_input_loc.replace('%s',fieldName)
         self.sendkeysElemByCSS_Presence(locator,picPath)
         #等待上传成功

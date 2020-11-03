@@ -12,10 +12,10 @@ class Time(SeleniumPage):
 
     #
     def Time_Sendkeys(self,fieldName,key,*args):
-        '''给时间组件输入值
+        """给时间组件输入值
         fieldName：字段标题
         key：时间值  格式：19:20
-        '''
+        """
         locator = self.Time_input_loc.replace('%s',fieldName)
         self.clickElemByXpath_visibility(locator)
         time.sleep(1)
@@ -25,6 +25,6 @@ class Time(SeleniumPage):
 
 
     def Time_GetValue_writable( self,fieldName ):
-        '''获取可写状态的时间组件的值'''
+        """获取可写状态的时间组件的值"""
         elem = self.find_elemsByXPATH_presence(self.Time_input_loc.replace('%s',fieldName))[0]
         return self.getElemAttrValue(elem,"value")

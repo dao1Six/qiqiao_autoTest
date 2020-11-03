@@ -13,10 +13,10 @@ from qiqiao_page.mobile_page.mobile_to_do_page import MbTodoPage
 
 
 class QuitAppTest_001(unittest.TestCase):
-    '''移动端离职人员测试应用检查'''
+    """移动端离职人员测试应用检查"""
 
     def mbLogin(self,account,password):
-        '''登录移动端'''
+        """登录移动端"""
         self.driver = Driver().phonedriver()
         self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)
@@ -24,7 +24,7 @@ class QuitAppTest_001(unittest.TestCase):
 
 
     def test_01( self ):
-        '''检查流程处理人为离职人员时，是否仍然显示'''
+        """检查流程处理人为离职人员时，是否仍然显示"""
         self.mbLogin("wujianlun@A1","qiqiao123")
         homePage = MbHomePage(self.driver)
         homePage.HomePage_BottomNav_Click("待办")
@@ -42,7 +42,7 @@ class QuitAppTest_001(unittest.TestCase):
 
 
     def test_02( self ):
-        '''检查离职人员列表人员单选查询是否正常'''
+        """检查离职人员列表人员单选查询是否正常"""
         self.mbLogin("wujianlun@A1","qiqiao123")
         homepage = MbHomePage(self.driver)
         homepage.HomePage_BottomNav_Click('应用')
@@ -60,7 +60,7 @@ class QuitAppTest_001(unittest.TestCase):
 
 
     def test_03( self ):
-        '''检查离职人员列表人员多选查询是否正常'''
+        """检查离职人员列表人员多选查询是否正常"""
         self.mbLogin("wujianlun@A1","qiqiao123")
         homepage = MbHomePage(self.driver)
         homepage.HomePage_BottomNav_Click('应用')
@@ -75,7 +75,7 @@ class QuitAppTest_001(unittest.TestCase):
 
 
     def test_04( self ):
-        '''检查离职人员在表单详情中显示是否正确'''
+        """检查离职人员在表单详情中显示是否正确"""
         self.mbLogin("wujianlun@A1","qiqiao123")
         time.sleep(1)
         # self.driver.refresh()
@@ -92,7 +92,7 @@ class QuitAppTest_001(unittest.TestCase):
 
 
     def test_05( self ):
-        '''【补丁】移动端运行平台，组织选择器，标签下绑定了部门时，运行平台标签下会显示部门名称'''
+        """【补丁】移动端运行平台，组织选择器，标签下绑定了部门时，运行平台标签下会显示部门名称"""
         self.mbLogin("wujianlun@A1","qiqiao123")
         time.sleep(1)
         # self.driver.refresh()

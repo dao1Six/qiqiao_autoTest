@@ -14,7 +14,7 @@ from qiqiao_page.pc_page.login_page import LoginPage
 
 
 class MbCapitalAppTest_001(unittest.TestCase):
-    '''移动端资产管理应用流程检查'''
+    """移动端资产管理应用流程检查"""
 
     @classmethod
     def setUpClass(self):
@@ -23,7 +23,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
 
 
     def dataPrepare(self):
-        '''初始化资产列表数据'''
+        """初始化资产列表数据"""
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
@@ -96,11 +96,11 @@ class MbCapitalAppTest_001(unittest.TestCase):
         self.driver.quit()
 
     def setUp(self):
-        '''登录'''
+        """登录"""
         self.mbLogin("wujianlun@auto","do1qiqiao")
 
     def mbLogin(self,account,password):
-        '''登录移动端'''
+        """登录移动端"""
         self.driver = Driver().phonedriver()
         self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)
@@ -108,7 +108,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         time.sleep(3)
 
     def pcLogin(self,account,password):
-        '''登录pc端'''
+        """登录pc端"""
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
@@ -116,7 +116,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         time.sleep(3)
 
     def test_01( self ):
-        '''移动端资产管理应用领用流程'''
+        """移动端资产管理应用领用流程"""
         homePage = MbHomePage(self.driver)
         homePage.HomePage_BottomNav_Click("待办")
         #发起流程
@@ -154,7 +154,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         print("检查完成，资产管理领用流程测试通过")
 
     def test_02( self ):
-        '''移动端资产管理应用维修流程'''
+        """移动端资产管理应用维修流程"""
         homePage = MbHomePage(self.driver)
         homePage.HomePage_BottomNav_Click("待办")
         # 发起流程
@@ -212,7 +212,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
 
 
     def test_03( self ):
-        '''移动端资产管理应用更换流程'''
+        """移动端资产管理应用更换流程"""
         homePage = MbHomePage(self.driver)
         homePage.HomePage_BottomNav_Click("待办")
         # 发起流程
@@ -254,7 +254,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
 
 
     def test_04( self ):
-        '''移动端资产管理应用归还流程'''
+        """移动端资产管理应用归还流程"""
         homePage = MbHomePage(self.driver)
         homePage.HomePage_BottomNav_Click("待办")
         # 发起流程
@@ -292,7 +292,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
     #
     #
     def test_05( self ):
-        '''资产管理应用报废流程'''
+        """资产管理应用报废流程"""
         homePage = MbHomePage(self.driver)
         homePage.HomePage_BottomNav_Click("待办")
         # 发起流程

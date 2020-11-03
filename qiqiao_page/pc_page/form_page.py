@@ -26,7 +26,7 @@ from qiqiao_page.pc_page.public_page import PublicPage
 
 
 class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Selection,User,Address,Cascade,ChildForm_component,ChildFormAssociation_component,ForeignSelection_component,MultiFormAssociation,Dept):
-    '''PC表单页面'''
+    """PC表单页面"""
 
     FormPage_submit_button_loc = "//button[@type='button']/span[contains(text(),'提交')]"  #表单提交按钮
 
@@ -58,13 +58,13 @@ class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUploa
     field_label_loc = "//div[@data-mark='%s']//label"
 
     def Form_scroll( self,number):
-        ''''''
+        """"""
         js = 'var action=document.documentElement.scrollTop={}'.format(str(number))
         self.driver.execute_script(js)  # 执行脚本
 
 
     def Form_field_isVisibility( self,fieldName ):
-        '''表单字段是否可见'''
+        """表单字段是否可见"""
         if(self.find_elemByXPATH_visibility(self.field_label_loc.replace("%s",fieldName),timeout=3)!=None):
             return True
         else:
@@ -72,11 +72,11 @@ class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUploa
 
 
     def Form_Close_Popup( self,childFormName ):
-        '''关闭子表弹层'''
+        """关闭子表弹层"""
         self.clickElemByXpath_visibility(self.Popup_close_icon.replace('%s',childFormName))
 
     def Form_ButtonInMore_Click( self,buttonName):
-        '''点击表单更多按钮里的按钮'''
+        """点击表单更多按钮里的按钮"""
         self.clickElemByXpath_visibility(self.MoreButton_loc)
         time.sleep(2)
         self.clickElemByXpath_visibility(self.bottonInMore_loc.replace('%s',buttonName))
@@ -86,7 +86,7 @@ class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUploa
         self.clickElemByXpath_visibility(self.FormPage_submit_button_loc)
 
     def Form_Button_Click( self,buttonName ):
-        '''点击表单按钮'''
+        """点击表单按钮"""
         self.clickElemByXpath_visibility(self.FormPage_button_loc.replace('%s',buttonName))
 
     def FormPage_button_isExistence( self ,buttonName):
@@ -101,7 +101,7 @@ class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUploa
     #流程办理弹框相关方法
 
     def Form_Select_ProcessManager( self,userNameList ):
-        '''选择流程办理人'''
+        """选择流程办理人"""
         # 点击办理人输入框
         self.clickElemByXpath_visibility(self.select_struct_box)
         for name in userNameList:
@@ -114,12 +114,12 @@ class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUploa
 
 
     def Form_ProcessHandle_Pop_QuerenButton_Click( self ):
-        '''点击流程办理弹框确认按钮'''
+        """点击流程办理弹框确认按钮"""
         self.clickElemByXpath_visibility(self.process_querenButton_loc)
 
 
     def Form_Get_ProcessManagers( self ):
-        '''获取流程弹框办理者'''
+        """获取流程弹框办理者"""
         UsersName = []
         UsersElem = self.find_elemsByXPATH_presence(self.ProcessManagers_loc)
         for userElem in UsersElem:
@@ -127,25 +127,25 @@ class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUploa
         return UsersName
 
     def Form_Switch_Tab( self ,name):
-        '''切换表单选项卡'''
+        """切换表单选项卡"""
         self.clickElemByXpath_visibility(self.tabName_loc.replace('%s',name))
 
     def Form_Select_Signature( self ,optin):
-        '''选择加签方式'''
+        """选择加签方式"""
         self.clickElemByXpath_visibility(self.Signature_option_loc.replace('%s',optin))
 
 
     def Form_Select_RejectNode( self ,RejectNodeName):
-        '''选择驳回节点'''
+        """选择驳回节点"""
         self.clickElemByXpath_visibility(self.RejectNode_Input_loc)
         time.sleep(1)
         self.clickElemByXpath_visibility(self.RejectNode_loc.replace('%s',RejectNodeName))
 
     def Form_Get_Sponsor( self):
-        '''获取表单流程发起人'''
+        """获取表单流程发起人"""
         return self.find_elemsByXPATH_visibility(self.workflow_info)[0].text
 
 
     def Form_Get_LaunchTime( self):
-        '''获取表单流程发起时间'''
+        """获取表单流程发起时间"""
         return self.find_elemsByXPATH_visibility(self.workflow_info)[1].text

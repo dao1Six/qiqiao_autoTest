@@ -18,7 +18,7 @@ from qiqiao_page.pc_page.process_page import ProcessPage
 
 
 class PcBugAppTest_001(unittest.TestCase):
-    '''PC端过往补丁应用1'''
+    """PC端过往补丁应用1"""
 
 
     def setUp(self):
@@ -32,7 +32,7 @@ class PcBugAppTest_001(unittest.TestCase):
 
 
     def test_01( self ):
-        '''【补丁】——分组组件中的必填字段，打开方式为弹窗时，不可见的情况下，进行了必填校验'''
+        """【补丁】——分组组件中的必填字段，打开方式为弹窗时，不可见的情况下，进行了必填校验"""
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -50,7 +50,7 @@ class PcBugAppTest_001(unittest.TestCase):
         self.assertEqual(businessPage.ListComponent_GetRecordTotal(),1)
 
     def test_02( self ):
-        '''【补丁】——PC端数字公式运算sum函数，计算不出数值(计算字段数量超过20个，就无效，20个以内有效)'''
+        """【补丁】——PC端数字公式运算sum函数，计算不出数值(计算字段数量超过20个，就无效，20个以内有效)"""
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -87,7 +87,7 @@ class PcBugAppTest_001(unittest.TestCase):
 
 
     def test_03( self ):
-        '''PC端多表关联中间表设置默认值无效'''
+        """PC端多表关联中间表设置默认值无效"""
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -103,7 +103,7 @@ class PcBugAppTest_001(unittest.TestCase):
 
 
     def test_04( self ):
-        '''PC端外键连带写入不生效'''
+        """PC端外键连带写入不生效"""
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -130,7 +130,7 @@ class PcBugAppTest_001(unittest.TestCase):
 
 
     def test_05( self ):
-        '''【补丁】--PC运行平台脚本执行异常:低代码获取的documentt没有form对象'''
+        """【补丁】--PC运行平台脚本执行异常:低代码获取的documentt没有form对象"""
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -143,14 +143,14 @@ class PcBugAppTest_001(unittest.TestCase):
 
 
     def test_06( self ):
-        '''pc运行平台浏览器标题'''
+        """pc运行平台浏览器标题"""
         time.sleep(2)
         title_page = self.driver.title
         self.assertEqual("接口自动化七巧广泛广泛",title_page,msg="浏览器标题不正确")
 
 
     def test_07( self ):
-        '''流程管理打开数据不能滚动'''
+        """流程管理打开数据不能滚动"""
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("流程")
         processPage = ProcessPage(self.driver)

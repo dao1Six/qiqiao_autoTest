@@ -44,7 +44,7 @@ class SaySafeAppTest(unittest.TestCase):
 
     #测试添加一条报平安数据
     def test_AddSaySafeRecord( self ):
-        '''检查报平安表单默认值'''
+        """检查报平安表单默认值"""
         iDeclarePeacePage = IDeclarePeacePage(self.driver)
 
         #点击我要报平安页面的添加按钮
@@ -67,7 +67,7 @@ class SaySafeAppTest(unittest.TestCase):
     #
 
     def test_ListButtonAuthority( self ):
-        '''检查我报平安列表按钮权限'''
+        """检查我报平安列表按钮权限"""
         businessModelldPage = BusinessModelldPage(self.driver)
         time.sleep(1)
         businessModelldPage.MbListComponent_Recore_ClickAndHole(1)
@@ -76,7 +76,7 @@ class SaySafeAppTest(unittest.TestCase):
 
 
     def test_ListTextValue( self ):
-        '''校验我报平安页面标题语'''
+        """校验我报平安页面标题语"""
         businessModelldPage = BusinessModelldPage(self.driver)
         time.sleep(1)
         # 校验我报平安页面标题语
@@ -84,14 +84,14 @@ class SaySafeAppTest(unittest.TestCase):
 
 
     def test_ListTextValue( self ):
-        '''校验我报平安页面导航是否显示齐全'''
+        """校验我报平安页面导航是否显示齐全"""
         businessModelldPage = BusinessModelldPage(self.driver)
         time.sleep(1)
         # 校验我报平安页面导航是否显示齐全
         self.assertEquals(businessModelldPage.MbNavigationComponent_Get_NavigationsName(),["全员报平安","报表中心"])
 
     def test_MbListComponent_GetListAllTab( self ):
-        '''检查点击导航跳转是否正常并且检查列表获取选项卡值是否正确'''
+        """检查点击导航跳转是否正常并且检查列表获取选项卡值是否正确"""
         businessModelldPage = BusinessModelldPage(self.driver)
         time.sleep(1)
         businessModelldPage.MbNavigationComponent_Click_Navigation("全员报平安")
@@ -99,7 +99,7 @@ class SaySafeAppTest(unittest.TestCase):
 
 
     def test_GetAllChartTitle( self ):
-        '''检查报表组件是否加载正常'''
+        """检查报表组件是否加载正常"""
         businessModelldPage = BusinessModelldPage(self.driver)
         time.sleep(1)
         businessModelldPage.MbNavigationComponent_Click_Navigation("报表中心")
@@ -110,7 +110,7 @@ class SaySafeAppTest(unittest.TestCase):
         self.assertEquals(businessModelldPage.GetAllChartTitle(),['报平安汇总表', '异常情况统计表', '体温情况报表','就医情况明细表'])
 
     def test_GetAllBottomMenus( self ):
-        '''检查底部菜单内容是否加载正常'''
+        """检查底部菜单内容是否加载正常"""
         businessModelldPage = BusinessModelldPage(self.driver)
         time.sleep(1)
         self.assertEquals(businessModelldPage.GetBottomMenus(), ['我报平安', '就医记录', '疫情动态'])

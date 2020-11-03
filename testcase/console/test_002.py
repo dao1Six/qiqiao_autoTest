@@ -7,7 +7,7 @@ import json
 
 
 class ConsoleTest_002 (unittest.TestCase):
-    '''开发平台报表接口'''
+    """开发平台报表接口"""
 
 
     Token = "80e3748060f064d98e614fe3b47278a2"

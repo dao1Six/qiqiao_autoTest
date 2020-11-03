@@ -20,7 +20,7 @@ from util.dateTimeUtil import DateTimeUtil
 
 @ddt
 class MbValueAppTest_001(unittest.TestCase):
-    '''移动端道一云价值观应用数据显示及数据过滤检查'''
+    """移动端道一云价值观应用数据显示及数据过滤检查"""
 
 
 
@@ -30,7 +30,7 @@ class MbValueAppTest_001(unittest.TestCase):
          ("luolinyue@auto",1,"第一季度",['部门：创新技术中心->产品研发二部->产品规划组', '人员：王栋一', '总分：100']))
     @unpack
     def test_01( self,account,result,result2,result3):
-        '''移动端部门价值观数据检查'''
+        """移动端部门价值观数据检查"""
         self.driver = Driver().phonedriver()
         self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)

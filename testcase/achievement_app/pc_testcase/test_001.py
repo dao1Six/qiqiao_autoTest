@@ -7,7 +7,7 @@ import json
 
 
 class AchievementAppTest_001 (unittest.TestCase):
-    '''PC端科目成绩应用报表测试'''
+    """PC端科目成绩应用报表测试"""
 
 
     Token = "c47fb6b43b2b0eccdf0ee6dfe453979d"
@@ -90,7 +90,7 @@ class AchievementAppTest_001 (unittest.TestCase):
 
 
     def test_06(self):
-        '''成绩和'''
+        """成绩和"""
         url = self.http+"/runtime/api/v1/runtime/report/adf6dfc1bfa7426db243fb90aae5aad3/c6d0f69d9c0d41e9a88291469f0abccb/df9777d03fc844649cca67bb8bb62153?page=1&pageSize=20"
         print(url)
         data = json.dumps({"linkages":None})
@@ -103,7 +103,7 @@ class AchievementAppTest_001 (unittest.TestCase):
 
 
     def test_07(self):
-        '''成绩和汇总'''
+        """成绩和汇总"""
         url = self.http+"/runtime/api/v1/runtime/report/adf6dfc1bfa7426db243fb90aae5aad3/c6d0f69d9c0d41e9a88291469f0abccb/key_1596448156257_15715?page=1&pageSize=20"
         print(url)
         data = json.dumps({"linkages":None})

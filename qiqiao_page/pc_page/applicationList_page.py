@@ -6,7 +6,7 @@ from public.selenium_page import SeleniumPage
 
 
 class ApplicationListPage(SeleniumPage):
-    '''应用列表页面'''
+    """应用列表页面"""
 
     ApplicationListPage_application_loc = "//div[@data-mark='%groupName']//div[@data-mark='%applicationName']/i"  #应用管理页面应用卡片
 
@@ -18,10 +18,10 @@ class ApplicationListPage(SeleniumPage):
     close_btn_step2 = "//div[@class='guidemap_close_btn close_btn_step2']"
 
     def ApplicationListPage_ClickApplicationIcon(self,groupName,title,*args):
-        '''点击分组里的应用
+        """点击分组里的应用
         groupName:分组名
         title:应用名称
-        '''
+        """
         #判断是否有新手操作提示
         if(self.isClickable(self.close_btn_step2,timeout=3)):
             #关闭提示
@@ -31,7 +31,7 @@ class ApplicationListPage(SeleniumPage):
         time.sleep(2)
 
     def ApplicationListPage_CloseStep2Tip( self ):
-        '''关闭新手操作提示'''
+        """关闭新手操作提示"""
         self.clickElemByXpath_visibility(self.close_btn_step2)
 
 

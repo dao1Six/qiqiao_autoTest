@@ -6,7 +6,7 @@ from qiqiao_page.pc_page.public_page import PublicPage
 
 
 class PortalPage(PublicPage):
-    '''工作台页面'''
+    """工作台页面"""
 
     #Action
     PortalPage_headerMenu_loc = "//a[contains(@class,'header_menu_title')and contains(@data-mark,'%menu')]/parent::div"  #工作台顶部菜单栏菜单
@@ -16,18 +16,18 @@ class PortalPage(PublicPage):
     logout_loc = "//li[@role='menuitem' and contains(text(),'退出')]"
 
     def PortalPage_GetLoginUserName( self ):
-        '''获取当前登录用户名'''
+        """获取当前登录用户名"""
         return self.find_elenmInElemsByCSS_visibility_of_any_elements_located(self.userName_loc).text
 
 
     def PortalPage_Click_HeaderMenu(self,menu,*args):
-        '''点击工作台头部菜单
+        """点击工作台头部菜单
         menu：菜单名
-        '''
+        """
         self.clickElemByXpath_clickable(self.PortalPage_headerMenu_loc.replace('%menu',menu))
 
     def PortalPage_qiqiao_logout( self ):
-        '''退出登录'''
+        """退出登录"""
         #鼠标悬停在头像位置
         elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(self.userName_loc)
         self.move_to_element(elem)

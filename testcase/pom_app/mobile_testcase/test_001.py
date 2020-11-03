@@ -21,11 +21,11 @@ from util.parseExcel import ParseExcel
 
 
 class MbPomAppTest_001(unittest.TestCase):
-    '''移动端生产运营应用流程操作'''
+    """移动端生产运营应用流程操作"""
 
     @classmethod
     def setUpClass(self):
-        '''清理数据'''
+        """清理数据"""
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
@@ -98,11 +98,11 @@ class MbPomAppTest_001(unittest.TestCase):
 
 
     def setUp(self):
-        '''登录'''
+        """登录"""
         self.mbLogin("wanghao@auto","do1qiqiao")
 
     def mbLogin(self,account,password):
-        '''登录移动端'''
+        """登录移动端"""
         self.driver = Driver().phonedriver()
         self.driver.maximize_window()
         loginpage = MbLoginPage(self.driver)
@@ -110,7 +110,7 @@ class MbPomAppTest_001(unittest.TestCase):
         time.sleep(3)
 
     def pcLogin(self,account,password):
-        '''登录pc端'''
+        """登录pc端"""
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
         loginpage = LoginPage(self.driver)
@@ -121,7 +121,7 @@ class MbPomAppTest_001(unittest.TestCase):
 
 
     def test_01( self ):
-        '''移动端道一云生产运营应用，事业一部订单发起 流程'''
+        """移动端道一云生产运营应用，事业一部订单发起 流程"""
         homePage = MbHomePage(self.driver)
         homePage.HomePage_BottomNav_Click("待办")
         # 发起流程
@@ -210,7 +210,7 @@ class MbPomAppTest_001(unittest.TestCase):
 
 
     def test_02( self ):
-        '''移动端道一云生产运营应用，事业一部内部订单发起 流程'''
+        """移动端道一云生产运营应用，事业一部内部订单发起 流程"""
         homePage = MbHomePage(self.driver)
         homePage.HomePage_BottomNav_Click("待办")
         # 发起流程
