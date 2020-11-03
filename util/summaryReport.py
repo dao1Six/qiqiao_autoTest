@@ -52,7 +52,7 @@ class SummaryReport(object):
                 +"错误: "+str(errored)+"条"+"\n"
         +"跳过: "+str(skiped)+"条"+"\n"
                 +"通过率为: "+passedPercent+"\n"
-                +"以下"+len(errorApp)+"个应用测试在过程中有用例执行错误或失败的情况: \n"+';\n'.join(errorApp))
+                +"以下"+str(len(errorApp))+"个应用测试在过程中有用例执行错误或失败的情况: \n"+';\n'.join(errorApp))
 
 
 if __name__ == '__main__':
