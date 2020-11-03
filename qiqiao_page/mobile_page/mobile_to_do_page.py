@@ -55,7 +55,7 @@ class MbTodoPage(MbPublicPage,SeleniumPage):
         self.sendkeysElemByXpath_visibility(self.search_input_loc,key=key)
 
     def MbTodoPage_Get_RecoreTitleValule( self,index ):
-        '''返回当前列表记录标题值'''
+        '''返回当前列表某条记录标题值'''
         elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.item_name_loc,index=index-1)
         if (elem!=None):
             return elem.text
@@ -64,7 +64,7 @@ class MbTodoPage(MbPublicPage,SeleniumPage):
 
 
     def MbTodoPage_Get_RecoreTextContents( self,r ):
-        '''返回当前列表记录标题值'''
+        '''返回当前列表某条记录标题值'''
         list = []
         elems = self.find_elemsByXPATH_visibility(self.dyCardList_text_content.replace("%r",str(r-1)))
         if (elems!=None):
