@@ -7,8 +7,8 @@ class MbDateTime(SeleniumPage):
     DateTime_input_loc = "div[title='%s'] input[type='text']"  # 日期时间组件输入框
     DateTime_label_loc = "div[title='%s']>label>span[title='%title']"   # 日期时间组件字段标题
 
-    #给日期时间组件输入值
-    def DateTime_Sendkeys(self,fieldName,datekey,timekey,*args):
+
+    def MbDateTime_Sendkeys(self,fieldName,datekey,timekey,*args):
         '''给日期时间组件输入值
         fieldName：字段标题
         datakey：日期值 格式：2018-11-22

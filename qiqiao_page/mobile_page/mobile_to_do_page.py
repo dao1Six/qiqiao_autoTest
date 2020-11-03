@@ -22,6 +22,24 @@ class MbTodoPage(MbPublicPage,SeleniumPage):
 
     item_name_loc = "//ul//div[@class='item_row']//h2[@class='item_name']"  #记录标题
 
+    filterIcon = "//div[@class='filterSearch']//i"
+
+    filterLi = "//h3[text()='%f']/following-sibling::ul//li[contains(text(),'%v')]"
+
+    filterButton = "//button[text()=' %s']"
+
+    def MbTodoPage_filterIcon_Click( self ,buttonName):
+        '''点击过滤图标'''
+        self.clickElemByXpath_visibility(self.filterIcon)
+
+    def MbTodoPage_filterLi_Click( self ,filterOption,valueOption):
+        '''点击过滤选项'''
+        self.clickElemByXpath_visibility(self.filterLi.replace('%f',filterOption).replace('%v',valueOption))
+
+    def MbTodoPage_filterButton_Click( self ,buttonName):
+        '''点击过滤按钮'''
+        self.clickElemByXpath_visibility(self.filterButton.replace('%s',buttonName))
+
     def MbTodoPage_BottomNav_Click( self ,buttonName):
         '''首页底部导航菜单点击'''
         self.clickElemByXpath_visibility(self.bottom_nav_loc.replace('%s',buttonName))

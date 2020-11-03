@@ -64,7 +64,7 @@ class MbMultiFormAssociation(SeleniumPage):
             str_rowIndex = str(rowIndex)
             # self.clickElemByCSS_visibility (self.MultiFormManagementDialog_selected_loc.replace ('%title', fileName).replace('%rowIndex',str_rowIndex))
             self.clickElemByXpath_visibility(self.MultiFormManagementDialog_selected_loc.replace('%rowIndex',str_rowIndex))
-            time.sleep(2)
+            time.sleep(1)
 
 
     def MbMultiForm_BathManagePage_Button_Cick(self,fileName,buttonName,*args):

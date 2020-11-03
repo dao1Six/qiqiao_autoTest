@@ -45,14 +45,14 @@ class SummaryReport(object):
             if(curApperrored>0 or curAppfailed>0):
                 errorApp.append(fileName+":   "+filePath)
         passedPercent = str('{:.2%}'.format(passed/all))
-        return ("本次覆盖: "+str(len(files))+"个应用。\n"
-                                       "总条数为"+str(all)+"\n"
+        return ("本次测试覆盖: "+str(len(files))+"个应用。\n"
+                                       "用例执行总数为"+str(all)+"\n"
                 +"通过: "+str(passed)+"条"+"\n"
                 +"失败: "+str(failed)+"条"+"\n"
                 +"错误: "+str(errored)+"条"+"\n"
         +"跳过: "+str(skiped)+"条"+"\n"
                 +"通过率为: "+passedPercent+"\n"
-                +"以下应用测试在过程中有用例执行错误或失败的情况: \n"+';\n'.join(errorApp))
+                +"以下"+len(errorApp)+"个应用测试在过程中有用例执行错误或失败的情况: \n"+';\n'.join(errorApp))
 
 
 if __name__ == '__main__':
