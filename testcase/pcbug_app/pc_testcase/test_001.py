@@ -146,7 +146,7 @@ class PcBugAppTest_001(unittest.TestCase):
         """pc运行平台浏览器标题"""
         time.sleep(2)
         title_page = self.driver.title
-        self.assertEqual("接口自动化七巧广泛广泛",title_page,msg="浏览器标题不正确")
+        self.assertEqual("首页 | 接口自动化七巧广泛广泛",title_page,msg="浏览器标题不正确")
 
 
     def test_07( self ):

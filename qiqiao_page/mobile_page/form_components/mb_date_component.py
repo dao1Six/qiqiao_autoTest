@@ -17,9 +17,9 @@ class MbDate(SeleniumPage):
 
     icon_loc = "//div[@title='%s']//span[@class='icon']"
 
-    datali_loc = "//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div[%n]//li[text()='%value']"
+    # datali_loc = "//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div[%n]//li[text()='%value']"
 
-    # "//div[@class='cube-popup cube-popup_mask cube-picker']//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div[%n]//li[contains(text(),'%value')]"
+    datali_loc = "//div[@class='cube-popup cube-popup_mask cube-picker']//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div[%n]//li[contains(text(),'%value')]"
 
     Firstdatali_loc = "//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div[%n]/ul/li"
 
