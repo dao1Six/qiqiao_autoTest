@@ -26,6 +26,18 @@ class SeleniumPage (object):
     def __init__(self, driver):
         self.driver = driver
 
+
+    def switch_to_the_iframe(self, iframeElem):
+        '''切换到指定的iframe页面'''
+        self.driver.switch_to.frame(iframeElem)
+
+
+    def switch_to_default_content( self ):
+        '''从frame中切回主文档'''
+        #切到frame中之后，我们便不能继续操作主文档的元素，这时如果想操作主文档内容，则需切回主文档。
+        self.driver.switch_to.default_content()
+
+
     def isClickable( self, locator,timeout = 10):
         """判断元素是否可以点击"""
         try:

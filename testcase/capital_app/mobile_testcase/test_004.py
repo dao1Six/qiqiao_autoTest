@@ -39,8 +39,6 @@ class MbHSEAppTest_004(unittest.TestCase):
         todoPage = MbTodoPage(self.driver)
         todoPage.MbTodoPage_Faqiliucheng('HSE管理','防护用品申请')
         time.sleep(2)
-        self.driver.refresh()
-        time.sleep(2)
         formPage = MbFormPage(self.driver)
         formPage.MbSelection_SingleXiala_Senkeys("申请原因","到期更换")
         formPage.MbText_Sendkeys("原因说明","很大很大空间等哈看进度哈大噶还记得噶还记得噶实践活动")

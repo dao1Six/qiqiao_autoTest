@@ -47,9 +47,27 @@ class MultiFormAssociation(SeleniumPage):
 
     Selection_monomialSelectOption_loc = "//div[@id='app']//li[@data-mark='%value']"  #下拉单选选项
 
-    ForeignSelection_loc = "//div[@id='app']/following-sibling::div[@class='el-select-dropdown el-popper load_more']//span[text()='%value']/parent ::li"  # 外键选项
-
+     #"//div[@id='app']//li[@data-mark='option_%value']"
+    ForeignSelection_loc ="//div[@id='app']/following-sibling::div[@class='el-select-dropdown el-popper load_more']//span[text()='%value']/parent ::li"  # 外键选项""
+    foreignSelectOptions_loc="//div[@id='app']/following-sibling::div[@class='el-select-dropdown el-popper %s ']//li[contains(@data-mark,'option_')]"
 #多表关联组件外部操作
+
+    def MultiForm_get_OptionValue(self,fileName,*args):
+        '''获取下拉选项值'''
+        list = []
+        elems = self.find_elemsByXPATH_presence(self.foreignSelectOptions_loc.replace('%s',fileName))
+        if elems == None:
+            return list
+        for elem in elems:
+            list.append(elem.text)
+        return list
+
+    def MultiForm_Option_scrollDown( self,fieldName,scrollNumber=10):
+        '''多表关联外键选项滚动至底部'''
+        js = "document.getElementsByClassName('%s')[0].children[0].children[0].scrollTop=100000" %fieldName
+        for n in range(1,scrollNumber):
+            self.driver.execute_script(js)  # 从上往下滑
+            time.sleep(0.5)
 
     def MultiForm_BatchManagementButton_Click(self,fileName,*args):
         '''点击批量管理按钮'''

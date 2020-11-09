@@ -578,7 +578,10 @@ class PcBugAppTest_002(unittest.TestCase):
     #     businessPage.ListComponent_Click_ListHeader_Button("添加")
     #     formPage = FormPage(self.driver)
     #     formPage.MultiForm_AddButton_Click("任务单明细")
-    #     formPage.MultiForm_List_click_Td("任务单明细",1,8)
+    #     time.sleep(2)
+    #     formPage.MultiForm_List_click_Td("任务单明细",1,7)
+    #     formPage.MultiForm_Option_scrollDown("砂浆品种")
+    #     # formPage.MultiForm_List_ForeignSelection_sendkeys()
 
 
     def test_22( self ):

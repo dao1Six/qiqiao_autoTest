@@ -107,10 +107,8 @@ class CapitalAppTest_002(unittest.TestCase):
 
 
     def test_01( self ):
-        '''【ID1084366】
-【补丁】——PC端，流程中打印按钮，系统报错'''
+        '''【ID1084366】【补丁】——PC端，流程中打印按钮，系统报错'''
         portalPage = PortalPage(self.driver)
-        #打开“发起流程列表”
         portalPage.PortalPage_Click_HeaderMenu('流程')
         time.sleep(3)
         processPage = ProcessPage(self.driver)

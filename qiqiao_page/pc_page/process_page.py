@@ -54,3 +54,10 @@ class ProcessPage(PublicPage,SeleniumPage):
         '''流程列表搜索框输入值'''
         self.clickElemByXpath_visibility(self.processCenter_search_button_loc.replace('%s',buttonName))
 
+    def ProcessPage_IsIn( self):
+        '''是否在流程列表页面'''
+        if(self.find_elemByXPATH_visibility(self.process_menu.replace('%s','发起流程'))==None):
+            return False
+        else:
+            return True
+
