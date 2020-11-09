@@ -49,3 +49,11 @@ class PcBugAppTest_003(unittest.TestCase):
         processPage=ProcessPage(self.driver)
         self.assertTrue(processPage.ProcessPage_IsIn(),msg="工作台页面点击常用流程更多按钮跳转不成功")
 
+
+    def test_03( self ):
+        '''工作台页面点击常用应用更多按钮跳转是否正常'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_commonAppBtnMore()
+        applicationListPage=ApplicationListPage(self.driver)
+        self.assertTrue(applicationListPage.ApplicationListPage_IsIn(),msg="工作台页面点击常用流程更多按钮跳转不成功")

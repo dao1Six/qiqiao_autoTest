@@ -17,6 +17,13 @@ class ApplicationListPage(SeleniumPage):
 
     close_btn_step2 = "//div[@class='guidemap_close_btn close_btn_step2']"
 
+    def ApplicationListPage_IsIn( self):
+        '''是否在应用列表页面'''
+        if(self.find_elemByCSS_visibility(self.ApplicationListPage_searchInput_loc)==None):
+            return False
+        else:
+            return True
+
     def ApplicationListPage_ClickApplicationIcon(self,groupName,title,*args):
         """点击分组里的应用
         groupName:分组名
