@@ -615,5 +615,5 @@ class PcBugAppTest_002(unittest.TestCase):
         formPage.Form_Switch_Tab("文件类组件")
         formPage.FileUpload_Sendkeys("文件上传",self.pptPath)
         time.sleep(15)
-        self.assertEqual("大于60M.pptx",formPage.FileUpload_get_fileNameList("文件上传"),msg="【补丁】——文件上传，上传文件大小为60M时，上传失败")
+        self.assertEqual(['大于60M.pptx'],formPage.FileUpload_get_fileNameList("文件上传"),msg="【补丁】——文件上传，上传文件大小为60M时，上传失败")
 
