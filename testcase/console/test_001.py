@@ -7,6 +7,7 @@ from public.driver import Driver
 from qiqiao_page.console_page.appManage_page import AppManagePage
 from qiqiao_page.console_page.console_login_page import ConsoleLoginPage
 from qiqiao_page.console_page.header_page import HeaderPage
+import time
 
 
 @ddt
@@ -19,6 +20,7 @@ class ConsoleTest_001(unittest.TestCase):
         self.driver.maximize_window()
         c = ConsoleLoginPage(self.driver)
         c.user_login("https://qy.do1.com.cn/qiqiao/console",account,password)
+        time.sleep(2)
 
     @data(("lijiacheng@AA",1,"资产管理"),
          ("zhoulin@AA",1,"道一云价值观"),

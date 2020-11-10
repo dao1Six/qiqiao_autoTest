@@ -12,7 +12,7 @@ class AppManagePage(HeaderPage):
 
     def AppManagePage_get_appNumber( self ):
         '''获取应用数'''
-        text = self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.tab_0,timeout=5).text
+        text = self.find_elemByXPATH_presence(self.tab_0,timeout=5).text
         number = list(text.split("(")[1])[0]
         return int(number)
 
