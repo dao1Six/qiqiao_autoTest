@@ -271,3 +271,37 @@ class MbBugAppTest_001(unittest.TestCase):
         formPage = MbFormPage(self.driver)
         self.assertEqual(['添加', '编辑', '删除'],formPage.MbForm_Get_buttonGroup(),msg="移动端详情页面页面内操作显示不正确")
 
+    def test_12( self ):
+        '''【补丁】--iPhone手机日期组件月类型无法选择日期'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('PC端补丁收集应用','日期表单列表')
+        listPage = MbListComponent(self.driver)
+        self.driver.refresh()
+        time.sleep(1)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbDate_SendKeys_MonthType("日期月",DateTimeUtil().LastMonth())
+        time.sleep(2)
+        self.assertEqual(DateTimeUtil().LastMonth(),formPage.MbDate_GetVale("日期月"),msg='【补丁】--iPhone手机日期组件月类型无法选择日期')
+
+
+    def test_13( self ):
+        '''iPhone手机日期组件年类型选择日期'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('PC端补丁收集应用','日期表单列表')
+        listPage = MbListComponent(self.driver)
+        self.driver.refresh()
+        time.sleep(1)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbDate_SendKeys_YearType("日期年",DateTimeUtil().LastYear())
+        time.sleep(2)
+        self.assertEqual(DateTimeUtil().LastYear(),formPage.MbDate_GetVale("日期年"),msg='iPhone手机日期组件年类型选择日期')
+
+

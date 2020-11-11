@@ -41,3 +41,24 @@ class DateTimeUtil(object):
         yesterday = now - timedelta(days=1)
         return str(yesterday)
 
+    def LastMonth( self ):
+        '''返回上个月'''
+        today=datetime.date.today()
+        first=today.replace(day=1)
+        last_month=first - datetime.timedelta(days=1)
+        valueList=str(last_month).split("-")
+        return valueList[0]+"-"+valueList[1]
+
+    def LastYear( self ):
+        '''返回上一年'''
+        now=datetime.datetime.now()
+        last_year=int(now.year) - 1
+        return str(last_year)
+
+
+
+
+
+if __name__ == '__main__':
+    d = DateTimeUtil()
+    print(d.LastYear())

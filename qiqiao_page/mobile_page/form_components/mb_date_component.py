@@ -13,7 +13,7 @@ from util.dateTimeUtil import DateTimeUtil
 class MbDate(SeleniumPage):
     '''日期组件'''
 
-    dateTxr_loc = "div[title='%s'] div.tx_r"
+    dateTxr_loc = "//div[@title='%s']//span[@class='value']"
 
     icon_loc = "//div[@title='%s']//span[@class='icon']"
 
@@ -28,7 +28,9 @@ class MbDate(SeleniumPage):
 
     #获取日期字段的值
     def MbDate_GetVale(self,fieldName):
-        elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(self.dateTxr_loc.replace('%s',fieldName))
+        elem = self.find_elemByXPATH_visibility(self.dateTxr_loc.replace('%s',fieldName))
+        if(elem==None):
+            return None
         value = elem.text
         return value
 
@@ -40,8 +42,6 @@ class MbDate(SeleniumPage):
         self.clickElemByXpath_visibility(self.icon_loc.replace('%s',fieldName))
         time.sleep(3)
         action = webdriver.TouchActions(self.driver)
-
-
         today = DateTimeUtil().Today()
         todayList = today.split("-")
         keyList = key.split("-")
@@ -50,12 +50,12 @@ class MbDate(SeleniumPage):
         clickYear = todayList[0]
         tyear = keyList[0]
         while (clickYear != tyear):
-            if(yeardiff>0):#
+            if(yeardiff<0):#
                 clickYear = str(int(clickYear)+1)
                 self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n', str(1)).
                                                                                                   replace('%value', clickYear))[0]) #往下点击一个元素
                 time.sleep(1)
-            if (yeardiff < 0):  #
+            if (yeardiff >0):  #
                 clickYear = str(int(clickYear) - 1)
                 self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n', str(1)).
                                                                                                   replace('%value', clickYear))[0])  # 往上点击一个元素
@@ -63,7 +63,6 @@ class MbDate(SeleniumPage):
         self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n',str(1)).replace('%value',tyear))[0])
 
         #选择月
-
         cmonthValue = todayList[1] #当前的月份值
         if(len(todayList[1])==2 and list(todayList[1])[0]=="0"):
             cmonthValue = list(todayList[1])[1]
@@ -121,4 +120,94 @@ class MbDate(SeleniumPage):
         self.clickElemByXpath_visibility(self.confirm_loc)
         time.sleep(2)
 
+
+
+
+    def MbDate_SendKeys_MonthType( self ,fieldName,key):
+        '''日期组件输入值日期月类型'''
+        #点击日期下拉图标
+        #点击下拉框
+        self.clickElemByXpath_visibility(self.icon_loc.replace('%s',fieldName))
+        time.sleep(3)
+        today = DateTimeUtil().Today()
+        todayList = today.split("-")
+        keyList = key.split("-")
+        #选择年
+        yeardiff = int(todayList[0])-int(keyList[0]) #当前年-目标年
+        clickYear = todayList[0]
+        tyear = keyList[0]
+        while (clickYear != tyear):
+            if(yeardiff<0):#
+                clickYear = str(int(clickYear)+1)
+                self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n', str(1)).
+                                                                                                  replace('%value', clickYear))[0]) #往下点击一个元素
+                time.sleep(1)
+            if (yeardiff > 0):  #
+                clickYear = str(int(clickYear) - 1)
+                self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n', str(1)).
+                                                                                                  replace('%value', clickYear))[0])  # 往上点击一个元素
+                time.sleep(1)
+        self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n',str(1)).replace('%value',tyear))[0])
+
+        #选择月
+        cmonthValue = todayList[1] #当前的月份值
+        if(len(todayList[1])==2 and list(todayList[1])[0]=="0"):
+            cmonthValue = list(todayList[1])[1]
+        clickMonth = cmonthValue  # 点击的月份值
+        tmonthValue = keyList[1]  #目标月份值
+        if(len(keyList[1])==2 and list(keyList[1])[0]=="0"):
+            tmonthValue = list(keyList[1])[1]
+        #判断的目标月是否可以点击
+        if(self.find_elemsByXPATH_visibility(self.datali_loc.replace('%n', str(2)).replace('%value', tmonthValue))!=None):
+            self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n',str(2)).replace('%value',tmonthValue))[0])
+        else:
+            monthdiff = int(cmonthValue) - int(tmonthValue)
+            while (clickMonth != tmonthValue):
+                if(monthdiff>0):
+                    clickMonth = str(int(clickMonth) - 1)
+                    self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n', str(2)).
+                                                                                                      replace('%value', clickMonth))[0])  # 往下点击一个元素
+                    time.sleep(1)
+                if(monthdiff<0):
+                    clickMonth = str(int(clickMonth) + 1)
+                    self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n', str(2)).
+                                                                                                      replace('%value', clickMonth))[0])  # 往上点击一个元素
+                    time.sleep(1)
+                    self.h5_tap_elem(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+                self.datali_loc.replace('%n',str(2)).replace('%value',tmonthValue)))
+
+        time.sleep(1)
+        #点击确定按钮
+        self.clickElemByXpath_visibility(self.confirm_loc)
+        time.sleep(2)
+
+    def MbDate_SendKeys_YearType( self ,fieldName,key):
+        '''日期组件输入值日期年类型'''
+        #点击日期下拉图标
+        #点击下拉框
+        self.clickElemByXpath_visibility(self.icon_loc.replace('%s',fieldName))
+        time.sleep(3)
+        today = DateTimeUtil().Today()
+        todayList = today.split("-")
+
+        #选择年
+        clickYear=todayList[0] #当前年
+        tyear=key #目标点击年
+        yeardiff = int(todayList[0])-int(key) #当前年-目标年
+        while (str(clickYear) != str(tyear)):
+            if(yeardiff<0):#当前年<目标年 向下点击
+                clickYear = int(clickYear)+1
+                self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n', str(1)).
+                                                                                                  replace('%value', str(clickYear)))[0]) #往下点击一个元素
+                time.sleep(1)
+            if (yeardiff > 0):  #当前年>目标年 向上点击
+                clickYear = int(clickYear) - 1
+                self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n', str(1)).
+                                                                                                  replace('%value', str(clickYear)))[0])  # 往上点击一个元素
+                time.sleep(1)
+        self.h5_tap_elem(self.find_elemsByXPATH_presence(self.datali_loc.replace('%n',str(1)).replace('%value',str(tyear)))[0])
+        time.sleep(1)
+        #点击确定按钮
+        self.clickElemByXpath_visibility(self.confirm_loc)
+        time.sleep(2)
 
