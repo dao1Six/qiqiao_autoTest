@@ -57,3 +57,23 @@ class PcBugAppTest_003(unittest.TestCase):
         portalPage.PortalPage_Click_commonAppBtnMore()
         applicationListPage=ApplicationListPage(self.driver)
         self.assertTrue(applicationListPage.ApplicationListPage_IsIn(),msg="工作台页面点击常用流程更多按钮跳转不成功")
+
+    def test_04( self ):
+        '''【补丁】---pc运行平台，编辑按钮页面，子表单数据，点击编辑第二条子表单数据，编辑页面显示第一条数据'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','数据过滤测试应用')
+        businessPage=BusinessPage(self.driver)
+        time.sleep(2)
+        businessPage.BusinessPage_LeftMenu_Click('子表')
+        businessPage.ListComponent_Click_ListRow_Button("编辑",1)
+        formPage=FormPage(self.driver)
+        formPage.ChildForm_Record_Edit("子表单",3)
+        self.assertEqual("00230",formPage.SerialNumber_GetValue_readOnly_InPopup("子表单","生成编码"),msg="【补丁】---pc运行平台，编辑按钮页面，子表单数据，点击编辑第二条子表单数据，编辑页面显示第一条数据")
+        formPage.Form_Close_Popup("子表单")
+        time.sleep(2)
+        formPage.ChildForm_Record_Edit("子表单",1)
+        self.assertEqual("00209",formPage.SerialNumber_GetValue_readOnly_InPopup("子表单","生成编码"),msg="【补丁】---pc运行平台，编辑按钮页面，子表单数据，点击编辑第二条子表单数据，编辑页面显示第一条数据")
+

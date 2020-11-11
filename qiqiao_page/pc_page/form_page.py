@@ -22,10 +22,11 @@ from qiqiao_page.pc_page.components.childForm_component import ChildForm_compone
 from qiqiao_page.pc_page.components.childFormAssociation_component import ChildFormAssociation_component
 from qiqiao_page.pc_page.components.foreignSelection_component import ForeignSelection_component
 from qiqiao_page.pc_page.components.multiFormAssociation_component import MultiFormAssociation
+from qiqiao_page.pc_page.components.serialNumber import SerialNumber
 from qiqiao_page.pc_page.public_page import PublicPage
 
 
-class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Selection,User,Address,Cascade,ChildForm_component,ChildFormAssociation_component,ForeignSelection_component,MultiFormAssociation,Dept):
+class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUpload,FileUpload,Selection,User,Address,Cascade,ChildForm_component,ChildFormAssociation_component,ForeignSelection_component,MultiFormAssociation,Dept,SerialNumber):
     """PC表单页面"""
 
     FormPage_submit_button_loc = "//button[@type='button']/span[contains(text(),'提交')]"  #表单提交按钮
