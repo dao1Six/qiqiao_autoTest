@@ -283,7 +283,7 @@ class ProcessAppTest_001(unittest.TestCase):
         formPage.Dept_MultiDept_Sendkeys("部门多选",{"研发二组":1,"产品规划组":1})
         formPage.Form_Button_Click("办理")
         print(formPage.Form_Get_ProcessManagers())
-        self.assertEqual(formPage.Form_Get_ProcessManagers(),['吴健伦'],msg="固定部门人工任务办理者错误")
+        self.assertEqual(formPage.Form_Get_ProcessManagers(),['彭政','吴健伦'],msg="固定部门人工任务办理者错误")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="固定部门人工任务办理失败")
 

@@ -40,7 +40,7 @@ class MbDate(SeleniumPage):
         #点击日期下拉图标
         #点击下拉框
         self.clickElemByXpath_visibility(self.icon_loc.replace('%s',fieldName))
-        time.sleep(3)
+        time.sleep(1)
         action = webdriver.TouchActions(self.driver)
         today = DateTimeUtil().Today()
         todayList = today.split("-")
@@ -118,7 +118,7 @@ class MbDate(SeleniumPage):
         time.sleep(1)
         #点击确定按钮
         self.clickElemByXpath_visibility(self.confirm_loc)
-        time.sleep(2)
+        time.sleep(1)
 
 
 
@@ -128,7 +128,7 @@ class MbDate(SeleniumPage):
         #点击日期下拉图标
         #点击下拉框
         self.clickElemByXpath_visibility(self.icon_loc.replace('%s',fieldName))
-        time.sleep(3)
+        time.sleep(1)
         today = DateTimeUtil().Today()
         todayList = today.split("-")
         keyList = key.split("-")
@@ -179,14 +179,14 @@ class MbDate(SeleniumPage):
         time.sleep(1)
         #点击确定按钮
         self.clickElemByXpath_visibility(self.confirm_loc)
-        time.sleep(2)
+        time.sleep(1)
 
     def MbDate_SendKeys_YearType( self ,fieldName,key):
         '''日期组件输入值日期年类型'''
         #点击日期下拉图标
         #点击下拉框
         self.clickElemByXpath_visibility(self.icon_loc.replace('%s',fieldName))
-        time.sleep(3)
+        time.sleep(1)
         today = DateTimeUtil().Today()
         todayList = today.split("-")
 
@@ -209,5 +209,5 @@ class MbDate(SeleniumPage):
         time.sleep(1)
         #点击确定按钮
         self.clickElemByXpath_visibility(self.confirm_loc)
-        time.sleep(2)
+        time.sleep(1)
 

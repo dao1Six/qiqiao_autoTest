@@ -9,7 +9,7 @@ class MbDept(SeleniumPage):
     icon_add_new_loc = "//div[@title='%s']//div[@class='icon_add_new']"
     structSelector_searchBar = "//div[@class='structSelector_searchBar']"
     searchInput_loc = "//div[@class='structSelector_main_active']/input"
-    searchResult_loc = "//div[@class='structSelector_searchResult']//div[@class='cube-checkbox']//input"
+    MbDept_searchResult_loc="//div[@class='structSelector_searchResult']//div[contains(text(),'%s')]/ancestor::label"
     confirmBtn_loc = "//button[@class='cube-btn fr confirmBtn cube-btn-inline cube-btn-primary']"
 
     departmentList_name_loc = "//div[@title='%s']//div[@class='departmentList_name']"
@@ -31,7 +31,7 @@ class MbDept(SeleniumPage):
         self.sendkeysElemByXpath_visibility(self.searchInput_loc,deptName)
         time.sleep(2)
         # 点击查询结果
-        self.clickElemByXpath_presence(self.searchResult_loc,index=index)
+        self.clickElemByXpath_visibility(self.MbDept_searchResult_loc.replace('%s',deptName),index=index)
         # 点击确定按钮
         self.clickElemByXpath_visibility(self.confirmBtn_loc)
 

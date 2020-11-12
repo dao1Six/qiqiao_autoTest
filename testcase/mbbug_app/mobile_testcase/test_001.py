@@ -322,4 +322,24 @@ class MbBugAppTest_001(unittest.TestCase):
         self.assertTrue(formPage.MbUser_UserSearchOption_IsExist("王栋一"))
 
 
+    def test_15( self ):
+        '''【补丁】---字段设置外键字段为可用条件外键不等于空值，外键设置可选无，选择“无”时，可用条件失效（“无”为空值）'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('PC端补丁收集应用','外键不为空表单列表')
+        listPage = MbListComponent(self.driver)
+        self.driver.refresh()
+        time.sleep(1)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        self.assertFalse(formPage.MbForm_field_isVisibility("单行文本"))
+        formPage.MbForeignSelection_Sendkeys("外键选择1","无")
+        time.sleep(2)
+        self.assertFalse(formPage.MbForm_field_isVisibility("单行文本"))
+        formPage.MbForeignSelection_Sendkeys("外键选择1","吴健伦")
+        time.sleep(2)
+        self.assertTrue(formPage.MbForm_field_isVisibility("单行文本"))
+
 

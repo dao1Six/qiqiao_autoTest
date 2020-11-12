@@ -30,13 +30,16 @@ class MbForeignSelection_component(SeleniumPage):
         """
         #点击选择框
         self.clickElemByXpath_visibility(self.placeholder_loc.replace('%s',fieldName))
-        #搜索框输入查询项
-        self.clickElemByXpath_visibility(self.search_label_loc)
-        self.sendkeysElemByXpath_visibility(self.search_input_loc,option)
-        time.sleep(1)
-        self.MbForeignSelection_Option_scrollDown()
-        #点击结果
-        self.clickElemByXpath_visibility(self.search_item_loc.replace('%s',option))
+        if(option=="无"):
+            self.clickElemByXpath_visibility(self.search_item_loc.replace('%s','无'))
+        else:
+            #搜索框输入查询项
+            self.clickElemByXpath_visibility(self.search_label_loc)
+            self.sendkeysElemByXpath_visibility(self.search_input_loc,option)
+            time.sleep(1)
+            self.MbForeignSelection_Option_scrollDown()
+            #点击结果
+            self.clickElemByXpath_visibility(self.search_item_loc.replace('%s',option))
 
     def MbForeignSelection_SelectionBox_Click( self,fieldName ):
         """点击外键选择组件输入框"""

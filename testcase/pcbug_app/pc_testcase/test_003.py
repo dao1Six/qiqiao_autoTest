@@ -93,3 +93,23 @@ class PcBugAppTest_003(unittest.TestCase):
         formPage.User_sendkeys_UserSearch("王栋一")
         self.assertTrue(formPage.User_UserSearchOption_IsExist("王栋一"))
 
+
+    def test_06( self ):
+        '''【补丁】---字段设置外键字段为可用条件外键不等于空值，外键设置可选无，选择“无”时，可用条件失效（“无”为空值）'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
+        businessPage=BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('外键不为空表单列表')
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage=FormPage(self.driver)
+        self.assertFalse(formPage.Form_field_isVisibility("单行文本"))
+        formPage.ForeignSelection_Sendkeys("外键选择1","无")
+        time.sleep(2)
+        self.assertFalse(formPage.Form_field_isVisibility("单行文本"))
+        formPage.ForeignSelection_Sendkeys("外键选择1","吴健伦")
+        time.sleep(2)
+        self.assertTrue(formPage.Form_field_isVisibility("单行文本"))
+
