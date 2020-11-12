@@ -14,7 +14,7 @@ class MbUser(SeleniumPage):
     searchInput_loc = "//div[@class='structSelector_main_active']/input"
     # searchResult_loc = "//div[@class='structSelector_searchResult']//div[@class='cube-checkbox']//input"
 
-    searchResult_loc ="//div[@class='structSelector_searchResult']//div[contains(text(),'%s')]"
+    searchResult_loc ="//div[@class='structSelector_searchResult']//div[contains(text(),'%s')]/ancestor::label"
     confirmBtn_loc = "//button[@class='cube-btn fr confirmBtn cube-btn-inline cube-btn-primary']"
 
     UserValue_loc = "//div[@title='%s']//span[@class='peopleList_name']"
