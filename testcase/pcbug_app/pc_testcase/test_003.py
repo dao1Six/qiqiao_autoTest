@@ -77,3 +77,19 @@ class PcBugAppTest_003(unittest.TestCase):
         formPage.ChildForm_Record_Edit("子表单",1)
         self.assertEqual("00209",formPage.SerialNumber_GetValue_readOnly_InPopup("子表单","生成编码"),msg="【补丁】---pc运行平台，编辑按钮页面，子表单数据，点击编辑第二条子表单数据，编辑页面显示第一条数据")
 
+
+
+    def test_05( self ):
+        '''【补丁】--PC端/移动端--开发平台人员单选配置用户所属部门人员，运行平台通过搜索用户所属部门下的子部门的人员，显示暂无数据'''
+        self.pcLogin("pengzheng@A1","qiqiao123")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','补丁应用')
+        businessPage=BusinessPage(self.driver)
+        businessPage.ListComponent_Click_ListHeader_Button("添加")
+        formPage=FormPage(self.driver)
+        formPage.User_click_UserSelectBox("人员单选1")
+        formPage.User_sendkeys_UserSearch("王栋一")
+        self.assertTrue(formPage.User_UserSearchOption_IsExist("王栋一"))
+

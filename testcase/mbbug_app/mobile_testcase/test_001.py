@@ -305,3 +305,21 @@ class MbBugAppTest_001(unittest.TestCase):
         self.assertEqual(DateTimeUtil().LastYear(),formPage.MbDate_GetVale("日期年"),msg='iPhone手机日期组件年类型选择日期')
 
 
+    def test_14( self ):
+        '''【补丁】--PC端/移动端--开发平台人员单选配置用户所属部门人员，运行平台通过搜索用户所属部门下的子部门的人员，显示暂无数据'''
+        self.mbLogin("pengzheng@A1","qiqiao123")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('补丁应用','人员表单列表')
+        listPage = MbListComponent(self.driver)
+        self.driver.refresh()
+        time.sleep(1)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbUser_click_UserSelectBox("人员单选1")
+        formPage.MbUser_sendkeys_UserSearch("王栋一")
+        self.assertTrue(formPage.MbUser_UserSearchOption_IsExist("王栋一"))
+
+
+

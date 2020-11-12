@@ -29,11 +29,33 @@ class User(SeleniumPage):
         # fieldName：字段标题
         # userName：人员名称
 
-        #点击选择框
+        #点击表单人员字段选择框
         self.clickElemByXpath_visibility(self.User_selectBox_loc.replace('%s',fieldName))
+        #搜索框输入值
         self.sendkeysElemByXpath_visibility(self.User_search_loc,userName)
+        #点击查询结果
         self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',userName))
+        #点击确认按钮
         self.clickElemByXpath_visibility(self.User_querenButton_loc.replace('%s',fieldName))
+
+    def User_click_UserSelectBox( self,fieldName ):
+        '''点击表单人员字段选择框'''
+        self.clickElemByXpath_visibility(self.User_selectBox_loc.replace('%s',fieldName))
+
+    def User_sendkeys_UserSearch( self,userName ):
+        '''人员字段搜索框输入值'''
+        self.sendkeysElemByXpath_visibility(self.User_search_loc,userName)
+
+    def User_UserSearchOption_IsExist( self,userName ):
+        '''人员字段搜索框输入值'''
+        if(self.find_elemByXPATH_visibility(self.User_searchOption_loc.replace('%s',userName))!=None):
+            return True
+        else:
+            return False
+
+
+
+
 
     def User_MultiUser_Sendkeys(self,fieldName,userNameList,*args):
         ''' 给人员多选组件输入值

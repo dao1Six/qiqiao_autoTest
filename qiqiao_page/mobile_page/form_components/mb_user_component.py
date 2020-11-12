@@ -12,7 +12,9 @@ class MbUser(SeleniumPage):
     icon_add_new_loc = "//div[@title='%s']//div[@class='icon_add_new']"
     structSelector_searchBar = "//div[@class='structSelector_searchBar']"
     searchInput_loc = "//div[@class='structSelector_main_active']/input"
-    searchResult_loc = "//div[@class='structSelector_searchResult']//div[@class='cube-checkbox']//input"
+    # searchResult_loc = "//div[@class='structSelector_searchResult']//div[@class='cube-checkbox']//input"
+
+    searchResult_loc ="//div[@class='structSelector_searchResult']//div[contains(text(),'%s')]"
     confirmBtn_loc = "//button[@class='cube-btn fr confirmBtn cube-btn-inline cube-btn-primary']"
 
     UserValue_loc = "//div[@title='%s']//span[@class='peopleList_name']"
@@ -40,9 +42,28 @@ class MbUser(SeleniumPage):
         #输入搜索人
         self.sendkeysElemByXpath_visibility(self.searchInput_loc,userName)
         #点击查询结果
-        self.clickElemByXpath_presence(self.searchResult_loc)
+        self.clickElemByXpath_visibility(self.searchResult_loc.replace('%s',userName))
         #点击确定按钮
         self.clickElemByXpath_visibility(self.confirmBtn_loc)
+
+    def MbUser_click_UserSelectBox( self,fieldName ):
+        '''点击表单人员字段选择框'''
+        self.clickElemByXpath_visibility(self.icon_add_new_loc.replace('%s',fieldName))
+
+    def MbUser_sendkeys_UserSearch( self,userName ):
+        '''人员字段搜索框输入值'''
+        # 点击搜索框
+        self.clickElemByXpath_visibility(self.structSelector_searchBar)
+        # 输入搜索人
+        self.sendkeysElemByXpath_visibility(self.searchInput_loc,userName)
+
+    def MbUser_UserSearchOption_IsExist( self,userName):
+        '''人员字段搜索框输入值'''
+        if (self.find_elemByXPATH_visibility(self.searchResult_loc.replace('%s',userName)) != None):
+            return True
+        else:
+            return False
+
 
     def MbUser_SelectUser( self,userName ):
         # 点击搜索框
@@ -50,7 +71,7 @@ class MbUser(SeleniumPage):
         # 输入搜索人
         self.sendkeysElemByXpath_visibility(self.searchInput_loc,userName)
         # 点击查询结果
-        self.clickElemByXpath_presence(self.searchResult_loc)
+        self.clickElemByXpath_visibility(self.searchResult_loc.replace('%s',userName))
         # 点击确定按钮
         self.clickElemByXpath_visibility(self.confirmBtn_loc)
 
