@@ -1,4 +1,5 @@
 # coding=utf-8
+import os
 import time
 import unittest
 
@@ -22,7 +23,9 @@ class MbBugAppTest_001(unittest.TestCase):
     '''移动端过往补丁'''
 
 
+    ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
 
+    picPath = ProjectRootPath+"\\file_data\\testcase_data\\13M.jpg"
 
     def mbLogin(self,account,password):
         '''登录移动端'''
@@ -342,4 +345,17 @@ class MbBugAppTest_001(unittest.TestCase):
         time.sleep(2)
         self.assertTrue(formPage.MbForm_field_isVisibility("单行文本"))
 
+
+
+    def test_16( self ):
+        '''【补丁】--移动端上传5M以上的图片时间较长'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('PC端补丁收集应用','图片组件列表')
+        listPage = MbListComponent(self.driver)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        self.assertTrue(formPage.MbPicUpload_Sendkeys("图片上传1",self.picPath,uplodaTime=10),msg="10秒内上传不成功")
 
