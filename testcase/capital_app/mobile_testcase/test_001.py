@@ -302,7 +302,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         formPage.MbMultiForm_AddButton_Click("报废明细")
         formPage.MbMultiForm_BathManagePage_Record_Tick("报废明细", [1, 2])
         formPage.MbMultiForm_BathManagePage_Button_Cick("报废明细","确定选择")
-        self.assertEqual("D180734", formPage.MbMultiForm_GetTdValue("报废明细", 1, 2), msg="报废明细序列号显示不正确")
+        self.assertEqual("A1002", formPage.MbMultiForm_GetTdValue("报废明细", 1, 2), msg="报废明细序列号显示不正确")
         formPage.MbForm_Button_Click("提交")
         formPage.MbForm_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第一个人工任务办理失败")
@@ -322,8 +322,8 @@ class MbCapitalAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
         businessPage = BusinessPage(self.driver)
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(4, 7), "已报废", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "已报废", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 7), "已报废", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "已报废", msg="第二个人工任务提交后系统任务执行失败")
         print("检查完成，资产管理报废流程测试通过")
 
 

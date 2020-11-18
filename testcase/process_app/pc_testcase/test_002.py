@@ -127,6 +127,7 @@ class ProcessAppTest_002(unittest.TestCase):
         formPage.Form_Select_ProcessManager(["罗琳月"])
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('加签办理成功！',formPage.Public_GetAlertMessage(),msg="加前签失败")
+        time.sleep(2)
         formPage.Form_Button_Click("办理")
         formPage.Form_Select_ProcessManager(["刁惠云"])
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
