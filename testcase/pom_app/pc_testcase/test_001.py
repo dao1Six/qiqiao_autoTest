@@ -488,7 +488,7 @@ class PomAppTest_001(unittest.TestCase):
         #点击子表保存按钮
         formPage.click_ChildForm_Button('保存')
         time.sleep(3)
-        self.assertEqual(formPage.Number_GetValue_readOnly("项目总金额"),"25555554444",msg="项目总金额计算错误")
+        self.assertEqual(formPage.Number_GetValue_readOnly("项目总金额"),"25555554444.00",msg="项目总金额计算错误")
         self.assertEqual(formPage.Number_GetValue_readOnly("项目预估总成本（人天）"),"10",msg="项目预估总成本（人天）错误")
         self.assertEqual(formPage.Date_GetValue_writable("项目启动时间"),DateTimeUtil().Today(),msg="项目启动时间错误")
         time.sleep(1)
