@@ -9,8 +9,9 @@ class Driver():
 
     ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0]+"qiqiao_autoTest"
 
-    chromedriverPath = ProjectRootPath+'\\file_data\\chromedriver.exe'
+    # chromedriverPath = ProjectRootPath+'\\file_data\\chromedriver.exe'
 
+    chromedriverPath="C:\\Users\\admin\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe"
     downloadPath = ProjectRootPath+'\\file_data\\downloadData'
 
     # 启动浏览器驱动
