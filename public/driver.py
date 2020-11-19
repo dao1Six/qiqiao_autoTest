@@ -11,7 +11,7 @@ class Driver():
 
     # chromedriverPath = ProjectRootPath+'\\file_data\\chromedriver.exe'
 
-    chromedriverPath="C:\\Users\\admin\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe"
+    chromedriverPath="C:/Users/admin/AppData/Local/Google/Chrome/Application/chromedriver.exe"
     downloadPath = ProjectRootPath+'\\file_data\\downloadData'
 
     # 启动浏览器驱动
