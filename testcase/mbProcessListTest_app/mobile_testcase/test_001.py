@@ -37,6 +37,7 @@ class MbProcessListTest_001(unittest.TestCase):
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', account, password)
         time.sleep(3)
 
+    # 未完成
     def test_01( self ):
         '''待办列表应用流程组合查询'''
         self.mbLogin("wujianlun@auto","do1qiqiao")

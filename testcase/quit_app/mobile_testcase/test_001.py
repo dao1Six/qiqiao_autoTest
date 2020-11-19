@@ -49,6 +49,8 @@ class QuitAppTest_001(unittest.TestCase):
         applicationListPage = MbApplicationListPage(self.driver)
         applicationListPage.MbApplicationListPage_Menu_Click('离职人员测试应用','列表数据过滤组')
         mbBusinessPage = MbBusinessPage(self.driver)
+        self.driver.refresh()
+        time.sleep(2)
         self.assertEqual(mbBusinessPage.MbListComponent_ItemP_Get(1,1),"人员单选：刘言",msg="列表创建人显示离职人员不正确")
         self.assertEqual(mbBusinessPage.MbListComponent_ItemP_Get(1,3),"创建人：刘言",msg="列表创建人显示离职人员不正确")
         self.assertEqual(mbBusinessPage.MbListComponent_ItemP_Get(1,4),"人员多选：刘言,王浩",msg="列表创建人显示离职人员不正确")
