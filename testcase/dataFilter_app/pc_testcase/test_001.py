@@ -10,7 +10,7 @@ class DataFilterAppTest_001 (unittest.TestCase):
     '''PC端数据过滤应用报表测试'''
 
 
-    Token = "2ae03807fd4a56d170d4331d888b1fad"
+    Token = "d5ad77d0f8d3b6f3ddfb5615bf44ba5b"
 
     http = "https://qy.do1.com.cn/qiqiao"
 

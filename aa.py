@@ -75,7 +75,7 @@ def runThread( Threads ):
 if __name__ == "__main__":
     time1 = datetime.datetime.now()
     start_time = datetime.datetime.strftime(datetime.datetime.now(),'%Y-%m-%d %H:%M:%S')
-    runThread(5)
+    # runThread(5)
     time2 = datetime.datetime.now()
     end_time = datetime.datetime.strftime(datetime.datetime.now(),'%Y-%m-%d %H:%M:%S')
     info = SummaryReport().summaryReportInfo()

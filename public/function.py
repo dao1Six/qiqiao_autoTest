@@ -74,4 +74,4 @@ if __name__ == '__main__':
     ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
     # 报告目录
     reportpath = ProjectRootPath + "\\report\\result.html"
-    send_HtmlFileEmail(reportpath)
+    send_TextEmail(reportpath)

@@ -32,6 +32,7 @@ class SummaryReport(object):
             htmlfile = open(filePath,'rb')
             htmlcontent = htmlfile.read()
             bs = BeautifulSoup(htmlcontent,"html.parser")
+            print(fileName)
             curAppall = int(bs.find('a',attrs={"class" :"all detail_button"}).get_text()[3:-1])
             all = all+curAppall
             curAppskiped = int(bs.find('a',attrs={"class" :"skiped detail_button"}).get_text()[3:-1])
