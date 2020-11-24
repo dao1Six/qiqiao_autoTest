@@ -4,32 +4,6 @@ from public.selenium_page import SeleniumPage
 
 class ListComponent(SeleniumPage):
 
-    app_home_loc="//a[text()='应用']"
-    app_name_loc="//p[@title='{appname}']/../.."
-    left_meau_loc="//span[@title='{pagename}']"
-    tab_base_loc = "//div[contains(text(),'{tablename}')]"
-
-    search_data_loc = "//label[@for='{feildname}']/following-sibling::div/div/div/input"
-    search_base_loc = "//label[@for='{feildname}']/following-sibling::div/div/div/div/input"
-    search_digital_loc = "//label[@for='{feildname}']/following-sibling::div/div/div/div/input"
-    search_choice_loc = "//label[@for='{feildname}']/following-sibling::div/div/div/div/input"
-    search_li_loc = "//div[@id='app']/following-sibling::div/div/div/ul/li"
-    li_selector_loc = "//div[@id='app']/following-sibling::div/div/div/ul/li[{indexnum}]"
-
-    search_address_loc = "//label[@for='{feildname}']/following-sibling::div/div/span"
-    
-
-    search_creator_loc = "//label[@for='author_name']/following-sibling::div/div/div/div/input"
-    search_startdate_loc = "//label[@for='{feild}']/following-sibling::div/div/div/input[1]"
-    search_enddate_loc = "//label[@for='{feild}']/following-sibling::div/div/div/input[2]"
-
-    btn_base_loc = "//div[@class='view_toolbar_panel']/div"
-    btn_name_loc = "//div[@class='view_toolbar_panel']/div[{indexnum}]/button/span"
-    input_base_loc = "//form[@class='el-form el-form--label-right']//label[@for='{feildname}']/following-sibling::div//input"
-    input_textarea_loc = "//form[@class='el-form el-form--label-right']//label[@for='{feildname}']/following-sibling::div//textarea"
-    input_datetime_loc = "//form[@class='el-form el-form--label-right']//label[@for='{feildname}']/following-sibling::div/div/div[1]/input"
-    input_datetime_loc2 = "//form[@class='el-form el-form--label-right']//label[@for='{feildname}']/following-sibling::div/div/div[2]/div/input"
-
     #six
     ListHeader_Button_loc = "//div[@class='listView_headerButtonWrapper']//div[@data-mark='%s']"  #列表头部按钮
     ListHeader_Buttons_loc = "//div[@class='listView_headerButtonWrapper']//div[@class='view_toolbar_panel']/div"  # 列表头部按钮
@@ -61,6 +35,10 @@ class ListComponent(SeleniumPage):
     ColHeader_iconxiala = "//tr//span[@title='%s']/ancestor::div[@class='cell']//i[contains(@class,'iconxiala')]"
     ColHeader_checkbox = "//div[@class='content']//label[contains(@class,'el-checkbox')]"
     ColHeader_confirm_btn = "//div[@class='content']/following-sibling::div//span[@class='confirm_btn']"
+    import_file_loc = "//div[@class='import_file']//input"  #导入input
+    import_file_confirmButton_loc = "//div[@class='import_file']//button/span[text()='开始导入']"  #开始导入按钮
+    import_file_warn_confirmButton_loc = "//div[@aria-label='导入提醒']//button/span[text()='确定']" #导入提醒确认按钮
+    import_file_result_closeButton_loc = "//div[@aria-label='导入结果']//button/span[text()='关闭']" #导入结果关闭按钮
 
 
 
@@ -161,6 +139,19 @@ class ListComponent(SeleniumPage):
     def ListComponent_checkbox_Click( self ,row):
         '''点击列表勾选框'''
         self.clickElemByXpath_visibility(self.listTable_checkbox_loc.replace('%row',str(row)))
+
+
+    def ListComponent_Import_Data( self,filePath):
+        '''列表导入数据'''
+        #导入数据
+        self.sendkeysElemByXpath_presence(self.import_file_loc,filePath)
+        #点击开始导入按钮
+        self.clickElemByXpath_visibility(self.import_file_confirmButton_loc)
+        # 点击确认导入按钮
+        self.clickElemByXpath_visibility(self.import_file_warn_confirmButton_loc)
+        # 点击结果关闭按钮
+        self.clickElemByXpath_visibility(self.import_file_result_closeButton_loc)
+
 
     def ListComponent_QueryItem_Sendkeys( self, itemName, keys, *args,QueryItemType="text"):
         '''列表组件的查询项输入值

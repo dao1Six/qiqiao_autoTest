@@ -22,7 +22,9 @@ from util.excel_xlrd import ExcelReadUtil
 class PcBugAppTest_003(unittest.TestCase):
     '''PC端过往补丁应用3'''
 
+    ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
 
+    assetsDataPath = ProjectRootPath+"\\file_data\\testcase_data\\资产管理数据.xls"
 
     def pcLogin(self,account,password):
         '''登录pc端'''
@@ -112,4 +114,24 @@ class PcBugAppTest_003(unittest.TestCase):
         formPage.ForeignSelection_Sendkeys("外键选择1","吴健伦")
         time.sleep(2)
         self.assertTrue(formPage.Form_field_isVisibility("单行文本"))
+
+    def test_07( self ):
+        '''【补丁】---PC运行平台-导入文件报系统异常'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','资产管理')
+        businessPage=BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('资产清单测试导入列表')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除数据')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        businessPage.ListComponent_Click_ListHeader_Button('导入')
+        businessPage.ListComponent_Import_Data(self.assetsDataPath)
+        time.sleep(2)
+        self.assertEqual(6,businessPage.ListComponent_GetRecordTotal())
+
 

@@ -21,7 +21,7 @@ class Driver():
         chrome_options.add_experimental_option("prefs",prefs)   #禁用谷歌浏览器的通知框
         chrome_options.add_argument('window-size=1920x3000')
         chrome_options.add_argument("–incognito")
-        chrome_options.add_argument('--headless')  # 无头模式
+        # chrome_options.add_argument('--headless')  # 无头模式
         driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=self.chromedriverPath)
         return driver
 
