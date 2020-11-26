@@ -424,6 +424,17 @@ class SeleniumPage (object):
             print("使用presence_of_all_elements_located根据"+locator+"信息在"+str(timeout)+"秒内没有查询到元素")
             return None
 
+
+
+
+
+
+
+
+
+
+
+
 ###Css
     def find_elemByCSS_visibility(self, locator, timeout=5):
         """判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None"""

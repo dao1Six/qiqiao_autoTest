@@ -25,7 +25,7 @@ class PomAppTest_003(unittest.TestCase):
 
 
     def test_01( self ):
-        '''组合页面按钮显示'''
+        '''【补丁】-组合页面-容器-绑定页面后。页面原有的按钮不显示'''
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)

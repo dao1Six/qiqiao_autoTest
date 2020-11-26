@@ -4,10 +4,9 @@ from public.selenium_page import SeleniumPage
 
 class ListComponent(SeleniumPage):
 
-    #six
+    #简单页面
     ListHeader_Button_loc = "//div[@class='listView_headerButtonWrapper']//div[@data-mark='%s']"  #列表头部按钮
     ListHeader_Buttons_loc = "//div[@class='listView_headerButtonWrapper']//div[@class='view_toolbar_panel']/div"  # 列表头部按钮
-
     tablist_loc = "//div[@role='tablist']//div[@role='tab']"
     search_btn_loc = "//button[@data-mark='筛选条件搜索按钮']"   #列表组件的搜索按钮
     reset_btn_loc = "//button[@data-mark='筛选条件重置按钮']"  #列表组件的重置按钮
@@ -17,15 +16,10 @@ class ListComponent(SeleniumPage):
     li_selectOption_loc ="//div[@class='el-scrollbar']//div[@title='%s']"  #下拉框选项
     selectOptionName_loc = "//div[@data-mark='%s']//span[@title='%s']"  #查询项标题
     listTable_td_loc = "//div[contains(@class,'el-table__body-wrapper')]//tr[%row]//td[%col]//span" #列表单元格
-
     listTable_checkbox_loc = "//div[@class='el-table__fixed-body-wrapper']//tr[%row]//td[1]//label//span[@class='el-checkbox__inner']" #列表勾选框
-
     ListRow_Button_loc = "//span[@data-mark='%s_%row']/button/span[text()='%s']" #列表行按钮
-
     ListRow_MoreButton_loc = "//div[contains(@class,'el-table__body-wrapper')]//tr[%row]//span[contains(text(),'更多')]/parent::div[1]"#列表行更多按钮
-
     ListRow_SelectAllInput_loc = "//div[contains(@class,'el-table__fixed-header-wrapper')]//th[1]//span[@class='el-checkbox__inner']" #列表首行全选元素
-
     TooltipButton_loc = "//div[@role='tooltip']//button//span[text()='%s']"
     dialogfooterButton = "//div[@class='el-dialog__footer']//button/span[text()='%s']"
     pagination_total_loc = "//span[@class='el-pagination__total']"
@@ -39,7 +33,6 @@ class ListComponent(SeleniumPage):
     import_file_confirmButton_loc = "//div[@class='import_file']//button/span[text()='开始导入']"  #开始导入按钮
     import_file_warn_confirmButton_loc = "//div[@aria-label='导入提醒']//button/span[text()='确定']" #导入提醒确认按钮
     import_file_result_closeButton_loc = "//div[@aria-label='导入结果']//button/span[text()='关闭']" #导入结果关闭按钮
-
 
 
 
@@ -221,6 +214,16 @@ class ListComponent(SeleniumPage):
             # 点击一下选项标题，使光标离开
             self.clickElemByXpath_visibility(self.selectOptionName_loc.replace('%s', itemName))
 
+
+
+#组合页面  ICP代表组合页面
+    ICP_pagination_total_loc = "//div[@data-mark='%s']//span[@class='el-pagination__total']"
+
+    def ListComponent_GetRecordTotal_ICP(self,listKey):
+        '''组合页面获取列表总条数'''
+        text = self.find_elemByXPATH_visibility(self.ICP_pagination_total_loc.replace('%s',listKey)).text
+        num = int(text[1:-1])
+        return num
 
 
 

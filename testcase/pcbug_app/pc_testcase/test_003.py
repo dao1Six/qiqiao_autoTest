@@ -26,6 +26,8 @@ class PcBugAppTest_003(unittest.TestCase):
 
     assetsDataPath = ProjectRootPath+"\\file_data\\testcase_data\\资产管理数据.xls"
 
+    assets3DataPath = ProjectRootPath + "\\file_data\\testcase_data\\资产复制3.0.xls"
+
     def pcLogin(self,account,password):
         '''登录pc端'''
         self.driver = Driver().pcdriver()
@@ -133,5 +135,38 @@ class PcBugAppTest_003(unittest.TestCase):
         businessPage.ListComponent_Import_Data(self.assetsDataPath)
         time.sleep(2)
         self.assertEqual(6,businessPage.ListComponent_GetRecordTotal())
+
+    def test_08( self ):
+        '''【补丁】---PC运行平台-导入文件报系统异常'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','固定资产管理3.0')
+        businessPage=BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('基础管理')
+        businessPage.BusinessPage_LeftMenu_Click('资产管理复制表单列表')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        businessPage.ListComponent_Click_ListHeader_Button('导入')
+        businessPage.ListComponent_Import_Data(self.assets3DataPath)
+        time.sleep(2)
+        self.assertEqual(16,businessPage.ListComponent_GetRecordTotal())
+
+
+    def test_09( self ):
+        '''【补丁】---组合页面并排放置两个列表组件时，重叠'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','数据过滤测试应用')
+        businessPage=BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('组合页面')
+        self.assertEqual(330,businessPage.ListComponent_GetRecordTotal_ICP("key_1588733496950_296746"))
+
 
 
