@@ -42,4 +42,4 @@ class MbOkrAppTest_001(unittest.TestCase):
         time.sleep(5)
         mbOkrPage.MbOkrPage_switch_iframeElem()
         self.assertEqual("提高自动化测试框架稳定性及速度，七巧发版质量",mbOkrPage.MbOkrPage_get_O(),"okr目标显示值不对")
-        self.assertEqual("自动化用例编写100条",mbOkrPage.MbOkrPage_get_KRs(1),msg="okr目标显示值不对")
+        self.assertEqual("自动化用例编写300条",mbOkrPage.MbOkrPage_get_KRs(1),msg="okr目标显示值不对")
