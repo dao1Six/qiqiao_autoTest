@@ -10,7 +10,7 @@ class MbChildForm_component(SeleniumPage):
 
     ChildForm_Button_loc = "//button[text()=' %s']"
 
-    ChildForm_Td_loc = "//div[@title='%s']//div[@class='subformTable']//tbody/tr[%row]/td[%col]"
+    ChildForm_Td_loc = "//div[@title='%s']//tbody/tr[%row]/td[%col]"
 
     def MbChildForm_AddButton_Click(self,fieldName,*args):
         '''点击添加按钮
@@ -33,6 +33,23 @@ class MbChildForm_component(SeleniumPage):
                 self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col)) + "//input"),
                                          "value")
         return text
+
+
+    def MbChildForm_Td_Scroll( self,fileName,row,col,x,y):
+        '''移动端子表列表滚动'''
+        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(
+            self.ChildForm_Td_loc.replace('%s', fileName).replace('%row', str(row)).replace('%col', str(col)))
+        self.h5_scroll(elem,x,y)
+
+
+
+    def MbChildForm_Td_isVisibility(  self,fileName,row,col ):
+        '''子表单列表单元格值是否可见'''
+        if((self.find_elemByXPATH_visibility(
+            self.ChildForm_Td_loc.replace('%s', fileName).replace('%row', str(row)).replace('%col', str(col))))!=None):
+            return True
+        else:
+            return False
 
 
 

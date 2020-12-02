@@ -359,3 +359,5 @@ class MbBugAppTest_001(unittest.TestCase):
         formPage = MbFormPage(self.driver)
         self.assertTrue(formPage.MbPicUpload_Sendkeys("图片上传1",self.picPath,uplodaTime=10),msg="10秒内上传不成功")
 
+
+

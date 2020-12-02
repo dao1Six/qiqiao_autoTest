@@ -88,6 +88,7 @@ class MbPomAppTest_003(unittest.TestCase):
         formPage.MbSelection_SingleXiala_Senkeys("工作内容","产品测试")
         formPage.MbChildForm_Button_Click("保存")
         time.sleep(2)
+        formPage.MbChildForm_Td_Scroll('工时明细',1,1,500,0)
         self.assertEqual("—",formPage.MbChildForm_GetTdValue('工时明细',1,4),msg="项目名称值显示不正确")
 
 
