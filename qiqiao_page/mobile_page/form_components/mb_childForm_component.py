@@ -34,6 +34,8 @@ class MbChildForm_component(SeleniumPage):
                                          "value")
         return text
 
+
+
     def ChildForm_Record_Delete(self):
         '''删除子表记录'''
         pass
