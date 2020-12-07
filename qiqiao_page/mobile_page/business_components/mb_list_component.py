@@ -1,9 +1,10 @@
 # coding=utf-8
 from public.selenium_page import SeleniumPage
 from qiqiao_page.mobile_page.form_components.mb_user_component import MbUser
+from qiqiao_page.mobile_page.mb_public_page import MbPublicPage
 
 
-class MbListComponent(SeleniumPage):
+class MbListComponent(MbPublicPage):
 
 
 
@@ -44,6 +45,12 @@ class MbListComponent(SeleniumPage):
 
     CubeActionBottomCancelButton = "//div[@class='cube-action-sheet-cancel']"
     Cube_dialog_Button = "//a[text()='%s']"
+    dyCardList_right_dot_loc = "//div[@index='%s']//div[@class='dyCardList_right_dot']/i"
+    MbListComponent_dialog_button = "//a[text()='%s']"
+
+    def MbListComponent_Click_dialogButton( self,buttonName ):
+        '''点击列表弹框按钮'''
+        self.clickElemByXpath_visibility(self.MbListComponent_dialog_button.replace('%s',buttonName))
 
     def MbListComponent_Click_CardListBottomButton( self,buttonName ):
         '''点击底部按钮'''
@@ -86,8 +93,15 @@ class MbListComponent(SeleniumPage):
 
     # 长按列表某条记录
     def MbListComponent_Recore_ClickAndHole( self, index ,*args):
+        '''长按列表某条记录'''
         elem = self.find_elemsByCSS_presence(self.CardList_loc)[index-1]
         self.click_and_hold(elem)
+
+    def MbListComponent_click_moreButton(self, index, *args):
+        '''点击列表更多按钮图标'''
+        self.clickElemByXpath_visibility(self.dyCardList_right_dot_loc.replace('%s',str(index - 1)))
+
+
 
     #点击列表某条记录
     def MbListComponent_Recore_Click( self, index ,*args):

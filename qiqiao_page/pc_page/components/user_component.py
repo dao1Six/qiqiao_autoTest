@@ -21,6 +21,7 @@ class User(SeleniumPage):
 
     ChildFormPopup_loc = "//div[@data-mark='子表弹层_%s']"
 
+    User_people_li_input_loc = "//div[@class='people-list']/ul[1]/li[@title='%s']//span[@class='el-checkbox__inner']"
 
 
     #
@@ -41,6 +42,15 @@ class User(SeleniumPage):
     def User_click_UserSelectBox( self,fieldName ):
         '''点击表单人员字段选择框'''
         self.clickElemByXpath_visibility(self.User_selectBox_loc.replace('%s',fieldName))
+
+    def User_click_User_people_li_input( self,peopleName ):
+        '''点击人员列表选项'''
+        self.clickElemByXpath_visibility(self.User_people_li_input_loc.replace('%s',peopleName))
+
+    def User_click_User_querenButton(self, fieldName):
+        '''点击人员列表确认按钮'''
+        self.clickElemByXpath_visibility(self.User_querenButton_loc.replace('%s',fieldName))
+
 
     def User_sendkeys_UserSearch( self,userName ):
         '''人员字段搜索框输入值'''

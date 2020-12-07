@@ -117,7 +117,7 @@ class ValueAppTest_001(unittest.TestCase):
         time.sleep(3)
         self.assertEqual(result,businessPage.ListComponent_GetRecordTotal())
 
-    @data(("创新技术中心->产品研发二部->产品规划组",2),("财务管理中心",0))
+    @data(("创新技术中心->产品研发二部->产品规划组",2),("财务管理中心",0),("创新技术中心",3))
     @unpack
     def test_07( self,option,result):
         '''道一云价值观 全员价值观明细,部门查询'''

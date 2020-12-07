@@ -168,5 +168,17 @@ class PcBugAppTest_003(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('组合页面')
         self.assertEqual(330,businessPage.ListComponent_GetRecordTotal_ICP("key_1588733496950_296746"))
 
+    def test_10(self):
+        '''【ID1101604】
+【补丁】---用户所属一级部门人员返回数据错误'''
+        self.pcLogin("wujianlun@auto", "do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '道一云价值观')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('同一级部门人员价值观明细')
+        self.assertEqual(3,businessPage.ListComponent_GetRecordTotal())
+
 
 

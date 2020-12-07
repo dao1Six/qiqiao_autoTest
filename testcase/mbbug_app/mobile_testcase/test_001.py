@@ -360,4 +360,45 @@ class MbBugAppTest_001(unittest.TestCase):
         self.assertTrue(formPage.MbPicUpload_Sendkeys("图片上传1",self.picPath,uplodaTime=10),msg="10秒内上传不成功")
 
 
+    def test_17( self ):
+        '''【补丁】--单选选择配置选项关联，iPhone机型点击无反应'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('道一云价值观','应用首页')
+        listPage = MbListComponent(self.driver)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbChildForm_AddButton_Click("价值观")
+        formPage.MbSelection_SingleXiala_Senkeys("价值观","持续创新：技术驱动，敏捷迭代")
+        formPage.MbTextarea_Sendkeys("Situation（背景）","dadasdasdsadsadasd")
+        formPage.MbTextarea_Sendkeys("Target（目标）", "dadasdasdsadsadasd")
+        formPage.MbTextarea_Sendkeys("Action（行动）", "dadasdasdsadsadasd")
+        formPage.MbTextarea_Sendkeys("Result（结果）", "dadasdasdsadsadasd")
+        formPage.MbSelection_MultiBox_Sendkeys_liandong("Score（自我评价）", ["保持好奇：主动思考，寻找表象背后的原因。","创造价值：通过创造新的变化点实现更大价值。"])
+        formPage.MbChildForm_Button_Click("保存")
+        time.sleep(2)
+        self.assertEqual("持续创新：技术驱动，敏捷迭代", formPage.MbChildForm_GetTdValue('价值观', 1,2), msg="子表显示值不对")
+        self.assertEqual("保持好奇：主动思考，寻找表象背后的原因。，创造价值：通过创造新的变化点实现更大价值。", formPage.MbChildForm_GetTdValue('价值观', 1, 7), msg="子表显示值不对")
+
+
+    def test_18( self ):
+        '''【ID1101226】
+【补丁】--移动端点击一键修改按钮提示保存表单数据失败'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('PC端补丁收集应用','发票主表')
+        listPage = MbListComponent(self.driver)
+        listPage.MbListComponent_click_moreButton(1)
+        listPage.MbListComponent_Click_CardListBottomButton("一键修改值")
+        listPage.MbListComponent_Click_dialogButton("确定")
+        self.assertIn('成功', listPage.Public_GetAlertMessage())
+
+
+
+
+
 

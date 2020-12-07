@@ -69,6 +69,7 @@ class ChildForm_component(SeleniumPage):
     def click_ChildForm_Button( self,buttonName ):
         '''点击子表按钮'''
         self.clickElemByXpath_visibility(self.ChildForm_button_loc.replace('%s',buttonName))
+        time.sleep(2)
 
 
 

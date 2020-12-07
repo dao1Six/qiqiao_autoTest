@@ -8,6 +8,10 @@ class MbSelection(SeleniumPage):
 
     Selection_Option_loc = "//div[@title='%s']//span[text()='%option']/parent::label[1]"  # 单选多选选项
 
+    Selection_liandong_Option_loc = "//span[text()='%s']/parent::label/input" # 单选多选联动选项
+
+    dmCubeMultiSelectList_primaryButton_loc = "//button[@class='cube-btn dmCubeMultiSelectList_button cube-btn-inline cube-btn-primary']"
+
     Radio_Option_loc ="//div[@title='%s']//span[@class='cube-radio-label' and text()='%title']/parent::label[1]"
 
     Xiala_Option_loc = "//div[@class='cube-picker-content']/div[@class='cube-picker-wheel-wrapper']/div//li[text()='%title']"
@@ -17,6 +21,10 @@ class MbSelection(SeleniumPage):
     placeholder_loc = "//div[@title='%s']//span[@class='icon']"
 
     Xiala_confirm_loc = "//h1[text()='%s']/parent::div[1]/preceding-sibling::span[@class='cube-picker-confirm']"
+
+    Selection_icon_loc = "//div[@title='%s']//span[@class='icon']"
+
+
 
     ChildFormPopup_SingleXiala_divReadonlyValue_loc = "//div[@title='%title']//div[@class='readonly_value']"
 
@@ -70,6 +78,19 @@ class MbSelection(SeleniumPage):
         for i in list:
             self.clickElemByXpath_visibility(self.Selection_Option_loc.replace('%s',fieldName).replace('%option',i))
 
+
+    def MbSelection_MultiBox_Sendkeys_liandong(self,fieldName,list,*args):
+        '''给联动的多项选择组件输入值
+        fieldName：字段标题
+        list：多项选项 list里存放选项文本值
+        '''
+        #点击选择框
+        self.clickElemByXpath_visibility(self.Selection_icon_loc.replace('%s', fieldName))
+        #选择值
+        for i in list:
+            self.clickElemByXpath_presence(self.Selection_liandong_Option_loc.replace('%s',i))
+        #点击确定按钮
+        self.clickElemByXpath_visibility(self.dmCubeMultiSelectList_primaryButton_loc)
 
 
 

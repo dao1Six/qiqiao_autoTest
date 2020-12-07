@@ -91,3 +91,23 @@ class DataFilterAppTest_001 (unittest.TestCase):
         rowValues = excelReader.getRowValues(sheet,2)
         print(rowValues)
         self.assertEqual(['1', 'GD-20200924-0001', '员工管理模块', '五福珠宝', '技术支援', '吴先生', '13025806548', '中', '一般', '大苏打撒旦撒旦撒旦', '阿达萨达萨达飒飒大大', '北京/北京市/西城区 大大撒大苏打撒大苏打', '', '', '', 44098.0, '', '', '', '', '', '已受理待指派', '吴健伦', '吴健伦', 44098.72708333333, 44098.73472222222, '吴健伦', 44098.72767361111, 44098.73516203704, '员工评分系统', '员工评分系统', '00023', '00001', '撒旦萨达萨达萨达萨达萨达撒旦大神', '大苏打萨达萨达萨达萨达萨达是', 'GD-20200924-0001'],excelReader.getRowValues(sheet,2))
+
+
+
+    def test_04( self ):
+        '''【补丁】---PC运行平台---导出数据---导出的数据中含有子表数据，最多只能导出30条子表数据。导致数据缺失'''
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','数据过滤测试应用2')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('子表')
+        businessPage.ListComponent_Click_ListHeader_Button("导出")
+        businessPage.ListComponent_dialogfooterButton_Click("确 定")
+        time.sleep(15)
+        filePath = self.downloadPath + "//列表.xls"
+        self.assertTrue(self.isFileExists(filePath))
+        excelReader = ExcelReadUtil()
+        sheet = excelReader.getSheetValue(filePath, 1)
+        self.assertEqual(81,excelReader.getRowsClosNum(sheet)[0],msg="导出文件行数不对")
+        self.assertEqual(33, excelReader.getRowsClosNum(sheet)[1], msg="导出文件列数不对")
