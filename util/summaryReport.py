@@ -56,9 +56,32 @@ class SummaryReport(object):
                 +"以下"+str(len(errorApp))+"个应用测试在过程中有用例执行错误或失败的情况: \n"+';\n'.join(errorApp))
 
 
+
+
+
+    def printyongli( self ):
+        '''打印用例信息'''
+        files = os.listdir(self.reportpath)  # 得到文件夹下的所有文件名称
+        pathList = []
+        for file in files:
+            pathList.append(self.reportpath+"\\"+file)
+        for fileName,filePath in zip(self.testAppNameList,pathList):
+            htmlfile = open(filePath,'rb')
+            htmlcontent = htmlfile.read()
+            bs = BeautifulSoup(htmlcontent,"html.parser")
+            testcaseList = bs.find_all('div',attrs={'class':'testcase'})
+            print(filePath)
+            for testcase in testcaseList:
+                testName = testcase.text
+                print(testName)
+
+
+
+
 if __name__ == '__main__':
-    info = SummaryReport().summaryReportInfo()
-    function.send_TextEmail("七巧测试汇总报告",info)
+    # info = SummaryReport().summaryReportInfo()
+    # function.send_TextEmail("七巧测试汇总报告",info)
+    SummaryReport().printyongli()
 
 
 

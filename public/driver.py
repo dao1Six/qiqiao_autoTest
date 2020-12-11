@@ -2,7 +2,10 @@
 import os
 import time
 
+from retrying import retry
 from selenium import webdriver
+from selenium.common.exceptions import SessionNotCreatedException
+
 
 class Driver():
 
@@ -14,8 +17,17 @@ class Driver():
     # chromedriverPath="C:/Users/admin/AppData/Local/Google/Chrome/Application/chromedriver.exe"
     downloadPath = ProjectRootPath+'\\file_data\\downloadData'
 
-    # 启动浏览器驱动
+    def retry_if_getDriverException(exception ):
+        exceptionInfo = str(exception)
+        if ("session not created" in exceptionInfo):
+            print("SessionNotCreatedException" + exceptionInfo)
+            return isinstance(exception, SessionNotCreatedException)
+
+
+    @retry( retry_on_exception=retry_if_getDriverException,stop_max_attempt_number=3, wait_fixed=1000,
+           wrap_exception=True,stop_max_delay=5000)
     def pcdriver(self):
+        '''启动浏览器驱动'''
         chrome_options = webdriver.ChromeOptions()
         prefs = {"profile.default_content_setting_values.notifications" : 2 ,"download.default_directory": self.downloadPath}
         chrome_options.add_experimental_option("prefs",prefs)   #禁用谷歌浏览器的通知框
@@ -25,8 +37,11 @@ class Driver():
         driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=self.chromedriverPath)
         return driver
 
-    # phone皮肤启动浏览器驱动
+
+    @retry(retry_on_exception=retry_if_getDriverException, stop_max_attempt_number=3, wait_fixed=1000,
+           wrap_exception=True, stop_max_delay=5000)
     def phonedriver(self):
+        '''phone皮肤启动浏览器驱动'''
         mobile_emulation = {"deviceName":"iPhone X"}
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('window-size=1920x3000')

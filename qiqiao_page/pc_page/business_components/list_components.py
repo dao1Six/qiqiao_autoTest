@@ -29,7 +29,7 @@ class ListComponent(SeleniumPage):
     ColHeader_iconxiala = "//tr//span[@title='%s']/ancestor::div[@class='cell']//i[contains(@class,'iconxiala')]"
     ColHeader_checkbox = "//div[@class='content']//label[contains(@class,'el-checkbox')]"
     ColHeader_confirm_btn = "//div[@class='content']/following-sibling::div//span[@class='confirm_btn']"
-    import_file_loc = "//div[@class='import_file']//input"  #导入input
+    import_file_loc = "//input[@class='el-upload__input']"#"//div[@class='import_file']//input"  #导入input
     import_file_confirmButton_loc = "//div[@class='import_file']//button/span[text()='开始导入']"  #开始导入按钮
     import_file_warn_confirmButton_loc = "//div[@aria-label='导入提醒']//button/span[text()='确定']" #导入提醒确认按钮
     import_file_result_closeButton_loc = "//div[@aria-label='导入结果']//button/span[text()='关闭']" #导入结果关闭按钮

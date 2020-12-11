@@ -250,7 +250,7 @@ class ChildForm_component(SeleniumPage):
         for name in userNameList:
             self.clickElemByXpath_presence(locator=self.User_search_loc)
             self.sendkeysElemByXpath_presence (self.User_search_loc,name)
-            self.clickElemByXpath_presence (self.User_searchOption_loc.replace('%s',name))
+            self.clickElemByXpath_presence (self.User_searchOption_loc.replace('%s',name),timeout=10)
         self.clickElemByXpath_visibility (self.User_querenButton_loc)
 
 

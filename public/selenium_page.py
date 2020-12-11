@@ -181,11 +181,11 @@ class SeleniumPage (object):
 
 
 
-    def clickElemByXpath_visibility(self, locator, index=0):
+    def clickElemByXpath_visibility(self, locator, index=0,timeout=5):
         """点击单个可见元素Xpath"""
         #传元素地址
         if(type(locator)==str):
-            elems = self.find_elemsByXPATH_visibility(locator)
+            elems = self.find_elemsByXPATH_visibility(locator,timeout=timeout)
             if(elems==None):
                 raise TypeError("elem不能为None")
             else:
@@ -212,11 +212,11 @@ class SeleniumPage (object):
 
 
 
-    def clickElemByXpath_presence(self, locator, index=0):
+    def clickElemByXpath_presence(self, locator, index=0,timeout=5):
         """点击单个可见元素Xpath"""
         #传元素地址
         if(type(locator)==str):
-            elems = self.find_elemsByXPATH_presence(locator)
+            elems = self.find_elemsByXPATH_presence(locator,timeout=timeout)
             if(elems==None):
                 raise TypeError("elem不能为None")
             else:

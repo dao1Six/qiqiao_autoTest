@@ -10,7 +10,7 @@ class MbApplicationListPage(SeleniumPage):
     '''应用列表页面'''
 
 
-    menu_loc = "//span[contains(text(),'%appName')]/ancestor::div[@class='apply_content_top']/following-sibling::div[@class='apply_content_bottom']//li[@title='%menu']//i"
+    menu_loc = "//span[text()='%appName']/ancestor::div[@class='apply_content_top']/following-sibling::div[@class='apply_content_bottom']//li[@title='%menu']//i"
 
     bottom_nav = "//span[contains(@class,'menu_label') and text()='%s']"
 

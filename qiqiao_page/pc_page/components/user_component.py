@@ -35,7 +35,7 @@ class User(SeleniumPage):
         #搜索框输入值
         self.sendkeysElemByXpath_visibility(self.User_search_loc,userName)
         #点击查询结果
-        self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',userName))
+        self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',userName),timeout=10)
         #点击确认按钮
         self.clickElemByXpath_visibility(self.User_querenButton_loc.replace('%s',fieldName))
 
@@ -82,7 +82,7 @@ class User(SeleniumPage):
         for name in userNameList:
             self.clickElemByXpath_visibility(self.User_search_loc)
             self.sendkeysElemByXpath_visibility(self.User_search_loc,name,isclear=True)
-            self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',name))
+            self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',name),timeout=10)
         self.clickElemByXpath_visibility(self.User_querenButton_loc.replace('%s',fieldName))
 
 
