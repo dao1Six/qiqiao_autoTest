@@ -1,4 +1,6 @@
 # coding=utf-8
+import time
+
 from public.selenium_page import SeleniumPage
 from qiqiao_page.mobile_page.form_components.mb_user_component import MbUser
 from qiqiao_page.mobile_page.mb_public_page import MbPublicPage
@@ -84,7 +86,8 @@ class MbListComponent(MbPublicPage):
     def MbListComponent_searchItem_Switch( self,Item ):
         '''点击列表切换搜索项'''
         self.clickElemByXpath_visibility(self.fieldSelect_i)
-        self.clickElemByXpath_visibility(self.fieldSelect_Item,Item)
+        time.sleep(1)
+        self.clickElemByXpath_visibility(self.fieldSelect_Item.replace("%s",Item))
 
 
     def MbListComponent_AddButton_Click( self ):

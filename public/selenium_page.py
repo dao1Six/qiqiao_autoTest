@@ -27,6 +27,7 @@ class SeleniumPage (object):
         self.driver = driver
 
 
+
     def switch_to_the_iframe(self, iframeElem):
         '''切换到指定的iframe页面'''
         self.driver.switch_to.frame(iframeElem)

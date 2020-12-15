@@ -70,7 +70,6 @@ class SummaryReport(object):
             htmlcontent = htmlfile.read()
             bs = BeautifulSoup(htmlcontent,"html.parser")
             testcaseList = bs.find_all('div',attrs={'class':'testcase'})
-            print(filePath)
             for testcase in testcaseList:
                 testName = testcase.text
                 print(testName)

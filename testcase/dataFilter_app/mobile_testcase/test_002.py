@@ -40,18 +40,23 @@ class MbDataFilterAppTest_002(unittest.TestCase):
         homepage = MbHomePage(self.driver)
         homepage.HomePage_BottomNav_Click('应用')
         applicationListPage = MbApplicationListPage(self.driver)
-        applicationListPage.MbApplicationListPage_Menu_Click('数据过滤测试应用','基础表单数据列表')
+        applicationListPage.MbApplicationListPage_Menu_Click('数据过滤测试应用','列表数据过滤组')
         mbBusinessPage = MbBusinessPage(self.driver)
         mbBusinessPage.MbListComponent_searchInput_Sendkeys("七巧")
-        mbBusinessPage.Public_Alert_disappear()
-        #检查记录状态值
-        # self.assertEqual(mbBusinessPage.MbListComponent_Get_RecoreStatusValule(1),result1)
-        print(mbBusinessPage.MbListComponent_Get_RecoreStatusValule(1))
-        #检查记录文本值
-        # self.assertEqual(mbBusinessPage.MbListComponent_Get_RecoreTextContents(1),result2)
-        print(mbBusinessPage.MbListComponent_Get_RecoreTextContents(1))
-        mbBusinessPage.MbListComponent_Recore_Click(2)
-        time.sleep(3)
-        self.driver.back()
-        print(mbBusinessPage.MbListComponent_Get_RecoreStatusValule(1))
-        print(mbBusinessPage.MbListComponent_Get_RecoreTextContents(1))
+        time.sleep(2)
+        self.assertEqual("单行文本：七巧",mbBusinessPage.MbListComponent_Get_RecoreTextContents(2)[0])
+
+
+    def test_02( self):
+        '''移动端列表切换查询项搜索检查'''
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('数据过滤测试应用','列表数据过滤组')
+        mbBusinessPage = MbBusinessPage(self.driver)
+        mbBusinessPage.MbListComponent_searchItem_Switch("整数")
+        time.sleep(2)
+        mbBusinessPage.MbListComponent_searchInput_Sendkeys("10")
+        time.sleep(2)
+        self.assertEqual("10",mbBusinessPage.MbListComponent_Get_RecoreTextContents(2)[1])
+

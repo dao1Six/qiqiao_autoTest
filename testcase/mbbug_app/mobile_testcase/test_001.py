@@ -254,6 +254,7 @@ class MbBugAppTest_001(unittest.TestCase):
         homepage.HomePage_BottomNav_Click('待办')
         time.sleep(2)
         self.driver.refresh()
+        time.sleep(2)
         todoPage = MbTodoPage(self.driver)
         todoPage.MbTodoPage_searchInput_sendkeys("王浩")
         time.sleep(2)
@@ -396,6 +397,41 @@ class MbBugAppTest_001(unittest.TestCase):
         listPage.MbListComponent_Click_CardListBottomButton("一键修改值")
         listPage.MbListComponent_Click_dialogButton("确定")
         self.assertIn('成功', listPage.Public_GetAlertMessage())
+
+
+    def test_19( self ):
+        '''【补丁】【外部】移动端/PC版企业微信--切换子表关联筛选条件无反应'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('补丁转自动化应用','子表关联主表列表')
+        listPage = MbListComponent(self.driver)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbChildFormAssociation_AddButton_Click("子表关联")
+        self.assertEqual(1,formPage.MbChildFormAssociation_List_Get_RecoresNumber())
+        formPage.MbChildFormAssociation_List_searchItem_Switch("整数")
+        formPage.MbChildFormAssociation_List_searchInput_Sendkeys("10")
+
+    def test_20( self ):
+        '''移动端/PC版企业微信--子表关联筛选检查'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('补丁转自动化应用','子表关联主表列表')
+        listPage = MbListComponent(self.driver)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbChildFormAssociation_AddButton_Click("子表关联")
+        self.assertEqual(1,formPage.MbChildFormAssociation_List_Get_RecoresNumber())
+        formPage.MbChildFormAssociation_List_searchInput_Sendkeys("美国")
+        time.sleep(2)
+        self.assertEqual(0, formPage.MbChildFormAssociation_List_Get_RecoresNumber())
+
+
+
 
 
 

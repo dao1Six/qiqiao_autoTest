@@ -81,9 +81,9 @@ class MultiFormAssociation(SeleniumPage):
 
     def MultiForm_GetTdValue( self,fileName,row,col,*args):
         '''获取多表关联组件中间表数据列表中单元格值'''
-        text = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))).text
+        text = self.find_elemByXPATH_presence(self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))).text
         if(text==""):
-            text = self.getElemAttrValue(self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))+"//input"),"value")
+            text = self.getElemAttrValue(self.find_elemByXPATH_presence(self.MultiForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))+"//input"),"value")
         return text
 
     def MultiForm_delete_Record(self,fileName,row):

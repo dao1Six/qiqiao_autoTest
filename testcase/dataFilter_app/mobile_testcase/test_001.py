@@ -10,7 +10,7 @@ class MbDataFilterAppTest_001 (unittest.TestCase):
     '''移动端数据过滤应用报表测试'''
 
 
-    Token = "71589a716e2e96d29e07624edb74b0cb"
+    Token = "99090980e2edb32fb0d2b9f3bc222a25"
 
     http = "https://qy.do1.com.cn/qiqiao"
 

@@ -1,4 +1,6 @@
 # coding=utf-8
+from selenium.webdriver.common.keys import Keys
+
 from public.selenium_page import SeleniumPage
 from qiqiao_page.mobile_page.mb_public_page import MbPublicPage
 
@@ -71,6 +73,9 @@ class MbTodoPage(MbPublicPage,SeleniumPage):
     def MbTodoPage_searchInput_sendkeys( self,key ):
         '''搜索框输入值'''
         self.sendkeysElemByXpath_visibility(self.search_input_loc,key=key)
+        # self.sendkeysElemByXpath_visibility(self.search_input_loc, key=Keys.ENTER)
+
+
 
     def MbTodoPage_Get_RecoreTitleValule( self,index ):
         '''返回当前列表某条记录标题值'''
