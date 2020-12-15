@@ -409,10 +409,15 @@ class MbBugAppTest_001(unittest.TestCase):
         listPage = MbListComponent(self.driver)
         listPage.MbListComponent_AddButton_Click()
         formPage = MbFormPage(self.driver)
+        time.sleep(2)
+        self.driver.refresh()
+        time.sleep(2)
         formPage.MbChildFormAssociation_AddButton_Click("子表关联")
         self.assertEqual(1,formPage.MbChildFormAssociation_List_Get_RecoresNumber())
         formPage.MbChildFormAssociation_List_searchItem_Switch("整数")
         formPage.MbChildFormAssociation_List_searchInput_Sendkeys("10")
+        time.sleep(2)
+        self.assertEqual(0, formPage.MbChildFormAssociation_List_Get_RecoresNumber())
 
     def test_20( self ):
         '''移动端/PC版企业微信--子表关联筛选检查'''

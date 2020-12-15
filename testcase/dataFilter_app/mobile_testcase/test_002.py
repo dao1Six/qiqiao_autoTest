@@ -58,5 +58,5 @@ class MbDataFilterAppTest_002(unittest.TestCase):
         time.sleep(2)
         mbBusinessPage.MbListComponent_searchInput_Sendkeys("10")
         time.sleep(2)
-        self.assertEqual("10",mbBusinessPage.MbListComponent_Get_RecoreTextContents(2)[1])
+        self.assertEqual("整数：10",mbBusinessPage.MbListComponent_Get_RecoreTextContents(2)[1])
 
