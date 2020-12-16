@@ -33,6 +33,7 @@ class ListComponent(SeleniumPage):
     import_file_confirmButton_loc = "//div[@class='import_file']//button/span[text()='开始导入']"  #开始导入按钮
     import_file_warn_confirmButton_loc = "//div[@aria-label='导入提醒']//button/span[text()='确定']" #导入提醒确认按钮
     import_file_result_closeButton_loc = "//div[@aria-label='导入结果']//button/span[text()='关闭']" #导入结果关闭按钮
+    import_file_ErrorResult_a_loc = "//div[@aria-label='导入提醒']//a[text()='下载错误数据']"
 
 
 
@@ -144,6 +145,18 @@ class ListComponent(SeleniumPage):
         self.clickElemByXpath_visibility(self.import_file_warn_confirmButton_loc)
         # 点击结果关闭按钮
         self.clickElemByXpath_visibility(self.import_file_result_closeButton_loc)
+
+    def ListComponent_ImportData_Sendkeys(self,filePath):
+        '''列表导入数据执行到点击开始导入'''
+        # 导入数据
+        self.sendkeysElemByXpath_presence(self.import_file_loc, filePath)
+        # 点击开始导入按钮
+        self.clickElemByXpath_visibility(self.import_file_confirmButton_loc)
+
+
+    def ListComponent_download_ImportErrorData(self):
+        '''下载导入的错误数据'''
+        self.clickElemByXpath_visibility(self.import_file_ErrorResult_a_loc)
 
 
     def ListComponent_QueryItem_Sendkeys( self, itemName, keys, *args,QueryItemType="text"):

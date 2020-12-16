@@ -29,6 +29,8 @@ class PcBugAppTest_002(unittest.TestCase):
 
     downloadPath = ProjectRootPath + '\\file_data\\downloadData'
 
+    test_25_DataPath = ProjectRootPath+"\\file_data\\testcase_data\\唯一校验列表数据.xls"
+
     def isFileExists(self,path):
         if os.path.exists(path):  # 如果文件存在
             # 删除文件，可使用以下两种方法。
@@ -647,4 +649,28 @@ class PcBugAppTest_002(unittest.TestCase):
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,5),'01783',msg='人员工号显示不对')
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,6),'wujianlun',msg='人员账号显示不对')
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,7),'13025805485',msg='人员手机号显示不对')
+
+
+
+    def test_25( self ):
+        '''【补丁】【外部】---导入按钮，导入数据时，配置唯一校验的表单，对导入的数据不生效'''
+        filePath = self.downloadPath+"//导入模板（含错误数据）.xls"
+        if(self.isFileExists(filePath)):
+            os.remove(filePath)
+        self.pcLogin("zhangyuejuan@auto","qiqiao123")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', 'GSF-demo')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('唯一校验列表页面')
+        businessPage.ListComponent_Click_ListHeader_Button('导入')
+        businessPage.ListComponent_ImportData_Sendkeys(self.test_25_DataPath)
+        time.sleep(2)
+        businessPage.ListComponent_download_ImportErrorData()
+        time.sleep(5)
+        excelReader = ExcelReadUtil()
+        sheet = excelReader.getSheetValue(filePath, 1)
+        self.assertEqual("[客户]值必须唯一;", excelReader.getRowValues(sheet, 2)[6])
+
 

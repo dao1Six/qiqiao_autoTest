@@ -52,6 +52,7 @@ class HSEAppTest_003(unittest.TestCase):
         #点击多表关联组件编辑按钮
         formPage.MultiForm_edit_Record("用品明细",1)
         #检查表单弹窗内的数据显示
+        time.sleep(2)
         self.assertEqual("口罩",formPage.ForeignSelection_GetValue_writable_InPopup("用品明细","用品名称"),msg="用品明细用品名称显示不正确")
         self.assertEqual("个人PPE",formPage.Selection_SingleXiala_readOnly_InPopup("用品明细","类别"),msg="用品明细类别显示不正确")
         self.assertEqual("50",formPage.Number_GetValue_readOnly_InPopup("用品明细","库存"),msg="用品明细库存显示不正确")
