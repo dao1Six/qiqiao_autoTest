@@ -180,5 +180,13 @@ class PcBugAppTest_003(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('同一级部门人员价值观明细')
         self.assertEqual(3,businessPage.ListComponent_GetRecordTotal())
 
+    def test_11( self ):
+        '''PC外部表单添加数据'''
+        self.driver = Driver().pcdriver()
+        self.driver.maximize_window()
+        self.driver.get("https://qy.do1.com.cn/qiqiao/runtime/#/2ade557c80d0430d9eee7589b30e4447/2ade0/e8e7124ff51846118f602b349a1a243a/5fdafd1bee96fe000143c54d/externalForm")
+        externalformpage = ExternalFormPage(self.driver)
+        externalformpage.ExternalFormPage_Click_SubmitBtn()
+        self.assertEqual("提交成功！",externalformpage.ExternalFormPage_Get_MessageContent())
 
 
