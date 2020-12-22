@@ -24,9 +24,9 @@ class PomAppTest_001(unittest.TestCase):
     downloadPath = ProjectRootPath + '\\file_data\\downloadData'
 
 
-    # @classmethod
-    # def setUpClass(self):
-    #     self.dataPrepare(self)
+    @classmethod
+    def setUpClass(self):
+        self.dataPrepare(self)
 
     def isFileExists(self,path):
         if os.path.exists(path):  # 如果文件存在

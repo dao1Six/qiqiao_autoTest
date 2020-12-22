@@ -17,6 +17,7 @@ from qiqiao_page.pc_page.portal_page import PortalPage
 from qiqiao_page.pc_page.process_page import ProcessPage
 from util.dateTimeUtil import DateTimeUtil
 from util.excel_xlrd import ExcelReadUtil
+from qiqiao_page.pc_page.externalForm_page import ExternalFormPage
 
 
 class PcBugAppTest_003(unittest.TestCase):
