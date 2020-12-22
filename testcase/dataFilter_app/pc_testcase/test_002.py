@@ -111,3 +111,23 @@ class DataFilterAppTest_001 (unittest.TestCase):
         sheet = excelReader.getSheetValue(filePath, 1)
         self.assertEqual(81,excelReader.getRowsClosNum(sheet)[0],msg="导出文件行数不对")
         self.assertEqual(33, excelReader.getRowsClosNum(sheet)[1], msg="导出文件列数不对")
+
+
+    def test_05( self ):
+        '''【补丁】---PC运行平台--导出大量数据超时'''
+        filePath = self.downloadPath+"//订单管理列表2.xls"
+        if(self.isFileExists(filePath)):
+            os.remove(filePath)
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','压测应用')
+        businessPage = BusinessPage(self.driver)
+        businessPage.ListComponent_Click_ListHeader_Button("导出")
+        businessPage.ListComponent_dialogfooterButton_Click("确 定")
+        time.sleep(20)
+        filePath = self.downloadPath + "//订单管理列表2.xls"
+        self.assertTrue(self.isFileExists(filePath))
+        excelReader = ExcelReadUtil()
+        sheet = excelReader.getSheetValue(filePath, 1)
+        self.assertGreater(excelReader.getRowsClosNum(sheet)[0],9000,msg="导出文件行数不对")

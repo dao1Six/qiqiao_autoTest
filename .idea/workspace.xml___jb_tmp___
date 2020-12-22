@@ -1,0 +1,1588 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/testcase/pom_app/mobile_testcase/test_001.py" description="formPage.MbDate_SendKeys(&quot;合同结束时间&quot;, DateTimeUtil()...." line="148" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="70b90111-e683-418e-9c81-92b620779b81" name="Default" comment="aaa">
+      <change beforePath="$PROJECT_DIR$/.idea/qiqiao_autoTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/qiqiao_autoTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/selenium_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/public/selenium_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qiqiao_page/console_page/header_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/qiqiao_page/console_page/header_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qiqiao_page/mobile_page/mb_form_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/qiqiao_page/mobile_page/mb_form_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/achievement_app/mobile_testcase/test_001.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcase/achievement_app/mobile_testcase/test_001.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/achievement_app/pc_testcase/test_001.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcase/achievement_app/pc_testcase/test_001.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/console/test_001.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcase/console/test_001.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/console/test_002.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcase/console/test_002.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/dataFilter_app/mobile_testcase/test_001.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcase/dataFilter_app/mobile_testcase/test_001.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/dataFilter_app/pc_testcase/test_001.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcase/dataFilter_app/pc_testcase/test_001.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase/test_001.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase/test_001.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_AchievementAppTest_001_test_03.coverage" NAME="Unittests for test_001.AchievementAppTest_001.test_03 Coverage Results" MODIFIED="1595847444364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/achievement_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_ProcessAppTest_001_test_04.coverage" NAME="Unittests for test_002.ProcessAppTest_001.test_04 Coverage Results" MODIFIED="1603181834328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/process_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_1_ValueAppTest_test_08.coverage" NAME="Unittests for test_1.ValueAppTest.test_08 Coverage Results" MODIFIED="1595216790562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/value_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_QuitAppTest_001_test_05.coverage" NAME="Unittests for test_001.QuitAppTest_001.test_05 Coverage Results" MODIFIED="1603968606234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/quit_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_ValueAppTest_001_test_08.coverage" NAME="Unittests for test_001.ValueAppTest_001.test_08 Coverage Results" MODIFIED="1596015825949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/value_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbReportAppTest_001_test_03.coverage" NAME="Unittests for test_001.MbReportAppTest_001.test_03 Coverage Results" MODIFIED="1595314092160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/reportTest_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbCapitalAppTest_001_test_05.coverage" NAME="Unittests for test_001.MbCapitalAppTest_001.test_05 Coverage Results" MODIFIED="1600826240953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_QuitAppTest_001.coverage" NAME="Unittests for test_001.QuitAppTest_001 Coverage Results" MODIFIED="1602496439546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/quit_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_MbPomAppTest_002_test_01.coverage" NAME="Unittests for test_002.MbPomAppTest_002.test_01 Coverage Results" MODIFIED="1602663376534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_PcBugAppTest_001_test_04.coverage" NAME="Unittests for test_001.PcBugAppTest_001.test_04 Coverage Results" MODIFIED="1602676663025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbBugAppTest_001_test_03.coverage" NAME="Unittests for test_001.MbBugAppTest_001.test_03 Coverage Results" MODIFIED="1603818283450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_DataFilterAppTest_001.coverage" NAME="Unittests for test_001.DataFilterAppTest_001 Coverage Results" MODIFIED="1600335160898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/dataFilter_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_004_MbHSEAppTest_004_test_01.coverage" NAME="Unittests for test_004.MbHSEAppTest_004.test_01 Coverage Results" MODIFIED="1601285734673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_PomAppTest_003_test_02.coverage" NAME="Unittests for test_003.PomAppTest_003.test_02 Coverage Results" MODIFIED="1600741556338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_ReportAppTest_001_test_05.coverage" NAME="Unittests for test_001.ReportAppTest_001.test_05 Coverage Results" MODIFIED="1595315440473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/reportTest_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_MbCapitalAppTest_002.coverage" NAME="Unittests for test_003.MbCapitalAppTest_002 Coverage Results" MODIFIED="1598255668248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_ConsoleTest_003.coverage" NAME="Unittests for test_003.ConsoleTest_003 Coverage Results" MODIFIED="1603250225846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbBugAppTest_001_test_09.coverage" NAME="Unittests for test_001.MbBugAppTest_001.test_09 Coverage Results" MODIFIED="1603964704118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbBugAppTest_001_test_02.coverage" NAME="Unittests for test_001.MbBugAppTest_001.test_02 Coverage Results" MODIFIED="1598867208892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_PcBugAppTest_001_test_03.coverage" NAME="Unittests for test_001.PcBugAppTest_001.test_03 Coverage Results" MODIFIED="1599119838334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbCapitalAppTest_001_test_04.coverage" NAME="Unittests for test_001.MbCapitalAppTest_001.test_04 Coverage Results" MODIFIED="1599189786095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_DataFilterAppTest_001_test_01.coverage" NAME="Unittests for test_001.DataFilterAppTest_001.test_01 Coverage Results" MODIFIED="1600416781756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/dataFilter_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_ConsoleTest_003_test_09.coverage" NAME="Unittests for test_003.ConsoleTest_003.test_09 Coverage Results" MODIFIED="1603250175724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbBugAppTest_001_test_08.coverage" NAME="Unittests for test_001.MbBugAppTest_001.test_08 Coverage Results" MODIFIED="1603425300358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_ConsoleTest_003_test_03.coverage" NAME="Unittests for test_003.ConsoleTest_003.test_03 Coverage Results" MODIFIED="1603247716567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_DataFilterAppTest_001_test_07.coverage" NAME="Unittests for test_001.DataFilterAppTest_001.test_07 Coverage Results" MODIFIED="1600075702909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/dataFilter_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_005_ConsoleTest_003_test_03.coverage" NAME="Unittests for test_005.ConsoleTest_003.test_03 Coverage Results" MODIFIED="1603257528816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_ReportAppTest_001_test_06.coverage" NAME="Unittests for test_001.ReportAppTest_001.test_06 Coverage Results" MODIFIED="1595315416428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/reportTest_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_QuitAppTest_001_test_04.coverage" NAME="Unittests for test_001.QuitAppTest_001.test_04 Coverage Results" MODIFIED="1603821693999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/quit_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbValueAppTest_001.coverage" NAME="Unittests for test_001.MbValueAppTest_001 Coverage Results" MODIFIED="1603820790219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/value_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$test.coverage" NAME="test Coverage Results" MODIFIED="1603795063017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_06.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_06 Coverage Results" MODIFIED="1600677855473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_AchievementAppTest_001_test_04.coverage" NAME="Unittests for test_001.AchievementAppTest_001.test_04 Coverage Results" MODIFIED="1602310448299" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/achievement_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_MbReportAppTest_002_test_01.coverage" NAME="Unittests for test_002.MbReportAppTest_002.test_01 Coverage Results" MODIFIED="1595403393016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/reportTest_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_ConsoleTest_003_test_04.coverage" NAME="Unittests for test_003.ConsoleTest_003.test_04 Coverage Results" MODIFIED="1603249050851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_saysafe_JinXiaoCun_test_add_record.coverage" NAME="Unittests for saysafe.JinXiaoCun.test_add_record Coverage Results" MODIFIED="1585215334420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/SaySafe_App_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_07.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_07 Coverage Results" MODIFIED="1600680191311" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_HSEAppTest_003_test_01.coverage" NAME="Unittests for test_003.HSEAppTest_003.test_01 Coverage Results" MODIFIED="1601282936152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_01.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_01 Coverage Results" MODIFIED="1600136762886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_AchievementAppTest_001.coverage" NAME="Unittests for test_001.AchievementAppTest_001 Coverage Results" MODIFIED="1603810130604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/achievement_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_05.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_05 Coverage Results" MODIFIED="1602675567480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_ReportAppTest_001_test_01.coverage" NAME="Unittests for test_001.ReportAppTest_001.test_01 Coverage Results" MODIFIED="1595916848494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/reportTest_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_ConsoleTest_002_test_02.coverage" NAME="Unittests for test_002.ConsoleTest_002.test_02 Coverage Results" MODIFIED="1598856212252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_ConsoleTest_002_test_05.coverage" NAME="Unittests for test_002.ConsoleTest_002.test_05 Coverage Results" MODIFIED="1602820175879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_11.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_11 Coverage Results" MODIFIED="1603966800382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_CapitalAppTest_001_test_05.coverage" NAME="Unittests for test_001.CapitalAppTest_001.test_05 Coverage Results" MODIFIED="1599187264822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbBugAppTest_001_test_07.coverage" NAME="Unittests for test_001.MbBugAppTest_001.test_07 Coverage Results" MODIFIED="1603816578446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbValueAppTest_001_test_01.coverage" NAME="Unittests for test_001.MbValueAppTest_001.test_01 Coverage Results" MODIFIED="1595228495574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/value_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_MbCapitalAppTest_002_test_01.coverage" NAME="Unittests for test_003.MbCapitalAppTest_002.test_01 Coverage Results" MODIFIED="1597817991134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_QuitAppTest_001_test_03.coverage" NAME="Unittests for test_001.QuitAppTest_001.test_03 Coverage Results" MODIFIED="1599543482506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/quit_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_AchievementAppTest_001_test_07.coverage" NAME="Unittests for test_001.AchievementAppTest_001.test_07 Coverage Results" MODIFIED="1602310354241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/achievement_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_AchievementAppTest_001_test_05.coverage" NAME="Unittests for test_001.AchievementAppTest_001.test_05 Coverage Results" MODIFIED="1595847343814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/achievement_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_20.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_20 Coverage Results" MODIFIED="1603968090372" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_ProcessAppTest_001_test_04.coverage" NAME="Unittests for test_001.ProcessAppTest_001.test_04 Coverage Results" MODIFIED="1600825918388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/process_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_ConsoleTest_003_test_05.coverage" NAME="Unittests for test_003.ConsoleTest_003.test_05 Coverage Results" MODIFIED="1603249015369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$aa.coverage" NAME="aa Coverage Results" MODIFIED="1604313987980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/report" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_14.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_14 Coverage Results" MODIFIED="1602745037382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_AchievementAppTest_001_test_02.coverage" NAME="Unittests for test_001.AchievementAppTest_001.test_02 Coverage Results" MODIFIED="1595847466438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/achievement_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_ConsoleTest_003_test_02.coverage" NAME="Unittests for test_003.ConsoleTest_003.test_02 Coverage Results" MODIFIED="1603247637124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_08.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_08 Coverage Results" MODIFIED="1601189811198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbBugAppTest_001_test_05.coverage" NAME="Unittests for test_001.MbBugAppTest_001.test_05 Coverage Results" MODIFIED="1601289430720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_PcBugAppTest_001_test_06.coverage" NAME="Unittests for test_001.PcBugAppTest_001.test_06 Coverage Results" MODIFIED="1603968228100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_01_ProcessAppTest_001_test_04.coverage" NAME="Unittests for test_01.ProcessAppTest_001.test_04 Coverage Results" MODIFIED="1598414573358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/process_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbReportAppTest_001_test_01.coverage" NAME="Unittests for test_001.MbReportAppTest_001.test_01 Coverage Results" MODIFIED="1595916904397" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/reportTest_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_QuitAppTest_001_test_01.coverage" NAME="Unittests for test_001.QuitAppTest_001.test_01 Coverage Results" MODIFIED="1603447323038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/quit_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_MbReportAppTest_002.coverage" NAME="Unittests for test_002.MbReportAppTest_002 Coverage Results" MODIFIED="1595915374129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/reportTest_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_CalculationAppTest_001_test_03.coverage" NAME="Unittests for test_001.CalculationAppTest_001.test_03 Coverage Results" MODIFIED="1600416241685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/calculation_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbCapitalAppTest_001_test_01.coverage" NAME="Unittests for test_001.MbCapitalAppTest_001.test_01 Coverage Results" MODIFIED="1594948637320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$aa__1_.coverage" NAME="aa (1) Coverage Results" MODIFIED="1599016236067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/report" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_ValueAppTest_001_test_03.coverage" NAME="Unittests for test_001.ValueAppTest_001.test_03 Coverage Results" MODIFIED="1599539280032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/value_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_005_ConsoleTest_003_test_01.coverage" NAME="Unittests for test_005.ConsoleTest_003.test_01 Coverage Results" MODIFIED="1603251672668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_16.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_16 Coverage Results" MODIFIED="1603270979837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_ConsoleTest_002.coverage" NAME="Unittests for test_002.ConsoleTest_002 Coverage Results" MODIFIED="1603810044610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_PcBugAppTest_001_test_01.coverage" NAME="Unittests for test_001.PcBugAppTest_001.test_01 Coverage Results" MODIFIED="1600223543587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_ValueAppTest_001.coverage" NAME="Unittests for test_001.ValueAppTest_001 Coverage Results" MODIFIED="1602640337896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/value_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_004_OAAppTest_004_test_01.coverage" NAME="Unittests for test_004.OAAppTest_004.test_01 Coverage Results" MODIFIED="1600753493064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_22.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_22 Coverage Results" MODIFIED="1604302792823" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbBugAppTest_001_test_11.coverage" NAME="Unittests for test_001.MbBugAppTest_001.test_11 Coverage Results" MODIFIED="1604298318577" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$runAll3.coverage" NAME="runAll3 Coverage Results" MODIFIED="1594888464193" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/report" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_PomAppTest_001_test_05.coverage" NAME="Unittests for test_001.PomAppTest_001.test_05 Coverage Results" MODIFIED="1601445686600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_MbPomAppTest_002.coverage" NAME="Unittests for test_002.MbPomAppTest_002 Coverage Results" MODIFIED="1602663641332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_saysafe_JinXiaoCun_setUpClass.coverage" NAME="Unittests for saysafe.JinXiaoCun.setUpClass Coverage Results" MODIFIED="1585215505059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/SaySafe_App_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_ReportAppTest_001_test_04.coverage" NAME="Unittests for test_001.ReportAppTest_001.test_04 Coverage Results" MODIFIED="1595315470610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/reportTest_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_MbCapitalAppTest_002.coverage" NAME="Unittests for test_002.MbCapitalAppTest_002 Coverage Results" MODIFIED="1604290410875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_DataFilterAppTest_001.coverage" NAME="Unittests for test_002.DataFilterAppTest_001 Coverage Results" MODIFIED="1596179766461" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/dataFilter_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbDataFilterAppTest_001_test_01.coverage" NAME="Unittests for test_001.MbDataFilterAppTest_001.test_01 Coverage Results" MODIFIED="1600417001547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/dataFilter_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_AchievementAppTest_001_test_06.coverage" NAME="Unittests for test_001.AchievementAppTest_001.test_06 Coverage Results" MODIFIED="1601376211979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/achievement_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_MbPomAppTest_003_test_01.coverage" NAME="Unittests for test_003.MbPomAppTest_003.test_01 Coverage Results" MODIFIED="1597740321461" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_ProcessAppTest_001_test_01.coverage" NAME="Unittests for test_002.ProcessAppTest_001.test_01 Coverage Results" MODIFIED="1604290031575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/process_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_QuitAppTest_001_test_02.coverage" NAME="Unittests for test_001.QuitAppTest_001.test_02 Coverage Results" MODIFIED="1603821637584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/quit_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_PomAppTest_001.coverage" NAME="Unittests for test_001.PomAppTest_001 Coverage Results" MODIFIED="1603765631440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_01_ProcessAppTest_001_test_02.coverage" NAME="Unittests for test_01.ProcessAppTest_001.test_02 Coverage Results" MODIFIED="1598412663922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/process_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_004_PomAppTest_004_test_03.coverage" NAME="Unittests for test_004.PomAppTest_004.test_03 Coverage Results" MODIFIED="1601280426108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbBugAppTest_001_test_06.coverage" NAME="Unittests for test_001.MbBugAppTest_001.test_06 Coverage Results" MODIFIED="1602316552017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_PcBugAppTest_001_test_07.coverage" NAME="Unittests for test_001.PcBugAppTest_001.test_07 Coverage Results" MODIFIED="1603960780947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbDataFilterAppTest_001_test_07.coverage" NAME="Unittests for test_001.MbDataFilterAppTest_001.test_07 Coverage Results" MODIFIED="1600324492802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/dataFilter_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbCapitalAppTest_001.coverage" NAME="Unittests for test_001.MbCapitalAppTest_001 Coverage Results" MODIFIED="1603870011208" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_19.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_19 Coverage Results" MODIFIED="1603964643526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_ConsoleTest_002_test_03.coverage" NAME="Unittests for test_002.ConsoleTest_002.test_03 Coverage Results" MODIFIED="1600417440190" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_CalculationAppTest_001_test_02.coverage" NAME="Unittests for test_001.CalculationAppTest_001.test_02 Coverage Results" MODIFIED="1596098701833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/calculation_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_MbCapitalAppTest_002_test_01.coverage" NAME="Unittests for test_002.MbCapitalAppTest_002.test_01 Coverage Results" MODIFIED="1594806810616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_ConsoleTest_003_test_07.coverage" NAME="Unittests for test_003.ConsoleTest_003.test_07 Coverage Results" MODIFIED="1603249168256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_in_test_001_py__1_.coverage" NAME="Unittests in test_001.py (1) Coverage Results" MODIFIED="1599197697064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_03.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_03 Coverage Results" MODIFIED="1603821153460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_ReportAppTest_001.coverage" NAME="Unittests for test_001.ReportAppTest_001 Coverage Results" MODIFIED="1596078284625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/reportTest_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_ReportAppTest_001_test_03.coverage" NAME="Unittests for test_001.ReportAppTest_001.test_03 Coverage Results" MODIFIED="1595315484269" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/reportTest_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_ProcessAppTest_003_test_01.coverage" NAME="Unittests for test_003.ProcessAppTest_003.test_01 Coverage Results" MODIFIED="1604307574698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/process_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PomAppTest_002_test_01.coverage" NAME="Unittests for test_002.PomAppTest_002.test_01 Coverage Results" MODIFIED="1603967688862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_CapitalAppTest_001_test_02.coverage" NAME="Unittests for test_002.CapitalAppTest_001.test_02 Coverage Results" MODIFIED="1600073649111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$function.coverage" NAME="function Coverage Results" MODIFIED="1594780680165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/public" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_ValueAppTest_test_08.coverage" NAME="Unittests for testcase.value_app.pc_testcase.test_1.ValueAppTest.test_08 Coverage Results" MODIFIED="1595211342704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/value_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_18.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_18 Coverage Results" MODIFIED="1603964675436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$fileUtil.coverage" NAME="fileUtil Coverage Results" MODIFIED="1594875250850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/util" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_PomAppTest_001_test_03.coverage" NAME="Unittests for test_001.PomAppTest_001.test_03 Coverage Results" MODIFIED="1601281861145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbPomAppTest_001_test_02.coverage" NAME="Unittests for test_001.MbPomAppTest_001.test_02 Coverage Results" MODIFIED="1600065677152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_12.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_12 Coverage Results" MODIFIED="1602813900543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_ReportAppTest_001_test_02.coverage" NAME="Unittests for test_001.ReportAppTest_001.test_02 Coverage Results" MODIFIED="1595315506545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/reportTest_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_13.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_13 Coverage Results" MODIFIED="1602730115464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_ProcessAppTest_001_test_02.coverage" NAME="Unittests for test_002.ProcessAppTest_001.test_02 Coverage Results" MODIFIED="1602741896938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/process_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbPomAppTest_001_test_01.coverage" NAME="Unittests for test_001.MbPomAppTest_001.test_01 Coverage Results" MODIFIED="1598854279870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_004_ConsoleTest_001_test_001.coverage" NAME="Unittests for test_004.ConsoleTest_001.test_001 Coverage Results" MODIFIED="1603192274492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_CapitalAppTest_001.coverage" NAME="Unittests for test_002.CapitalAppTest_001 Coverage Results" MODIFIED="1600073724193" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_CalculationAppTest_001_test_01.coverage" NAME="Unittests for test_001.CalculationAppTest_001.test_01 Coverage Results" MODIFIED="1596678742590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/calculation_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_01_ProcessAppTest_001_test_01.coverage" NAME="Unittests for test_01.ProcessAppTest_001.test_01 Coverage Results" MODIFIED="1598350330339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/process_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_PomAppTest_001_test_02.coverage" NAME="Unittests for test_001.PomAppTest_001.test_02 Coverage Results" MODIFIED="1602816628754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_ConsoleTest_002_test_04.coverage" NAME="Unittests for test_002.ConsoleTest_002.test_04 Coverage Results" MODIFIED="1602819770891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_004_MbHSEAppTest_003_test_01.coverage" NAME="Unittests for test_004.MbHSEAppTest_003.test_01 Coverage Results" MODIFIED="1600841590517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_DataFilterAppTest_001_test_01.coverage" NAME="Unittests for test_002.DataFilterAppTest_001.test_01 Coverage Results" MODIFIED="1602318057000" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/dataFilter_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbReportAppTest_001.coverage" NAME="Unittests for test_001.MbReportAppTest_001 Coverage Results" MODIFIED="1596078257539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/reportTest_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_MbBugAppTest_002_test_01.coverage" NAME="Unittests for test_002.MbBugAppTest_002.test_01 Coverage Results" MODIFIED="1598859845087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_02.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_02 Coverage Results" MODIFIED="1600139009267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_xtest_002_PomAppTest_002_test_01.coverage" NAME="Unittests for xtest_002.PomAppTest_002.test_01 Coverage Results" MODIFIED="1594376617871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_in_test_001_py.coverage" NAME="Unittests in test_001.py Coverage Results" MODIFIED="1603960174882" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_ConsoleTest_001.coverage" NAME="Unittests for test_001.ConsoleTest_001 Coverage Results" MODIFIED="1604300519251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_DataFilterAppTest_001_test_03.coverage" NAME="Unittests for test_002.DataFilterAppTest_001.test_03 Coverage Results" MODIFIED="1602830195196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/dataFilter_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_ConsoleTest_003_test_08.coverage" NAME="Unittests for test_003.ConsoleTest_003.test_08 Coverage Results" MODIFIED="1603249552519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_CapitalAppTest_001_test_01.coverage" NAME="Unittests for test_002.CapitalAppTest_001.test_01 Coverage Results" MODIFIED="1600073638587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_004_OAAppTest_004_test_02.coverage" NAME="Unittests for test_004.OAAppTest_004.test_02 Coverage Results" MODIFIED="1601200245774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_01_ProcessAppTest_001_test_03.coverage" NAME="Unittests for test_01.ProcessAppTest_001.test_03 Coverage Results" MODIFIED="1598414187900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/process_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$runAll2.coverage" NAME="runAll2 Coverage Results" MODIFIED="1599015648710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/report" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_HSEAppTest_003.coverage" NAME="Unittests for test_003.HSEAppTest_003 Coverage Results" MODIFIED="1600770897370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbDataFilterAppTest_001.coverage" NAME="Unittests for test_001.MbDataFilterAppTest_001 Coverage Results" MODIFIED="1600417022296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/dataFilter_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_PomAppTest_001_test_01.coverage" NAME="Unittests for test_001.PomAppTest_001.test_01 Coverage Results" MODIFIED="1602326469333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbBugAppTest_001_test_10.coverage" NAME="Unittests for test_001.MbBugAppTest_001.test_10 Coverage Results" MODIFIED="1603964427283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_1_ValueAppTest.coverage" NAME="Unittests for test_1.ValueAppTest Coverage Results" MODIFIED="1595212689265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/value_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_PomAppTest_001_test_04.coverage" NAME="Unittests for test_001.PomAppTest_001.test_04 Coverage Results" MODIFIED="1600220792150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbBugAppTest_001_test_04.coverage" NAME="Unittests for test_001.MbBugAppTest_001.test_04 Coverage Results" MODIFIED="1601028731515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_17.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_17 Coverage Results" MODIFIED="1603347099916" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_CapitalAppTest_001_test_01.coverage" NAME="Unittests for test.CapitalAppTest_001.test_01 Coverage Results" MODIFIED="1595322325010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_PcBugAppTest_001_test_02.coverage" NAME="Unittests for test_001.PcBugAppTest_001.test_02 Coverage Results" MODIFIED="1599117273159" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_PcBugAppTest_001_test_05.coverage" NAME="Unittests for test_001.PcBugAppTest_001.test_05 Coverage Results" MODIFIED="1600149809922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_CapitalAppTest_001_test_01.coverage" NAME="Unittests for test_003.CapitalAppTest_001.test_01 Coverage Results" MODIFIED="1600672342809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_PomAppTest_001_test_06.coverage" NAME="Unittests for test_001.PomAppTest_001.test_06 Coverage Results" MODIFIED="1602728060834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_005_ConsoleTest_003_test_02.coverage" NAME="Unittests for test_005.ConsoleTest_003.test_02 Coverage Results" MODIFIED="1603258940104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbBugAppTest_001_test_01.coverage" NAME="Unittests for test_001.MbBugAppTest_001.test_01 Coverage Results" MODIFIED="1598866039251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_ProcessAppTest_001_test_03.coverage" NAME="Unittests for test_002.ProcessAppTest_001.test_03 Coverage Results" MODIFIED="1603330560658" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/process_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_23.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_23 Coverage Results" MODIFIED="1604310883772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_15.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_15 Coverage Results" MODIFIED="1603269021943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_ConsoleTest_002_test_01.coverage" NAME="Unittests for test_002.ConsoleTest_002.test_01 Coverage Results" MODIFIED="1597304910792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$runAll.coverage" NAME="runAll Coverage Results" MODIFIED="1602661032733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/report" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_005_MbJiXiaoAppTest_005_test_01.coverage" NAME="Unittests for test_005.MbJiXiaoAppTest_005.test_01 Coverage Results" MODIFIED="1600847310616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_ConsoleTest_001_test_001.coverage" NAME="Unittests for test_001.ConsoleTest_001.test_001 Coverage Results" MODIFIED="1594798063145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_CapitalAppTest_001.coverage" NAME="Unittests for test_001.CapitalAppTest_001 Coverage Results" MODIFIED="1602647535261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_PomAppTest_003_test_01.coverage" NAME="Unittests for test_003.PomAppTest_003.test_01 Coverage Results" MODIFIED="1594802341500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_saysafe_JinXiaoCun.coverage" NAME="Unittests for saysafe.JinXiaoCun Coverage Results" MODIFIED="1585217713414" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/SaySafe_App_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_ValueAppTest_001_test_08.coverage" NAME="Unittests for test.ValueAppTest_001.test_08 Coverage Results" MODIFIED="1595210739414" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/value_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_ConsoleTest_003_test_01.coverage" NAME="Unittests for test_003.ConsoleTest_003.test_01 Coverage Results" MODIFIED="1603247450388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_10.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_10 Coverage Results" MODIFIED="1602229963532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_ProcessAppTest_001_test_03.coverage" NAME="Unittests for test_001.ProcessAppTest_001.test_03 Coverage Results" MODIFIED="1603768776371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/process_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_CapitalAppTest_002_test_02.coverage" NAME="Unittests for test_002.CapitalAppTest_002.test_02 Coverage Results" MODIFIED="1602488303641" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_AchievementAppTest_001_test_01.coverage" NAME="Unittests for test_001.AchievementAppTest_001.test_01 Coverage Results" MODIFIED="1596012327386" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/achievement_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbPomAppTest_001.coverage" NAME="Unittests for test_001.MbPomAppTest_001 Coverage Results" MODIFIED="1602644344951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/mobile_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_09.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_09 Coverage Results" MODIFIED="1601348166133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$summaryReport.coverage" NAME="summaryReport Coverage Results" MODIFIED="1603947020898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/util" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PomAppTest_002.coverage" NAME="Unittests for test_002.PomAppTest_002 Coverage Results" MODIFIED="1599186368610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pom_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_CapitalAppTest_001_test_04.coverage" NAME="Unittests for test_001.CapitalAppTest_001.test_04 Coverage Results" MODIFIED="1599186972985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/capital_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_003_ConsoleTest_003_test_06.coverage" NAME="Unittests for test_003.ConsoleTest_003.test_06 Coverage Results" MODIFIED="1603248703323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/console" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_002_PcBugAppTest_002_test_04.coverage" NAME="Unittests for test_002.PcBugAppTest_002.test_04 Coverage Results" MODIFIED="1600327256626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+    <SUITE FILE_PATH="coverage/qiqiao_autoTest$Unittests_for_test_001_MbReportAppTest_001_test_02.coverage" NAME="Unittests for test_001.MbReportAppTest_001.test_02 Coverage Results" MODIFIED="1595315553371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase/reportTest_app/mobile_testcase" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="mb_form_page.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/qiqiao_page/mobile_page/mb_form_page.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="43" selection-start-line="43" selection-end-line="47" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_001.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/testcase/console/test_001.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-354">
+              <caret line="12" column="4" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+              <folding>
+                <element signature="e#15#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header_page.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/qiqiao_page/console_page/header_page.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="6" column="16" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="16" />
+              <folding>
+                <element signature="e#15#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_003.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testcase/console/test_003.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="test_004.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testcase/console/test_004.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="test_005.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testcase/console/test_005.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>time.sleep(5)</find>
+      <find>time.sleep(3)</find>
+      <find>ab244d5938abc1185bc2e7a1f4f68685</find>
+      <find>551a63f156aad2f50e75ba0848dbf62a</find>
+      <find>林镇伟</find>
+      <find>FirstDirList</find>
+      <find>679a0d61260b47b35882e8e41e55cf3a</find>
+      <find>click</find>
+      <find>ef670dad4b464d2bd370e193ccbb14dc</find>
+      <find>start</find>
+      <find>MbMultiForm_GetTdValue</find>
+      <find>wujianlun@A1</find>
+      <find>离职</find>
+      <find>检查流程处理人为离职人员时，是否仍然显示</find>
+      <find>send_mail</find>
+      <find>生产任务单</find>
+      <find>MultiForm_List_ForeignSelection_sendkeys</find>
+      <find>ProcessPage_click_process_menu</find>
+      <find>sendkeysElemByXpath_visibility</find>
+      <find>raise</find>
+      <find>HomePage_BottomNav_Click('待办')</find>
+      <find>滚动</find>
+      <find>dyCardList_text_main</find>
+      <find>【补丁】——自定义开发按钮，配置脚本批量处理流程时，系统报错（单条数据正常，多条数据报错）</find>
+      <find>16c523c5bd1266112e1410d22563170a</find>
+      <find>c542c3ae03d12ad0aa40ffc58488ee89</find>
+      <find>9aa3173aba1fe36c9f2ed711e873dce1</find>
+      <find>【正式】PC运行平台—多表关联组件中间表关联表外键字段设置联动筛选后，筛选无效</find>
+      <find>【补丁】——外键选择组件设置可用条件为高级函数OR，对另外外键字段值进行判断时不生效</find>
+      <find>HeaderPage_topbar_click</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>25d51efc4727605538a1c547a72c8056</replace>
+      <replace>dd77a0b593c063dea03e477505ad726d</replace>
+      <replace>9bdbefe07af9dc549442d32e48db064d</replace>
+      <replace>8cc21b6b62e2fab9acd3e807238b79d6</replace>
+      <replace>timeout=5</replace>
+      <replace>stop_max_attempt_number=3</replace>
+      <replace>wait_fixed=1500</replace>
+      <replace />
+      <replace>d4107fc40e6c8a3a25c30a6e8e2cf3cc</replace>
+      <replace>247af669a52323eafbecb195623f2e0d</replace>
+      <replace>e376f19951b6d0d60a4fdf7cd1de0142</replace>
+      <replace>5e5472a9b1e4888d352e92176fe8368a</replace>
+      <replace>5fb519b9b9ecf11c2f7c008fd02fb99c</replace>
+      <replace>3397a98150707265977d3d6f3da83f8d</replace>
+      <replace>orderid</replace>
+      <replace>ListComponent_containerViewOption_Click</replace>
+      <replace>containerViewOption_loc</replace>
+      <replace>551a63f156aad2f50e75ba0848dbf62a</replace>
+      <replace>ab244d5938abc1185bc2e7a1f4f68685</replace>
+      <replace>time.sleep(3)</replace>
+      <replace>2e5440725ec875aa16c3e60fdd8310da</replace>
+      <replace>679a0d61260b47b35882e8e41e55cf3a</replace>
+      <replace>time.sleep(2)</replace>
+      <replace>ef670dad4b464d2bd370e193ccbb14dc</replace>
+      <replace>16c523c5bd1266112e1410d22563170a</replace>
+      <replace>send_HtmlFileEmail</replace>
+      <replace>testAppNameList</replace>
+      <replace>c542c3ae03d12ad0aa40ffc58488ee89</replace>
+      <replace>c47fb6b43b2b0eccdf0ee6dfe453979d</replace>
+      <replace>80e3748060f064d98e614fe3b47278a2</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>D:\pythonwork\wujianlunTeam\qiqiao_autoTest\file_data\testcase_data</dir>
+      <dir>D:\pythonwork\wujianlunTeam\qiqiao_autoTest\public</dir>
+      <dir>D:\pythonwork\wujianlunTeam\qiqiao_autoTest\testcase</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/qiqiao_page/pc_page/components/multiFormAssociation_component.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/mobile_page/form_components/mb_selection_component.py" />
+        <option value="$PROJECT_DIR$/testcase/pom_app/mobile_testcase/test_002.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/pc_page/components/time_component.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/pc_page/components/datetime_component.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/pc_page/components/selection_component.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/pc_page/business_page.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/pc_page/components/childForm_component.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/mobile_page/form_components/mb_number_component.py" />
+        <option value="$PROJECT_DIR$/testcase/dataFilter_app/pc_testcase/test_002.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/pc_page/business_components/list_components.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/console_page/help_page.py" />
+        <option value="$PROJECT_DIR$/testcase/console/test_004.py" />
+        <option value="$PROJECT_DIR$/testcase/console/test_003.py" />
+        <option value="$PROJECT_DIR$/util/codeUtil.py" />
+        <option value="$PROJECT_DIR$/testcase/console/test_005.py" />
+        <option value="$PROJECT_DIR$/testcase/process_app/pc_testcase/test_002.py" />
+        <option value="$PROJECT_DIR$/Enum/buttonEnum.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/mobile_page/form_components/mb_foreignSelection_component.py" />
+        <option value="$PROJECT_DIR$/testcase/capital_app/pc_testcase/test_001.py" />
+        <option value="$PROJECT_DIR$/testcase/pom_app/pc_testcase/test_001.py" />
+        <option value="$PROJECT_DIR$/testcase/process_app/pc_testcase/test_001.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/console_page/console_login_page.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/console_page/appManage_page.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/mobile_page/business_components/mb_list_component.py" />
+        <option value="$PROJECT_DIR$/testcase/quit_app/mobile_testcase/test_001.py" />
+        <option value="$PROJECT_DIR$/report/runAll.py" />
+        <option value="$PROJECT_DIR$/report/runAll2.py" />
+        <option value="$PROJECT_DIR$/public/function.py" />
+        <option value="$PROJECT_DIR$/util/summaryReport.py" />
+        <option value="$PROJECT_DIR$/Enum/fileTypeEnum.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/pc_page/process_page.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/pc_page/form_page.py" />
+        <option value="$PROJECT_DIR$/testcase/quit_app/pc_testcase/test_001.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/mobile_page/mobile_to_do_page.py" />
+        <option value="$PROJECT_DIR$/testcase/achievement_app/mobile_testcase/test_001.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/pc_page/components/foreignSelection_component.py" />
+        <option value="$PROJECT_DIR$/testcase/pom_app/pc_testcase/test_002.py" />
+        <option value="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase/test_002.py" />
+        <option value="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase/test_001.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/pc_page/portal_page.py" />
+        <option value="$PROJECT_DIR$/public/driver.py" />
+        <option value="$PROJECT_DIR$/report/aa.py" />
+        <option value="$PROJECT_DIR$/testcase/achievement_app/pc_testcase/test_001.py" />
+        <option value="$PROJECT_DIR$/testcase/console/test_002.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/mobile_page/mb_form_page.py" />
+        <option value="$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase/test_001.py" />
+        <option value="$PROJECT_DIR$/public/selenium_page.py" />
+        <option value="$PROJECT_DIR$/qiqiao_page/console_page/header_page.py" />
+        <option value="$PROJECT_DIR$/testcase/console/test_001.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="84" />
+    <option name="y" value="95" />
+    <option name="width" value="1587" />
+    <option name="height" value="919" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="qiqiao_autoTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qiqiao_autoTest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qiqiao_autoTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qiqiao_autoTest" type="462c0819:PsiDirectoryNode" />
+              <item name="qiqiao_page" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qiqiao_autoTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qiqiao_autoTest" type="462c0819:PsiDirectoryNode" />
+              <item name="qiqiao_page" type="462c0819:PsiDirectoryNode" />
+              <item name="console_page" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qiqiao_autoTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qiqiao_autoTest" type="462c0819:PsiDirectoryNode" />
+              <item name="testcase" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qiqiao_autoTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qiqiao_autoTest" type="462c0819:PsiDirectoryNode" />
+              <item name="testcase" type="462c0819:PsiDirectoryNode" />
+              <item name="pom_app" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/testcase" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="PyDebuggerOptionsProvider">
+    <option name="mySupportGeventDebugging" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\pythonwork\wujianlunTeam\qiqiao_autoTest\report\qiqiao" />
+      <recent name="D:\pythonwork\wujianlunTeam\qiqiao_autoTest\util" />
+      <recent name="D:\pythonwork\wujianlunTeam\qiqiao_autoTest\testcase\console" />
+      <recent name="D:\pythonwork\wujianlunTeam\qiqiao_autoTest\file_data" />
+      <recent name="D:\pythonwork\wujianlunTeam\qiqiao_autoTest\testcase\pom_app\pc_testcase" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\pythonwork\wujianlunTeam\qiqiao_autoTest\report\qiqiao" />
+      <recent name="D:\pythonwork\wujianlunTeam\qiqiao_autoTest\testcase\achievement_app\pc_testcase" />
+      <recent name="D:\pythonwork\wujianlunTeam\qiqiao_autoTest\file_data" />
+      <recent name="D:\pythonwork\wujianlunTeam\qiqiao_autoTest\qiqiao_page\console_page" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.aa">
+    <configuration name="aa" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="qiqiao_autoTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/report" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/report/aa.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="local" type="PythonConfigurationType" factoryName="Python">
+      <module name="qiqiao_autoTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\Software\python\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="Unittests for test_001.AchievementAppTest_001.test_06" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="qiqiao_autoTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testcase/achievement_app/pc_testcase" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_001.AchievementAppTest_001.test_06&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for test_002.PcBugAppTest_002.test_22" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="qiqiao_autoTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_002.PcBugAppTest_002.test_22&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for test_002.PcBugAppTest_002.test_23" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="qiqiao_autoTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testcase/pcbug_app/pc_testcase" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_002.PcBugAppTest_002.test_23&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for test_003.ProcessAppTest_003.test_01" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="qiqiao_autoTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testcase/process_app/pc_testcase" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_003.ProcessAppTest_003.test_01&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.local" />
+      <item itemvalue="Python tests.Unittests for test_002.PcBugAppTest_002.test_22" />
+      <item itemvalue="Python tests.Unittests for test_003.ProcessAppTest_003.test_01" />
+      <item itemvalue="Python tests.Unittests for test_002.PcBugAppTest_002.test_23" />
+      <item itemvalue="Python.aa" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.aa" />
+        <item itemvalue="Python tests.Unittests for test_002.PcBugAppTest_002.test_23" />
+        <item itemvalue="Python tests.Unittests for test_003.ProcessAppTest_003.test_01" />
+        <item itemvalue="Python tests.Unittests for test_002.PcBugAppTest_002.test_22" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="70b90111-e683-418e-9c81-92b620779b81" name="Default" comment="" />
+      <created>1585209469175</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585209469175</updated>
+    </task>
+    <task id="LOCAL-00067" summary="aaa">
+      <created>1600826963835</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1600826963835</updated>
+    </task>
+    <task id="LOCAL-00068" summary="aaa">
+      <created>1600828529814</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1600828529814</updated>
+    </task>
+    <task id="LOCAL-00069" summary="aaa">
+      <created>1600847629394</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1600847629394</updated>
+    </task>
+    <task id="LOCAL-00070" summary="aaa">
+      <created>1600856153271</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1600856153271</updated>
+    </task>
+    <task id="LOCAL-00071" summary="aaa">
+      <created>1601029021495</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1601029021495</updated>
+    </task>
+    <task id="LOCAL-00072" summary="aaa">
+      <created>1601277261358</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1601277261358</updated>
+    </task>
+    <task id="LOCAL-00073" summary="aaa">
+      <created>1601282833225</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1601282833225</updated>
+    </task>
+    <task id="LOCAL-00074" summary="aaa">
+      <created>1601285852347</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1601285852347</updated>
+    </task>
+    <task id="LOCAL-00075" summary="aaa">
+      <created>1601289466838</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1601289466839</updated>
+    </task>
+    <task id="LOCAL-00076" summary="aaa">
+      <created>1601375421429</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1601375421430</updated>
+    </task>
+    <task id="LOCAL-00077" summary="aaa">
+      <created>1601376778951</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1601376778951</updated>
+    </task>
+    <task id="LOCAL-00078" summary="aaa">
+      <created>1601450388690</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1601450388690</updated>
+    </task>
+    <task id="LOCAL-00079" summary="aaa">
+      <created>1601461414290</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1601461414290</updated>
+    </task>
+    <task id="LOCAL-00080" summary="aaa">
+      <created>1602238045322</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1602238045323</updated>
+    </task>
+    <task id="LOCAL-00081" summary="aaa">
+      <created>1602238244594</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1602238244594</updated>
+    </task>
+    <task id="LOCAL-00082" summary="aaa">
+      <created>1602310468912</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1602310468912</updated>
+    </task>
+    <task id="LOCAL-00083" summary="aaa">
+      <created>1602318107292</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1602318107292</updated>
+    </task>
+    <task id="LOCAL-00084" summary="aaa">
+      <created>1602319603878</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1602319603878</updated>
+    </task>
+    <task id="LOCAL-00085" summary="aaa">
+      <created>1602326001017</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1602326001017</updated>
+    </task>
+    <task id="LOCAL-00086" summary="aaa">
+      <created>1602326674259</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1602326674259</updated>
+    </task>
+    <task id="LOCAL-00087" summary="aaa">
+      <created>1602326718250</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1602326718250</updated>
+    </task>
+    <task id="LOCAL-00088" summary="aaa">
+      <created>1602495813443</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1602495813443</updated>
+    </task>
+    <task id="LOCAL-00089" summary="aaa">
+      <created>1602559684283</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1602559684283</updated>
+    </task>
+    <task id="LOCAL-00090" summary="aaa">
+      <created>1602585516959</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1602585516959</updated>
+    </task>
+    <task id="LOCAL-00091" summary="aaa">
+      <created>1602586239806</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1602586239806</updated>
+    </task>
+    <task id="LOCAL-00092" summary="aaa">
+      <created>1602728837190</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1602728837190</updated>
+    </task>
+    <task id="LOCAL-00093" summary="aaa">
+      <created>1602751775327</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1602751775328</updated>
+    </task>
+    <task id="LOCAL-00094" summary="aaa">
+      <created>1602812032747</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1602812032747</updated>
+    </task>
+    <task id="LOCAL-00095" summary="aaa">
+      <created>1602817839744</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1602817839776</updated>
+    </task>
+    <task id="LOCAL-00096" summary="aaa">
+      <created>1602846574961</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1602846574962</updated>
+    </task>
+    <task id="LOCAL-00097" summary="aaa">
+      <created>1603192313310</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1603192313310</updated>
+    </task>
+    <task id="LOCAL-00098" summary="aaa">
+      <created>1603271475195</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1603271475195</updated>
+    </task>
+    <task id="LOCAL-00099" summary="aaa">
+      <created>1603331865142</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1603331865143</updated>
+    </task>
+    <task id="LOCAL-00100" summary="aaa">
+      <created>1603422684213</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1603422684228</updated>
+    </task>
+    <task id="LOCAL-00101" summary="aaa">
+      <created>1603440311404</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1603440311404</updated>
+    </task>
+    <task id="LOCAL-00102" summary="aaa">
+      <created>1603444573988</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1603444573988</updated>
+    </task>
+    <task id="LOCAL-00103" summary="aaa">
+      <created>1603449160018</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1603449160018</updated>
+    </task>
+    <task id="LOCAL-00104" summary="aaa">
+      <created>1603701716099</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1603701716099</updated>
+    </task>
+    <task id="LOCAL-00105" summary="aaa">
+      <created>1603787921014</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1603787921014</updated>
+    </task>
+    <task id="LOCAL-00106" summary="aaa">
+      <created>1603819005969</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1603819005969</updated>
+    </task>
+    <task id="LOCAL-00107" summary="aaa">
+      <created>1603823496191</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1603823496191</updated>
+    </task>
+    <task id="LOCAL-00108" summary="aaa">
+      <created>1603881814064</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1603881814064</updated>
+    </task>
+    <task id="LOCAL-00109" summary="aaa">
+      <created>1603881878344</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1603881878344</updated>
+    </task>
+    <task id="LOCAL-00110" summary="aaa">
+      <created>1603881922599</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1603881922599</updated>
+    </task>
+    <task id="LOCAL-00111" summary="aaa">
+      <created>1603947075011</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1603947075011</updated>
+    </task>
+    <task id="LOCAL-00112" summary="aaa">
+      <created>1603964623689</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1603964623689</updated>
+    </task>
+    <task id="LOCAL-00113" summary="aaa">
+      <created>1603968642508</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1603968642508</updated>
+    </task>
+    <task id="LOCAL-00114" summary="aaa">
+      <created>1603968836462</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1603968836462</updated>
+    </task>
+    <task id="LOCAL-00115" summary="aaa">
+      <created>1604046246694</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1604046246735</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Unittests_for_test_001_PcBugAppTest_001_test_06 - 2020.10.29 at 18h 44m 15s.xml">
+      <configuration name="Unittests for test_001.PcBugAppTest_001.test_06" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_001_QuitAppTest_001_test_05 - 2020.10.29 at 18h 45m 49s.xml">
+      <configuration name="Unittests for test_001.QuitAppTest_001.test_05" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_001_QuitAppTest_001_test_05 - 2020.10.29 at 18h 46m 31s.xml">
+      <configuration name="Unittests for test_001.QuitAppTest_001.test_05" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_001_QuitAppTest_001_test_05 - 2020.10.29 at 18h 50m 24s.xml">
+      <configuration name="Unittests for test_001.QuitAppTest_001.test_05" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_002_ProcessAppTest_001_test_01 - 2020.11.02 at 12h 12m 35s.xml">
+      <configuration name="Unittests for test_002.ProcessAppTest_001.test_01" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_002_MbCapitalAppTest_002 - 2020.11.02 at 12h 14m 58s.xml">
+      <configuration name="Unittests for test_002.MbCapitalAppTest_002" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_001_MbBugAppTest_001_test_11 - 2020.11.02 at 14h 26m 16s.xml">
+      <configuration name="Unittests for test_001.MbBugAppTest_001.test_11" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_001_ConsoleTest_001 - 2020.11.02 at 14h 51m 19s.xml">
+      <configuration name="Unittests for test_001.ConsoleTest_001" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_001_ConsoleTest_001 - 2020.11.02 at 14h 52m 28s.xml">
+      <configuration name="Unittests for test_001.ConsoleTest_001" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_001_ConsoleTest_001 - 2020.11.02 at 14h 55m 14s.xml">
+      <configuration name="Unittests for test_001.ConsoleTest_001" configurationId="tests" />
+    </history-entry>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="84" y="95" width="1587" height="919" extended-state="1" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49676377" weight="0.32911393" />
+      <window_info anchor="bottom" x="22" y="323" width="1236" height="337" id="Event Log" order="7" sideWeight="0.36935166" side_tool="true" weight="0.43119267" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32777777" />
+      <window_info anchor="bottom" x="332" y="323" width="615" height="337" id="Python Console" order="9" show_stripe_button="false" sideWeight="0.6359223" weight="0.3873563" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6306483" visible="true" weight="0.18217562" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49514562" weight="0.06575342" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49309665" visible="true" weight="0.28290766" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32889125" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.70304567" />
+      <window_info anchor="right" id="SciView" order="4" weight="0.32995737" />
+      <window_info id="Structure" order="1" sideWeight="0.50690335" side_tool="true" weight="0.4552239" />
+      <window_info anchor="bottom" id="Favorites" order="13" sideWeight="0.13272922" side_tool="true" weight="0.1827027" />
+      <window_info anchor="bottom" x="98" y="342" width="961" height="366" id="Debug" order="3" sideWeight="0.8666667" weight="0.13499345" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="14" weight="0.2888889" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="6" side_tool="true" weight="0.32889125" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Favorites" order="13" sideWeight="0.13272922" side_tool="true" weight="0.1827027" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49309665" visible="true" weight="0.22730081" />
+      <window_info id="Structure" order="1" sideWeight="0.50690335" side_tool="true" weight="0.4552239" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49676377" weight="0.32911393" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32777777" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6316631" visible="true" weight="0.20939086" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.70304567" />
+      <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="6" side_tool="true" weight="0.32889125" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32889125" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49514562" weight="0.06575342" />
+      <window_info anchor="bottom" x="22" y="323" width="1236" height="337" id="Event Log" order="7" sideWeight="0.3683369" side_tool="true" weight="0.31783783" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="14" weight="0.2888889" />
+      <window_info anchor="right" id="SciView" order="4" weight="0.32995737" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" x="98" y="342" width="961" height="366" id="Debug" order="3" sideWeight="0.8666667" weight="0.51522845" />
+      <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
+      <window_info anchor="bottom" x="332" y="323" width="615" height="337" id="Python Console" order="9" show_stripe_button="false" sideWeight="0.6359223" weight="0.3873563" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="aaa" />
+    <option name="LAST_COMMIT_MESSAGE" value="aaa" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/qiqiao_page/mobile_page/business_components/mb_text_component.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/public/HTMLTestRunner_cn.py</url>
+          <line>925</line>
+          <option name="timeStamp" value="328" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/public/HTMLTestRunner_cn.py</url>
+          <line>848</line>
+          <option name="timeStamp" value="329" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/public/HTMLTestRunner_jpg.py</url>
+          <line>651</line>
+          <option name="timeStamp" value="330" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/qiqiao_page/pc_page/components/datetime_component.py</url>
+          <line>27</line>
+          <option name="timeStamp" value="993" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/testcase/process_app/pc_testcase/test_001.py</url>
+          <line>325</line>
+          <option name="timeStamp" value="1069" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/testcase/value_app/mobile_testcase/test_001.py</url>
+          <line>50</line>
+          <option name="timeStamp" value="1084" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/testcase/capital_app/mobile_testcase/test_001.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="1089" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="1116" />
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="tests">
+        <watch expression="self" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string />
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string />
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.find_elenmInElemsByXpath_presence_of_all_elements_located(locator)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.find_elenmInElemsByXpath_presence_of_all_elements_located(locator,index=index)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string />
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>locator</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string />
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string />
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>print(a.HeaderPage_get_userInfo())</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>a.HeaderPage_get_userInfo()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string />
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>formPage.MbForm_Get_buttonGroup()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>FileUtil().traversalDir_FirstDir(testcase_path)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>('{:.2%}'.format(passed/all))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>'{:.2%}'.format(passed/all)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string />
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string />
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/report/quit_app.html" />
+    <entry file="file://$PROJECT_DIR$/qiqiao_page/pc_page/business_components/list_components.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="52" column="132" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="132" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/capital_app/mobile_testcase/test_001.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="38" column="43" lean-forward="true" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report/mbbug_app.html" />
+    <entry file="file://$PROJECT_DIR$/report/capital_app.html" />
+    <entry file="file://$PROJECT_DIR$/report/reportRunner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report/runAll.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/builtins.pyi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="596" column="6" selection-start-line="596" selection-start-column="6" selection-end-line="596" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report/qiqiao/achievement_app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="38" selection-start-column="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="59" column="50" lean-forward="true" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/summaryReport.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-268">
+          <caret line="46" column="56" lean-forward="true" selection-start-line="46" selection-start-column="56" selection-end-line="46" selection-end-column="56" />
+          <folding>
+            <element signature="e#19#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report/runAll2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/parseExcel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="18" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Enum/buttonEnum.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" lean-forward="true" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qiqiao_page/pc_page/process_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="52" column="38" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="38" />
+          <folding>
+            <element signature="e#15#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/capital_app/pc_testcase/test_001.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1350" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/quit_app/mobile_testcase/test_001.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="73" column="78" lean-forward="true" selection-start-line="73" selection-start-column="78" selection-end-line="73" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qiqiao_page/pc_page/form_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="59" column="19" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qiqiao_page/pc_page/components/multiFormAssociation_component.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="6" column="36" lean-forward="true" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Enum/fileTypeEnum.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qiqiao_page/mobile_page/business_components/mb_list_component.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="153" column="105" selection-start-line="153" selection-start-column="85" selection-end-line="153" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qiqiao_page/mobile_page/mobile_to_do_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="52" column="8" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/achievement_app/mobile_testcase/test_001.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report/qiqiao/quit_app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report/qiqiao/mbbug_app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report/qiqiao/pcbug_app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="72" lean-forward="true" selection-start-line="6" selection-start-column="72" selection-end-line="6" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/pom_app/pc_testcase/test_002.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="77" column="80" selection-start-line="77" selection-start-column="80" selection-end-line="77" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qiqiao_page/pc_page/components/foreignSelection_component.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="130" column="8" selection-start-line="130" selection-start-column="8" selection-end-line="130" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qiqiao_page/pc_page/portal_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/quit_app/pc_testcase/test_001.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/pom_app/pc_testcase/test_001.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2625" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/pcbug_app/pc_testcase/test_001.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="142" selection-start-line="142" selection-end-line="142" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/achievement_app/pc_testcase/test_001.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="12" column="45" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/driver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="36" column="60" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/capital_app/mobile_testcase/test_002.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/process_app/pc_testcase/test_002.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/process_app/pc_testcase/test_001.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/pcbug_app/pc_testcase/test_002.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="568" column="13" selection-start-line="568" selection-start-column="13" selection-end-line="568" selection-end-column="13" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report/aa.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="75" column="35" selection-start-line="75" selection-start-column="35" selection-end-line="75" selection-end-column="35" />
+          <folding>
+            <element signature="e#15#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/console/test_005.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/1739262980/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="5577" column="6" selection-start-line="5577" selection-start-column="6" selection-end-line="5577" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/selenium_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="90" column="24" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
+          <folding>
+            <element signature="e#15#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qiqiao_page/console_page/help_page.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/mbbug_app/mobile_testcase/test_001.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="271" column="59" selection-start-line="271" selection-start-column="59" selection-end-line="271" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/console/test_003.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/console/test_004.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/console/test_002.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qiqiao_page/mobile_page/mb_form_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="43" selection-start-line="43" selection-end-line="47" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qiqiao_page/console_page/header_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="16" />
+          <folding>
+            <element signature="e#15#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Software/python/Lib/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="614" selection-start-line="614" selection-end-line="614" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/console/test_001.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-354">
+          <caret line="12" column="4" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+          <folding>
+            <element signature="e#15#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
