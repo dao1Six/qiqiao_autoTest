@@ -47,6 +47,13 @@ class SeleniumPage (object):
         except:
             return False
 
+    def isOperation( self, elem):
+        """判断元素是否可以操作"""
+        if(elem.is_enabled()):
+            return True
+        return False
+
+
     def open(self, url):
         """打开登录页面"""
         self.driver.get (url)
@@ -234,7 +241,6 @@ class SeleniumPage (object):
         #传元素地址
         if(type(locator)==str):
             elems = self.find_elemsByCSS_visibility(locator)
-            # elem = self.find_elenmInElemsByCSS_visibility_of_any_elements_located(locator,index=index)
             if(elems==None):
                 raise TypeError("elem不能为None")
             else:
@@ -267,7 +273,8 @@ class SeleniumPage (object):
     @retry (stop_max_attempt_number=3, wait_fixed=1500,wrap_exception=True,stop_max_delay=15000)
     def sendkeysElem(self, elem, key,isclear =False):
         """给一个存在dom的元素写入值Xpath"""
-        self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
+        if(self.isOperation(elem)==False):
+            self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
         if(isclear==True):
             elem.clear()
         elem.send_keys (key)

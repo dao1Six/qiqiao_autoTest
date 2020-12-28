@@ -96,6 +96,9 @@ class DataFilterAppTest_001 (unittest.TestCase):
 
     def test_04( self ):
         '''【补丁】---PC运行平台---导出数据---导出的数据中含有子表数据，最多只能导出30条子表数据。导致数据缺失'''
+        filePath = self.downloadPath+"//子表列表.xls"
+        if(self.isFileExists(filePath)):
+            os.remove(filePath)
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)
@@ -105,11 +108,11 @@ class DataFilterAppTest_001 (unittest.TestCase):
         businessPage.ListComponent_Click_ListHeader_Button("导出")
         businessPage.ListComponent_dialogfooterButton_Click("确 定")
         time.sleep(15)
-        filePath = self.downloadPath + "//列表.xls"
+        filePath = self.downloadPath + "//子表列表.xls"
         self.assertTrue(self.isFileExists(filePath))
         excelReader = ExcelReadUtil()
         sheet = excelReader.getSheetValue(filePath, 1)
-        self.assertEqual(81,excelReader.getRowsClosNum(sheet)[0],msg="导出文件行数不对")
+        self.assertEqual(82,excelReader.getRowsClosNum(sheet)[0],msg="导出文件行数不对")
         self.assertEqual(33, excelReader.getRowsClosNum(sheet)[1], msg="导出文件列数不对")
 
 

@@ -468,13 +468,13 @@ class PcBugAppTest_002(unittest.TestCase):
         businessPage.ListComponent_Click_ListHeader_Button("添加")
         formPage = FormPage(self.driver)
         formPage.MultiForm_AddButton_Click("业绩评价")
-        time.sleep(3)
+        time.sleep(2)
         formPage.MultiForm_List_sendkeysTo_Number("业绩评价",1,16,50)
-        time.sleep(4)
+        time.sleep(2)
         formPage.MultiForm_AddButton_Click("业绩评价")
-        time.sleep(4)
+        time.sleep(2)
         formPage.MultiForm_List_sendkeysTo_Number("业绩评价",2,16,50)
-        time.sleep(3)
+        time.sleep(2)
         self.assertEqual("极差",formPage.Text_GetValue_writable("业绩评语"),msg="【补丁】——PC端运行平台，数据联动，使用IF函数计算结果联动时，无效")
 
 
