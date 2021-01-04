@@ -29,6 +29,7 @@ class PcBugAppTest_003(unittest.TestCase):
 
     assets3DataPath = ProjectRootPath + "\\file_data\\testcase_data\\资产复制3.0.xls"
 
+    assets4DataPath = ProjectRootPath + "\\file_data\\testcase_data\\人员姓名导入.xls"
     def pcLogin(self,account,password):
         '''登录pc端'''
         self.driver = Driver().pcdriver()
@@ -189,5 +190,25 @@ class PcBugAppTest_003(unittest.TestCase):
         externalformpage = ExternalFormPage(self.driver)
         externalformpage.ExternalFormPage_Click_SubmitBtn()
         self.assertEqual("提交成功！",externalformpage.ExternalFormPage_Get_MessageContent())
+
+
+    def test_12( self ):
+        '''【补丁】---导入按钮导入数据时找不到部门'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
+        businessPage=BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('人员部门导入')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        businessPage.ListComponent_Click_ListHeader_Button('导入')
+        businessPage.ListComponent_Import_Data(self.assets4DataPath)
+        time.sleep(4)
+        self.assertEqual(2,businessPage.ListComponent_GetRecordTotal())
 
 

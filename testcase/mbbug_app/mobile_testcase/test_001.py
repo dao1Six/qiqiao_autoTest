@@ -206,6 +206,7 @@ class MbBugAppTest_001(unittest.TestCase):
         formPage.MbNumber_Sendkeys("费用金额",1234567891230.34)
         time.sleep(3)
         formPage.MbChildForm_Button_Click("保存")
+        time.sleep(3)
         self.assertEqual(2469135782460.68,formPage.MbNumber_GetValue_formula("费用总额"),msg="费用总额计算错误")
         formPage.MbForm_Button_Click("提交")
         self.assertEqual(['费用总额：2469135782460.68'],listPage.MbListComponent_Get_RecoreTextContents(1),msg="费用总额列表显示错误")
