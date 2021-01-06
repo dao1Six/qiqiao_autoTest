@@ -211,4 +211,15 @@ class PcBugAppTest_003(unittest.TestCase):
         time.sleep(4)
         self.assertEqual(2,businessPage.ListComponent_GetRecordTotal())
 
+    def test_13( self ):
+        '''【补丁】---选项卡统计列表数据不正确'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
+        businessPage=BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('选项卡多个选项')
+        self.assertEqual(['全部(10)', '选项一(1)', '选项二(1)', '选项三(1)', '选项四(1)', '选项五(1)', '选项六(1)', '选项七(1)', '选项八(1)', '选项九(1)', '选项十(1)', '选项十一(1)', '选项十二(1)'],businessPage.ListComponent_get_tablistValule())
+
 
