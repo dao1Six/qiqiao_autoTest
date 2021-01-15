@@ -220,6 +220,6 @@ class PcBugAppTest_003(unittest.TestCase):
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
         businessPage=BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('选项卡多个选项')
-        self.assertEqual(['全部(10)', '选项一(1)', '选项二(1)', '选项三(1)', '选项四(1)', '选项五(1)', '选项六(1)', '选项七(1)', '选项八(1)', '选项九(1)', '选项十(1)', '选项十一(1)', '选项十二(1)'],businessPage.ListComponent_get_tablistValule())
+        self.assertEqual(['全部(12)', '选项一(1)', '选项二(1)', '选项三(1)', '选项四(1)', '选项五(1)', '选项六(1)', '选项七(1)', '选项八(1)', '选项九(1)', '选项十(1)', '选项十一(1)', '选项十二(1)'],businessPage.ListComponent_get_tablistValule())
 
 

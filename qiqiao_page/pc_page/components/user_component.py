@@ -33,7 +33,7 @@ class User(SeleniumPage):
         #点击表单人员字段选择框
         self.clickElemByXpath_visibility(self.User_selectBox_loc.replace('%s',fieldName))
         #搜索框输入值
-        self.sendkeysElemByXpath_visibility(self.User_search_loc,userName)
+        self.sendkeysElemByXpath_visibility(self.User_search_loc,userName,ENTER=True)
         #点击查询结果
         self.clickElemByXpath_visibility(self.User_searchOption_loc.replace('%s',userName),timeout=10)
         #点击确认按钮

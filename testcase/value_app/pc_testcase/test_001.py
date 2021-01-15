@@ -73,7 +73,7 @@ class ValueAppTest_001(unittest.TestCase):
         time.sleep(3)
         self.assertEqual(result,businessPage.ListComponent_GetRecordTotal())
 
-    @data(("2020-07-01","2020-07-10",4),("2020-07-05","2020-07-10",0))
+    @data(("2021-01-01","2021-01-20",4),("2020-07-05","2020-07-10",0))
     @unpack
     def test_04( self,option1,option2,result):
         '''道一云价值观 全员价值观明细,修改时间查询'''
@@ -133,7 +133,7 @@ class ValueAppTest_001(unittest.TestCase):
         self.assertEqual(result,businessPage.ListComponent_GetRecordTotal())
 
     @data(("人员",1,"王栋一",0,"李嘉诚"),
-          ("修改时间",1,"李嘉诚",0,"王栋一"))
+          ("修改时间",1,"王栋一",0,"李嘉诚"))
     @unpack
     def test_08( self,ColName,sort1,result1,sort2,result2):
         '''道一云价值观 全员价值观表 人员列排序'''

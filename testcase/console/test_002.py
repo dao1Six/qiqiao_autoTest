@@ -10,7 +10,7 @@ class ConsoleTest_002 (unittest.TestCase):
     """开发平台报表接口"""
 
 
-    Token = "d189438a600694a515fdeb3a93426853"
+    Token = "6c1a94649df6f8dfde27612dc6c7e840"
 
     http = "https://qy.do1.com.cn/qiqiao/console"
 
@@ -27,6 +27,7 @@ class ConsoleTest_002 (unittest.TestCase):
 
     def test_01(self):
         """【ID1083988】【补丁】-开发平台，进入报表页面报系统繁忙"""
+        #实施支持应用  行为报表
         url = self.http+"/api/v1/workbench/applications/d1729726a6584f4c8b4a8e7d4f1b0687/reports/ddcd4eea0c544af783988c171764738e/charts/a747a7da395b448c991990de1891a0c3/chart_render_data?page=1&pageSize=20"
         print(url)
         data = json.dumps({"filter":[{"alias":"d56e66af715b4e5384a30f0558150b0d","field":"createDate","fieldId":"system_createDate","logic":"eqRange","valueType":"VARIABLE","value":"thisMonth"}]})
@@ -41,7 +42,7 @@ class ConsoleTest_002 (unittest.TestCase):
         response2 = requests.post (url=url2,headers=self.headers,data=data.encode("utf-8").decode("latin1"))
         responseJson2 = response2.json()
         print(responseJson2)
-        self.assertEqual(responseJson2,{'msg': '执行成功', 'code': 0, 'data': {'total': 1, 'columns': [{'summary': False, 'realValue': None, 'children': [], 'dataIndex': '创建人名称', 'title': '创建人名称'}, {'summary': False, 'realValue': None, 'children': [], 'dataIndex': '客户全称', 'title': '客户全称'}], 'pageSize': 20, 'page': 1, 'rows': [{'summary': True, '创建人名称': '汇总', '客户全称': 0, '_extras_': {'创建人名称': {'fieldName': 'c80c2583dd38444797838ce1594104b1.author_name', 'value': '汇总'}}}], 'linkages': {'charts': [], 'rowDims': ['c80c2583dd38444797838ce1594104b1.author_name'], 'colDims': []}}})
+        self.assertEqual(responseJson2,{'msg': '执行成功', 'code': 0, 'data': {'total': 1, 'columns': [{'summary': False, 'realValue': None, 'children': [], 'dataIndex': '创建人名称', 'title': '创建人名称'}, {'summary': False, 'realValue': None, 'children': [], 'dataIndex': '客户全称', 'title': '客户全称'}], 'pageSize': 0, 'page': 0, 'rows': [{'创建人名称': '汇总', '客户全称': 0}], 'linkages': {'charts': [], 'rowDims': ['c80c2583dd38444797838ce1594104b1.author_name'], 'colDims': []}}})
 
 
         url3 = self.http+"/api/v1/workbench/applications/d1729726a6584f4c8b4a8e7d4f1b0687/reports/ddcd4eea0c544af783988c171764738e/charts/f9c7f5f97f874069b3b1b245b106b279/chart_render_data?page=1&pageSize=20"
@@ -50,7 +51,7 @@ class ConsoleTest_002 (unittest.TestCase):
         response3 = requests.post (url=url3,headers=self.headers,data=data.encode("utf-8").decode("latin1"))
         responseJson3 = response3.json()
         print(responseJson3)
-        self.assertEqual(responseJson3,{'msg': '执行成功', 'code': 0, 'data': {'total': 1, 'columns': [{'summary': False, 'realValue': None, 'children': [], 'dataIndex': '创建人名称', 'title': '创建人名称'}, {'summary': False, 'realValue': None, 'children': [], 'dataIndex': '客户全称', 'title': '客户全称'}], 'pageSize': 20, 'page': 1, 'rows': [{'summary': True, '创建人名称': '汇总', '客户全称': 0, '_extras_': {'创建人名称': {'fieldName': 'c80c2583dd38444797838ce1594104b1.author_name', 'value': '汇总'}}}], 'linkages': {'charts': [], 'rowDims': ['c80c2583dd38444797838ce1594104b1.author_name'], 'colDims': []}}})
+        self.assertEqual(responseJson3,{'msg': '执行成功', 'code': 0, 'data': {'total': 1, 'columns': [{'summary': False, 'realValue': None, 'children': [], 'dataIndex': '创建人名称', 'title': '创建人名称'}, {'summary': False, 'realValue': None, 'children': [], 'dataIndex': '客户全称', 'title': '客户全称'}], 'pageSize': 0, 'page': 0, 'rows': [{'创建人名称': '汇总', '客户全称': 0}], 'linkages': {'charts': [], 'rowDims': ['c80c2583dd38444797838ce1594104b1.author_name'], 'colDims': []}}})
 
     def test_02( self ):
         """【补丁】-开发平台，运行平台表单中有数据时，开发平台明细表配置时出现系统繁忙报错"""

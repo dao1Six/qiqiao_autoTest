@@ -271,23 +271,24 @@ class SeleniumPage (object):
 
     ####元素写值方法
     @retry (stop_max_attempt_number=3, wait_fixed=1500,wrap_exception=True,stop_max_delay=15000)
-    def sendkeysElem(self, elem, key,isclear =False):
+    def sendkeysElem(self, elem, key,isclear =False,ENTER=False):
         """给一个存在dom的元素写入值Xpath"""
         if(self.isOperation(elem)==False):
             self.driver.execute_script ("arguments[0].scrollIntoView();", elem)
         if(isclear==True):
             elem.clear()
         elem.send_keys (key)
+        if(ENTER==True):
+            elem.send_keys(Keys.ENTER)
 
 
-    def sendkeysElemByXpath_visibility(self, locator, key, index=0,isclear=False):
+    def sendkeysElemByXpath_visibility(self, locator, key, index=0,isclear=False,ENTER = False):
         """给一个存在dom的元素写入值Xpath"""
         elems = self.find_elemsByXPATH_visibility(locator)
-        # elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(locator,index)
         if (elems == None):
             raise TypeError("elem不能为None")
         else:
-            self.sendkeysElem(elems[index], key,isclear=isclear)
+            self.sendkeysElem(elems[index], key,isclear=isclear,ENTER=ENTER)
 
     def sendkeysElemByXpath_presence(self, locator, key, index=0,isclear=False):
         """给一个存在dom的元素写入值Xpath"""

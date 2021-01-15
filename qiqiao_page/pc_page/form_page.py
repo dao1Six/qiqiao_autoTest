@@ -33,7 +33,7 @@ class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUploa
 
     FormPage_button_loc = "//div[@class='header']//span[contains(text(),'%s')]/parent::button[contains(@class,'el-button--small')]"
 
-    select_struct_box = "//div[contains(@class,'select_struct_box')]"
+    select_struct_box ="//span[@class='d_inline_block mr_2 mb_2 text_ellipsis user_add']"#"//div[contains(@class,'select_struct_box')]"
 
     process_querenButton_loc = "//button[@data-mark='确定按钮']"
 
