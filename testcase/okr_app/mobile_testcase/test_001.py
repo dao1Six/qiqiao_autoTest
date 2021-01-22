@@ -41,5 +41,5 @@ class MbOkrAppTest_001(unittest.TestCase):
         mbOkrPage =MbOkrPage(self.driver)
         time.sleep(5)
         mbOkrPage.MbOkrPage_switch_iframeElem()
-        self.assertEqual("提高自动化测试框架稳定性及速度，七巧发版质量",mbOkrPage.MbOkrPage_get_O(),"okr目标显示值不对")
-        self.assertEqual("自动化用例编写300条",mbOkrPage.MbOkrPage_get_KRs(1),msg="okr目标显示值不对")
+        self.assertEqual("提升七巧Plus版本质量，及自动化覆盖度",mbOkrPage.MbOkrPage_get_O(),"okr目标显示值不对")
+        self.assertEqual("七巧Plus公有云一季度每个版本补丁总数不超20个",mbOkrPage.MbOkrPage_get_KRs(1),msg="okr目标显示值不对")

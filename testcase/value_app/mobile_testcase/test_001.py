@@ -25,8 +25,8 @@ class MbValueAppTest_001(unittest.TestCase):
 
 
 
-    @data(("diaohuiyun@auto",3,"第二季度",['部门：技术委员会', '人员：李嘉诚', '总分：--']),
-         ("wanghao@auto",2,"第二季度",['部门：创新技术中心->产品研发二部->研发二组', '人员：庄荣填', '总分：0']),
+    @data(("diaohuiyun@auto",2,"第二季度",['部门：创新技术中心->产品研发二部->研发二组', '人员：庄荣填', '总分：0']),
+         ("wanghao@auto",1,"第一季度",['部门：创新技术中心->产品研发二部->产品规划组', '人员：王栋一', '总分：100']),
          ("luolinyue@auto",1,"第一季度",['部门：创新技术中心->产品研发二部->产品规划组', '人员：王栋一', '总分：100']))
     @unpack
     def test_01( self,account,result,result2,result3):

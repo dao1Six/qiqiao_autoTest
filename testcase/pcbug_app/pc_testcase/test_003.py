@@ -77,11 +77,11 @@ class PcBugAppTest_003(unittest.TestCase):
         businessPage.ListComponent_Click_ListRow_Button("编辑",1)
         formPage=FormPage(self.driver)
         formPage.ChildForm_Record_Edit("子表单",3)
-        self.assertEqual("00230",formPage.SerialNumber_GetValue_readOnly_InPopup("子表单","生成编码"),msg="【补丁】---pc运行平台，编辑按钮页面，子表单数据，点击编辑第二条子表单数据，编辑页面显示第一条数据")
+        self.assertEqual("00175",formPage.SerialNumber_GetValue_readOnly_InPopup("子表单","生成编码"),msg="【补丁】---pc运行平台，编辑按钮页面，子表单数据，点击编辑第二条子表单数据，编辑页面显示第一条数据")
         formPage.Form_Close_Popup("子表单")
         time.sleep(2)
         formPage.ChildForm_Record_Edit("子表单",1)
-        self.assertEqual("00209",formPage.SerialNumber_GetValue_readOnly_InPopup("子表单","生成编码"),msg="【补丁】---pc运行平台，编辑按钮页面，子表单数据，点击编辑第二条子表单数据，编辑页面显示第一条数据")
+        self.assertEqual("00149",formPage.SerialNumber_GetValue_readOnly_InPopup("子表单","生成编码"),msg="【补丁】---pc运行平台，编辑按钮页面，子表单数据，点击编辑第二条子表单数据，编辑页面显示第一条数据")
 
 
 

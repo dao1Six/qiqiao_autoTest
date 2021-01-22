@@ -443,7 +443,7 @@ class PcBugAppTest_002(unittest.TestCase):
 
     def test_15( self ):
         '''【补丁】——PC端运行平台，列表配置自定义角色范围，选项卡显示统计数量错误'''
-        self.pcLogin("wujianlun@auto","do1qiqiao")
+        self.pcLogin("luolinyue@auto","do1qiqiao")
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
         applicationListPage = ApplicationListPage(self.driver)

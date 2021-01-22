@@ -19,8 +19,8 @@ class ValueAppTest_002(unittest.TestCase):
 
 
 
-    @data(("diaohuiyun@auto",3),
-         ("wanghao@auto",2),
+    @data(("diaohuiyun@auto",2),
+         ("wanghao@auto",1),
          ("luolinyue@auto",1))
     @unpack
     def test_01( self,account,result):

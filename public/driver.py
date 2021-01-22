@@ -48,7 +48,7 @@ class Driver():
         chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
         chrome_options.add_argument("–incognito")#无痕模式
         chrome_options.add_argument('--start-maximized')
-        # chrome_options.add_argument('--headless')#无头模式
+        chrome_options.add_argument('--headless')#无头模式
         # chrome_options.add_argument('--disable-infobars')
         #  禁止策略化
         # chrome_options.add_argument('lang=zh_CN.UTF-8')

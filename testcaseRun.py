@@ -17,7 +17,7 @@ import os
 from testcase.process_app.pc_testcase.test_001 import ProcessAppTest_001
 from testcase.value_app.pc_testcase.test_001 import ValueAppTest_001
 from testcase.achievement_app.pc_testcase.test_001 import AchievementAppTest_001
-
+from testcase.dataFilter_app.pc_testcase.test_001 import DataFilterAppTest_001
 
 ProjectRootPath = os.getcwd().split('qiqiao_autoTest')[0] + "qiqiao_autoTest"
 # 报告目录
@@ -31,7 +31,7 @@ def add_case():
     '''加载所有的测试用例'''
     suite=unittest.TestSuite()
     loader=unittest.TestLoader()
-    # suite.addTest(loader.loadTestsFromTestCase(AchievementAppTest_001))
+    suite.addTest(loader.loadTestsFromTestCase(DataFilterAppTest_001))
     suite.addTest(loader.loadTestsFromTestCase(ProcessAppTest_001))
     suite.addTest(loader.loadTestsFromTestCase(ValueAppTest_001))
     return suite
