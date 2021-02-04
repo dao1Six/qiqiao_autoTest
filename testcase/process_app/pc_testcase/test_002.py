@@ -84,7 +84,7 @@ class ProcessAppTest_002(unittest.TestCase):
         #加前签操作
         formPage.Form_ButtonInMore_Click("加签")
         formPage.Form_Select_Signature("加前签")
-        formPage.Form_Select_ProcessManager(["王浩","王栋一"])
+        formPage.Form_Select_ProcessManager(["王浩","刘海涛"])
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('加签办理成功！',formPage.Public_GetAlertMessage(),msg="加前签失败")
         self.driver.quit()
@@ -102,7 +102,7 @@ class ProcessAppTest_002(unittest.TestCase):
         self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="表单人员字段人工任务办理失败")
         self.driver.quit()
         # 加前签人员办理
-        self.pcLogin("wangdongyi@A1","qiqiao123")
+        self.pcLogin("liuhaitao@A","qiqiao123")
         formPage = FormPage(self.driver)
         processPage = ProcessPage(self.driver)
         portalPage = PortalPage(self.driver)
@@ -260,12 +260,12 @@ class ProcessAppTest_002(unittest.TestCase):
         processPage.ProcessPage_click_process_record(1)
         formPage.Form_Button_Click("办理")
         print(formPage.Form_Get_ProcessManagers())
-        self.assertEqual(formPage.Form_Get_ProcessManagers(),['王栋一'],msg="流程发起人的部门主管人工任务办理者错误")
+        self.assertEqual(formPage.Form_Get_ProcessManagers(),['刘海涛'],msg="流程发起人的部门主管人工任务办理者错误")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="流程发起人的部门主管人工任务办理失败")
         self.driver.quit()
         #流程发起人的部门主管人工任务办理
-        self.pcLogin("wangdongyi@A1","qiqiao123")
+        self.pcLogin("liuhaitao@A","qiqiao123")
         formPage = FormPage(self.driver)
         processPage = ProcessPage(self.driver)
         portalPage = PortalPage(self.driver)

@@ -16,6 +16,10 @@ class MbChildFormAssociation_component(SeleniumPage):
 
     List_item = "//div[@class='childFormAssociation_tableContainer lockScroll']//div[@class='el-table__body-wrapper is-scrolling-left']//tr[@class='el-table__row']"
 
+    cancel_btn_loc = "//button[@class='cube-btn cancel_btn cube-btn-inline cube-btn-outline']"
+
+    confirm_btn_loc="//button[@class='cube-btn confirm_btn cube-btn-inline']"
+
     def MbChildFormAssociation_AddButton_Click(self,fileName,*args):
         '''点击子表关联组件添加按钮'''
         self.clickElemByXpath_visibility (self.MbChildFormAssociation_AddButton_loc.replace ('%title', fileName))
@@ -42,12 +46,6 @@ class MbChildFormAssociation_component(SeleniumPage):
 
 
 
-
-
-
-
-
-
     def ChildFormAssociation_ManagementDialog_Record_Click(self,*args):
         '''勾选批量管理页面关联表记录'''
         pass
@@ -55,9 +53,9 @@ class MbChildFormAssociation_component(SeleniumPage):
 
     def ChildFormAssociation_ManagementDialog_ConfirmButton_Click(self,*args):
         '''点击批量管理页面确认按钮'''
-        pass
+        self.clickElemByXpath_visibility(self.confirm_btn_loc)
 
 
     def ChildFormAssociation_ManagementDialog_CancelButton_Click(self,*args):
         '''点击批量管理页面取消按钮'''
-        pass
+        self.clickElemByXpath_visibility(self.cancel_btn_loc)

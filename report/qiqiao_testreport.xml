@@ -1,8 +1,0 @@
-<?xml version="1.0" ?>
-<testsuite errors="0" failures="0" name="saysafe_app_mobile_testcase.test_mobile_saysafe_app.SaySafeAppTest-20200520170303" tests="1" time="10.414">
-	<testcase classname="saysafe_app_mobile_testcase.test_mobile_saysafe_app.SaySafeAppTest" name="test_AddSaySafeRecord" time="10.414"/>
-	<system-out>
-<![CDATA[]]>	</system-out>
-	<system-err>
-<![CDATA[]]>	</system-err>
-</testsuite>

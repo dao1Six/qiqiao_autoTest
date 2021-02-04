@@ -107,5 +107,5 @@ class QuitAppTest_001(unittest.TestCase):
         mbBusinessPage.MbListComponent_AddButton_Click()
         formPage = MbFormPage(self.driver)
         formPage.MbForm_Switch_Tab("人员部门类组件")
-        self.assertEqual(['王浩', '李嘉诚', '王栋一'],formPage.MbUser_Tag_GetUserValue('人员单选','部门加用户'))
+        self.assertEqual(['王浩', '李嘉诚'],formPage.MbUser_Tag_GetUserValue('人员单选','部门加用户'))
 

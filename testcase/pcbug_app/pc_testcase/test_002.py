@@ -675,3 +675,32 @@ class PcBugAppTest_002(unittest.TestCase):
         self.assertEqual("[客户]值必须唯一;", excelReader.getRowValues(sheet, 2)[6])
 
 
+    def test_26( self ):
+        '''【补丁】---页面使用部门选择组件筛选数据，选项卡统计数量不对'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','数据过滤测试应用')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click("测试列表选项卡统计")
+        businessPage.ListComponent_QueryItem_Sendkeys("部门单选","总办",QueryItemType="user")
+        businessPage.ListComponent_Click_SerachBtn()
+        time.sleep(3)
+        self.assertEqual(['全部(150)', '单项选择1(150)', '单项选择2(0)', '单项选择3(0)'],businessPage.ListComponent_get_tablistValule(),msg="【补丁】---页面使用部门选择组件筛选数据，选项卡统计数量不对")
+
+    def test_27( self ):
+        '''【补丁】--PC业务建模页面人员单选作为搜索条件，PC运行端人员单选搜索框输入两个人员名称，搜索结果只显示了一个人员的数据'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','数据过滤测试应用')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click("测试列表选项卡统计")
+        businessPage.ListComponent_QueryItem_Sendkeys("人员单选","吴健伦",QueryItemType="user")
+        time.sleep(2)
+        businessPage.ListComponent_QueryItem_Sendkeys("人员单选","赵立民",QueryItemType="user")
+        businessPage.ListComponent_Click_SerachBtn()
+        time.sleep(3)
+        self.assertEqual(['全部(300)', '单项选择1(150)', '单项选择2(0)', '单项选择3(60)'],businessPage.ListComponent_get_tablistValule(),msg="【补丁】--PC业务建模页面人员单选作为搜索条件，PC运行端人员单选搜索框输入两个人员名称，搜索结果只显示了一个人员的数据")

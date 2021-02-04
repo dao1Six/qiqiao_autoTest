@@ -41,13 +41,12 @@ class MbSelection(SeleniumPage):
         # 当目标元素可见时点击
         while(self.isClickable(self.Xiala_Option_loc.replace('%title',option),timeout=3)!=True):
             clickElemIndex = clickElemIndex+1
-            # self.h5_tap_elem(self.find_elemsByXPATH_presence(self.Xiala_li_loc,index=clickElemIndex))
             self.h5_tap_elem(self.find_elemsByXPATH_visibility(self.Xiala_li_loc)[clickElemIndex])
         if (self.isClickable(self.Xiala_Option_loc.replace('%title', option),timeout=3) == True):
             self.h5_tap_elem(self.find_elemsByXPATH_visibility(
                 self.Xiala_Option_loc.replace('%title',option))[0])
         #点击确定按钮
-        time.sleep(1)
+        time.sleep(3)
         self.clickElemByXpath_visibility(self.Xiala_confirm_loc.replace('%s',fieldName))
 
 

@@ -96,8 +96,8 @@ class PcBugAppTest_003(unittest.TestCase):
         businessPage.ListComponent_Click_ListHeader_Button("添加")
         formPage=FormPage(self.driver)
         formPage.User_click_UserSelectBox("人员单选1")
-        formPage.User_sendkeys_UserSearch("王栋一")
-        self.assertTrue(formPage.User_UserSearchOption_IsExist("王栋一"))
+        formPage.User_sendkeys_UserSearch("王浩")
+        self.assertTrue(formPage.User_UserSearchOption_IsExist("王浩"))
 
 
     def test_06( self ):
@@ -186,10 +186,11 @@ class PcBugAppTest_003(unittest.TestCase):
         '''PC外部表单添加数据'''
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
-        self.driver.get("https://qy.do1.com.cn/qiqiao/runtime/#/2ade557c80d0430d9eee7589b30e4447/2ade0/e8e7124ff51846118f602b349a1a243a/5fdafd1bee96fe000143c54d/externalForm")
+        self.driver.get("https://qy.do1.com.cn/qiqiao/runtime/#/2ade557c80d0430d9eee7589b30e4447/2ade0/e8e7124ff51846118f602b349a1a243a/5fdafd1bee96fe000143c54d/externalForm?corpAB=ww6b6c5c4fa6f34b16")
         externalformpage = ExternalFormPage(self.driver)
         externalformpage.ExternalFormPage_Click_SubmitBtn()
-        self.assertEqual("提交成功！",externalformpage.ExternalFormPage_Get_MessageContent())
+        self.assertEqual("提交成功,感谢您的参与！",externalformpage.ExternalFormPage_Get_MessageContent())
+        time.sleep(2)
 
 
     def test_12( self ):
@@ -222,4 +223,66 @@ class PcBugAppTest_003(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('选项卡多个选项')
         self.assertEqual(['全部(12)', '选项一(1)', '选项二(1)', '选项三(1)', '选项四(1)', '选项五(1)', '选项六(1)', '选项七(1)', '选项八(1)', '选项九(1)', '选项十(1)', '选项十一(1)', '选项十二(1)'],businessPage.ListComponent_get_tablistValule())
 
+    def test_14( self ):
+        '''【补丁】【外部】---移动端子表关联配置联动筛选不生效'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','补丁转自动化应用')
+        businessPage=BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('子表关联联动过滤')
+        businessPage.ListComponent_Click_ListHeader_Button('添加')
+        formPage=FormPage(self.driver)
+        formPage.ChildFormAssociation_AddButton_Click("子表关联")
+        self.assertEqual(1,formPage.ChildFormAssociation_List_Get_RecoresNumber())
+        formPage.ChildFormAssociation_ManagementDialog_CancelButton_Click()
+        time.sleep(2)
+        formPage.Dept_MonomialDept_Sendkeys("部门单选","创新技术中心")
+        time.sleep(2)
+        formPage.ChildFormAssociation_AddButton_Click("子表关联")
+        self.assertEqual(0,formPage.ChildFormAssociation_List_Get_RecoresNumber())
 
+
+    def test_15( self ):
+        '''【补丁】---移动端运行平台--外部单字段设置了可用条件和必填，提交时不满足可用条件也校验必填'''
+        self.driver = Driver().pcdriver()
+        self.driver.maximize_window()
+        self.driver.get("https://qy.do1.com.cn/qiqiao/runtime/#/2ade557c80d0430d9eee7589b30e4447/2ade0/f923945f10954009b8901976410d8bb3/601b939a2170c50001399a3f/externalForm?corpAB=ww6b6c5c4fa6f34b16")
+        externalformpage = ExternalFormPage(self.driver)
+        externalformpage.ExternalFormPage_Click_SubmitBtn()
+        self.assertEqual("提交成功,感谢您的参与！",externalformpage.ExternalFormPage_Get_MessageContent())
+        time.sleep(2)
+
+    def test_16( self ):
+        '''【补丁】--移动端平台--通过微信扫码打开外部单，填写地址选择器数据后提交表单，PC运行平台查看到地址选择器显示为空'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','补丁转自动化应用')
+        businessPage=BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('外部表单数据列表')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        self.driver.quit()
+        self.driver = Driver().pcdriver()
+        self.driver.maximize_window()
+        self.driver.get("https://qy.do1.com.cn/qiqiao/runtime/#/2ade557c80d0430d9eee7589b30e4447/2ade0/f923945f10954009b8901976410d8bb3/601b939a2170c50001399a3f/externalForm?corpAB=ww6b6c5c4fa6f34b16")
+        externalformpage = ExternalFormPage(self.driver)
+        externalformpage.Address_Sendkeys_External("地址选择器",["北京","北京市","东城区"],"dadasdasda")
+        externalformpage.ExternalFormPage_Click_SubmitBtn()
+        self.assertEqual("提交成功,感谢您的参与！",externalformpage.ExternalFormPage_Get_MessageContent())
+        time.sleep(2)
+        self.driver.quit()
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','补丁转自动化应用')
+        businessPage=BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('外部表单数据列表')
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,3),"北京/北京市/东城区 dadasdasda",msg="【补丁】--移动端平台--通过微信扫码打开外部单，填写地址选择器数据后提交表单，PC运行平台查看到地址选择器显示为空")

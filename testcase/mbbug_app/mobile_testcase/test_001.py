@@ -324,8 +324,8 @@ class MbBugAppTest_001(unittest.TestCase):
         listPage.MbListComponent_AddButton_Click()
         formPage = MbFormPage(self.driver)
         formPage.MbUser_click_UserSelectBox("人员单选1")
-        formPage.MbUser_sendkeys_UserSearch("王栋一")
-        self.assertTrue(formPage.MbUser_UserSearchOption_IsExist("王栋一"))
+        formPage.MbUser_sendkeys_UserSearch("王浩")
+        self.assertTrue(formPage.MbUser_UserSearchOption_IsExist("王浩"))
 
 
     def test_15( self ):
@@ -436,6 +436,55 @@ class MbBugAppTest_001(unittest.TestCase):
         formPage.MbChildFormAssociation_List_searchInput_Sendkeys("美国")
         time.sleep(2)
         self.assertEqual(0, formPage.MbChildFormAssociation_List_Get_RecoresNumber())
+
+
+    def test_21( self ):
+        '''【补丁】---日期/日期时间组件在移动端选择的时候，无法选择2001年之前的日期'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('PC端补丁收集应用','日期表单列表')
+        listPage = MbListComponent(self.driver)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbDate_SendKeys("日期","1994-06-11")
+        self.assertEqual(formPage.MbDate_GetVale("日期"),"1994-06-11")
+
+    def test_22( self ):
+        '''【补丁】--多行文本限制字符长度为5-150，运行平台输入121个字符无法提交表单（字符中包含多个&符号）'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('PC端补丁收集应用','多行文本')
+        listPage = MbListComponent(self.driver)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbTextarea_Sendkeys("多行文本","大大萨达萨达萨达撒旦撒￥%……￥&%&%……%@￥@￥￥@#￥")
+        formPage.MbForm_Button_Click("提交")
+        self.assertIn('成功',formPage.Public_GetAlertMessage())
+
+    def test_23( self ):
+        '''【补丁】【外部】---移动端子表关联配置联动筛选不生效'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('补丁转自动化应用','子表关联联动过滤')
+        listPage = MbListComponent(self.driver)
+        listPage.MbListComponent_AddButton_Click()
+        formPage = MbFormPage(self.driver)
+        formPage.MbChildFormAssociation_AddButton_Click("子表关联")
+        self.assertEqual(1,formPage.MbChildFormAssociation_List_Get_RecoresNumber())
+        formPage.ChildFormAssociation_ManagementDialog_CancelButton_Click()
+        time.sleep(2)
+        formPage.MbDept_MonomialDept_Sendkeys("部门单选","创新技术中心")
+        time.sleep(2)
+        formPage.MbChildFormAssociation_AddButton_Click("子表关联")
+        self.assertEqual(0,formPage.MbChildFormAssociation_List_Get_RecoresNumber())
+
+
 
 
 

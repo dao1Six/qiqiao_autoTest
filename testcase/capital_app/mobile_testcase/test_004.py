@@ -74,7 +74,7 @@ class MbHSEAppTest_004(unittest.TestCase):
         self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第一个人工任务办理失败")
         time.sleep(2)
         # 进行第二个人工任务处理
-        self.driver.back()
+        # self.driver.back()
         todoPage.MbTodoPage_ProcessRecord_Click(1)
         #检查多表关联组件数据列表显示
         self.assertEqual("口罩",formPage.MbMultiForm_GetTdValue("用品明细",1,2),msg="用品明细用品名称显示不正确")
