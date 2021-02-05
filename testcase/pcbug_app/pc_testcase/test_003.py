@@ -238,7 +238,7 @@ class PcBugAppTest_003(unittest.TestCase):
         self.assertEqual(1,formPage.ChildFormAssociation_List_Get_RecoresNumber())
         formPage.ChildFormAssociation_ManagementDialog_CancelButton_Click()
         time.sleep(2)
-        formPage.Dept_MonomialDept_Sendkeys("部门单选","创新技术中心")
+        formPage.Dept_MonomialDept_Sendkeys("部门单选","事业一部")
         time.sleep(2)
         formPage.ChildFormAssociation_AddButton_Click("子表关联")
         self.assertEqual(0,formPage.ChildFormAssociation_List_Get_RecoresNumber())

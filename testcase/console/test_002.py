@@ -10,7 +10,7 @@ class ConsoleTest_002 (unittest.TestCase):
     """开发平台报表接口"""
 
 
-    Token = "dfedae76c037649ad174892ec5fd6333"
+    Token = "7121163a9cc09338bc60cccff9cfce0f"
 
     http = "https://qy.do1.com.cn/qiqiao/console"
 

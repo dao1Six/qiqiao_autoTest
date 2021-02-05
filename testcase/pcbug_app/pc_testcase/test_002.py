@@ -686,7 +686,7 @@ class PcBugAppTest_002(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click("测试列表选项卡统计")
         businessPage.ListComponent_QueryItem_Sendkeys("部门单选","总办",QueryItemType="user")
         businessPage.ListComponent_Click_SerachBtn()
-        time.sleep(3)
+        time.sleep(5)
         self.assertEqual(['全部(150)', '单项选择1(150)', '单项选择2(0)', '单项选择3(0)'],businessPage.ListComponent_get_tablistValule(),msg="【补丁】---页面使用部门选择组件筛选数据，选项卡统计数量不对")
 
     def test_27( self ):
@@ -704,3 +704,17 @@ class PcBugAppTest_002(unittest.TestCase):
         businessPage.ListComponent_Click_SerachBtn()
         time.sleep(3)
         self.assertEqual(['全部(300)', '单项选择1(150)', '单项选择2(0)', '单项选择3(60)'],businessPage.ListComponent_get_tablistValule(),msg="【补丁】--PC业务建模页面人员单选作为搜索条件，PC运行端人员单选搜索框输入两个人员名称，搜索结果只显示了一个人员的数据")
+
+    #TODO
+    # def test_27( self ):
+    #     '''【补丁】---多表关联，关联表传递数字字段，如果字段值为0，传递之后变为空'''
+    #     self.pcLogin("wujianlun@auto","do1qiqiao")
+    #     portalPage = PortalPage(self.driver)
+    #     portalPage.PortalPage_Click_HeaderMenu("应用")
+    #     applicationListPage = ApplicationListPage(self.driver)
+    #     applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','数据过滤测试应用2')
+    #     businessPage = BusinessPage(self.driver)
+    #     businessPage.BusinessPage_LeftMenu_Click("多表组件")
+    #     businessPage.ListComponent_Click_ListHeader_Button('添加')
+    #     formPage=FormPage(self.driver)
+    #     formPage.MultiForm_BatchManagementButton_Click("多表关联")

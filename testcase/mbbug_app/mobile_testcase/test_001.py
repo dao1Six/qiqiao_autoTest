@@ -461,7 +461,7 @@ class MbBugAppTest_001(unittest.TestCase):
         listPage = MbListComponent(self.driver)
         listPage.MbListComponent_AddButton_Click()
         formPage = MbFormPage(self.driver)
-        formPage.MbTextarea_Sendkeys("多行文本","大大萨达萨达萨达撒旦撒￥%……￥&%&%……%@￥@￥￥@#￥")
+        formPage.MbTextarea_Sendkeys("多行文本","大大萨达萨达萨达撒旦撒￥%……￥&%&%……%@￥@￥￥@#￥大大萨达萨达萨达撒旦撒￥%……￥&%&%……%@￥@￥￥@#￥大大萨达萨达萨达撒旦撒￥%……￥&%&%……%@￥@￥￥@#￥大大萨达萨达萨达撒旦撒￥%……￥&%&%……%@￥@￥￥@#￥大大萨达萨达萨")
         formPage.MbForm_Button_Click("提交")
         self.assertIn('成功',formPage.Public_GetAlertMessage())
 
@@ -479,11 +479,10 @@ class MbBugAppTest_001(unittest.TestCase):
         self.assertEqual(1,formPage.MbChildFormAssociation_List_Get_RecoresNumber())
         formPage.ChildFormAssociation_ManagementDialog_CancelButton_Click()
         time.sleep(2)
-        formPage.MbDept_MonomialDept_Sendkeys("部门单选","创新技术中心")
+        formPage.MbDept_MonomialDept_Sendkeys("部门单选","事业一部")
         time.sleep(2)
         formPage.MbChildFormAssociation_AddButton_Click("子表关联")
         self.assertEqual(0,formPage.MbChildFormAssociation_List_Get_RecoresNumber())
-
 
 
 
