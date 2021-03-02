@@ -179,13 +179,18 @@ class SeleniumPage (object):
             return isinstance(exception, WebDriverException)
 
 
-    @retry( retry_on_exception=retry_if_clickOtherelement,stop_max_attempt_number=3, wait_fixed=1000,
+    @retry( retry_on_exception=retry_if_clickOtherelement,stop_max_attempt_number=5, wait_fixed=2000,
            wrap_exception=True,stop_max_delay=5000)
     def clickElem(self, elem):
         """给一个存在dom的元素写入值Xpath"""
         #滚动元素至可见位置
         self.driver.execute_script("arguments[0].scrollIntoView();",elem)
-        elem.click()
+        try:
+            self.driver.execute_script('window.scrollBy(0, -100)') #向下滚动100像素
+        except :
+            print("sss")
+        finally:
+            elem.click()
 
 
 

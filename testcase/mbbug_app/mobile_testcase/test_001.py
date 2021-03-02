@@ -374,6 +374,7 @@ class MbBugAppTest_001(unittest.TestCase):
         listPage.MbListComponent_AddButton_Click()
         formPage = MbFormPage(self.driver)
         formPage.MbChildForm_AddButton_Click("价值观")
+        time.sleep(2)
         formPage.MbSelection_SingleXiala_Senkeys("价值观","持续创新：技术驱动，敏捷迭代")
         formPage.MbTextarea_Sendkeys("Situation（背景）","dadasdasdsadsadasd")
         formPage.MbTextarea_Sendkeys("Target（目标）", "dadasdasdsadsadasd")
@@ -383,7 +384,7 @@ class MbBugAppTest_001(unittest.TestCase):
         formPage.MbChildForm_Button_Click("保存")
         time.sleep(2)
         self.assertEqual("持续创新：技术驱动，敏捷迭代", formPage.MbChildForm_GetTdValue('价值观', 1,2), msg="子表显示值不对")
-        self.assertEqual("保持好奇：主动思考，寻找表象背后的原因。，创造价值：通过创造新的变化点实现更大价值。", formPage.MbChildForm_GetTdValue('价值观', 1, 7), msg="子表显示值不对")
+        self.assertEqual("创造价值：通过创造新的变化点实现更大价值。，保持好奇：主动思考，寻找表象背后的原因。", formPage.MbChildForm_GetTdValue('价值观', 1, 7), msg="子表显示值不对")
 
 
     def test_18( self ):

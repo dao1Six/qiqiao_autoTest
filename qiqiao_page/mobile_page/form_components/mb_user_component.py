@@ -37,7 +37,7 @@ class MbUser(SeleniumPage):
 
         #点击添加选择框
         self.clickElemByXpath_visibility(self.icon_add_new_loc.replace('%s',fieldName))
-        #点击搜索框
+        #点击搜索
         self.clickElemByXpath_visibility(self.structSelector_searchBar)
         #输入搜索人
         self.sendkeysElemByXpath_visibility(self.searchInput_loc,userName)

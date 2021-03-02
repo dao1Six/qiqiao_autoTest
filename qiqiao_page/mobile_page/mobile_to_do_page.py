@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 
 from public.selenium_page import SeleniumPage
 from qiqiao_page.mobile_page.mb_public_page import MbPublicPage
+import time
 
 
 class MbTodoPage(MbPublicPage,SeleniumPage):
@@ -23,6 +24,7 @@ class MbTodoPage(MbPublicPage,SeleniumPage):
     search_input_loc = "//div[@class='search_input']//input"  #搜索框
 
     item_name_loc = "//ul//div[@class='item_row']//h2[@class='item_name']"  #记录标题
+    item_application_name_loc="//ul//div[@class='item_row']//div[@class='item_application_name']//span"  # 记录所属应用
 
     filterIcon = "//div[@class='filterSearch']//i"
 
@@ -30,7 +32,7 @@ class MbTodoPage(MbPublicPage,SeleniumPage):
 
     filterButton = "//button[text()=' %s']"
 
-    def MbTodoPage_filterIcon_Click( self ,buttonName):
+    def MbTodoPage_filterIcon_Click( self ):
         '''点击过滤图标'''
         self.clickElemByXpath_visibility(self.filterIcon)
 
@@ -63,6 +65,7 @@ class MbTodoPage(MbPublicPage,SeleniumPage):
     def MbTodoPage_Faqiliucheng( self,app,name):
         '''待办页面发起流程'''
         self.MbTodoPage_Faqiliucheng_Click()
+        time.sleep(2)
         self.clickElemByXpath_visibility(self.process_icon_loc.replace('%app',app).replace('%name',name))
 
 
@@ -79,20 +82,17 @@ class MbTodoPage(MbPublicPage,SeleniumPage):
 
     def MbTodoPage_Get_RecoreTitleValule( self,index ):
         '''返回当前列表某条记录标题值'''
-        elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.item_name_loc,index=index-1)
+        elem = self.find_elemByXPATH_visibility(self.item_name_loc,index=index-1)
         if (elem!=None):
             return elem.text
         else:
             return None
 
 
-    def MbTodoPage_Get_RecoreTextContents( self,r ):
-        '''返回当前列表某条记录标题值'''
-        list = []
-        elems = self.find_elemsByXPATH_visibility(self.dyCardList_text_content.replace("%r",str(r-1)))
+    def MbTodoPage_Get_RecoreItemApplicationName( self,index ):
+        '''返回当前列表某条记录所属应用值'''
+        elems = self.find_elemsByXPATH_presence(self.item_application_name_loc)
         if (elems!=None):
-            for elem in elems:
-                list.append(elem.text)
-            return list
+            return elems[index-1].text
         else:
             return None

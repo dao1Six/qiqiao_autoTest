@@ -37,8 +37,7 @@ class MbProcessListTest_001(unittest.TestCase):
         loginpage.user_login('https://qy.do1.com.cn/qiqiao/runtime', account, password)
         time.sleep(3)
 
-    # 未完成
-    # TODO:
+
     def test_01( self ):
         '''待办列表应用流程组合查询'''
         self.mbLogin("wujianlun@auto","do1qiqiao")
@@ -47,6 +46,14 @@ class MbProcessListTest_001(unittest.TestCase):
         time.sleep(2)
         self.driver.refresh()
         todoPage = MbTodoPage(self.driver)
+        todoPage.MbTodoPage_searchInput_sendkeys("吴健伦")
+        time.sleep(2)
+        todoPage.MbTodoPage_filterIcon_Click()
+        todoPage.MbTodoPage_filterLi_Click("应用","资产管理")
+        todoPage.MbTodoPage_filterButton_Click("确定")
+        time.sleep(3)
+        self.assertEqual("应用：资产管理",todoPage.MbTodoPage_Get_RecoreItemApplicationName(4))
+
 
 
 

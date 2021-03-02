@@ -161,7 +161,36 @@ class PcBugAppTest_001(unittest.TestCase):
         processPage.ProcessPage_click_process_record(1)
         formPage = FormPage(self.driver)
         formPage.Form_scroll(10000)
-        formPage.Form_field_isVisibility("订单状态")
+        self.assertTrue(formPage.Form_field_isVisibility("订单状态"))
+
+
+    def test_08( self ):
+        """【补丁】--触发事件使用除法时值为小数时没有正确显示"""
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
+        businessPage = BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('除法公式结果表')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        businessPage.BusinessPage_LeftMenu_Click('除法公式触发表')
+        if (businessPage.ListComponent_GetRecordTotal() > 0):
+            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_Click_ListHeader_Button('删除')
+            businessPage.ListComponent_TooltipButton_Click('确定')
+            assert '成功' in businessPage.Public_GetAlertMessage()
+        businessPage.ListComponent_Click_ListHeader_Button('添加')
+        formPage = FormPage(self.driver)
+        formPage.Number_Sendkeys("数字1",12)
+        formPage.Number_Sendkeys("数字2",5)
+        formPage.Form_Button_Click("提交")
+        time.sleep(2)
+        businessPage.BusinessPage_LeftMenu_Click('除法公式结果表')
+        self.assertEqual("2.4",businessPage.ListComponent_GetTable_Td_Value(1,3))
 
 
 

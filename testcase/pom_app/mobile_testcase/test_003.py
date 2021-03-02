@@ -90,6 +90,7 @@ class MbPomAppTest_003(unittest.TestCase):
         time.sleep(2)
         formPage.MbChildForm_Td_Scroll('工时明细',1,1,500,0)
         self.assertEqual("—",formPage.MbChildForm_GetTdValue('工时明细',1,4),msg="项目名称值显示不正确")
+        self.assertEqual("产品测试",formPage.MbChildForm_GetTdValue('工时明细',1,7),msg="工作内容显示不正确")
 
 
 

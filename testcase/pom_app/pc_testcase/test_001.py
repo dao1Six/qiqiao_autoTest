@@ -582,7 +582,7 @@ class PomAppTest_001(unittest.TestCase):
         formPage.ChildForm_List_Date_sendkeys("项目团队成员","进入项目时间",3,DateTimeUtil().Tomorrow())
         time.sleep(2)
         formPage.Form_Button_Click('提交')
-
+        time.sleep(3)
         businessPage.ListComponent_Click_ListRow_Button("进度管理",1)
         formPage.ChildForm_AddOneRowButton_Click("项目进度管理")
         formPage.ChildForm_List_Date_clearValue("项目进度管理","更新日期",1)

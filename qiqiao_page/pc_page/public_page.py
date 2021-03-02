@@ -12,4 +12,4 @@ class PublicPage(SeleniumPage):
         #等待弹框出现
         # self.wait_elem_visible_CSS(self.Form_Alert_loc,timeout=5)
         #返回弹框文本值
-        return self.find_elemByXPATH_visibility(self.Alert_loc,timeout=5).text
+        return self.find_elemByXPATH_visibility(self.Alert_loc,timeout=10).text

@@ -28,7 +28,7 @@ class MbSelection(SeleniumPage):
 
     ChildFormPopup_SingleXiala_divReadonlyValue_loc = "//div[@title='%title']//div[@class='readonly_value']"
 
-    ChildFormPopup_SingleBox_liReadonlyValue_loc = "//div[@title='%title']//li[@class='item_li']"
+    ChildFormPopup_SingleBox_liReadonlyValue_loc = "//div[@title='%title']//li[@class='item_li dyFormSingle_li']"
 
 #单项
 

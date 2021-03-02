@@ -1,5 +1,6 @@
 #地址组件
 from public.selenium_page import SeleniumPage
+import time
 
 
 class Address(SeleniumPage):
@@ -30,5 +31,6 @@ class Address(SeleniumPage):
         self.clickElemByXpath_visibility(self.Address_selectionBox_loc.replace('%s', fieldName))
         for i in addkeys:
             self.clickElemByXpath_visibility(self.Address_selecOption_loc.replace('%s', i))
+            time.sleep(2)
         self.sendkeysElemByXpath_visibility(self.Address_detilInput_loc.replace('%s', fieldName),detilkey)
 

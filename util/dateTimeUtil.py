@@ -55,10 +55,14 @@ class DateTimeUtil(object):
         last_year=int(now.year) - 1
         return str(last_year)
 
+    def CurrentHM( self ):
+        '''返回时分'''
+        return datetime.datetime.now().strftime('%H:%M')
+
 
 
 
 
 if __name__ == '__main__':
     d = DateTimeUtil()
-    print(d.LastYear())
+    print(d.CurrentHM())

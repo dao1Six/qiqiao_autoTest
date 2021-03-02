@@ -286,3 +286,4 @@ class PcBugAppTest_003(unittest.TestCase):
         businessPage=BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('外部表单数据列表')
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,3),"北京/北京市/东城区 dadasdasda",msg="【补丁】--移动端平台--通过微信扫码打开外部单，填写地址选择器数据后提交表单，PC运行平台查看到地址选择器显示为空")
+
