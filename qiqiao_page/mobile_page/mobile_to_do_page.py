@@ -82,7 +82,7 @@ class MbTodoPage(MbPublicPage,SeleniumPage):
 
     def MbTodoPage_Get_RecoreTitleValule( self,index ):
         '''返回当前列表某条记录标题值'''
-        elem = self.find_elemByXPATH_visibility(self.item_name_loc,index=index-1)
+        elem = self.find_elemsByXPATH_visibility(self.item_name_loc)[index-1]
         if (elem!=None):
             return elem.text
         else:

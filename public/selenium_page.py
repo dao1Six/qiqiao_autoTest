@@ -158,7 +158,7 @@ class SeleniumPage (object):
         script = '$("div.el-loading-mask").hide()'
         self.driver.execute_script(script)
 
-    @classmethod
+
     def hide_alert_by_jq(self):
         """通过jq将元素隐藏"""
         script = '$("div[role="alert"]").hide()'
@@ -179,7 +179,7 @@ class SeleniumPage (object):
             return isinstance(exception, WebDriverException)
 
 
-    @retry( retry_on_exception=retry_if_clickOtherelement,stop_max_attempt_number=5, wait_fixed=2000,
+    @retry( retry_on_exception=retry_if_clickOtherelement,stop_max_attempt_number=3, wait_fixed=2000,
            wrap_exception=True,stop_max_delay=5000)
     def clickElem(self, elem):
         """给一个存在dom的元素写入值Xpath"""
@@ -341,7 +341,8 @@ class SeleniumPage (object):
     @retry( retry_on_exception=retry_if_findElementException,stop_max_attempt_number=3, wait_fixed=1000,
            wrap_exception=True,stop_max_delay=3000)
     def find_elemsByXPATH_visibility(self, locator, timeout=5):
-        """判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None"""
+        """判断页面至少有一个元素可见 visible，
+        传入locator，一旦定位就返回 the list of located WebElements；不可见（元素隐藏 或是 完全不存在，一个都没有）返回的是 空列表；"""
         try:
             return WebDriverWait(self.driver, timeout).until(
                 EC.visibility_of_any_elements_located((By.XPATH, locator)))

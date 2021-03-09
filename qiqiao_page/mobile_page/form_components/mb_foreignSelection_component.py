@@ -1,8 +1,9 @@
+# coding=utf-8
 #外键
 import time
 
 from public.selenium_page import SeleniumPage
-
+from func_timeout import func_set_timeout
 
 class MbForeignSelection_component(SeleniumPage):
 
@@ -36,7 +37,7 @@ class MbForeignSelection_component(SeleniumPage):
             #搜索框输入查询项
             self.clickElemByXpath_visibility(self.search_label_loc)
             self.sendkeysElemByXpath_visibility(self.search_input_loc,option)
-            time.sleep(1)
+            time.sleep(2)
             self.MbForeignSelection_Option_scrollDown()
             #点击结果
             self.clickElemByXpath_visibility(self.search_item_loc.replace('%s',option))
@@ -59,7 +60,7 @@ class MbForeignSelection_component(SeleniumPage):
         elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(self.ChildFormPopup_ForeignSelectionBox_Span_readonlyValue_loc.replace('%title',fieldName))
         return elem.text
 
-
+    @func_set_timeout(120)
     def MbForeignSelection_Option_scrollDown( self):
         """外键选项滚动至底部"""
         while(self.find_elemByXPATH_visibility(self.lastPage_div,timeout=2)==None):

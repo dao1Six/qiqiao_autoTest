@@ -20,6 +20,7 @@ class ListComponent(SeleniumPage):
     ListRow_Button_loc = "//span[@data-mark='%s_%row']/button/span[text()='%s']" #列表行按钮
     ListRow_MoreButton_loc = "//div[contains(@class,'el-table__body-wrapper')]//tr[%row]//span[contains(text(),'更多')]/parent::div[1]"#列表行更多按钮
     ListRow_SelectAllInput_loc = "//div[contains(@class,'el-table__fixed-header-wrapper')]//th[1]//span[@class='el-checkbox__inner']" #列表首行全选元素
+    ListRow_checkbox_loc = "//div[contains(@class,'el-table__fixed-body-wrapper')]//tr[%s]//span[@class='el-checkbox__inner']"#列表行勾选框元素
     TooltipButton_loc = "//div[@role='tooltip']//button//span[text()='%s']"
     dialogfooterButton = "//div[@class='el-dialog__footer']//button/span[text()='%s']"
     pagination_total_loc = "//span[@class='el-pagination__total']"
@@ -35,7 +36,11 @@ class ListComponent(SeleniumPage):
     import_file_result_closeButton_loc = "//div[@aria-label='导入结果']//button/span[text()='关闭']" #导入结果关闭按钮
     import_file_ErrorResult_a_loc = "//div[@aria-label='导入提醒']//a[text()='下载错误数据']"
 
+    icon_arrow_down_loc = "//div[@data-mark='%s']//i[contains(@class,'el-icon-arrow-down el-dropdown-selfdefine']"
 
+    def ListComponent_SelectAllRecord( self ):
+        '''全选所有数据'''
+        self.clickElemByXpath_visibility(self.ListRow_SelectAllInput_loc)
 
     def ListComponent_GetRecordTotal(self,index=0):
         '''获取列表总条数'''
@@ -43,9 +48,14 @@ class ListComponent(SeleniumPage):
         num = int(text[1:-1])
         return num
 
-    def ListComponent_SelectAllRecord( self ):
-        '''全选数据'''
+    def ListComponent_SelectCurrentPageAllRecord( self ):
+        '''全选本页所有数据'''
         self.clickElemByXpath_visibility(self.ListRow_SelectAllInput_loc)
+
+    def ListComponent_SelectRecord( self,r ):
+        '''勾选行数据'''
+        elelm = self.find_elemByXPATH_visibility(self.ListRow_checkbox_loc.replace('%s',str(r)))
+        self.clickElem(elelm)
 
     def ListComponent_TooltipButton_Click( self,ButtonNmae ):
         '''点击列表按钮消息提示框按钮'''
@@ -101,6 +111,11 @@ class ListComponent(SeleniumPage):
     def ListComponent_Click_ListRow_Button( self, btnname,row):
         '''点击列表行按钮'''
         self.clickElemByXpath_visibility(self.ListRow_Button_loc.replace('%s', btnname).replace('%row',str(row-1)))
+
+    def ListComponent_ListRowButton_IsExist( self, btnname,row):
+        '''判断列表行按钮是否可见'''
+        elems = self.find_elemsByXPATH_visibility(self.ListRow_Button_loc.replace('%s', btnname).replace('%row',str(row-1)))
+        return elems[0].is_enabled()
 
     def ListComponent_MoveTo_ListRow_MoreButton( self,row):
         '''悬浮列表行更多按钮'''

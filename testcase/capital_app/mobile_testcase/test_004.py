@@ -63,7 +63,7 @@ class MbHSEAppTest_004(unittest.TestCase):
         time.sleep(2)
         #检查表单弹窗内的数据显示
         self.assertEqual("口罩",formPage.MbForeignSelection_GetValue_writable_InPopup("用品名称"),msg="用品明细用品名称显示不正确")
-        self.assertEqual("个人PPE",formPage.MbSelection_SingleXiala_readOnly_InPopup("类别"),msg="用品明细类别显示不正确")
+        self.assertEqual("个人PPE",formPage.MbSelection_SingleXiala_readOnly_InPopup_GetValue("类别"),msg="用品明细类别显示不正确")
         self.assertEqual("50",formPage.MbNumber_GetValue_readOnly("库存"),msg="用品明细库存显示不正确")
         self.assertEqual("道一",formPage.MbText_GetValue_readOnly("单位"),msg="用品明细单位显示不正确")
         self.assertEqual(20,formPage.MbNumber_GetValue_writable_InPopup("申请数量"),msg="用品明细申请数量显示不正确")
@@ -87,7 +87,7 @@ class MbHSEAppTest_004(unittest.TestCase):
         time.sleep(2)
         #检查表单弹窗内的数据显示
         self.assertEqual("口罩",formPage.MbForeignSelection_GetValue_writable_InPopup("用品名称"),msg="用品明细用品名称显示不正确")
-        self.assertEqual("个人PPE",formPage.MbSelection_SingleXiala_readOnly_InPopup("类别"),msg="用品明细类别显示不正确")
+        self.assertEqual("个人PPE",formPage.MbSelection_SingleXiala_readOnly_InPopup_GetValue("类别"),msg="用品明细类别显示不正确")
         self.assertEqual("50",formPage.MbNumber_GetValue_readOnly("库存"),msg="用品明细库存显示不正确")
         self.assertEqual("道一",formPage.MbText_GetValue_readOnly("单位"),msg="用品明细单位显示不正确")
         self.assertEqual(20,formPage.MbNumber_GetValue_writable_InPopup("申请数量"),msg="用品明细申请数量显示不正确")
@@ -117,7 +117,7 @@ class MbHSEAppTest_004(unittest.TestCase):
         time.sleep(2)
         # 检查表单弹窗内的数据显示
         self.assertEqual("口罩",formPage.MbForeignSelection_GetValue_readOnly_InPopup("用品名称"),msg="用品明细用品名称显示不正确")
-        self.assertEqual("个人PPE",formPage.MbSelection_SingleXiala_readOnly_InPopup("类别"),msg="用品明细类别显示不正确")
+        self.assertEqual("个人PPE",formPage.MbSelection_SingleXiala_readOnly_InPopup_GetValue("类别"),msg="用品明细类别显示不正确")
         self.assertEqual("50",formPage.MbNumber_GetValue_readOnly("库存"),msg="用品明细库存显示不正确")
         self.assertEqual("道一",formPage.MbText_GetValue_readOnly("单位"),msg="用品明细单位显示不正确")
         self.assertEqual('20',formPage.MbText_GetValue_readOnly("申请数量"),msg="用品明细申请数量显示不正确")

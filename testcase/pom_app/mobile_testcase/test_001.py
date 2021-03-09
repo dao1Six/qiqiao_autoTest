@@ -40,7 +40,7 @@ class MbPomAppTest_001(unittest.TestCase):
         # 清除订单管理相关数据
         # 判断列表是否存在数据
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -49,28 +49,28 @@ class MbPomAppTest_001(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('内部订单管理')
         businessPage.BusinessPage_LeftMenu_Click('内部订单管理2')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
         # 清除资源借调信息相关数据
         businessPage.BusinessPage_LeftMenu_Click('资源借调信息')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
         # 清除借调结算管理相关数据
         businessPage.BusinessPage_LeftMenu_Click('借调结算管理')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
         # 清除其他结算管理相关数据
         businessPage.BusinessPage_LeftMenu_Click('其他结算管理')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -78,7 +78,7 @@ class MbPomAppTest_001(unittest.TestCase):
             businessPage.BusinessPage_LeftMenu_Click('项目信息管理')
             businessPage.BusinessPage_LeftMenu_Click('里程碑信息')
             if (businessPage.ListComponent_GetRecordTotal() >0):
-                businessPage.ListComponent_SelectAllRecord()
+                businessPage.ListComponent_SelectCurrentPageAllRecord()
                 businessPage.ListComponent_Click_ListHeader_Button('删除')
                 businessPage.ListComponent_TooltipButton_Click('确定')
                 assert '成功' in businessPage.Public_GetAlertMessage()

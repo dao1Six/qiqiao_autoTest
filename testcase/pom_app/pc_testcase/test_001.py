@@ -52,7 +52,7 @@ class PomAppTest_001(unittest.TestCase):
         # 清除订单管理相关数据
         # 判断列表是否存在数据
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -61,28 +61,28 @@ class PomAppTest_001(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('内部订单管理')
         businessPage.BusinessPage_LeftMenu_Click('内部订单管理2')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
         # 清除资源借调信息相关数据
         businessPage.BusinessPage_LeftMenu_Click('资源借调信息')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
         # 清除借调结算管理相关数据
         businessPage.BusinessPage_LeftMenu_Click('借调结算管理')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
         # 清除其他结算管理相关数据
         businessPage.BusinessPage_LeftMenu_Click('其他结算管理')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除（临时）')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -91,7 +91,7 @@ class PomAppTest_001(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('项目信息管理')
         businessPage.BusinessPage_LeftMenu_Click('里程碑信息')
         if (businessPage.ListComponent_GetRecordTotal() >0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -105,14 +105,14 @@ class PomAppTest_001(unittest.TestCase):
         time.sleep(2)
         businessPage.BusinessPage_LeftMenu_Click('项目成员信息')
         if (businessPage.ListComponent_GetRecordTotal() >0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
         time.sleep(2)
         businessPage.BusinessPage_LeftMenu_Click('固定范围项目进度')
         if (businessPage.ListComponent_GetRecordTotal() >0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -714,3 +714,17 @@ class PomAppTest_001(unittest.TestCase):
         formPage.Form_Button_Click("确认")
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功',formPage.Public_GetAlertMessage(),msg="第八个人工任务办理失败")
+
+    def test_07( self ):
+        """流程管理打开数据不能滚动"""
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("流程")
+        processPage = ProcessPage(self.driver)
+        processPage.ProcessPage_click_process_menu("流程管理")
+        processPage.ProcessPage_searchItem_sendkeys("流程名称","事业一部订单发起",FileType=FileTypeEnum.Text)
+        processPage.ProcessPage_searchButton_Click("搜索")
+        time.sleep(3)
+        processPage.ProcessPage_click_process_record(1)
+        formPage = FormPage(self.driver)
+        formPage.Form_scroll(10000)
+        self.assertTrue(formPage.Form_field_isVisibility("订单状态"))

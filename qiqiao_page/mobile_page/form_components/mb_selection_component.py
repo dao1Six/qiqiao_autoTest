@@ -39,10 +39,11 @@ class MbSelection(SeleniumPage):
         self.clickElemByXpath_visibility(self.placeholder_loc.replace('%s',fieldName))
         clickElemIndex = 0
         # 当目标元素可见时点击
-        while(self.isClickable(self.Xiala_Option_loc.replace('%title',option),timeout=3)!=True):
+        while(self.find_elemByXPATH_visibility(self.Xiala_Option_loc.replace('%title',option),timeout=3)==None):
             clickElemIndex = clickElemIndex+1
             self.h5_tap_elem(self.find_elemsByXPATH_visibility(self.Xiala_li_loc)[clickElemIndex])
-        if (self.isClickable(self.Xiala_Option_loc.replace('%title', option),timeout=3) == True):
+        time.sleep(2)
+        if (self.find_elemByXPATH_visibility(self.Xiala_Option_loc.replace('%title', option),timeout=3) != None):
             self.h5_tap_elem(self.find_elemsByXPATH_visibility(
                 self.Xiala_Option_loc.replace('%title',option))[0])
         #点击确定按钮
@@ -54,7 +55,7 @@ class MbSelection(SeleniumPage):
         '''单项字段输入值'''
         self.clickElemByXpath_visibility(self.Radio_Option_loc.replace('%s',fieldName).replace('%title',option))
 
-    def MbSelection_SingleXiala_readOnly_InPopup( self,fieldName ):
+    def MbSelection_SingleXiala_readOnly_InPopup_GetValue( self,fieldName ):
         '''在表单弹窗里获取只读状态下的单项下拉框组件值'''
         loc = self.ChildFormPopup_SingleXiala_divReadonlyValue_loc.replace('%title',fieldName)
         elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(loc)

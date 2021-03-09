@@ -56,7 +56,7 @@ class FormPage(Grade,PublicPage,Number,Text,Textarea,Date,Time,DateTime,PicUploa
 
     Popup_close_icon = "//div[@data-mark='子表弹层_%s']//i[@class='el-icon-close close']"
 
-    field_label_loc = "//div[@data-mark='%s']//label"
+    field_label_loc = "//div[@class='formItem']//div[@data-mark='%s']//label"
 
     def Form_scroll( self,number):
         """"""

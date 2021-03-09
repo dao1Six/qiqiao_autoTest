@@ -20,6 +20,7 @@ class Selection(SeleniumPage):
 
     ChildFormPopup_loc = "//div[@data-mark='子表弹层_%s']"
     ChildFormPopup_SingleXiala_div_loc = "//div[@title='%title']//div[contains(@class,'component_detail')]//div"
+    ChildFormPopup_SingleXiala_div_loc_writable ="//div[@title='%title']//input"
 
 
 
@@ -63,11 +64,17 @@ class Selection(SeleniumPage):
         #点击选项
         self.clickElemByXpath_visibility(self.Selection_monomialSelectOption_loc.replace('%value', value))
 
-    def Selection_SingleXiala_readOnly_InPopup( self,childFormName,fieldName):
+    def Selection_SingleXiala_readOnly_InPopup_GetValue( self,childFormName,fieldName):
         '''在表单弹窗里获取只读状态下的单项下拉框组件值'''
         loc = self.ChildFormPopup_loc.replace('%s',childFormName) + self.ChildFormPopup_SingleXiala_div_loc.replace('%title',fieldName)
         elem = self.find_elenmInElemsByXpath_visibility_of_any_elements_located(loc)
         return elem.text
+
+    def Selection_SingleXiala_writable_InPopup_GetValue( self,childFormName,fieldName):
+        '''在表单弹窗里获取可写状态下的单项下拉框组件值'''
+        loc = self.ChildFormPopup_loc.replace('%s',childFormName) + self.ChildFormPopup_SingleXiala_div_loc_writable.replace('%title',fieldName)
+        elem = self.find_elemByXPATH_presence(loc)
+        return self.getElemAttrValue(elem,"title")
 
 
 #多项

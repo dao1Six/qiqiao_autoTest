@@ -160,7 +160,7 @@ class PcBugAppTest_002(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('项目信息管理')
         businessPage.BusinessPage_LeftMenu_Click('项目信息管理3')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -189,7 +189,7 @@ class PcBugAppTest_002(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('触发更新事件问题复现')
         businessPage.BusinessPage_LeftMenu_Click('问题复现')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -224,7 +224,7 @@ class PcBugAppTest_002(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('触发更新事件问题复现')
         businessPage.BusinessPage_LeftMenu_Click('目标表')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -235,7 +235,7 @@ class PcBugAppTest_002(unittest.TestCase):
         time.sleep(2)
         businessPage.BusinessPage_LeftMenu_Click('本表')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -260,7 +260,7 @@ class PcBugAppTest_002(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('人员部门连带写入')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -342,7 +342,7 @@ class PcBugAppTest_002(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('小数转换插入列表')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -374,7 +374,7 @@ class PcBugAppTest_002(unittest.TestCase):
         time.sleep(2)
         businessPage.BusinessPage_LeftMenu_Click('日期高级函数测试')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -421,7 +421,7 @@ class PcBugAppTest_002(unittest.TestCase):
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','费用管理测试版')
         businessPage = BusinessPage(self.driver)
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -466,15 +466,16 @@ class PcBugAppTest_002(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click("TC层员工评价表")
         businessPage.ListComponent_Click_ListHeader_Button("添加")
+        time.sleep(2)
         formPage = FormPage(self.driver)
         formPage.MultiForm_AddButton_Click("业绩评价")
         time.sleep(2)
         formPage.MultiForm_List_sendkeysTo_Number("业绩评价",1,16,50)
         time.sleep(2)
         formPage.MultiForm_AddButton_Click("业绩评价")
-        time.sleep(2)
+        time.sleep(3)
         formPage.MultiForm_List_sendkeysTo_Number("业绩评价",2,16,50)
-        time.sleep(2)
+        time.sleep(3)
         self.assertEqual("极差",formPage.Text_GetValue_writable("业绩评语"),msg="【补丁】——PC端运行平台，数据联动，使用IF函数计算结果联动时，无效")
 
 
@@ -633,7 +634,7 @@ class PcBugAppTest_002(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('人员部门连带写入标签')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()

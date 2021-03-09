@@ -41,7 +41,7 @@ class MbPomAppTest_003(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('本周工时填报')
         # 判断列表是否存在数据
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
         self.driver.quit()
@@ -70,8 +70,7 @@ class MbPomAppTest_003(unittest.TestCase):
 
 
     def test_01( self ):
-        '''【ID1080288】
-【补丁】【正式租户】移动端运行平台，子表单内，外键选择组件，不可用时，显示了ID名称'''
+        '''【ID1080288】【补丁】【正式租户】移动端运行平台，子表单内，外键选择组件，不可用时，显示了ID名称'''
         homepage = MbHomePage(self.driver)
         homepage.HomePage_BottomNav_Click('应用')
         applicationListPage = MbApplicationListPage(self.driver)

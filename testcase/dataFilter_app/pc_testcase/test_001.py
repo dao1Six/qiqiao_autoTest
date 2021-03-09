@@ -10,7 +10,7 @@ class DataFilterAppTest_001 (unittest.TestCase):
     '''PC端数据过滤应用报表测试'''
 
 
-    Token = "21c3ce4770884a37ad2b1463a647d960"
+    Token = "f1bc4dff576eb203f9d8774a79e27bc3"
 
     http = "https://qy.do1.com.cn/qiqiao"
 
@@ -101,6 +101,7 @@ class DataFilterAppTest_001 (unittest.TestCase):
 
     def test_07(self):
         '''【补丁】——PC端汇总列表，维度为日期时，系统报错'''
+        #地址级联组件维度
         url = self.http+"/runtime/api/v1/runtime/business/e8e7124ff51846118f602b349a1a243a/5f5f34f0c14d2c0001f19a85/key_1600075037814_88185/advanced_render_data/summaryList?"
         print(url)
         response = requests.get (url=url,headers=self.headers)

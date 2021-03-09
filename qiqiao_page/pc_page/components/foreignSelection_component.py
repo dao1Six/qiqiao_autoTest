@@ -56,9 +56,13 @@ class ForeignSelection_component(SeleniumPage):
             return True
         return False
 
+    def ForeignSelection_get_OptionStyle(self,Option,*args):
+        '''获取外键选择组件选项样式值'''
+        elem=self.find_elemsByXPATH_presence(self.ForeignSelectOption_loc.replace('%s',Option))[0]
+        return self.getElemAttrValue(elem,"style")
 
     def ForeignSelection_get_OptionValue(self,fieldName,*args):
-        '''获取外键选择组件选项值'''
+        '''获取外键选择组件所有选项的值'''
         list = []
         elems = self.find_elemsByXPATH_presence(self.foreignSelectOptions_loc)#.replace('%s',fieldName)
         if elems == None:

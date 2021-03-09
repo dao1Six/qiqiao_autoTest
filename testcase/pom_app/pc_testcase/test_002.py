@@ -33,7 +33,7 @@ class PomAppTest_002(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('本周工时填报')
         # 判断列表是否存在数据
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()

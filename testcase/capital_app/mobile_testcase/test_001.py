@@ -36,7 +36,7 @@ class MbCapitalAppTest_001(unittest.TestCase):
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','资产管理')
         businessPage = BusinessPage(self.driver)
 
-        businessPage.ListComponent_SelectAllRecord()
+        businessPage.ListComponent_SelectCurrentPageAllRecord()
         time.sleep(2)
         businessPage.ListComponent_Click_ListHeader_Button('设置为可借出')
         businessPage.ListComponent_TooltipButton_Click('确定')
@@ -46,14 +46,14 @@ class MbCapitalAppTest_001(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('领用单')
         #判断列表是否存在数据
         if(businessPage.ListComponent_GetRecordTotal()>0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功'in  businessPage.Public_GetAlertMessage()
 
         businessPage.BusinessPage_LeftMenu_Click('领用明细')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -61,13 +61,13 @@ class MbCapitalAppTest_001(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('维修管理')
         businessPage.BusinessPage_LeftMenu_Click('维修单')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功'in  businessPage.Public_GetAlertMessage()
         businessPage.BusinessPage_LeftMenu_Click('维修明细')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功'in  businessPage.Public_GetAlertMessage()
@@ -75,20 +75,20 @@ class MbCapitalAppTest_001(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('归还管理')
         businessPage.BusinessPage_LeftMenu_Click('归还单')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功'in  businessPage.Public_GetAlertMessage()
         businessPage.BusinessPage_LeftMenu_Click('归还明细')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功'in  businessPage.Public_GetAlertMessage()
         businessPage.BusinessPage_LeftMenu_Click('更换管理')
         businessPage.BusinessPage_LeftMenu_Click('更换单')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功'in  businessPage.Public_GetAlertMessage()

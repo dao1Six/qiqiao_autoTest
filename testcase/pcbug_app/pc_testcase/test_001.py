@@ -39,7 +39,7 @@ class PcBugAppTest_001(unittest.TestCase):
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
         businessPage = BusinessPage(self.driver)
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -148,23 +148,7 @@ class PcBugAppTest_001(unittest.TestCase):
         title_page = self.driver.title
         self.assertEqual("首页 | 接口自动化七巧广泛广泛",title_page,msg="浏览器标题不正确")
 
-
     def test_07( self ):
-        """流程管理打开数据不能滚动"""
-        portalPage = PortalPage(self.driver)
-        portalPage.PortalPage_Click_HeaderMenu("流程")
-        processPage = ProcessPage(self.driver)
-        processPage.ProcessPage_click_process_menu("流程管理")
-        processPage.ProcessPage_searchItem_sendkeys("流程名称","事业一部订单发起",FileType=FileTypeEnum.Text)
-        processPage.ProcessPage_searchButton_Click("搜索")
-        time.sleep(3)
-        processPage.ProcessPage_click_process_record(1)
-        formPage = FormPage(self.driver)
-        formPage.Form_scroll(10000)
-        self.assertTrue(formPage.Form_field_isVisibility("订单状态"))
-
-
-    def test_08( self ):
         """【补丁】--触发事件使用除法时值为小数时没有正确显示"""
         portalPage = PortalPage(self.driver)
         portalPage.PortalPage_Click_HeaderMenu("应用")
@@ -173,13 +157,13 @@ class PcBugAppTest_001(unittest.TestCase):
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('除法公式结果表')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
         businessPage.BusinessPage_LeftMenu_Click('除法公式触发表')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()

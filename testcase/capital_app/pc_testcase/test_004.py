@@ -55,7 +55,7 @@ class OAAppTest_004(unittest.TestCase):
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','绩效')
         businessPage = BusinessPage(self.driver)
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()

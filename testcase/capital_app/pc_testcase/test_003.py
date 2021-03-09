@@ -54,7 +54,7 @@ class HSEAppTest_003(unittest.TestCase):
         #检查表单弹窗内的数据显示
         time.sleep(2)
         self.assertEqual("口罩",formPage.ForeignSelection_GetValue_writable_InPopup("用品明细","用品名称"),msg="用品明细用品名称显示不正确")
-        self.assertEqual("个人PPE",formPage.Selection_SingleXiala_readOnly_InPopup("用品明细","类别"),msg="用品明细类别显示不正确")
+        self.assertEqual("个人PPE",formPage.Selection_SingleXiala_readOnly_InPopup_GetValue("用品明细","类别"),msg="用品明细类别显示不正确")
         self.assertEqual("50",formPage.Number_GetValue_readOnly_InPopup("用品明细","库存"),msg="用品明细库存显示不正确")
         self.assertEqual("道一",formPage.Text_GetValue_readOnly_InPopup("用品明细","单位"),msg="用品明细单位显示不正确")
         self.assertEqual(20,formPage.Number_GetValue_writable_InPopup("用品明细","申请数量"),msg="用品明细申请数量显示不正确")
@@ -106,7 +106,7 @@ class HSEAppTest_003(unittest.TestCase):
         formPage.MultiForm_Click_Row("用品明细",1)
         #检查表单弹窗内的数据显示
         self.assertEqual("口罩",formPage.ForeignSelection_GetValue_readOnly_InPopup("用品明细","用品名称"),msg="用品明细用品名称显示不正确")
-        self.assertEqual("个人PPE",formPage.Selection_SingleXiala_readOnly_InPopup("用品明细","类别"),msg="用品明细类别显示不正确")
+        self.assertEqual("个人PPE",formPage.Selection_SingleXiala_readOnly_InPopup_GetValue("用品明细","类别"),msg="用品明细类别显示不正确")
         self.assertEqual("50",formPage.Number_GetValue_readOnly_InPopup("用品明细","库存"),msg="用品明细库存显示不正确")
         self.assertEqual("道一",formPage.Text_GetValue_readOnly_InPopup("用品明细","单位"),msg="用品明细单位显示不正确")
         self.assertEqual("20",formPage.Number_GetValue_readOnly_InPopup("用品明细","申请数量"),msg="用品明细申请数量显示不正确")

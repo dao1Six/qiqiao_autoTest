@@ -35,7 +35,7 @@ class ProcessAppTest_003(unittest.TestCase):
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '数据过滤测试应用')
         businessPage = BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click("多表组件")
-        businessPage.ListComponent_SelectAllRecord()
+        businessPage.ListComponent_SelectCurrentPageAllRecord()
         businessPage.ListComponent_Click_ListHeader_Button("发起流程")
         businessPage.ListComponent_TooltipButton_Click('确定')
         self.assertIn('成功',businessPage.Public_GetAlertMessage(),msg="列表自定义发起流程失败")
@@ -70,7 +70,7 @@ class ProcessAppTest_003(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click("预算明细")
         #判断列表是否存在数据
         if(businessPage.ListComponent_GetRecordTotal()>0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功'in  businessPage.Public_GetAlertMessage()
@@ -155,8 +155,9 @@ class ProcessAppTest_003(unittest.TestCase):
         self.driver.get("https://qy.do1.com.cn/qiqiao/runtime/#/4b338f97931c4030b71605fa52789e23/4b330/a0ceb629a5894e3db5e8f80e60ab56d7/603df3ead2270900014ab314/externalForm")
         externalformpage = ExternalFormPage(self.driver)
         externalformpage.ExternalFormPage_Click_SubmitBtn()
-        self.assertEqual("提交成功,感谢您的参与！",externalformpage.ExternalFormPage_Get_MessageContent())
         time.sleep(2)
+        self.assertEqual("提交成功,感谢您的参与！",externalformpage.ExternalFormPage_Get_MessageContent())
+
 
 
 

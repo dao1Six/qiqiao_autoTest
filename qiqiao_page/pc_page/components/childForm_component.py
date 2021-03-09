@@ -101,7 +101,10 @@ class ChildForm_component(SeleniumPage):
 
     def ChildForm_GetTdValue( self,fileName,row,col,index=0,*args):
         '''获取子表组件表单元格值'''
-        text = self.find_elemsByXPATH_visibility(self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col)))[index].text
+        elems = self.find_elemsByXPATH_visibility(self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col)))
+        if(elems==None):
+            return None
+        text = elems[index].text
         if(text==""):
             text = self.getElemAttrValue(self.find_elemsByXPATH_visibility(self.ChildForm_Td_loc.replace('%s',fileName).replace('%row',str(row)).replace('%col',str(col))+"//input")[index],"value")
         return text

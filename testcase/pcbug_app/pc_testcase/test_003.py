@@ -129,7 +129,7 @@ class PcBugAppTest_003(unittest.TestCase):
         businessPage=BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('资产清单测试导入列表')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除数据')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -149,7 +149,7 @@ class PcBugAppTest_003(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('基础管理')
         businessPage.BusinessPage_LeftMenu_Click('资产管理复制表单列表')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -203,7 +203,7 @@ class PcBugAppTest_003(unittest.TestCase):
         businessPage=BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('人员部门导入')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -264,7 +264,7 @@ class PcBugAppTest_003(unittest.TestCase):
         businessPage=BusinessPage(self.driver)
         businessPage.BusinessPage_LeftMenu_Click('外部表单数据列表')
         if (businessPage.ListComponent_GetRecordTotal() > 0):
-            businessPage.ListComponent_SelectAllRecord()
+            businessPage.ListComponent_SelectCurrentPageAllRecord()
             businessPage.ListComponent_Click_ListHeader_Button('删除')
             businessPage.ListComponent_TooltipButton_Click('确定')
             assert '成功' in businessPage.Public_GetAlertMessage()
@@ -287,3 +287,75 @@ class PcBugAppTest_003(unittest.TestCase):
         businessPage.BusinessPage_LeftMenu_Click('外部表单数据列表')
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,3),"北京/北京市/东城区 dadasdasda",msg="【补丁】--移动端平台--通过微信扫码打开外部单，填写地址选择器数据后提交表单，PC运行平台查看到地址选择器显示为空")
 
+
+    def test_17( self ):
+        '''【补丁】PC运行平台-点击列表的勾选按钮不应该弹出详情页'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','数据过滤测试应用')
+        businessPage=BusinessPage(self.driver)
+        self.assertTrue(businessPage.ListComponent_ListRowButton_IsExist("编辑",2))
+        businessPage.ListComponent_SelectRecord(2)
+        time.sleep(2)
+        formPage=FormPage(self.driver)
+        self.assertFalse(formPage.Form_field_isVisibility("单行文本"))
+
+    def test_18( self ):
+        '''【补丁】--PC端编辑按钮中子表单里，单选如设置默认选项，关联的单项选择的关联性失效（添加按钮逻辑正常）'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
+        businessPage=BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('单多选项关联')
+        businessPage.ListComponent_Click_ListRow_Button("编辑",1)
+        time.sleep(2)
+        formPage=FormPage(self.driver)
+        formPage.ChildForm_AddButton_Click("子表单")
+        formPage.Selection_SingleXiala_writable_InPopup_GetValue("子表单","相关名人")
+
+    def test_19( self ):
+        '''【补丁】--- 外键的值关联两个以上的附加字段后显示有问题'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','数据过滤测试应用')
+        businessPage=BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('外键字段测试列表')
+        businessPage.ListComponent_Click_ListHeader_Button('添加')
+        time.sleep(2)
+        formPage=FormPage(self.driver)
+        formPage.ForeignSelection_SelectionBox_Click("外键选择_附加显示字段")
+        self.assertEqual("width: 1080px;",formPage.ForeignSelection_get_OptionStyle("00161"))
+        self.assertEqual(['00161\n大于 | 道一七巧多行文本 | 99 | 1.5 | 999.00 | 1.0% | -- | 2 | 上海/上海市/黄浦区 员村一横路 | 财务管理中心,总办 | 董办 | 罗琳月,王栋一,孙凤娟 | 吴健伦 | 2021-01-01 09:31', '00144\n大于 | 道一七巧多行文本 | 99 | 1.5 | 999.00 | 1.0% | -- | 2 | 上海/上海市/黄浦区 员村一横路 | 财务管理中心,总办 | 董办 | 罗琳月,王栋一,孙凤娟 | 吴健伦 | 2021-01-01 09:31', '00173\n大于 | 道一七巧多行文本 | 99 | 1.5 | 999.00 | 1.0% | -- | 2 | 上海/上海市/黄浦区 员村一横路 | 财务管理中心,总办 | 董办 | 罗琳月,王栋一,孙凤娟 | 吴健伦 | 2021-01-01 09:31', '00129\n大于 | 道一七巧多行文本 | 99 | 1.5 | 999.00 | 1.0% | -- | 2 | 上海/上海市/黄浦区 员村一横路 | 财务管理中心,总办 | 董办 | 罗琳月,王栋一,孙凤娟 | 吴健伦 | 2021-01-01 09:31', '00128\n大于 | 道一七巧多行文本 | 99 | 1.5 | 999.00 | 1.0% | -- | 2 | 上海/上海市/黄浦区 员村一横路 | 财务管理中心,总办 | 董办 | 罗琳月,王栋一,孙凤娟 | 吴健伦 | 2021-01-01 09:31', '00101\n大于 | 道一七巧多行文本 | 99 | 1.5 | 999.00 | 1.0% | -- | 2 | 上海/上海市/黄浦区 员村一横路 | 财务管理中心,总办 | 董办 | 罗琳月,王栋一,孙凤娟 | 吴健伦 | 2021-01-01 09:31', '00122\n大于 | 道一七巧多行文本 | 99 | 1.5 | 999.00 | 1.0% | -- | 2 | 上海/上海市/黄浦区 员村一横路 | 财务管理中心,总办 | 董办 | 罗琳月,王栋一,孙凤娟 | 吴健伦 | 2021-01-01 09:31', '00171\n大于 | 道一七巧多行文本 | 99 | 1.5 | 999.00 | 1.0% | -- | 2 | 上海/上海市/黄浦区 员村一横路 | 财务管理中心,总办 | 董办 | 罗琳月,王栋一,孙凤娟 | 吴健伦 | 2021-01-01 09:31', '00153\n大于 | 道一七巧多行文本 | 99 | 1.5 | 999.00 | 1.0% | -- | 2 | 上海/上海市/黄浦区 员村一横路 | 财务管理中心,总办 | 董办 | 罗琳月,王栋一,孙凤娟 | 吴健伦 | 2021-01-01 09:31', '00136\n大于 | 道一七巧多行文本 | 99 | 1.5 | 999.00 | 1.0% | -- | 2 | 上海/上海市/黄浦区 员村一横路 | 财务管理中心,总办 | 董办 | 罗琳月,王栋一,孙凤娟 | 吴健伦 | 2021-01-01 09:31'],formPage.ForeignSelection_get_OptionValue("外键选择_附加显示字段"))
+
+
+
+    def test_20( self ):
+        '''【补丁】---PC运行平台--子表单组件列表显示了关联表的外键'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','PC端补丁收集应用')
+        businessPage=BusinessPage(self.driver)
+        businessPage.BusinessPage_LeftMenu_Click('单多选项关联')
+        businessPage.ListComponent_Click_ListRow_Button("编辑",1)
+        time.sleep(2)
+        formPage=FormPage(self.driver)
+        self.assertIsNone(formPage.ChildForm_GetTdValue("子表单",1,5))
+
+    def test_21( self ):
+        '''【补丁】---【PC端运行平台】在搜索框输入数据未进行点击搜索时，点击选择所有记录，勾选的数据变成筛选后的数据'''
+        self.pcLogin("wujianlun@auto","do1qiqiao")
+        portalPage=PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage=ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','数据过滤测试应用')
+        businessPage=BusinessPage(self.driver)
+        businessPage.ListComponent_QueryItem_Sendkeys("单行文本","大于",QueryItemType="text")
+        time.sleep(1)
