@@ -69,7 +69,7 @@ def runThread( Threads ):
     requests = threadpool.makeRequests(run_case,func_var)
     # 将所有要运行多线程的请求扔进线程池
     [pool.putRequest(req) for req in requests]
-    pool.wait() #阻碍主线程运行
+    pool.wait() #阻碍主线程运行1
 
 
 if __name__ == "__main__":
