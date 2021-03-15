@@ -41,7 +41,8 @@ class MbDept(SeleniumPage):
          fieldName：字段标题
          deptName：部门名称
          '''
-        return self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.departmentList_name_loc.replace('%s',fieldName)).text + self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.departmentList_name_span_loc.replace('%s',fieldName)).text
+        #self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.departmentList_name_loc.replace('%s',fieldName)).text +
+        return self.find_elenmInElemsByXpath_presence_of_all_elements_located(self.departmentList_name_span_loc.replace('%s',fieldName)).text
 
 
     def MbDept_GetValue_readOnly_InPopup( self,fieldName ):

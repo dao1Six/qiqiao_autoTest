@@ -4,6 +4,7 @@ import time
 import unittest
 from functools import wraps
 
+from Enum.fileTypeEnum import FileTypeEnum
 from public.HTMLTestRunner_cn import _TestResult
 from public.driver import Driver
 from qiqiao_page.pc_page.applicationList_page import ApplicationListPage

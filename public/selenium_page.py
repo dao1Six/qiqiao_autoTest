@@ -53,6 +53,12 @@ class SeleniumPage (object):
             return True
         return False
 
+    def isSelected( self, elem):
+        """判断元素是否选中"""
+        if(elem.is_selected()):
+            return True
+        return False
+
 
     def open(self, url):
         """打开登录页面"""
@@ -355,12 +361,12 @@ class SeleniumPage (object):
            wrap_exception=True,stop_max_delay=3000)
     def find_elemByXPATH_clickable(self, locator, timeout=5):
         """判断5s内，定位的一组元素是否存在dom结构里。存在则返回元素列表，不存在则返回None"""
-        try:
-            return WebDriverWait(self.driver, timeout).until(
-                EC.element_to_be_clickable((By.XPATH, locator)))
-        except:
-            print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
-            return None
+        # try:
+        return WebDriverWait(self.driver, timeout).until(
+            EC.element_to_be_clickable((By.XPATH, locator)))
+        # except:
+        #     print("根据" + locator + "信息在" + str(timeout) + "秒内没有查询到元素")
+        #     return None
 
     @retry( retry_on_exception=retry_if_findElementException,stop_max_attempt_number=3, wait_fixed=1000,
            wrap_exception=True,stop_max_delay=3000)

@@ -39,6 +39,13 @@ class MbFormPage(MbPublicPage,MbNumber,MbText,MbTextarea,MbDate,MbTime,MbDateTim
     field_label_loc = "//div[contains(@class,'cube-form-item') and @title='%s']"
     buttonGroup_loc = "//ul[@class='cube-toolbar-group']//li//button//span"
 
+    dialogTitle_loc = "//p[@class='cube-dialog-title-def']"
+
+    def MbForm_Get_DialogTitle( self ):
+        '''获取表单弹框值'''
+        elem = self.find_elemByXPATH_visibility(self.dialogTitle_loc)
+        return elem.text
+
     def MbForm_Get_buttonGroup( self ):
         '''获取表单底部按钮'''
         valus = []

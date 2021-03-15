@@ -139,6 +139,7 @@ class CapitalAppTest_001(unittest.TestCase):
         self.assertEqual("A1002",formPage.MultiForm_GetTdValue("领用明细", 1, 4),msg="领用明细序列号显示不正确")
         self.assertEqual("I5/8G120SSD+500G", formPage.MultiForm_GetTdValue("领用明细", 2, 5),msg="领用明细配置显示不正确")
         formPage.Form_Button_Click("办理")
+
         formPage.Form_ProcessHandle_Pop_QuerenButton_Click()
         self.assertIn('成功', formPage.Public_GetAlertMessage(), msg="第二个人工任务办理失败")
         time.sleep(2)
@@ -147,8 +148,8 @@ class CapitalAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
         businessPage = BusinessPage(self.driver)
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,7),"已借出",msg="系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "已借出",msg="系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(5,7),"已借出",msg="系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "已借出",msg="系统任务执行失败")
         print("检查完成，资产管理领用流程测试通过")
 
     def test_02( self ):
@@ -180,8 +181,8 @@ class CapitalAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
         businessPage = BusinessPage(self.driver)
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 7), "维修中", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "维修中", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(5, 7), "维修中", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "维修中", msg="第二个人工任务提交后系统任务执行失败")
         #进行第4个人工任务处理
         businessPage.BusinessPage_HeardItem_AllApp_Click() #点击全部应用菜单
         portalPage.PortalPage_Click_HeaderMenu('流程')
@@ -196,8 +197,8 @@ class CapitalAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
 
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(5, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
         print("检查完成，资产管理维修流程测试通过")
 
 
@@ -237,10 +238,10 @@ class CapitalAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
         businessPage = BusinessPage(self.driver)
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(4, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(5, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(3, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
         print("检查完成，资产管理更换流程测试通过")
 
     def test_04( self ):
@@ -274,8 +275,8 @@ class CapitalAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
         businessPage = BusinessPage(self.driver)
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(4, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(3, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
         print("检查完成，资产管理归还流程测试通过")
 
 
@@ -309,8 +310,8 @@ class CapitalAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
         businessPage = BusinessPage(self.driver)
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 7), "已报废", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "已报废", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(5, 7), "已报废", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "已报废", msg="第二个人工任务提交后系统任务执行失败")
         print("检查完成，资产管理报废流程测试通过")
 
 
@@ -321,7 +322,7 @@ class CapitalAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
         businessPage = BusinessPage(self.driver)
-        businessPage.ListComponent_TableTd_Click(1,3)
+        businessPage.ListComponent_TableTd_Click(6,3)
         time.sleep(3)
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,3),"A1002",msg="")
         self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,10),"已归还",msg="")

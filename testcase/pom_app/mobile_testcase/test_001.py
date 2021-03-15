@@ -23,8 +23,8 @@ from util.parseExcel import ParseExcel
 class MbPomAppTest_001(unittest.TestCase):
     """移动端生产运营应用流程操作"""
 
-    @classmethod
-    def setUpClass(self):
+
+    def dataPrepare(self):
         """清理数据"""
         self.driver = Driver().pcdriver()
         self.driver.maximize_window()
@@ -94,7 +94,9 @@ class MbPomAppTest_001(unittest.TestCase):
         self.driver.quit()
 
 
-
+    @classmethod
+    def setUpClass(self):
+        self.dataPrepare(self)
 
 
     def setUp(self):

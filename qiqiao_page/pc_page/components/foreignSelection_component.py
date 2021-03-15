@@ -28,7 +28,7 @@ class ForeignSelection_component(SeleniumPage):
     dialog_span = "//div[@aria-label='选择内容']//tr//td//span"
     dialog_searchinput = "//div[@aria-label='选择内容']//input"
 
-    dialog_SelectOption = "//div[@aria-label='选择内容']//span[@title='%s']"
+    dialog_SelectOption = "//div[@aria-label='选择内容']//span[text()='%s']"
 
     dialog_btn_prev = "//div[@aria-label='选择内容']//button[@class='btn-prev']"
     dialog_btn_next = "//div[@aria-label='选择内容']//button[@class='btn-next']"

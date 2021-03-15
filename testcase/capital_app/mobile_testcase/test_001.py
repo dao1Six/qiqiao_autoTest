@@ -149,8 +149,8 @@ class MbCapitalAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
         businessPage = BusinessPage(self.driver)
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1,7),"已借出",msg="系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "已借出",msg="系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(5,7),"已借出",msg="系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "已借出",msg="系统任务执行失败")
         print("检查完成，资产管理领用流程测试通过")
 
     def test_02( self ):
@@ -183,8 +183,8 @@ class MbCapitalAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
         businessPage = BusinessPage(self.driver)
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 7), "维修中", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "维修中", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(5, 7), "维修中", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "维修中", msg="第二个人工任务提交后系统任务执行失败")
         self.driver.quit()
         #进行第4个人工任务处理
         self.mbLogin("wujianlun@auto","do1qiqiao")
@@ -205,8 +205,8 @@ class MbCapitalAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
         businessPage = BusinessPage(self.driver)
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(5, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
         print("检查完成，资产管理维修流程测试通过")
 
 
@@ -245,10 +245,10 @@ class MbCapitalAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
         businessPage = BusinessPage(self.driver)
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(4, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(5, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(3, 7), "已借出", msg="第二个人工任务提交后系统任务执行失败")
         print("检查完成，资产管理更换流程测试通过")
 
 
@@ -286,8 +286,8 @@ class MbCapitalAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
         businessPage = BusinessPage(self.driver)
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(4, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(3, 7), "可借出", msg="第二个人工任务提交后系统任务执行失败")
         print("检查完成，资产管理归还流程测试通过")
     #
     #
@@ -322,8 +322,8 @@ class MbCapitalAppTest_001(unittest.TestCase):
         applicationListPage = ApplicationListPage(self.driver)
         applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组', '资产管理')
         businessPage = BusinessPage(self.driver)
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(1, 7), "已报废", msg="第二个人工任务提交后系统任务执行失败")
-        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(2, 7), "已报废", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(5, 7), "已报废", msg="第二个人工任务提交后系统任务执行失败")
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(6, 7), "已报废", msg="第二个人工任务提交后系统任务执行失败")
         print("检查完成，资产管理报废流程测试通过")
 
 

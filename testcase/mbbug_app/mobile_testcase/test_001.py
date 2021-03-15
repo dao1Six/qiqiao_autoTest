@@ -74,7 +74,7 @@ class MbBugAppTest_001(unittest.TestCase):
         formPage = MbFormPage(self.driver)
         formPage.MbUser_MonomialUser_Sendkeys("人员单选","吴健伦")
         time.sleep(1)
-        self.assertEqual(formPage.MbDept_MonomialDept_GetValue("部门单选"),'创新技术中心->产品研发二部->产品规划组产品规划组')
+        self.assertEqual(formPage.MbDept_MonomialDept_GetValue("部门单选"),'创新技术中心->产品研发二部->产品规划组')
 
 
     def test_03( self ):
@@ -484,6 +484,23 @@ class MbBugAppTest_001(unittest.TestCase):
         time.sleep(2)
         formPage.MbChildFormAssociation_AddButton_Click("子表关联")
         self.assertEqual(0,formPage.MbChildFormAssociation_List_Get_RecoresNumber())
+
+
+    def test_24( self ):
+        '''【补丁】---移动运行端-点击进入表单详情，点击“提醒执行人”操作提示“确定undefined”'''
+        self.mbLogin("wujianlun@auto","do1qiqiao")
+        homepage = MbHomePage(self.driver)
+        homepage.HomePage_BottomNav_Click('应用')
+        applicationListPage = MbApplicationListPage(self.driver)
+        applicationListPage.MbApplicationListPage_Menu_Click('数据过滤测试应用','自定义开发按钮测试')
+        listPage = MbListComponent(self.driver)
+        self.driver.refresh()
+        time.sleep(1)
+        listPage.MbListComponent_Recore_Click(1)
+        formPage = MbFormPage(self.driver)
+        formPage.MbForm_Button_Click("自定义开发")
+        self.assertEqual("确定自定义开发?",formPage.MbForm_Get_DialogTitle())
+
 
 
 

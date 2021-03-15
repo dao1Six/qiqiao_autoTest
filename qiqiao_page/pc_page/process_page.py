@@ -34,7 +34,7 @@ class ProcessPage(PublicPage,SeleniumPage):
 
 
     def ProcessPage_click_process_record( self,index ):
-        '''打开流程记录'''
+        '''点击流程记录'''
         self.clickElemByXpath_visibility(self.record,index=index-1)
 
     def ProcessPage_get_processTdValue( self,r,d ):

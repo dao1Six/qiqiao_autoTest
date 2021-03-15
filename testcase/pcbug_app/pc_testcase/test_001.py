@@ -4,6 +4,7 @@ import time
 import unittest
 from functools import wraps
 
+from Enum.buttonEnum import ButtonEnum
 from Enum.fileTypeEnum import FileTypeEnum
 from public.HTMLTestRunner_cn import _TestResult
 from public.driver import Driver
@@ -98,8 +99,8 @@ class PcBugAppTest_001(unittest.TestCase):
         formPage = FormPage(self.driver)
         formPage.MultiForm_AddButton_Click("多表关联")
         self.assertEqual(formPage.MultiForm_GetTdValue("多表关联",1,9),"中国")
-        self.assertEqual(formPage.MultiForm_GetTdValue("多表关联",1,19),"刁惠云 , 罗琳月")
-        self.assertEqual(formPage.MultiForm_GetTdValue("多表关联",1,21),"创新技术中心 , 财务一部")
+        self.assertEqual(formPage.MultiForm_GetTdValue("多表关联",1,19),"刁惠云 ,罗琳月")
+        self.assertEqual(formPage.MultiForm_GetTdValue("多表关联",1,21),"创新技术中心 ,财务一部")
 
 
     def test_04( self ):
@@ -141,7 +142,6 @@ class PcBugAppTest_001(unittest.TestCase):
         popFormPage.PopupFormPage_Button_Click('提交')
         self.assertIn("成功",businessPage.Public_GetAlertMessage())
 
-
     def test_06( self ):
         """pc运行平台浏览器标题"""
         time.sleep(2)
@@ -175,6 +175,23 @@ class PcBugAppTest_001(unittest.TestCase):
         time.sleep(2)
         businessPage.BusinessPage_LeftMenu_Click('除法公式结果表')
         self.assertEqual("2.4",businessPage.ListComponent_GetTable_Td_Value(1,3))
+
+
+    def test_08( self ):
+        """【补丁】-PC端运行平台-勾选数据的情况下，搜索框存在数据未点击搜索时，翻页时会导致已选数据取消勾选"""
+        portalPage = PortalPage(self.driver)
+        portalPage.PortalPage_Click_HeaderMenu("应用")
+        applicationListPage = ApplicationListPage(self.driver)
+        applicationListPage.ApplicationListPage_ClickApplicationIcon('默认分组','数据过滤测试应用')
+        businessPage = BusinessPage(self.driver)
+        businessPage.ListComponent_QueryItem_Sendkeys("单行文本","大于")
+        businessPage.ListComponent_SelectAllRecord("列表组件_key_1578039338073_119319")
+        time.sleep(3)
+        self.assertEqual(businessPage.ListComponent_GetTable_Td_Value(3,3),"道一")
+        businessPage.ListComponent_PageDown(ButtonEnum.DOWN.value)#点击下一页
+        time.sleep(3)
+        self.assertTrue(businessPage.ListComponent_RecordIsSelected(3))
+
 
 
 

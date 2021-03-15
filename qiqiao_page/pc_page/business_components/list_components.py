@@ -1,5 +1,7 @@
 
 import time
+
+from Enum.buttonEnum import ButtonEnum
 from public.selenium_page import SeleniumPage
 
 class ListComponent(SeleniumPage):
@@ -13,10 +15,11 @@ class ListComponent(SeleniumPage):
     expand_btn_loc = "//div[@class='view_search_panel']//span[@class='expand']" #列表组件的展开收起按钮
     QueryItem_loc = "//div[@class='view_search_panel']//div[@data-mark='%s']//input"  #列表查询项文本框
     address_option_loc = "//span[text()='{addressname}']"  #地址选择器选项
-    li_selectOption_loc ="//div[@class='el-scrollbar']//div[@title='%s']"  #下拉框选项
+    li_selectOption_loc ="//div[contains(@class,'el-scrollbar')]//div[text()='%s']"  #下拉框选项
     selectOptionName_loc = "//div[@data-mark='%s']//span[@title='%s']"  #查询项标题
     listTable_td_loc = "//div[contains(@class,'el-table__body-wrapper')]//tr[%row]//td[%col]//span" #列表单元格
     listTable_checkbox_loc = "//div[@class='el-table__fixed-body-wrapper']//tr[%row]//td[1]//label//span[@class='el-checkbox__inner']" #列表勾选框
+    listTable_checkbox_input_loc="//div[@class='el-table__fixed-body-wrapper']//tr[%row]//td[1]//label//span[@class='el-checkbox__inner']/following-sibling::input[1]"  # 列表勾选框
     ListRow_Button_loc = "//span[@data-mark='%s_%row']/button/span[text()='%s']" #列表行按钮
     ListRow_MoreButton_loc = "//div[contains(@class,'el-table__body-wrapper')]//tr[%row]//span[contains(text(),'更多')]/parent::div[1]"#列表行更多按钮
     ListRow_SelectAllInput_loc = "//div[contains(@class,'el-table__fixed-header-wrapper')]//th[1]//span[@class='el-checkbox__inner']" #列表首行全选元素
@@ -36,11 +39,34 @@ class ListComponent(SeleniumPage):
     import_file_result_closeButton_loc = "//div[@aria-label='导入结果']//button/span[text()='关闭']" #导入结果关闭按钮
     import_file_ErrorResult_a_loc = "//div[@aria-label='导入提醒']//a[text()='下载错误数据']"
 
-    icon_arrow_down_loc = "//div[@data-mark='%s']//i[contains(@class,'el-icon-arrow-down el-dropdown-selfdefine']"
+    icon_arrow_down_loc = "//div[@data-mark='%s']//i[contains(@class,'el-icon-arrow-down')]"
+    allRecord_li = "//li[text()='选择所有记录']"
+    list_btn_prev = "//button[@class='btn-prev']"
+    list_btn_next ="//button[@class='btn-next']"
 
-    def ListComponent_SelectAllRecord( self ):
+
+    def ListComponent_RecordIsSelected( self,row ):
+        '''列表记录是否被选中'''
+        elem = self.find_elemsByXPATH_presence(self.listTable_checkbox_input_loc.replace('%row',str(row)))[0]
+        return self.isSelected(elem)
+
+
+
+
+    def ListComponent_PageDown( self,buttonEnum ):
+        '''翻页'''
+        if(buttonEnum==ButtonEnum.UP.value):
+            self.clickElemByXpath_visibility(self.list_btn_prev)
+        if(buttonEnum==ButtonEnum.DOWN.value):
+            self.clickElemByXpath_visibility(self.list_btn_next)
+        else:
+            raise ValueError('没有此button枚举值：%s' %buttonEnum)
+
+    def ListComponent_SelectAllRecord( self,ListTableName ):
         '''全选所有数据'''
-        self.clickElemByXpath_visibility(self.ListRow_SelectAllInput_loc)
+        self.clickElemByXpath_visibility(self.icon_arrow_down_loc.replace('%s',ListTableName))
+        time.sleep(1)
+        self.clickElemByXpath_visibility(self.allRecord_li)
 
     def ListComponent_GetRecordTotal(self,index=0):
         '''获取列表总条数'''

@@ -11,11 +11,11 @@ class MbForeignSelection_component(SeleniumPage):
     placeholder_loc = "//div[@title='%s']//span[@class='placeholder']"
     search_label_loc = "//label[@class='search-bar__label']"
     search_input_loc = "//input[@class='search-bar__input']"
-    search_item_loc = "//div[@class='myScroll_container']//span[text()='%s ']/ancestor::li"
+    search_item_loc = "//div[@class='myScroll_container']//span[contains(text(),'%s')]/ancestor::li"
 
     SelectOptions = "//div[@class='myScroll_container']//div[@class='relation_field']/parent::li"
 
-    ForeignSelectOption_loc = "//div[@class='myScroll_container']//span[text()='%s ']/ancestor::li"
+    ForeignSelectOption_loc = "//div[@class='myScroll_container']//span[contains(text(),'%s')]/ancestor::li"
 
     lastPage_div = "//div[@class='myScroll_loadText' and contains(text(),'没有更多数据')]"
 
